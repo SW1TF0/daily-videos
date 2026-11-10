@@ -99,12 +99,28 @@ html,body{margin:0;background:#000;overflow:hidden}
 .web .blocks{display:flex;gap:10px;margin:12px 14px}
 .web .blocks div{flex:1;height:120px;border-radius:20px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:48px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
 .web .tap{position:absolute;width:70px;height:70px;border-radius:50%;background:rgba(10,132,255,.25);border:4px solid rgba(255,255,255,.9);z-index:7}
+/* guest character (skits) */
+#guest{position:absolute;left:40px;top:1070px;width:420px;text-align:center;opacity:0}
+#guest .face{position:relative;margin:0 auto;width:290px;height:290px;border-radius:50%;border:10px solid #fff;box-sizing:border-box;display:flex;align-items:center;justify-content:center;box-shadow:0 26px 60px rgba(0,0,0,.35);overflow:hidden}
+#guest .face .emo{font-size:200px;line-height:1;margin-top:20px}
+#guest .face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#guest .ring{position:absolute;left:50%;top:145px;width:290px;height:290px;margin:-145px 0 0 -145px;border-radius:50%;border:6px solid rgba(255,255,255,.8);opacity:0}
+#guest .name{display:inline-block;margin-top:-26px;position:relative;font:900 40px Unbounded;color:#fff;background:#1d1d1f;padding:10px 26px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+#guest .role{font:800 28px Inter;color:#fff;margin-top:12px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+#who{top:800px;height:80px;opacity:0}
+#who span{font:900 42px Unbounded;color:#1d1d1f;background:#fff;padding:8px 22px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.card.clip{padding:0;overflow:hidden;width:900px;height:506px;border:10px solid #fff;position:relative;transform:rotate(-1.2deg)}
+.card.clip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card.clip .ptitle{position:absolute;left:0;right:0;bottom:0;padding:60px 36px 26px;text-align:left;background:linear-gradient(180deg,transparent,rgba(0,0,0,.78));color:#fff;font:900 52px/1.1 Unbounded}
+.card.clip .ptitle .hl{color:var(--yellow)}
+.card.clip .live{position:absolute;left:22px;top:20px;font:900 24px Inter;color:#fff;background:#ff3b30;padding:6px 14px;border-radius:10px}
 /* captions */
 #caps{top:875px;height:170px;padding:0 60px}
 #caps .c{font:900 78px/1.1 Mont;color:#fff;text-transform:uppercase;letter-spacing:-1px;-webkit-text-stroke:14px #101014;paint-order:stroke fill;text-shadow:0 10px 24px rgba(0,0,0,.35)}
 #caps .w{display:inline-block;margin:0 10px}
 #caps .w.on{color:var(--yellow)}
 #caps .w.em{color:var(--yellow)}
+#caps.guest .w.on,#caps.guest .w.em{color:var(--gcol,#64d2ff)}
 /* end card */
 #end{top:190px;height:900px;flex-direction:column;gap:28px}
 #end .logo{width:230px;height:230px;filter:drop-shadow(0 26px 50px rgba(0,0,0,.35))}
@@ -122,9 +138,11 @@ html,body{margin:0;background:#000;overflow:hidden}
   <div id="bg"><svg id="pattern" viewBox="0 0 1480 2320"></svg></div>
   <div id="photoBg"><img alt=""><div class="shade"></div></div>
   <div id="glow"></div>
+  <div id="guest"><div class="ring"></div><div class="ring r2"></div><div class="face"><span class="emo"></span></div><div class="name"></div><div class="role"></div></div>
   <svg id="stage" viewBox="0 0 1080 1920"></svg>
   <div id="card" class="layer"></div>
   <div id="hook" class="layer"><div class="t"></div></div>
+  <div id="who" class="layer"><span></span></div>
   <div id="caps" class="layer"><div class="c"></div></div>
   <div id="end" class="layer"></div>
   <div id="brand" class="layer"></div>
@@ -198,6 +216,7 @@ function cardHTML(c){
   if(c.type==='list') return `<div class="card list"><div class="title">${hlText(c.title||'')}</div>${(c.items||[]).map(itemOf).map((it,i)=>`<div class="item" data-i="${i}"><div class="ic">${esc(it.icon||'✅')}</div><div>${esc(it.text)}</div></div>`).join('')}</div>`;
   if(c.type==='vs') return `<div class="vs"><div class="side bad"><div class="emo">${esc(c.left.icon)}</div><div class="lab">${esc(c.left.label)}</div><div class="tag">${esc(c.left.tag||'ПРЕДИ')}</div></div><div class="side good"><div class="emo">${esc(c.right.icon)}</div><div class="lab">${esc(c.right.label)}</div><div class="tag">${esc(c.right.tag||'СЛЕД')}</div></div></div>`;
   if(c.type==='stat') return `<div class="card stat"><div class="big">${esc(c.big)}</div><div class="title" style="font-size:52px;margin-top:14px">${hlText(c.title||'')}</div>${c.sub?`<div class="sub">${esc(c.sub)}</div>`:''}</div>`;
+  if(c.type==='clip') return `<div class="card clip"><img alt=""><div class="live">● LIVE</div><div class="ptitle">${hlText(c.title||'')}</div></div>`;
   if(c.type==='photo') return `<div class="card photo"><img src="${c.src}" alt=""><div class="ptitle">${hlText(c.title||'')}</div></div>`;
   if(c.type==='scene'){ const ic=(c.icons||['✨']).slice(0,4); const n=ic.length;
     return `<div class="scene"><div class="panel"><div class="floor"></div>${ic.map((e,i)=>`<div class="e" data-i="${i}" style="left:${(i+0.5)*920/n-95}px">${esc(e)}</div>`).join('')}</div><div class="title">${hlText(c.title||'')}</div></div>`; }
@@ -227,14 +246,16 @@ window.setup = async function(data){
   const holder=document.getElementById('card'); holder.innerHTML='';
   D.cardEls = D.segments.map(s=>{ if(!s.card) return null; const w=document.createElement('div'); w.innerHTML=cardHTML(s.card); const el=w.firstElementChild; el.style.display='none'; holder.appendChild(el); return el; });
   if(D.hook.photo){ document.querySelector('#photoBg img').src=D.hook.photo; }
+  D.castIds = Object.keys(D.cast||{}); D.twoShot = D.castIds.length>0;
+  D.frameUrl = (fr, n) => `${fr.dir}/${String(n).padStart(5,'0')}.jpg`;
   await Promise.all([...document.images].filter(i=>i.getAttribute('src')).map(i=>i.decode().catch(()=>null)));
   // caption chunks: max 3 words / 15 chars, break on punctuation, keep numbers with the next word
   const W = D.words.filter(w=>w.cap);
   const chunks=[]; let cur=[];
-  for(const w of W){ cur.push(w); const len=cur.map(x=>x.w).join(' ').length;
+  for(const w of W){ if(cur.length && cur[cur.length-1].spk!==w.spk){chunks.push(cur);cur=[];} cur.push(w); const len=cur.map(x=>x.w).join(' ').length;
     if(/^[\d:]+[.,]?$/.test(w.w)&&!/[.!?]$/.test(w.w)) continue; if(cur.length>=3||len>=15||/[.,!?:;—…]$/.test(w.w)){chunks.push(cur);cur=[];} }
   if(cur.length) chunks.push(cur);
-  D.chunks = chunks.map(c=>({t0:c[0].t0, t1:c[c.length-1].t1, words:c}));
+  D.chunks = chunks.map(c=>({t0:c[0].t0, t1:c[c.length-1].t1, words:c, spk:c[0].spk}));
   for(let i=0;i<D.chunks.length;i++){ const n=D.chunks[i+1]; D.chunks[i].t1 = n? Math.min(n.t0, D.chunks[i].t1+0.5) : D.chunks[i].t1+0.4; }
   // camera punch-ins: every segment start and every emphasised word
   D.punches = D.segments.slice(1).map(s=>({t:s.t0-0.05, a:0.045})).concat(D.words.filter(w=>w.em).map(w=>({t:w.t0, a:0.035})));
@@ -272,7 +293,8 @@ function animatePhone(cel, c, p, t, seg){
   }
 }
 
-window.renderFrame = function(t){
+window.renderFrame = async function(t){
+  const pending=[];
   const fps=D.fps, fi=Math.min(D.mouth.length-1, Math.max(0, Math.round(t*fps)));
   const endOn = t>=D.end.t0;
   document.getElementById('pattern').style.transform = `translate(${(-t*18)%96}px,${(-t*30)%96}px)`;
@@ -301,7 +323,7 @@ window.renderFrame = function(t){
   const k = easeBack((t-tStart)/0.32);
   const P=POSES[poseName]||POSES.idle, Q=POSES[prevName]||POSES.idle;
   const armL=lerpArm(Q.armL,P.armL,clamp(k,0,1.2)), armR=lerpArm(Q.armR,P.armR,clamp(k,0,1.2));
-  const talking = D.mouth[fi]>0.05 ? 1 : 0;
+  const talking = (D.mouth[fi]>0.05 && (!D.spk || D.spk[fi]==='plochko' || !D.twoShot)) ? 1 : 0;
   const g1=Math.sin(t*5.2), g2=Math.sin(t*4.3+1.3);
   if(poseName==='wave'){ armR.e += Math.sin(t*12)*18; armR.h += Math.sin(t*12)*10; }
   else if(poseName!=='flex'){ armR.e += g1*5*talking; armL.e += g2*5*talking; }
@@ -316,11 +338,15 @@ window.renderFrame = function(t){
   let lookY=0.1, lookX=0;
   if(seg.card && t-seg.t0<0.7 && t-seg.t0>-0.1 && !endOn){ lookY=-0.75; lookX=0.25; }
   if(endOn && D.end.mode==='follow'){ lookY=-0.6; lookX=0.3; }
+  if(D.twoShot && !endOn){ const gw=(D.spk&&D.spk[fi])||''; if(gw && gw!=='plochko'){ lookX=-0.85; lookY=0.15; } }
   const happyEyes = (endOn && t-D.end.t0>0.4) || (seg.happyEyes && t-seg.t0<0.9);
-  const m=D.mouth[fi]||0, v=D.vowel[fi]||'n';
+  const who=(D.spk&&D.spk[fi])||''; const env=D.mouth[fi]||0;
+  const m = (who==='plochko' || (!D.twoShot && who!=='')) ? env : 0;
+  const guestTalking = D.twoShot && who && who!=='plochko';
+  const v=D.vowel[fi]||'n';
   const wide = v==='a'?0.85 : v==='e'?0.95 : v==='o'?0.25 : 0.55;
   let hop=0, lastWord=-9;
-  for(const w of D.words){ const d=t-w.t0; if(d>=0&&d<0.3){ hop=Math.max(hop, (w.em?16:9)*Math.sin(Math.PI*d/0.3)); } if(d>=0) lastWord=Math.max(lastWord,w.t0); }
+  for(const w of D.words){ if(D.twoShot && w.spk!=='plochko') continue; const d=t-w.t0; if(d>=0&&d<0.3){ hop=Math.max(hop, (w.em?16:9)*Math.sin(Math.PI*d/0.3)); } if(d>=0) lastWord=Math.max(lastWord,w.t0); }
   const ent = clamp(t/0.35);
   const entY = (1-easeBack(ent))*160;
   let endHop=0; if(endOn){ const d=t-D.end.t0; endHop = d<0.5? 60*Math.sin(Math.PI*d/0.5):0; }
@@ -328,7 +354,7 @@ window.renderFrame = function(t){
   const rotNow = 2.6*Math.sin(t*1.6) + (talking?1.4*g2:0);
   const antenna = -rotNow*2.4 + 7*Math.sin(t*3.3) + 14*Math.exp(-(t-lastWord)*6)*Math.sin((t-lastWord)*26) + (endOn? 18*Math.exp(-(t-D.end.t0)*4)*Math.sin((t-D.end.t0)*20):0);
   const pose = {
-    id:'mm', theme:D.mascotTheme||'dark', x:540, y:1300+entY, scale:1.3,
+    id:'mm', theme:D.mascotTheme||'dark', x:(D.twoShot&&!endOn)?735:540, y:(D.twoShot&&!endOn?1320:1300)+entY, scale:(D.twoShot&&!endOn)?1.16:1.3,
     rot: rotNow, squash, hop: hop+endHop, antenna,
     eyes:{open, lookX, lookY, happy: happyEyes?1:0},
     brows:{y:E.brows.y + (m>0.6?-3:0), angle:E.brows.angle},
@@ -338,6 +364,26 @@ window.renderFrame = function(t){
   };
   document.getElementById('stage').innerHTML = Mascot.svg(pose);
   document.getElementById('glow').style.opacity = 0.8 + 0.2*Math.sin(t*2);
+
+  // ----- guest character -----
+  const gEl=document.getElementById('guest');
+  if(D.twoShot && !endOn){
+    let gid=D.castIds[0];
+    for(const s of D.segments){ if(s.speaker && s.speaker!=='plochko' && t>=s.t0-0.3) gid=s.speaker; }
+    const G=D.cast[gid]||{};
+    if(gEl.dataset.gid!==gid){ gEl.dataset.gid=gid; gEl.querySelector('.emo').textContent=G.emoji||'🙂'; gEl.querySelector('.name').textContent=G.name||'';
+      gEl.querySelector('.role').textContent=G.role||'';
+      const face=gEl.querySelector('.face'); let im=face.querySelector('img'); if(G.avatar){ if(!im){ im=document.createElement('img'); face.appendChild(im);} im.src=G.avatar; pending.push(im.decode().catch(()=>null)); } else if(im) im.remove();
+      gEl.querySelector('.face').style.background=`radial-gradient(circle at 40% 30%, #fff 0%, ${G.color||'#ff9f0a'} 55%, #b35c00 100%)`; }
+    const ge=clamp((t-0.15)/0.35); gEl.style.opacity=ge;
+    const gm = guestTalking ? env : 0;
+    gEl.querySelector('.face').style.transform=`scale(${1+0.07*gm}) rotate(${guestTalking?Math.sin(t*9)*3:Math.sin(t*1.3)*1.5}deg) translateY(${(1-easeBack(ge))*200}px)`;
+    gEl.querySelector('.emo').style.transform=`translateY(${-gm*14}px)`;
+    gEl.querySelectorAll('.ring').forEach((r,i)=>{ const ph=((t*1.6+i*0.5)%1); r.style.opacity=guestTalking?(1-ph)*0.8:0; r.style.transform=`scale(${1+ph*0.45})`; });
+  } else gEl.style.opacity=0;
+  const whoEl=document.getElementById('who');
+  if(guestTalking && !endOn){ const G=D.cast[who]||{}; whoEl.style.opacity=1; whoEl.querySelector('span').textContent=G.name||''; whoEl.querySelector('span').style.background=G.color||'#fff'; }
+  else whoEl.style.opacity=0;
 
   // ----- card -----
   const holder=document.getElementById('card');
@@ -349,6 +395,8 @@ window.renderFrame = function(t){
     const kk=easeBack((t-(seg.t0-0.15))/0.4);
     holder.style.opacity=clamp((t-(seg.t0-0.15))/0.15);
     holder.style.transform=`translateY(${(1-kk)*80}px) scale(${lerp(0.82,1,kk)})`;
+    if(c.type==='clip' && c.frames){ const n=1+Math.floor(Math.max(0,t-seg.t0+0.15)*D.fps)%Math.max(1,c.frames.count); const im=cel.querySelector('img'); const u=D.frameUrl(c.frames,n);
+      if(im.getAttribute('src')!==u){ im.src=u; pending.push(im.decode().catch(()=>null)); } }
     if(c.type==='photo'){ cel.querySelector('img').style.transform=`scale(${1.16-0.12*p}) translate(${(p-0.5)*-24}px,${(p-0.5)*10}px)`; }
     if(c.type==='list'){
       const items=cel.querySelectorAll('.item'); const n=items.length; const span=Math.max(0.6,(seg.t1-seg.t0));
@@ -365,12 +413,16 @@ window.renderFrame = function(t){
     if(c.type==='phone') animatePhone(cel, c, p, t, seg);
   } else { holder.style.opacity=0; }
   const pb=document.getElementById('photoBg');
-  if(D.hook.photo && !endOn){ const out=clamp((t-D.hook.t1)/0.35); pb.style.opacity=1-out; pb.querySelector('img').style.transform=`scale(${1.12-0.08*clamp(t/Math.max(1,D.hook.t1))})`; }
+  if(D.hook.clip && !endOn){ const out=clamp((t-D.hook.t1)/0.35); pb.style.opacity=1-out; const im=pb.querySelector('img');
+    const n=1+Math.floor(t*D.fps)%Math.max(1,D.hook.clip.count); const u=D.frameUrl(D.hook.clip,n); if(im.getAttribute('src')!==u){ im.src=u; pending.push(im.decode().catch(()=>null)); } }
+  else if(D.hook.photo && !endOn){ const out=clamp((t-D.hook.t1)/0.35); pb.style.opacity=1-out; pb.querySelector('img').style.transform=`scale(${1.12-0.08*clamp(t/Math.max(1,D.hook.t1))})`; }
   else pb.style.opacity=0;
 
   // ----- captions -----
   const caps=document.querySelector('#caps .c');
   let ch=null; for(let i=0;i<D.chunks.length;i++){ const c=D.chunks[i]; if(t>=c.t0-0.05&&t<c.t1){ch=c;} }
+  const capsBox=document.getElementById('caps');
+  if(ch && D.twoShot && ch.spk!=='plochko'){ capsBox.classList.add('guest'); capsBox.style.setProperty('--gcol', (D.cast[ch.spk]||{}).color||'#64d2ff'); } else capsBox.classList.remove('guest');
   if(ch && !endOn){
     caps.innerHTML = ch.words.map(w=>`<span class="w${(t>=w.t0-0.03&&t<w.t1+0.05)?' on':''}${w.em?' em':''}">${esc(w.w.replace(/[„“"]/g,''))}</span>`).join(' ');
     const q=easeBack((t-ch.t0+0.05)/0.18);
@@ -383,6 +435,7 @@ window.renderFrame = function(t){
     const f=end.querySelector('.follow'); if(f) f.style.transform=`scale(${1+0.05*Math.sin((t-D.end.t0)*9)})`; }
   else end.style.opacity=0;
   document.getElementById('brand').style.opacity = (endOn||t<h.t1)?0:0.85;
+  if(pending.length) await Promise.all(pending);
   return true;
 };
 </script>

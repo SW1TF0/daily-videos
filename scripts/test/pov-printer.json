@@ -1,0 +1,126 @@
+{
+ "id": "pov-printer",
+ "service": "Сервиз на PC и принтери",
+ "hook_style": "хумор/POV",
+ "series": "POV",
+ "bg": "purple",
+ "mascot": "dark",
+ "music": "comedy",
+ "hook": "POV: принтерът *отказва* точно преди среща",
+ "hook_emoji": "😤",
+ "cast": {
+  "printer": {
+   "voice": "yordan",
+   "name": "Принтерът",
+   "emoji": "🖨️",
+   "role": "офис, 8:59 сутринта",
+   "color": "#bf5af2"
+  }
+ },
+ "segments": [
+  {
+   "say": "Две минути до срещата, а принтерът казва...",
+   "pose": "think",
+   "emote": "worried"
+  },
+  {
+   "speaker": "printer",
+   "say": "Няма да печатам. Днес не ми е ден.",
+   "pose": "shrug",
+   "emote": "surprised",
+   "sfx": "office printer error beeping, three short beeps",
+   "sfx_vol": 0.5,
+   "card": {
+    "type": "title",
+    "icon": "⚠️",
+    "title": "Грешка: *няма настроение*",
+    "sub": "Принтерът, 8:59"
+   }
+  },
+  {
+   "say": "Пак ли засядаш?!",
+   "pose": "shrug",
+   "emote": "worried",
+   "card": {
+    "type": "scene",
+    "icons": [
+     "📄",
+     "😵",
+     "🖨️"
+    ],
+    "title": "Пак *засяда*"
+   }
+  },
+  {
+   "speaker": "printer",
+   "say": "Не засядам. *Медитирам.*",
+   "pose": "idle",
+   "emote": "smug",
+   "sfx": "comedic record scratch",
+   "sfx_at": "end",
+   "sfx_vol": 0.5,
+   "card": {
+    "type": "title",
+    "icon": "🧘",
+    "title": "Принтерът *медитира*"
+   }
+  },
+  {
+   "say": "Добре. Викам сервиза на SmartMenuKJ: принтери, компютри, офис мрежи и ремонти.",
+   "pose": "point",
+   "emote": "smug",
+   "card": {
+    "type": "list",
+    "title": "Сервиз на *PC и принтери*",
+    "items": [
+     {
+      "icon": "🖨️",
+      "text": "Принтери"
+     },
+     {
+      "icon": "💻",
+      "text": "Компютри"
+     },
+     {
+      "icon": "🌐",
+      "text": "Офис мрежи"
+     }
+    ]
+   }
+  },
+  {
+   "speaker": "printer",
+   "say": "Чакай, чакай! Ето, *печатам!*",
+   "pose": "thumb",
+   "emote": "excited",
+   "sfx": "office laser printer printing pages quickly",
+   "sfx_vol": 0.5,
+   "card": {
+    "type": "scene",
+    "icons": [
+     "🖨️",
+     "📄",
+     "✅"
+    ],
+    "title": "Изведнъж *работи*"
+   }
+  },
+  {
+   "say": "Така си и мислех. Всичко да работи! Последвай за още!",
+   "pose": "flex",
+   "emote": "excited",
+   "happyEyes": true
+  }
+ ],
+ "cta": "Последвай за още 💪",
+ "caption": "POV: принтерът отказва точно преди среща 😤 Плочко знае кого да повика: сервиз на принтери, компютри и офис мрежи от SmartMenuKJ. Последвай за още 💪",
+ "hashtags": [
+  "#кърджали",
+  "#smartmenukj",
+  "#принтер",
+  "#офис",
+  "#pov",
+  "#смях",
+  "#itсервиз"
+ ]
+}
