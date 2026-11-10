@@ -81,12 +81,21 @@ def resolve_photos(sc):
         avoid.add(r['id'])
         return r['src']
 
+    def safe(spec, orientation):
+        try:
+            return one(spec, orientation)
+        except (SystemExit, Exception) as e:  # no key / no result: the video still ships without that photo
+            sys.stderr.write(f'photo skipped ({spec.get("query") or spec.get("src")}): {e}\n')
+            return None
+
     if sc.get('hook_photo'):
-        sc['_hook_photo'] = one(sc['hook_photo'], 'portrait')
+        sc['_hook_photo'] = safe(sc['hook_photo'], 'portrait')
     for seg in sc['segments']:
         c = seg.get('card')
         if c and c.get('type') == 'photo':
-            c['src'] = one(c, 'landscape')
+            c['src'] = safe(c, 'landscape')
+            if not c['src']:
+                seg['card'] = {'type': 'title', 'icon': c.get('icon', '✨'), 'title': c.get('title', ''), 'sub': c.get('sub')}
     if used:
         os.makedirs(os.path.dirname(used_file), exist_ok=True)
         with open(used_file, 'a') as fh:
