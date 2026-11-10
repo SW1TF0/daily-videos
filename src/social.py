@@ -5,9 +5,12 @@ python3 src/social.py publish out/<id>/meta.json "2026-11-11T19:30"   # schedule
 python3 src/social.py metrics                          # snapshot stats of recent posts -> data/metrics.jsonl
 python3 src/social.py audience                         # TikTok: followers online per hour (best time to post)
 python3 src/social.py history                          # recent uploads with post URLs / errors
+python3 src/social.py followers                        # followers per network -> data/followers.jsonl (goal tracking)
 python3 src/social.py inbox [days]                     # unanswered comments on recent posts (JSON lines)
 python3 src/social.py reply <platform> <post_id> <comment_id> "<text>"
 python3 src/social.py skip <platform> <post_id> <comment_id> "<reason>"   # mark handled without replying
+python3 src/social.py dms [hours]                      # Instagram DM threads waiting for our answer (JSON lines)
+python3 src/social.py dm <recipient_id> "<text>"        # send an Instagram DM (only within 24h of their last message)
 """
 import datetime as dt, json, os, subprocess, sys
 from urllib.parse import urlencode
@@ -21,6 +24,10 @@ NETWORKS = ['tiktok', 'instagram', 'facebook', 'youtube']
 VIDEOS = os.path.join(ROOT, 'data', 'videos.jsonl')
 METRICS = os.path.join(ROOT, 'data', 'metrics.jsonl')
 COMMENTS = os.path.join(ROOT, 'data', 'comments.jsonl')
+FOLLOWERS = os.path.join(ROOT, 'data', 'followers.jsonl')
+DMS = os.path.join(ROOT, 'data', 'dms.jsonl')
+ME = os.environ.get('IG_USERNAME', 'smartmenukj').lower()
+GOAL = {'followers': 5000, 'start': '2026-11-10', 'deadline': '2026-12-10'}
 
 
 def call(method, path, params=None, form=None, headers=(), body=None):
@@ -70,15 +77,24 @@ def publish(meta_path, when):
     form = [('user', PROFILE), ('video', '@' + meta['file']), ('title', caption[:2200]),
             ('youtube_title', (hook + ' #shorts')[:100]), ('description', caption[:4900]),
             ('external_id', meta['id']), ('async_upload', 'true')]
-    form += [('platform[]', n) for n in nets]
+    form += [('thumb_offset', '1000'), ('cover_timestamp', '1000')]  # cover = hook + Plochko at 1 s
     if when != 'now':
         form += [('scheduled_date', when), ('timezone', TZ)]
-    res = call('POST', '/upload', form=form, headers=[f"Idempotency-Key: {meta['id']}"])
+
+    def send(networks, key):
+        return call('POST', '/upload', form=form + [('platform[]', n) for n in networks], headers=[f'Idempotency-Key: {key}'])
+
+    res = send(nets, meta['id'])
     ok = res.get('success', True) and not res.get('error')
+    if not ok and 'tiktok' in nets and 'tiktok' in json.dumps(res).lower():
+        # e.g. TikTok is not available on the Upload-Post Free plan: publish everywhere else
+        nets = [n for n in nets if n != 'tiktok']
+        res = dict(send(nets, meta['id'] + '-no-tiktok'), tiktok_skipped=str(res)[:300])
+        ok = res.get('success', True) and not res.get('error')
     row = {'id': meta['id'], 'date': dt.date.today().isoformat(), 'scheduled_for': when, 'tz': TZ,
            'platforms': nets, 'request_id': res.get('request_id'), 'job_id': res.get('job_id'),
            'service': meta.get('service'), 'hook_style': meta.get('hook_style'), 'hook': hook,
-           'duration': meta.get('duration'), 'ok': ok, 'response': {k: v for k, v in res.items() if k in ('message', 'error', 'warnings', 'status')}}
+           'duration': meta.get('duration'), 'ok': ok, 'response': {k: v for k, v in res.items() if k in ('message', 'error', 'warnings', 'status', 'tiktok_skipped')}}
     append_jsonl(VIDEOS, row)
     print(json.dumps(row, ensure_ascii=False, indent=1))
     if not ok:
@@ -169,6 +185,58 @@ def skip(platform, post_id, comment_id, reason):
                             'post_id': post_id, 'comment_id': comment_id, 'action': 'skipped', 'reason': reason})
 
 
+def dms(hours=48):
+    """Instagram conversations whose latest message is from the other person (needs our answer)."""
+    since = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=hours)).strftime('%Y-%m-%dT%H:%M:%SZ')
+    d = call('GET', '/uploadposts/dms/conversations', {'platform': 'instagram', 'user': PROFILE, 'since': since, 'limit': 50, 'messages_limit': 6})
+    if not d.get('success', True):
+        raise SystemExit(f"DMs: {d.get('error') or d}")
+    for c in d.get('conversations') or []:
+        msgs = sorted((c.get('messages') or {}).get('data') or [], key=lambda m: m.get('created_time') or '')
+        if not msgs:
+            continue
+        last = msgs[-1]
+        frm = (last.get('from') or {})
+        if (frm.get('username') or '').lower() == ME:
+            continue  # we already answered
+        others = [p for p in (c.get('participants') or {}).get('data', []) if (p.get('username') or '').lower() != ME]
+        who = others[0] if others else frm
+        print(json.dumps({'conversation': c.get('id'), 'user': who.get('username'), 'recipient_id': who.get('id'),
+                          'updated': c.get('updated_time'),
+                          'thread': [{'from': 'ние' if (m.get('from') or {}).get('username', '').lower() == ME else 'клиент',
+                                      'at': m.get('created_time'), 'text': m.get('message') or ('[' + ','.join(a.get('type', '?') for a in m.get('attachments') or []) + ']')}
+                                     for m in msgs]}, ensure_ascii=False))
+
+
+def dm(recipient_id, text):
+    res = call('POST', '/uploadposts/dms/send', body={'platform': 'instagram', 'user': PROFILE, 'recipient_id': recipient_id, 'message': text})
+    ok = bool(res.get('success'))
+    append_jsonl(DMS, {'at': dt.datetime.now(dt.timezone.utc).isoformat(timespec='minutes'), 'recipient_id': recipient_id,
+                       'text': text, 'ok': ok, 'error': None if ok else str(res)[:300]})
+    print(json.dumps(res, ensure_ascii=False)[:400])
+    if not ok:
+        raise SystemExit(1)
+
+
+def followers():
+    """Record followers per connected network and print progress toward the goal."""
+    nets = [n for n in accounts() if n != 'facebook']
+    row = {'at': dt.datetime.now(dt.timezone.utc).isoformat(timespec='minutes')}
+    if nets:
+        d = call('GET', '/analytics/' + PROFILE, {'platforms': ','.join(nets)})
+        for n in nets:
+            v = (d.get(n) or {}).get('followers') if isinstance(d.get(n), dict) else None
+            if v is not None:
+                row[n] = int(v)
+    total = sum(v for k, v in row.items() if k != 'at')
+    row['total'] = total
+    append_jsonl(FOLLOWERS, row)
+    start, end = dt.date.fromisoformat(GOAL['start']), dt.date.fromisoformat(GOAL['deadline'])
+    days_left = max(1, (end - dt.date.today()).days)
+    need = max(0, GOAL['followers'] - total)
+    print(json.dumps({**row, 'goal': GOAL['followers'], 'days_left': days_left, 'needed_per_day': round(need / days_left)}, ensure_ascii=False))
+
+
 def audience():
     end = (dt.date.today() - dt.timedelta(days=1)).isoformat()
     start = (dt.date.today() - dt.timedelta(days=30)).isoformat()
@@ -186,6 +254,12 @@ if __name__ == '__main__':
         metrics()
     elif cmd == 'audience':
         audience()
+    elif cmd == 'dms':
+        dms(int(sys.argv[2]) if len(sys.argv) > 2 else 48)
+    elif cmd == 'dm':
+        dm(sys.argv[2], sys.argv[3])
+    elif cmd == 'followers':
+        followers()
     elif cmd == 'inbox':
         inbox(int(sys.argv[2]) if len(sys.argv) > 2 else 14)
     elif cmd == 'reply':

@@ -10,7 +10,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'src')
 FPS = 30
 LEAD = 0.45        # seconds of hook slam before the voice starts
-END_DUR = 2.9      # end card length
+END_DUR = 2.4      # end card length
 VOICES = {  # native Bulgarian voices from the ElevenLabs library (added to the account)
     'mimi': 'CBDgRB8OyxYGowoi5iXR', 'nadya': 'mW3jGQPMrIgiOavQfIhc', 'elena': 'fSxb5mPM1l5zTVVtM3Vb',
     'nikolay': 'jFUMfgSnXMVNWDwPdkDf', 'georgi': '31jwlwrRwpOA5yGuVAby',
@@ -39,7 +39,7 @@ def tts(text, cache_dir, voice):
     path = os.path.join(cache_dir, key + '.json')
     if not os.path.exists(path):
         url = f"https://api.elevenlabs.io/v1/text-to-speech/{vid}/with-timestamps?output_format=mp3_44100_128"
-        run(['curl', '-sS', '--fail-with-body', '-X', 'POST', url, '-H', 'xi-api-key: proxy-injected',
+        run(['curl', '-sS', '--retry', '3', '--retry-all-errors', '--retry-delay', '5', '--max-time', '180', '--fail-with-body', '-X', 'POST', url, '-H', 'xi-api-key: proxy-injected',
              '-H', 'Content-Type: application/json', '-d', json.dumps(body, ensure_ascii=False), '-o', path])
     d = json.load(open(path))
     if 'audio_base64' not in d:
@@ -215,9 +215,11 @@ def main():
 
     tl = {
         'fps': FPS, 'duration': duration, 'bg': sc.get('bg', 'blue'), 'mascotTheme': sc.get('mascot', 'dark'),
-        'hook': {'text': sc['hook'], 't0': 0.05, 't1': segs[0]['t1'], 'photo': sc.get('_hook_photo')},
+        'hook': {'text': sc['hook'], 't0': 0.0, 't1': segs[0]['t1'], 'photo': sc.get('_hook_photo'), 'emoji': sc.get('hook_emoji')},
         'words': words, 'segments': segs, 'mouth': [round(float(m), 3) for m in mouth], 'vowel': vowel,
-        'end': {'t0': end_t0, 'cta': sc.get('cta', 'Безплатна оферта до 24 ч.'), 'url': 'smartmenukj.com'},
+        'end': {'t0': end_t0, 'cta': sc.get('cta', 'Безплатна оферта до 24 ч.'), 'url': 'smartmenukj.com',
+                'mode': sc.get('end_mode') or ('follow' if 'оследвай' in sc.get('cta', '') else 'offer'),
+                'sub': sc.get('end_sub', 'Нов трик всеки ден 💪')},
     }
     tl_path = os.path.join(work, 'timeline.json')
     json.dump(tl, open(tl_path, 'w'), ensure_ascii=False)
