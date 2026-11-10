@@ -1,0 +1,24 @@
+{
+  "id": "myth-cameras",
+  "service": "Камери и сигурност", "hook_style": "мит/грешка", "series": "Мит или истина?",
+  "bg": "night", "mascot": "light", "music": "mystery",
+  "hook": "3 мита за камерите, *в които вярваш*", "hook_emoji": "🤔",
+  "segments": [
+    {"say": "Три мита за камерите, в които още вярваш.", "pose": "point", "emote": "smug"},
+    {"say": "Мит номер едно: камерите се гледат *само от компютъра.*", "pose": "shrug", "emote": "surprised",
+     "card": {"type": "vs", "left": {"icon": "🖥️", "label": "Само от компютъра", "tag": "МИТ"}, "right": {"icon": "📱", "label": "От телефона", "tag": "ИСТИНА"}}},
+    {"say": "Гледаш на живо от телефона, отвсякъде, и получаваш известие при движение.", "pose": "present", "emote": "happy",
+     "card": {"type": "phone", "app": "camera", "app_title": "Камера · вход", "alert": "Засечено движение на входа", "title": "Гледаш *отвсякъде*"}, "sfx": "smartphone notification ping", "sfx_vol": 0.5},
+    {"say": "Мит номер две: където няма ток, няма и камера.", "pose": "think", "emote": "serious",
+     "card": {"type": "title", "icon": "🔌", "title": "Мит *№2*", "sub": "„Няма ток – няма камера“"}},
+    {"say": "Слагаме *соларна 4G камера* за обекти без ток.", "pose": "thumb", "emote": "excited",
+     "card": {"type": "clip", "gen": "Realistic cinematic shot of a small solar-powered 4G security camera mounted on a wooden pole at a rural vineyard in the Rhodope mountains, golden hour, slow push-in", "secs": 6, "title": "Соларна *4G камера*", "icons": ["☀️", "📹", "🔋"]}},
+    {"say": "Мит номер три: монтажът е голяма мъка. Монтираме с наш екип в Кърджали и региона.", "pose": "present", "emote": "happy",
+     "card": {"type": "title", "icon": "🛠️", "title": "Монтаж *от нашия екип*", "sub": "Кърджали и региона"}},
+    {"say": "Безплатна оферта до двадесет и четири часа!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "stat", "big": "24 ч.", "title": "Безплатна *оферта*", "sub": "Писмено, без ангажимент"}}
+  ],
+  "cta": "Безплатна оферта до 24 ч.",
+  "caption": "3 мита за камерите, в които още вярваш 🤔 Гледаш от телефона отвсякъде, има соларни 4G камери за места без ток, а монтажът е от наш екип в Кърджали и региона. Безплатна оферта до 24 ч. 👉 smartmenukj.com",
+  "hashtags": ["#кърджали", "#smartmenukj", "#камери", "#видеонаблюдение", "#митилиистина", "#сигурност"]
+}

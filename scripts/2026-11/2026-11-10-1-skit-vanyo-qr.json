@@ -1,0 +1,145 @@
+{
+ "id": "skit-vanyo-qr",
+ "service": "QR менюта",
+ "hook_style": "скеч/диалог",
+ "series": "Плочко и бай Ваньо",
+ "bg": "blue",
+ "mascot": "dark",
+ "music": "comedy",
+ "hook": "Бай Ваньо пак *печата менюта*",
+ "hook_emoji": "😩",
+ "hook_photo": {
+  "gen": "Photorealistic vertical photo of a tired cafe owner in a small Bulgarian town cafe holding a stack of freshly printed paper menus next to an office printer, warm evening light, cinematic, no readable text"
+ },
+ "cast": {
+  "vanyo": {
+   "voice": "boris",
+   "name": "Бай Ваньо",
+   "emoji": "👨‍🍳",
+   "role": "кафене в Кърджали",
+   "color": "#ff9f0a",
+   "gen_avatar": "Photorealistic friendly portrait of a 60-year-old Bulgarian cafe owner with a grey mustache and an apron, warm smile, soft studio light, plain warm background, centered head and shoulders"
+  }
+ },
+ "segments": [
+  {
+   "say": "Бай Ваньо, пак ли печаташ менюта?",
+   "pose": "point",
+   "emote": "surprised"
+  },
+  {
+   "speaker": "vanyo",
+   "say": "Ами цените се смениха! *Пак!*",
+   "pose": "think",
+   "emote": "smug",
+   "sfx": "old office printer printing paper, mechanical whirr",
+   "sfx_vol": 0.5,
+   "card": {
+    "type": "photo",
+    "gen": "Photorealistic photo of a messy cafe counter covered with crumpled printed paper menus and a coffee stain, shallow depth of field, no readable text",
+    "title": "Ново печатане. *Пак.*",
+    "icons": [
+     "📄",
+     "🖨️",
+     "😩"
+    ]
+   }
+  },
+  {
+   "say": "С QR меню сменяш цената от телефона, на живо. *Без печатане.*",
+   "pose": "present",
+   "emote": "excited",
+   "card": {
+    "type": "phone",
+    "app": "menu",
+    "app_title": "При Ваньо",
+    "title": "Цена *на живо*",
+    "items": [
+     {
+      "icon": "☕",
+      "text": "Еспресо"
+     },
+     {
+      "icon": "🥐",
+      "text": "Кроасан",
+      "badge": "НОВО"
+     },
+     {
+      "icon": "🍰",
+      "text": "Торта"
+     }
+    ]
+   }
+  },
+  {
+   "speaker": "vanyo",
+   "say": "А клиентите ще се оправят ли?",
+   "pose": "idle",
+   "emote": "happy",
+   "card": {
+    "type": "title",
+    "icon": "🤔",
+    "title": "Ще се *оправят* ли?",
+    "sub": "Клиентите и QR кода"
+   }
+  },
+  {
+   "say": "Сканират кода и менюто е на телефона им. Зарежда мигновено!",
+   "pose": "thumb",
+   "emote": "excited",
+   "card": {
+    "type": "list",
+    "title": "Клиентът *сканира*",
+    "items": [
+     {
+      "icon": "📲",
+      "text": "Сканира кода"
+     },
+     {
+      "icon": "⚡",
+      "text": "Зарежда мигновено"
+     },
+     {
+      "icon": "🍂",
+      "text": "Сезонни оферти"
+     }
+    ]
+   }
+  },
+  {
+   "speaker": "vanyo",
+   "say": "Ей, Плочко... а тия плочки истински ли са?",
+   "pose": "shrug",
+   "emote": "smug",
+   "sfx": "small studio audience laughing briefly",
+   "sfx_at": "end",
+   "sfx_vol": 0.45,
+   "card": {
+    "type": "scene",
+    "icons": [
+     "💪",
+     "🤨",
+     "😂"
+    ],
+    "title": "Истински *плочки?*"
+   }
+  },
+  {
+   "say": "Колкото истинско е и QR менюто! Последвай за още!",
+   "pose": "flex",
+   "emote": "excited",
+   "happyEyes": true
+  }
+ ],
+ "cta": "Последвай за още 💪",
+ "caption": "Бай Ваньо пак печата менюта 😩 Плочко има по-добра идея: QR меню, което сменяш от телефона, на живо. Последвай за още скечове 💪",
+ "hashtags": [
+  "#кърджали",
+  "#smartmenukj",
+  "#qrменю",
+  "#кафене",
+  "#скеч",
+  "#ресторант",
+  "#смях"
+ ]
+}

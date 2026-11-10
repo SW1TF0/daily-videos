@@ -38,7 +38,8 @@ def call(method, path, params=None, form=None, headers=(), body=None):
     for h in headers:
         cmd += ['-H', h]
     for k, v in (form or []):
-        cmd += ['-F', f'{k}={v}']
+        # files go with -F name=@path; every text field with --form-string so ';', '@' or '<' in captions stay literal
+        cmd += ['-F', f'{k}={v}'] if (k == 'video' and str(v).startswith('@')) else ['--form-string', f'{k}={v}']
     out = subprocess.run(cmd, capture_output=True, text=True)
     try:
         return json.loads(out.stdout)
