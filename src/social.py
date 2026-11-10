@@ -1,7 +1,7 @@
 """Publishing and analytics through Upload-Post (key injected by the environment proxy).
 
 python3 src/social.py accounts                         # which networks are connected
-python3 src/social.py publish out/<id>/meta.json "2026-11-11T19:30"   # schedule (Europe/Sofia), or "now"
+python3 src/social.py publish out/<id>/meta.json "2026-11-11T19:30" [tiktok,youtube]   # schedule (Europe/Sofia) or "now"; optional network subset
 python3 src/social.py metrics                          # snapshot stats of recent posts -> data/metrics.jsonl
 python3 src/social.py audience                         # TikTok: followers online per hour (best time to post)
 python3 src/social.py history                          # recent uploads with post URLs / errors
@@ -67,9 +67,11 @@ def append_jsonl(path, row):
         fh.write(json.dumps(row, ensure_ascii=False) + '\n')
 
 
-def publish(meta_path, when):
+def publish(meta_path, when, only=None):
     meta = json.load(open(meta_path, encoding='utf-8'))
     nets = list(accounts())
+    if only:  # e.g. add an already published video to networks connected later
+        nets = [n for n in nets if n in only.split(',')]
     if not nets:
         raise SystemExit('No networks connected in Upload-Post profile ' + PROFILE)
     hook = meta['hook'].replace('*', '').strip()
@@ -85,7 +87,8 @@ def publish(meta_path, when):
     def send(networks, key):
         return call('POST', '/upload', form=form + [('platform[]', n) for n in networks], headers=[f'Idempotency-Key: {key}'])
 
-    res = send(nets, meta['id'])
+    key = meta['id'] + ('' if not only else '-' + '-'.join(sorted(nets)))  # new key, or Upload-Post returns the old job
+    res = send(nets, key)
     ok = res.get('success', True) and not res.get('error')
     if not ok and 'tiktok' in nets and 'tiktok' in json.dumps(res).lower():
         # e.g. TikTok is not available on the Upload-Post Free plan: publish everywhere else
@@ -250,7 +253,7 @@ if __name__ == '__main__':
     if cmd == 'accounts':
         print(json.dumps({k: (v.get('display_name') or v.get('username')) if isinstance(v, dict) else v for k, v in accounts().items()}, ensure_ascii=False))
     elif cmd == 'publish':
-        publish(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else 'now')
+        publish(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else 'now', sys.argv[4] if len(sys.argv) > 4 else None)
     elif cmd == 'metrics':
         metrics()
     elif cmd == 'audience':
