@@ -198,6 +198,28 @@ def gen_music(prompt, seconds):
     return path
 
 
+def pick_music(sc, duration):
+    """Library track from assets/music (no credits, instant) unless the script asks for a custom music_prompt.
+    Returns (mp3_path, start_offset_seconds)."""
+    if sc.get('music_prompt'):
+        return gen_music(sc['music_prompt'], duration), 0.0
+    import glob
+    style = sc.get('music', 'bounce')
+    lib_dir = os.path.join(ROOT, 'assets', 'music')
+    lib = sorted(glob.glob(os.path.join(lib_dir, f'{style}-*.mp3'))) or sorted(glob.glob(os.path.join(lib_dir, 'bounce-*.mp3')))
+    if not lib:  # first time for this style: compose a 60 s track once and keep it in the repo
+        os.makedirs(lib_dir, exist_ok=True)
+        src = gen_music(MUSIC_PROMPTS.get(style, MUSIC_PROMPTS['bounce']), 58.5)
+        dst = os.path.join(lib_dir, f'{style}-1.mp3')
+        import shutil
+        shutil.copy(src, dst)
+        lib = [dst]
+    h = int(hashlib.sha1(sc['id'].encode()).hexdigest(), 16)
+    track = lib[h % len(lib)]
+    room = max(0.0, 59.0 - duration)
+    return track, round((h >> 8) % 1000 / 1000 * min(room, 20.0), 2)
+
+
 def gen_sfx(text):
     if text in SFX_FILES:
         return os.path.join(CACHE, 'sfx', text + '.wav')
@@ -373,9 +395,9 @@ def main():
     music = os.path.join(work, 'music.wav')
     style = sc.get('music', 'bounce')
     try:
-        mp3 = gen_music(sc.get('music_prompt') or MUSIC_PROMPTS.get(style, MUSIC_PROMPTS['bounce']), duration)
-        run(['ffmpeg', '-y', '-loglevel', 'error', '-i', mp3, '-af', f'afade=t=out:st={max(0, duration - 1.2)}:d=1.2', '-t', str(duration),
-             '-ar', str(SR), '-ac', '2', music])
+        mp3, offset = pick_music(sc, duration)
+        run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', str(offset), '-i', mp3, '-af',
+             f'afade=t=in:st=0:d=0.3,afade=t=out:st={max(0, duration - 1.2)}:d=1.2', '-t', str(duration), '-ar', str(SR), '-ac', '2', music])
         music_vol = 0.22
     except Exception as e:
         notes.append(f'music fallback: {e}')
@@ -416,7 +438,7 @@ def main():
     cmd += ['-filter_complex', ';'.join(fc), '-map', '0:v', '-map', '[a]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k',
             '-ar', str(SR), '-t', str(duration), '-movflags', '+faststart', final]
     run(cmd)
-    meta = {k: sc.get(k) for k in ('id', 'hook', 'caption', 'hashtags', 'service', 'hook_style', 'series')}
+    meta = {k: sc.get(k) for k in ('id', 'hook', 'caption', 'hashtags', 'service', 'hook_style', 'series', 'first_comment')}
     meta.update({'duration': duration, 'file': final, 'notes': notes})
     json.dump(meta, open(os.path.join(work, 'meta.json'), 'w'), ensure_ascii=False, indent=2)
     print(json.dumps(meta, ensure_ascii=False))

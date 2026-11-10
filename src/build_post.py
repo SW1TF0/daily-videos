@@ -18,7 +18,7 @@ def main():
         raise SystemExit('slide render failed')
     files = json.loads(r.stdout.strip().splitlines()[-1])
     cover = next((s for s in post['slides'] if s.get('type') == 'cover'), {})
-    meta = {k: post.get(k) for k in ('id', 'caption', 'hashtags', 'service', 'format')}
+    meta = {k: post.get(k) for k in ('id', 'caption', 'hashtags', 'service', 'format', 'first_comment')}
     meta.update({'kind': 'carousel', 'hook': cover.get('hook', ''), 'photos': files})
     json.dump(meta, open(os.path.join(work, 'meta.json'), 'w'), ensure_ascii=False, indent=2)
     print(json.dumps(meta, ensure_ascii=False))
