@@ -19,7 +19,7 @@
 - `src/social.py` — Upload-Post: `accounts`, `followers`, `publish <meta.json> <YYYY-MM-DDTHH:MM|now>` (час в Europe/Sofia), `metrics`, `audience`, `history`, `inbox`, `reply`, `skip`, `dms`, `dm`.
 
 ## Настройка в нова сесия
-Repo-то се прикачва с инструмента `mcp__claude-code-remote__add_repo` (owner `SW1TF0`, repo `daily-videos`, access `push`) — той е директно наличен, не го търси с ToolSearch. Клонирай точно както казва отговорът му — така push работи. Ако push пак откаже, кажи го ясно в обобщението (иначе наученото се губи).
+Repo-то се прикачва с инструмента `mcp__claude-code-remote__add_repo` (owner `SW1TF0`, repo `daily-videos`, access `push`) — той е директно наличен, не го търси с ToolSearch. Клонирай точно както казва отговорът му — така push работи. Ако push пак откаже, кажи го ясно в обобщението и работи без него: историята на постовете и статистиката се пазят в Upload-Post (`history`, `metrics`, `followers` четат оттам), така че изводите можеш да извлечеш наново всеки ден; разпознавай видеата по `external_id` и текста на поста.
 `npm ci` (шрифтове). Playwright, Chromium и ffmpeg са предварително инсталирани. Ключовете (ElevenLabs, Upload-Post) се инжектират от мрежовия прокси на средата — в кода е `proxy-injected`; никога не пиши, не търси и не печатай истински ключ.
 
 ## Сценарий — правила
