@@ -1,0 +1,47 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Unbounded;font-weight:900;src:url(../node_modules/@fontsource/unbounded/files/unbounded-cyrillic-900-normal.woff2) format('woff2');unicode-range:U+0400-04FF;}
+@font-face{font-family:Unbounded;font-weight:900;src:url(../node_modules/@fontsource/unbounded/files/unbounded-latin-900-normal.woff2) format('woff2');}
+@font-face{font-family:Inter;font-weight:800;src:url(../node_modules/@fontsource/inter/files/inter-cyrillic-800-normal.woff2) format('woff2');unicode-range:U+0400-04FF;}
+@font-face{font-family:Inter;font-weight:800;src:url(../node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2) format('woff2');}
+html,body{margin:0;background:#000}
+#sheet{width:1800px;height:1000px;display:flex;gap:0}
+.panel{position:relative;width:600px;height:1000px;overflow:hidden}
+.panel svg{position:absolute;inset:0}
+.cap{position:absolute;left:0;right:0;bottom:46px;text-align:center;font:800 30px Inter;color:#fff;opacity:.92}
+.tag{position:absolute;left:0;right:0;top:44px;text-align:center;font:900 46px/1.1 Unbounded;color:#fff;letter-spacing:-0.5px}
+.tag b{color:#0a84ff;background:#fff;padding:2px 14px;border-radius:14px}
+.p1{background:radial-gradient(circle at 50% 45%,#2f9bff 0%,#0a84ff 40%,#0040c0 100%)}
+.p2{background:radial-gradient(circle at 50% 40%,#2c2c2e 0%,#111113 60%,#000 100%)}
+.p3{background:radial-gradient(circle at 50% 45%,#ffffff 0%,#f0f0f5 55%,#d8d8e0 100%)}
+.p3 .cap,.p3 .tag{color:#1d1d1f}
+</style></head>
+<body><div id="sheet">
+  <div class="panel p1"><div class="tag">ПЛОЧКО</div><svg id="s1" viewBox="0 0 600 1000"></svg><div class="cap">Тъмен · флекс</div></div>
+  <div class="panel p2"><div class="tag">ЗДРАВЕЙ, <b>КЪРДЖАЛИ!</b></div><svg id="s2" viewBox="0 0 600 1000"></svg><div class="cap">Тъмен · говори и сочи</div></div>
+  <div class="panel p3"><div class="tag">ПЛОЧКО</div><svg id="s3" viewBox="0 0 600 1000"></svg><div class="cap">Светъл вариант · маха</div></div>
+</div>
+<script src="mascot.js"></script>
+<script>
+const grid = (c) => { let g=''; for(let y=0;y<1000;y+=60)for(let x=0;x<600;x+=60) g+=`<rect x="${x+8}" y="${y+8}" width="44" height="44" rx="13" fill="${c}"/>`; return g; };
+document.getElementById('s1').innerHTML = grid('rgba(255,255,255,0.05)') + Mascot.svg({
+  id:'a', x:300, y:560, scale:1.05, theme:'dark', antenna:-12,
+  eyes:{happy:1}, mouth:{open:0.75, wide:0.9, smile:1}, brows:{y:-4, angle:-12},
+  armL:{s:-8, e:-84, hand:'fist', flex:1, h:-10}, armR:{s:-8, e:-84, hand:'fist', flex:1, h:-10},
+  legL:{a:100}, legR:{a:80},
+});
+document.getElementById('s2').innerHTML = grid('rgba(255,255,255,0.035)') + Mascot.svg({
+  id:'b', x:300, y:575, scale:1.05, theme:'dark', rot:-3, antenna:14,
+  eyes:{open:1, lookX:0.15, lookY:0.1}, mouth:{open:0.55, wide:0.55, smile:0.7}, brows:{y:-8, angle:10},
+  armL:{s:55, e:-35, hand:'open', flex:0.3, h:-30}, armR:{s:-30, e:-20, hand:'point', flex:0.5, h:8},
+  legL:{a:96}, legR:{a:84},
+});
+document.getElementById('s3').innerHTML = grid('rgba(0,0,0,0.04)') + Mascot.svg({
+  id:'c', x:300, y:560, scale:1.05, theme:'light', antenna:6,
+  eyes:{open:1, lookX:-0.1, lookY:0}, mouth:{open:0, smile:1}, brows:{y:-2, angle:-6},
+  armL:{s:-35, e:-70, hand:'open', flex:0.5, h:-20}, armR:{s:30, e:-95, hand:'thumb', flex:0.8, h:70},
+  legL:{a:95}, legR:{a:85},
+});
+</script>
+</body></html>
