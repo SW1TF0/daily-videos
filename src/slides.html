@@ -1,0 +1,85 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Unbounded;font-weight:900;src:url(../node_modules/@fontsource/unbounded/files/unbounded-cyrillic-900-normal.woff2) format('woff2');unicode-range:U+0400-04FF;}
+@font-face{font-family:Unbounded;font-weight:900;src:url(../node_modules/@fontsource/unbounded/files/unbounded-latin-900-normal.woff2) format('woff2');}
+@font-face{font-family:Inter;font-weight:800;src:url(../node_modules/@fontsource/inter/files/inter-cyrillic-800-normal.woff2) format('woff2');unicode-range:U+0400-04FF;}
+@font-face{font-family:Inter;font-weight:800;src:url(../node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2) format('woff2');}
+:root{--blue:#0a84ff;--yellow:#ffd60a;--ink:#1d1d1f}
+html,body{margin:0;background:#000}
+#s{position:relative;width:1080px;height:1350px;overflow:hidden;font-family:Inter,sans-serif;color:#fff}
+#bg{position:absolute;inset:0}
+#pattern{position:absolute;inset:0}
+#stage{position:absolute;inset:0}
+#content{position:absolute;inset:0}
+.hl{color:var(--ink);background:var(--yellow);padding:0 16px;border-radius:22px;display:inline-block;transform:rotate(-2deg);margin:4px 0}
+.top{position:absolute;left:60px;right:60px;top:56px;display:flex;justify-content:space-between;align-items:center;font:800 30px Inter;opacity:.95}
+.top .brand{display:flex;align-items:center;gap:14px}
+.top .brand svg{width:52px;height:52px}
+.top .pg{background:rgba(0,0,0,.22);padding:8px 18px;border-radius:999px}
+/* cover */
+.cover .hook{position:absolute;left:60px;right:60px;top:170px;font:900 96px/1.06 Unbounded;letter-spacing:-2px;text-transform:uppercase;text-shadow:0 8px 0 rgba(0,0,0,.25)}
+.cover .sticker{position:absolute;right:110px;top:690px;font-size:230px;transform:rotate(12deg);filter:drop-shadow(0 18px 22px rgba(0,0,0,.3))}
+.swipe{position:absolute;right:60px;bottom:60px;font:900 38px Unbounded;background:#fff;color:var(--ink);padding:16px 30px;border-radius:999px;box-shadow:0 14px 30px rgba(0,0,0,.25)}
+/* point slide */
+.point .num{position:absolute;left:60px;top:150px;width:150px;height:150px;border-radius:44px;background:var(--yellow);color:var(--ink);display:flex;align-items:center;justify-content:center;font:900 96px Unbounded;box-shadow:0 18px 40px rgba(0,0,0,.25);transform:rotate(-4deg)}
+.point .tag{position:absolute;left:240px;top:178px;font:900 34px Unbounded;padding:12px 24px;border-radius:999px;color:#fff}
+.point .title{position:absolute;left:60px;right:60px;top:340px;font:900 76px/1.08 Unbounded;letter-spacing:-1px;text-shadow:0 6px 0 rgba(0,0,0,.22)}
+.point .text{position:absolute;left:60px;right:60px;top:620px;font:800 44px/1.3 Inter;opacity:.97}
+.point .icons{position:absolute;left:60px;right:430px;bottom:120px;height:300px;border-radius:52px;background:linear-gradient(160deg,#fff,#e8f2ff);box-shadow:0 30px 70px rgba(0,20,80,.35);display:flex;align-items:center;justify-content:space-evenly}
+.point .icons span{font-size:150px;line-height:1;filter:drop-shadow(0 14px 12px rgba(0,30,90,.25))}
+/* cta */
+.cta .logo{position:absolute;left:50%;top:150px;width:200px;height:200px;margin-left:-100px;filter:drop-shadow(0 26px 50px rgba(0,0,0,.35))}
+.cta .big{position:absolute;left:60px;right:60px;top:390px;text-align:center;font:900 84px/1.08 Unbounded;letter-spacing:-1px;text-shadow:0 6px 0 rgba(0,0,0,.22)}
+.cta .btn{position:absolute;left:50%;top:640px;transform:translateX(-50%);white-space:nowrap;font:900 56px Unbounded;padding:22px 46px;border-radius:999px;box-shadow:0 18px 40px rgba(0,0,0,.3)}
+.cta .btn.follow{background:#ff2d55;color:#fff}.cta .btn.offer{background:var(--yellow);color:var(--ink)}
+.cta .sub{position:absolute;left:60px;right:60px;top:790px;text-align:center;font:800 42px Inter}
+.foot{position:absolute;left:60px;bottom:56px;font:800 30px Inter;opacity:.9}
+</style></head>
+<body><div id="s"><div id="bg"></div><svg id="pattern" viewBox="0 0 1080 1350"></svg><svg id="stage" viewBox="0 0 1080 1350"></svg><div id="content"></div></div>
+<script src="mascot.js"></script>
+<script>
+const LOGO = `<svg viewBox="0 0 100 100"><rect width="100" height="100" rx="24" fill="#1d1d1f"/><g fill="#fff"><rect x="21" y="21" width="25" height="25" rx="7"/><rect x="54" y="21" width="25" height="25" rx="7"/><rect x="21" y="54" width="25" height="25" rx="7"/></g><circle cx="66.5" cy="66.5" r="12.5" fill="#0a84ff"/></svg>`;
+const BGS = {
+  blue: 'radial-gradient(120% 80% at 50% 30%,#3aa0ff 0%,#0a84ff 38%,#0058d6 72%,#003a9e 100%)',
+  purple: 'radial-gradient(120% 80% at 50% 30%,#8f7bff 0%,#5e5ce6 40%,#3a2fb8 75%,#22197a 100%)',
+  teal: 'radial-gradient(120% 80% at 50% 30%,#5fe3c0 0%,#14b8a6 40%,#0b7f8a 75%,#07505e 100%)',
+  night: 'radial-gradient(110% 70% at 50% 35%,#1f3b66 0%,#101a2e 45%,#05070d 100%)',
+};
+const TAGS = { myth: ['МИТ', '#ff3b30'], truth: ['ИСТИНА', '#30d158'], tip: ['ТРИК', '#0a84ff'], sign: ['ЗНАК', '#ff9f0a'] };
+const esc=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const hl=s=>esc(s).replace(/\*(.+?)\*([.,!?:;…]*)/g,(m,a,p)=>`<span style="white-space:nowrap"><span class="hl" style="white-space:normal">${a}</span>${p}</span>`);
+function fit(el, max, min, w, h){ for(let f=max; f>=min; f-=4){ el.style.fontSize=f+'px'; if(el.scrollWidth<=w && el.offsetHeight<=h) return; } }
+window.renderSlide = async function(post, i){
+  await Promise.all(['900 90px Unbounded','800 40px Inter'].map(f=>document.fonts.load(f,'АБВгд 123').catch(()=>null)));
+  const sl = post.slides[i], n = post.slides.length, bg = sl.bg || post.bg || 'blue';
+  document.getElementById('bg').style.background = BGS[bg] || BGS.blue;
+  let g=''; for(let y=0;y<1350;y+=96)for(let x=0;x<1080;x+=96) g+=`<rect x="${x+12}" y="${y+12}" width="72" height="72" rx="21" fill="rgba(255,255,255,0.055)"/>`;
+  document.getElementById('pattern').innerHTML = g;
+  const top = `<div class="top"><div class="brand">${LOGO}<span>@smartmenukj</span></div><div class="pg">${i+1}/${n}</div></div>`;
+  const theme = post.mascot || (bg==='night'?'light':'dark');
+  let html='', pose={};
+  if(sl.type==='cover'){
+    html = `${top}<div class="hook">${hl(sl.hook)}</div>${sl.emoji?`<div class="sticker">${esc(sl.emoji)}</div>`:''}<div class="swipe">Плъзни →</div>`;
+    pose = {x:400, y:1090, scale:1.15, armR:{s:-38,e:-18,hand:'point',flex:0.6,h:0}, eyes:{open:1,lookX:0.4,lookY:-0.5}, mouth:{open:0.5,wide:0.7,smile:1}, antenna:-8};
+  } else if(sl.type==='cta'){
+    const follow = (sl.cta||post.cta||'follow')==='follow';
+    html = `${top}${LOGO.replace('<svg','<svg class="logo"')}<div class="big">${hl(sl.title || (follow?'Хареса ли ти? *Последвай*':'Искаш и при теб?'))}</div>
+      <div class="btn ${follow?'follow':'offer'}">${follow?'+ ПОСЛЕДВАЙ':'Безплатна оферта'}</div>
+      <div class="sub">${esc(sl.sub || (follow?'Нов трик всеки ден 💪':'Писмена оферта до 24 ч. · smartmenukj.com'))}</div>`;
+    pose = {x:540, y:1180, scale:0.95, armL:{s:-8,e:-84,hand:'fist',flex:1,h:-10}, armR:{s:-8,e:-84,hand:'fist',flex:1,h:-10}, eyes:{happy:1}, mouth:{open:0.6,wide:0.9,smile:1}, antenna:10};
+  } else {
+    const t = TAGS[sl.tag] || null;
+    html = `${top}<div class="num">${esc(sl.n ?? i)}</div>${t?`<div class="tag" style="background:${t[1]}">${t[0]}</div>`:''}
+      <div class="title">${hl(sl.title)}</div><div class="text">${esc(sl.text||'')}</div>
+      <div class="icons">${(sl.icons||['✨']).slice(0,3).map(e=>`<span>${esc(e)}</span>`).join('')}</div>`;
+    pose = {x:845, y:1130, scale:0.82, armR:{s:-30,e:-40,hand: sl.hand||'thumb',flex:0.7,h:sl.hand==='point'?0:70}, eyes:{open:1,lookX:-0.5,lookY:-0.2}, mouth:{open:0.25,wide:0.6,smile:0.9}, antenna:6};
+  }
+  const content=document.getElementById('content'); content.className = sl.type==='cover'||sl.type==='cta' ? sl.type : 'point';
+  content.innerHTML = html + `<div class="foot">${sl.type==='cover'?'':'smartmenukj.com'}</div>`;
+  if(sl.type==='cover'){ const h=document.querySelector('.hook'); fit(h, 104, 60, 960, 560); }
+  if(sl.type!=='cover' && sl.type!=='cta'){ fit(document.querySelector('.title'), 80, 48, 960, 270); fit(document.querySelector('.text'), 46, 32, 960, 330); }
+  document.getElementById('stage').innerHTML = Mascot.svg(Object.assign({id:'m', theme, squash:1, blush:0.6}, pose));
+  return true;
+};
+</script></body></html>

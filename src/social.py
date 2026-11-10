@@ -5,6 +5,7 @@ python3 src/social.py publish out/<id>/meta.json "2026-11-11T19:30" [tiktok,yout
 python3 src/social.py metrics                          # snapshot stats of recent posts -> data/metrics.jsonl
 python3 src/social.py audience                         # TikTok: followers online per hour (best time to post)
 python3 src/social.py history                          # recent uploads with post URLs / errors
+python3 src/social.py post out/<id>/meta.json "2026-11-11T17:00" [instagram,tiktok]   # carousel/photo post (build_post.py)
 python3 src/social.py followers                        # followers per network -> data/followers.jsonl (goal tracking)
 python3 src/social.py inbox [days]                     # unanswered comments on recent posts (JSON lines)
 python3 src/social.py reply <platform> <post_id> <comment_id> "<text>"
@@ -39,7 +40,7 @@ def call(method, path, params=None, form=None, headers=(), body=None):
         cmd += ['-H', h]
     for k, v in (form or []):
         # files go with -F name=@path; every text field with --form-string so ';', '@' or '<' in captions stay literal
-        cmd += ['-F', f'{k}={v}'] if (k == 'video' and str(v).startswith('@')) else ['--form-string', f'{k}={v}']
+        cmd += ['-F', f'{k}={v}'] if (k in ('video', 'photos[]') and str(v).startswith('@')) else ['--form-string', f'{k}={v}']
     out = subprocess.run(cmd, capture_output=True, text=True)
     try:
         return json.loads(out.stdout)
@@ -99,6 +100,36 @@ def publish(meta_path, when, only=None):
            'platforms': nets, 'request_id': res.get('request_id'), 'job_id': res.get('job_id'),
            'service': meta.get('service'), 'hook_style': meta.get('hook_style'), 'hook': hook,
            'duration': meta.get('duration'), 'ok': ok, 'response': {k: v for k, v in res.items() if k in ('message', 'error', 'warnings', 'status', 'tiktok_skipped')}}
+    append_jsonl(VIDEOS, row)
+    print(json.dumps(row, ensure_ascii=False, indent=1))
+    if not ok:
+        raise SystemExit(1)
+
+
+def publish_post(meta_path, when, only=None):
+    """Carousel / photo post: Instagram, TikTok (photo mode, auto music), Facebook — YouTube has no photo posts."""
+    meta = json.load(open(meta_path, encoding='utf-8'))
+    nets = [n for n in accounts() if n in ('instagram', 'tiktok', 'facebook')]
+    if only:
+        nets = [n for n in nets if n in only.split(',')]
+    if not nets:
+        raise SystemExit('No photo-capable network connected')
+    hook = (meta.get('hook') or '').replace('*', '').strip()
+    tags = ' '.join(meta.get('hashtags') or [])
+    caption = f"{meta.get('caption') or hook}\n\n{tags}".strip()
+    form = [('user', PROFILE), ('title', caption[:2200]), ('description', caption[:4900]),
+            ('tiktok_title', hook[:90]), ('tiktok_description', caption[:4000]), ('auto_add_music', 'true'),
+            ('photo_cover_index', '0'), ('external_id', meta['id']), ('async_upload', 'true')]
+    form += [('photos[]', '@' + f) for f in meta['photos']]
+    if when != 'now':
+        form += [('scheduled_date', when), ('timezone', TZ)]
+    key = meta['id'] + ('' if not only else '-' + '-'.join(sorted(nets)))
+    res = call('POST', '/upload_photos', form=form + [('platform[]', n) for n in nets], headers=[f'Idempotency-Key: {key}'])
+    ok = res.get('success', True) and not res.get('error')
+    row = {'id': meta['id'], 'kind': 'carousel', 'date': dt.date.today().isoformat(), 'scheduled_for': when, 'tz': TZ,
+           'platforms': nets, 'request_id': res.get('request_id'), 'job_id': res.get('job_id'), 'service': meta.get('service'),
+           'format': meta.get('format'), 'hook': hook, 'slides': len(meta['photos']), 'ok': ok,
+           'response': {k: v for k, v in res.items() if k in ('message', 'error', 'warnings', 'status')}}
     append_jsonl(VIDEOS, row)
     print(json.dumps(row, ensure_ascii=False, indent=1))
     if not ok:
@@ -262,6 +293,8 @@ if __name__ == '__main__':
         dms(int(sys.argv[2]) if len(sys.argv) > 2 else 48)
     elif cmd == 'dm':
         dm(sys.argv[2], sys.argv[3])
+    elif cmd == 'post':
+        publish_post(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else 'now', sys.argv[4] if len(sys.argv) > 4 else None)
     elif cmd == 'followers':
         followers()
     elif cmd == 'inbox':
