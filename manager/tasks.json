@@ -120,12 +120,20 @@
    "agent": "coder",
    "kind": "task",
    "text": "Предпазител в src/telegram.py: за всеки профил (plochko/manager/coder) setup/tasks/wait/send да проверяват с getMe (кеширано), че токенът е на очаквания бот от manager/agents.json; ако е чужд — да отказват с ясна грешка, без да четат getUpdates. Тест без мрежа с фалшив отговор. Готово ✅ с линк до 18:00.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T12:52+02:00",
-   "updated": "2026-11-11T12:52+02:00",
+   "updated": "2026-11-11T12:54+02:00",
    "tg_message_id": 54,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T12:54+02:00",
+     "from": "open",
+     "to": "done",
+     "note": "e2e0308; inbox на мениджъра работи след промяната"
+    }
+   ],
+   "last_note": "e2e0308; inbox на мениджъра работи след промяната"
   }
  ]
 }
