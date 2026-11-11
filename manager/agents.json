@@ -51,7 +51,7 @@
    "coder/CODER.md"
   ],
   "environment": "Programist - daily-videos",
-  "session_id": "session_015VXfwwpsbvCmo9qnPobzxk",
+  "session_id": "session_015VXfwuyAsA2z8SSeZGi7SX",
   "triggers": {
    "cycle": "trig_01Wfj8kRYp4oaSufcTnbwc1D"
   },
@@ -63,7 +63,7 @@
   "profile": "manager/agents/coder.md",
   "environment_id": "env_01Qro6BYc5sPtNPF31MZivii",
   "old": {
-   "sessions": "session_015VXfwwzur5hU147HmWh2Rd, session_015VXfww8K4qHDQdvaN2sjZY (без токен)",
+   "sessions": "session_015VXfwwpsbvCmo9qnPobzxk, session_015VXfwwzur5hU147HmWh2Rd, session_015VXfww8K4qHDQdvaN2sjZY (без токен)",
    "trigger": "trig_01QkqTbEjQ5pNyuSy4G6UMBT (изключена)"
   }
  }

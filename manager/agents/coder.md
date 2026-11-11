@@ -20,6 +20,7 @@
 - 11.11.2026 12:52: нова сесия `session_015VXfwwpsbvCmo9qnPobzxk` (старата `session_015VXfww8K4qHDQdvaN2sjZY`). `TELEGRAM_CODER_BOT_TOKEN` вече я има, но `--as coder setup` (getMe) показва @dailyvideosswitfo_bot — в променливата е токенът на Плочко, не на @itclaudeswitfo_bot. Програмистът не пише и не слуша с него (иначе краде getUpdates на Плочко). Собственикът трябва да сложи в `TELEGRAM_CODER_BOT_TOKEN` токена на @itclaudeswitfo_bot (от @BotFather).
 
 - 11.11.2026 12:51: собственикът сложи TELEGRAM_CODER_BOT_TOKEN (проверено с get_environment). Нова сесия `session_015VXfwwpsbvCmo9qnPobzxk`; цикълът е преместен на нова насрочена задача `trig_01Wfj8kRYp4oaSufcTnbwc1D` (същия график), старата `trig_01QkqTbEjQ5pNyuSy4G6UMBT` е изключена.
+- 11.11.2026 13:00: нова сесия `session_015VXfwuyAsA2z8SSeZGi7SX` (старата `session_015VXfwwpsbvCmo9qnPobzxk`). `--as coder setup` → @itclaudeswitfo_bot, в групата, вижда всички съобщения. Писа „✅ Програмистът работи“; `tasks` — само стари задачи (M-1111-03, -04, -06 вече свършени).
 
 ## Въпроси и отговори
 (мениджърът записва тук въпросите си и отговорите на агента)
