@@ -82,6 +82,7 @@ def publish(meta_path, when, only=None):
             ('youtube_title', (hook + ' #shorts')[:100]), ('description', caption[:4900]),
             ('external_id', meta['id']), ('async_upload', 'true')]
     form += [('thumb_offset', '1000'), ('cover_timestamp', '1000')]  # cover = hook + Plochko at 1 s
+    form += [('privacy_level', 'PUBLIC_TO_EVERYONE')]  # TikTok: never rely on the account default (first posts had 0 views)
     if meta.get('first_comment'):  # a question under the post invites comments (never fails the publish)
         form += [('first_comment', meta['first_comment'][:300])]
     if when != 'now':
@@ -121,7 +122,7 @@ def publish_post(meta_path, when, only=None):
     caption = f"{meta.get('caption') or hook}\n\n{tags}".strip()
     form = [('user', PROFILE), ('title', caption[:2200]), ('description', caption[:4900]),
             ('tiktok_title', hook[:90]), ('tiktok_description', caption[:4000]), ('auto_add_music', 'true'),
-            ('photo_cover_index', '0'), ('external_id', meta['id']), ('async_upload', 'true')]
+            ('photo_cover_index', '0'), ('privacy_level', 'PUBLIC_TO_EVERYONE'), ('external_id', meta['id']), ('async_upload', 'true')]
     form += [('photos[]', '@' + f) for f in meta['photos']]
     if meta.get('first_comment'):
         form += [('first_comment', meta['first_comment'][:300])]
