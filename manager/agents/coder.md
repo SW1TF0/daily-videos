@@ -17,6 +17,7 @@
 
 - 11.11.2026 12:47: собственикът добави TELEGRAM_CODER_BOT_TOKEN, но текущата сесия не го вижда (влиза при нов старт). Задачите — и със `send_message`.
 - 11.11.2026 12:50: нова сесия `session_015VXfww8K4qHDQdvaN2sjZY` (старата `session_015VXfwwzur5hU147HmWh2Rd`). И в нея `TELEGRAM_CODER_BOT_TOKEN` липсва; в средата „Programist - daily-videos“ има само `TELEGRAM_BOT_TOKEN`, а той е на Плочко (@dailyvideosswitfo_bot, проверено с getMe) — грешно име/ключ. Програмистът не пише от името на Плочко. Собственикът трябва да добави токена на @itclaudeswitfo_bot като `TELEGRAM_CODER_BOT_TOKEN` и да махне `TELEGRAM_BOT_TOKEN` от тази среда.
+- 11.11.2026 12:52: нова сесия `session_015VXfwwpsbvCmo9qnPobzxk` (старата `session_015VXfww8K4qHDQdvaN2sjZY`). `TELEGRAM_CODER_BOT_TOKEN` вече я има, но `--as coder setup` (getMe) показва @dailyvideosswitfo_bot — в променливата е токенът на Плочко, не на @itclaudeswitfo_bot. Програмистът не пише и не слуша с него (иначе краде getUpdates на Плочко). Собственикът трябва да сложи в `TELEGRAM_CODER_BOT_TOKEN` токена на @itclaudeswitfo_bot (от @BotFather).
 
 ## Въпроси и отговори
 (мениджърът записва тук въпросите си и отговорите на агента)
