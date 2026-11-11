@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 18
+  "1111": 20
  },
  "tasks": [
   {
@@ -354,9 +354,9 @@
    "agent": "coder",
    "kind": "task",
    "text": "Скорост на smartmenukj.com (по новото правило — сам на живо): 1) снимки → WebP/AVIF с подходящ размер, width/height, loading=lazy под първия екран; 2) шрифтове woff2 + preload + font-display:swap; 3) CSS/JS — без блокиращи ресурси, minify, ?v= кеш; 4) отчет преди/след (размер на страницата, брой заявки) за началната + 2 страници на услуги. Без промяна на дизайна. Готово ✅ с числата. Утре до 12:00.",
-   "status": "accepted",
+   "status": "done",
    "created": "2026-11-11T13:49+02:00",
-   "updated": "2026-11-11T13:54+02:00",
+   "updated": "2026-11-11T14:01+02:00",
    "tg_message_id": 120,
    "via": "telegram",
    "history": [
@@ -365,9 +365,15 @@
      "from": "open",
      "to": "accepted",
      "note": "Прието ✅ M-1111-15 — първо меря (размер, заявки, време) на /bg/ + 2 страници за услуги, после снимки/шрифтове/CSS/JS без промяна на дизайна; отчет с числата до утре 12:00."
+    },
+    {
+     "at": "2026-11-11T14:01+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-15 — PR https://github.com/SW1TF0/SmartMenu/pull/20 (слях го сам по правилото, на живо)\n📏 Преди → след (на живо, телефон, без кеш):\n• /bg/ (начална): 375 → 268 KB (−29%), 26 заявки (без промяна), LCP 1,78 → 1,56 с\n• /bg/videonablyudenie-kardzhali.html: 117 KB, 11 заявки, LCP ~1,3 с (вече бяха леки)\n• /bg/umen-dom-kardzhali.html: 117 KB, 11 заявки, LCP ~1,4 с\n🖼 Логата на партньорите"
     }
    ],
-   "last_note": "Прието ✅ M-1111-15 — първо меря (размер, заявки, време) на /bg/ + 2 страници за услуги, после снимки/шрифтове/CSS/JS без промяна на дизайна; отчет с числата до утре 12:00."
+   "last_note": "Готово ✅ M-1111-15 — PR https://github.com/SW1TF0/SmartMenu/pull/20 (слях го сам по правилото, на живо)\n📏 Преди → след (на живо, телефон, без кеш):\n• /bg/ (начална): 375 → 268 KB (−29%), 26 заявки (без промяна), LCP 1,78 → 1,56 с\n• /bg/videonablyudenie-kardzhali.html: 117 KB, 11 заявки, LCP ~1,3 с (вече бяха леки)\n• /bg/umen-dom-kardzhali.html: 117 KB, 11 заявки, LCP ~1,4 с\n🖼 Логата на партньорите"
   },
   {
    "id": "M-1111-16",
@@ -420,10 +426,48 @@
    "agent": "seo",
    "kind": "task",
    "text": "Пусни сам 3-те статии като раздел /bg/blog/ (index + 3 страници, sitemap, линк в менюто/футъра само ако не е ново меню — иначе само футър и от страниците на услугите). Собственикът разреши директно (seo/SEO.md т.4) — опитай пак add_repo SW1TF0/SmartMenu с access push. Ако пак откаже — „Не мога ❌“ с точния текст и ще го дам на програмиста. Готово ✅ с линкове на живо + site_shot. Днес до 18:00.",
-   "status": "open",
+   "status": "blocked",
    "created": "2026-11-11T13:54+02:00",
-   "updated": "2026-11-11T13:54+02:00",
+   "updated": "2026-11-11T14:01+02:00",
    "tg_message_id": 128,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-11T14:01+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-18 — пробвам пак push достъп до SmartMenu. Ако мине, пускам /bg/blog/ днес."
+    },
+    {
+     "at": "2026-11-11T14:01+02:00",
+     "from": "accepted",
+     "to": "blocked",
+     "note": "Не мога ❌ M-1111-18 — add_repo SW1TF0/SmartMenu (access push) пак е отказан. Точният текст: „Permission for this action was denied by the Claude Code auto mode classifier. Reason: [Access Added As A Means]“. Правило в repo-то не отключва това. Собственикът трябва да добави permission rule за mcp__claude-code-remote__add_repo в настройките на моята сесия (SEO - smartmenukj).\n🛠 За програмиста: текст"
+    }
+   ],
+   "last_note": "Не мога ❌ M-1111-18 — add_repo SW1TF0/SmartMenu (access push) пак е отказан. Точният текст: „Permission for this action was denied by the Claude Code auto mode classifier. Reason: [Access Added As A Means]“. Правило в repo-то не отключва това. Собственикът трябва да добави permission rule за mcp__claude-code-remote__add_repo в настройките на моята сесия (SEO - smartmenukj).\n🛠 За програмиста: текст"
+  },
+  {
+   "id": "M-1111-19",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Блогът: качи 3-те статии от seo/articles/ като /bg/blog/ (index + 3 страници, BlogPosting + FAQPage + Breadcrumb, sitemap, линк във футъра и от страниците на услугите) по README там, с генератора като tools/build-service-pages.mjs. Сам на живо по правилото. Готово ✅ с линкове. Днес до 20:00.",
+   "status": "open",
+   "created": "2026-11-11T14:01+02:00",
+   "updated": "2026-11-11T14:01+02:00",
+   "tg_message_id": 133,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1111-20",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Нов инструмент src/gsc.py за Google Search Console през service account (без библиотеки, само stdlib + curl): ключът се чете от env GOOGLE_SA_JSON (никога не се печата); JWT → токен (oauth2.googleapis.com); команди: sites, sitemaps-submit <site> <sitemap-url>, sitemaps-list, inspect <site> <url> (URL Inspection API: индексирана ли е), inspect-sitemap (всички URL-и от sitemap.xml, обобщение), performance <site> [дни] (кликове/показвания/позиция по заявка и страница). Тест с фалшив curl. Документирай го в seo/SEO.md. Готово ✅ с линк. Утре до 12:00.",
+   "status": "open",
+   "created": "2026-11-11T14:01+02:00",
+   "updated": "2026-11-11T14:01+02:00",
+   "tg_message_id": 134,
    "via": "telegram",
    "history": []
   }
