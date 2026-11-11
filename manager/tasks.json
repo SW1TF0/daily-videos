@@ -928,7 +928,7 @@
    "text": "Смени title, meta description и og/twitter на 15-те страници по таблицата seo/meta-update.md (точно текстовете от колона „ново“). Сам на живо по правилото, site_shot. Готово ✅ с линк. Днес.",
    "status": "done",
    "created": "2026-11-11T16:53+02:00",
-   "updated": "2026-11-11T16:55+02:00",
+   "updated": "2026-11-11T16:59+02:00",
    "tg_message_id": 236,
    "via": "telegram",
    "history": [
@@ -943,9 +943,21 @@
      "from": "accepted",
      "to": "done",
      "note": "⏳ M-1111-38 (междинно) — ✅ sitemap изпратен (живият е 60 адреса). ✅ Индексирани вече: /bg/ (обходена днес 13:26 UTC), /bg/3d-pechat-kardzhali.html и /bg/kompyutaren-servis-kardzhali.html — сутринта и трите бяха извън индекса. ❌ Новите title/description (M-1111-37) още НЕ са на живо: 0 от 15 страници съвпадат с seo/meta-update.md. Щом програмистът ги качи — пишете ми и проверявам пак + Готово ✅."
+    },
+    {
+     "at": "2026-11-11T16:59+02:00",
+     "from": "done",
+     "to": "done",
+     "note": "Готово ✅ M-1111-37 — PR https://github.com/SW1TF0/SmartMenu/pull/26 (слях го сам по правилото, на живо)\n📝 Нови title, description, og:title и og:description на 15-те страници (начална, услуги, за нас, контакти, проекти × EN/BG/TR) — точно текстовете от колона „ново“ в seo/meta-update.md. twitter:title/description няма на сайта (само twitter:card) — Twitter ползва og.\n🧪 Скрипт сравни 15 страници × "
+    },
+    {
+     "at": "2026-11-11T16:59+02:00",
+     "from": "done",
+     "to": "done",
+     "note": "Готово ✅ M-1111-37 — на живо е от ~15:05 UTC: проверих сега с curl 15/15 нови заглавия на www.smartmenukj.com (PR https://github.com/SW1TF0/SmartMenu/pull/26). Съобщението ти беше от 14:56, преди deploy-а. SEO може да провери пак."
     }
    ],
-   "last_note": "⏳ M-1111-38 (междинно) — ✅ sitemap изпратен (живият е 60 адреса). ✅ Индексирани вече: /bg/ (обходена днес 13:26 UTC), /bg/3d-pechat-kardzhali.html и /bg/kompyutaren-servis-kardzhali.html — сутринта и трите бяха извън индекса. ❌ Новите title/description (M-1111-37) още НЕ са на живо: 0 от 15 страници съвпадат с seo/meta-update.md. Щом програмистът ги качи — пишете ми и проверявам пак + Готово ✅."
+   "last_note": "Готово ✅ M-1111-37 — на живо е от ~15:05 UTC: проверих сега с curl 15/15 нови заглавия на www.smartmenukj.com (PR https://github.com/SW1TF0/SmartMenu/pull/26). Съобщението ти беше от 14:56, преди deploy-а. SEO може да провери пак."
   },
   {
    "id": "M-1111-38",
@@ -990,12 +1002,26 @@
    "agent": "coder",
    "kind": "task",
    "text": "Нов агент Разузнавач (scout/SCOUT.md, agents.json → scout): профил --as scout в src/telegram.py (TELEGRAM_SCOUT_BOT_TOKEN, state scout/telegram.json, last_cycle 11:13 → слушателят да върви през деня до ~22:00, names ('разузнавач','scout'), ботът от agents.json → scout.telegram, с предпазителя) и status_scout в manager.py (задачи, introduced, последен commit в scout/, брой нови в scout/prospects.jsonl за 7 дни). Като при sales. След M-1111-37. Готово ✅ с линк.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T16:58+02:00",
-   "updated": "2026-11-11T16:58+02:00",
+   "updated": "2026-11-11T16:59+02:00",
    "tg_message_id": 252,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T16:59+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-40 — профил --as scout (слушател през деня до ~22:00) + status_scout с prospects.jsonl за 7 дни, като при sales; тест без мрежа."
+    },
+    {
+     "at": "2026-11-11T16:59+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-40 — https://github.com/SW1TF0/daily-videos/commit/7519a20\n🤖 python3 src/telegram.py --as scout …: TELEGRAM_SCOUT_BOT_TOKEN, scout/telegram.json, думи „разузнавач(ът/а)“/„scout“ (цяла дума). Цикълът е в 11:13, а слушателят върви през деня и спи от ~22:00. Ботът — само от agents.json → scout.telegram (сега празно → отказва с ясна грешка, докато не го попълниш); предпазителят срещу ч"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-40 — https://github.com/SW1TF0/daily-videos/commit/7519a20\n🤖 python3 src/telegram.py --as scout …: TELEGRAM_SCOUT_BOT_TOKEN, scout/telegram.json, думи „разузнавач(ът/а)“/„scout“ (цяла дума). Цикълът е в 11:13, а слушателят върви през деня и спи от ~22:00. Ботът — само от agents.json → scout.telegram (сега празно → отказва с ясна грешка, докато не го попълниш); предпазителят срещу ч"
   }
  ]
 }
