@@ -10,7 +10,8 @@ python3 src/gsc.py performance <site> [days]                 # clicks / impressi
 <site> is the property exactly as Search Console names it: "sc-domain:smartmenukj.com" (domain property) or
 "https://www.smartmenukj.com/" (URL-prefix property). `sites` lists them.
 
-The key: env GOOGLE_SA_JSON = the whole service-account JSON file (or a path to it), set by the owner in the
+The key: env GOOGLE_SA_JSON = the whole service-account JSON file (or a path to it), or (one line each, for the
+environment editor) GOOGLE_SA_EMAIL = client_email and GOOGLE_SA_KEY = the private_key value with its \\n; set by the owner in the
 environment settings. It is never printed, logged or written to the repo; the private key exists on disk only for
 the moment openssl signs the token (a 0600 temp file, deleted at once). The access token goes to curl through
 stdin, never in the command line. Hosts: oauth2.googleapis.com, searchconsole.googleapis.com.
@@ -36,6 +37,10 @@ def b64url(b):
 
 def service_account():
     raw = os.environ.get('GOOGLE_SA_JSON', '').strip()
+    email, key = os.environ.get('GOOGLE_SA_EMAIL', '').strip(), os.environ.get('GOOGLE_SA_KEY', '').strip()
+    if not raw and email and key:  # one-line form for the environment editor (KEY=value, no multi-line JSON)
+        key = key.strip('"').replace('\\n', '\n')
+        return {'client_email': email, 'private_key': key, 'token_uri': 'https://oauth2.googleapis.com/token'}
     if not raw:
         fail('GOOGLE_SA_JSON is not set: the owner adds the service-account JSON in the environment settings '
              '(Environment variables), and adds the account as a user of the Search Console property.')
