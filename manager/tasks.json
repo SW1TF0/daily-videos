@@ -1124,9 +1124,9 @@
    "agent": "coder",
    "kind": "task",
    "text": "Качи общата FAQ страница /bg/faq.html по seo/faq-page.md (шаблон, отговорите в HTML, FAQPage + BreadcrumbList JSON-LD, „Въпроси“ във футъра BG, линкове от contact/services, sitemap). Сам на живо по правилото, site_shot. Готово ✅ с линк. Днес.",
-   "status": "accepted",
+   "status": "done",
    "created": "2026-11-11T17:20+02:00",
-   "updated": "2026-11-11T17:22+02:00",
+   "updated": "2026-11-11T17:24+02:00",
    "tg_message_id": 276,
    "via": "telegram",
    "history": [
@@ -1135,9 +1135,15 @@
      "from": "open",
      "to": "accepted",
      "note": "Прието ✅ M-1111-45 — /bg/faq.html през генератора (FAQPage + Breadcrumb), „Въпроси“ във футъра BG, линкове от contact/services, sitemap; на живо днес."
+    },
+    {
+     "at": "2026-11-11T17:24+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-45 — PR https://github.com/SW1TF0/SmartMenu/pull/27 (слях го сам по правилото, на живо)\n❓ https://www.smartmenukj.com/bg/faq.html — 33 въпроса в 7 групи, отговорите са в HTML, под всяка група линк към услугата и статията.\n🔎 JSON-LD: един FAQPage (33 въпроса, текстът е същият като видимия — проверено със скрипт) + BreadcrumbList.\n🔗 „Въпроси“ във футъра на BG страниците; „Вижте и чес"
     }
    ],
-   "last_note": "Прието ✅ M-1111-45 — /bg/faq.html през генератора (FAQPage + Breadcrumb), „Въпроси“ във футъра BG, линкове от contact/services, sitemap; на живо днес."
+   "last_note": "Готово ✅ M-1111-45 — PR https://github.com/SW1TF0/SmartMenu/pull/27 (слях го сам по правилото, на живо)\n❓ https://www.smartmenukj.com/bg/faq.html — 33 въпроса в 7 групи, отговорите са в HTML, под всяка група линк към услугата и статията.\n🔎 JSON-LD: един FAQPage (33 въпроса, текстът е същият като видимия — проверено със скрипт) + BreadcrumbList.\n🔗 „Въпроси“ във футъра на BG страниците; „Вижте и чес"
   }
  ]
 }
