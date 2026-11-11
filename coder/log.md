@@ -2,6 +2,12 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 11.11.2026 — M-1111-29 — src/mail.py (ABV IMAP, само четене)
+✅ src/mail.py: check, list [дни], read <uid>; ABV_IMAP_USER/ABV_IMAP_PASSWORD от env (никога не се печатат), imap.abv.bg:993 TLS, EXAMINE + BODY.PEEK (на сървъра нищо не се променя), прочетените uid в sales/mail.json, прикачените — само имената.
+Тест: фалшив IMAP (imaplib.IMAP4_SSL подменен), 10 сценария: без данни, грешна парола, няма мрежа, check, list, read (текст+прикачен файл; само HTML), липсващ/невалиден uid, отбелязване; паролата не се появява в изхода.
+❗ Мрежата: от облачна среда IMAP НЕ минава. Проверено: imap.abv.bg няма DNS в контейнера; CONNECT imap.abv.bg:993 през проксито → „200“ и веднага reset; README на проксито: само HTTPS на 443, суров TCP не се поддържа. POP3 (995) — същото.
+💡 Друг път: Gmail (има Gmail connector) — в Gmail на собственика „Проверявай пощата от други профили“ (POP3 от ABV) или пренасочване в ABV към Gmail; агентът чете през Gmail connector-а. mail.py работи само с директна мрежа (компютърът на собственика / Remote Control).
+
 ## 11.11.2026 — M-1111-26 — профил --as sales и status_sales
 ✅ src/telegram.py --as sales (TELEGRAM_SALES_BOT_TOKEN, sales/telegram.json, last_cycle 16:41 — последният от двата цикъла 08:41/16:41, думи „продажби“/„sales“ като цяла дума; ботът само от agents.json → sales.telegram, с предпазителя). src/manager.py status_sales: общите проверки + лийдовете от sales/leads.jsonl (последният ред на id печели): нови, чакащи, спечелени, просрочени next_date → alerts. check „sales“ в регистъра.
 Тест без мрежа в копие на repo-то: без sales.telegram → отказ; setup/tasks/send с верен токен; чужди токени → отказ само с getMe; нощ след 16:41; разпознаване по име; status_sales с 4 фалшиви реда.
