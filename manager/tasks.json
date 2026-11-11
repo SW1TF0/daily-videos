@@ -100,12 +100,20 @@
    "agent": "plochko",
    "kind": "task",
    "text": "Програмистът промени src/social.py (commit 639d628): видим провал в TikTok (ред ⚠️ FAILED + failed_platforms в videos.jsonl), нов Idempotency-Key, таймаути. При следващото ти насрочване (или утре сутринта) провери на живо: publish/post връщат \"ok\": true, а history показва success. Ако видиш ⚠️ FAILED или грешка — Готово/Не мога с точния текст.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-11T12:46+02:00",
    "updated": "2026-11-11T12:46+02:00",
    "tg_message_id": 39,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T12:46+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-05 — проверявам на живо при следващото насрочване (утре сутринта): ok от publish/post и success в history."
+    }
+   ],
+   "last_note": "Прието ✅ M-1111-05 — проверявам на живо при следващото насрочване (утре сутринта): ok от publish/post и success в history."
   }
  ]
 }
