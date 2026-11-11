@@ -7,6 +7,8 @@ python3 src/telegram.py allow <@username|id>     # who may give tasks (manager, 
 python3 src/telegram.py send "<text>"            # post to the group
 python3 src/telegram.py tasks                    # new messages addressed to us from allowed people (JSON lines); marks them read
 python3 src/telegram.py reply <message_id> "<text>"   # answer a specific task message
+python3 src/telegram.py photo <file.png|jpg> ["<caption>"] [reply_to]  # a picture to the group (e.g. a site before/after);
+                                                 # too big or too tall for a photo -> sent as a file
 python3 src/telegram.py listening                # yes | no | night | off  -> start `wait` (in the background) only on "no"
 python3 src/telegram.py wait                     # listener: waits without AI cost, exits as soon as a message for us arrives
                                                  # exit 0 = new message for us, 2 = time is up, 3 = a turn reads Telegram itself
@@ -168,6 +170,38 @@ def send(text, reply_to=None, quiet=False):
     if not quiet:
         print('sent' + (' (чрез бота на Плочко — липсва TELEGRAM_MANAGER_BOT_TOKEN)' if FALLBACK else ''))
     return first
+
+
+def send_photo(path, caption='', reply_to=None):
+    """A picture to the group: sendPhoto, or sendDocument when Telegram refuses it as a photo (too big / too tall)."""
+    c = cfg()
+    if not c.get('chat_id'):
+        raise SystemExit('No group yet: add the bot to the group, write a message there, then run `setup`.')
+    if not os.path.isfile(path):
+        raise SystemExit(f'No file {path}')
+    tok = token()
+    if FALLBACK:
+        caption, reply_to = '🧭 Мениджър: ' + caption, None
+    for method, field in (('sendPhoto', 'photo'), ('sendDocument', 'document')):
+        if method == 'sendPhoto' and os.path.getsize(path) > 10 * 1024 * 1024:
+            continue
+        args = ['curl', '-sS', '--max-time', '120', '-X', 'POST', f'https://api.telegram.org/bot{tok}/{method}',
+                '--form-string', f"chat_id={c['chat_id']}", '-F', f'{field}=@{path}']
+        if caption:
+            args += ['--form-string', f'caption={caption[:1000]}']
+        if reply_to:
+            args += ['--form-string', f'reply_to_message_id={reply_to}', '--form-string', 'allow_sending_without_reply=true']
+        r = subprocess.run(args, capture_output=True, text=True)
+        out = (r.stdout or r.stderr).replace(tok, '***')
+        try:
+            d = json.loads(out)
+        except json.JSONDecodeError:
+            d = {'ok': False, 'description': out[:300]}
+        if d.get('ok'):
+            print(f"sent ({'photo' if field == 'photo' else 'file'})")
+            return d['result'].get('message_id')
+        err = d.get('description', d)
+    raise SystemExit(f'Telegram photo: {err}')
 
 
 def check_reader():
@@ -428,6 +462,8 @@ if __name__ == '__main__':
         send(sys.argv[2])
     elif cmd == 'reply':
         send(sys.argv[3], reply_to=sys.argv[2])
+    elif cmd == 'photo':
+        send_photo(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else '', sys.argv[4] if len(sys.argv) > 4 else None)
     elif cmd == 'tasks':
         tasks()
     elif cmd == 'listening':
