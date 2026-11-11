@@ -13,7 +13,7 @@ python3 src/social.py skip <platform> <post_id> <comment_id> "<reason>"   # mark
 python3 src/social.py dms [hours]                      # Instagram DM threads waiting for our answer (JSON lines)
 python3 src/social.py dm <recipient_id> "<text>"        # send an Instagram DM (only within 24h of their last message)
 """
-import datetime as dt, json, os, subprocess, sys
+import datetime as dt, glob, json, os, subprocess, sys
 from urllib.parse import urlencode
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -185,6 +185,14 @@ def _ts(v):
 def inbox(days=14):
     """Print comments on recent posts that nobody has handled yet, one JSON object per line."""
     handled = {(r['platform'], str(r['comment_id'])) for r in read_jsonl(COMMENTS)}
+    own_first = set()
+    for f in glob.glob(os.path.join(ROOT, 'scripts', '**', '*.json'), recursive=True) + glob.glob(os.path.join(ROOT, 'posts', '*.json')):
+        try:
+            fc = json.load(open(f, encoding='utf-8')).get('first_comment')
+        except Exception:
+            continue
+        if fc:
+            own_first.add(fc.strip())
     accs = accounts()
     since = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)
     for plat, acc in accs.items():
@@ -199,8 +207,10 @@ def inbox(days=14):
             for c in d.get('comments') or []:
                 u = c.get('user') or c.get('from') or {}
                 uname = (u.get('username') or u.get('name') or c.get('author') or '') if isinstance(u, dict) else str(u)
-                if (plat, str(c.get('id'))) in handled or (me and uname.lower() == me):
+                if (plat, str(c.get('id'))) in handled or uname.lower().lstrip('@') in ({me.lstrip('@'), ME} - {''}):
                     continue
+                if (c.get('text') or c.get('message') or '').strip() in own_first:
+                    continue  # our own first comment (TikTok returns it without author or id)
                 print(json.dumps({'platform': plat, 'post_id': pid, 'post': (m.get('caption') or m.get('title') or '')[:100],
                                   'post_url': m.get('permalink') or m.get('url'), 'comment_id': c.get('id'), 'user': uname,
                                   'text': c.get('text') or c.get('message'), 'at': c.get('timestamp') or c.get('created_time')}, ensure_ascii=False))
