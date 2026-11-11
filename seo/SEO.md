@@ -27,7 +27,7 @@ SmartMenuKJ да излиза на първа страница в Google за м
 - Съдържанието в социалните мрежи (Плочко) и кода на агентите в `src/` (програмистът).
 
 ## Search Console (`src/gsc.py`)
-Работи, щом собственикът сложи в средата ти `GOOGLE_SA_JSON` (целият JSON на service account-а), добави имейла на service account-а като потребител на свойството в Search Console и разреши хостовете `oauth2.googleapis.com` и `searchconsole.googleapis.com`. Без тях командите казват точно какво липсва. Ключът и токенът никога не се печатат.
+Работи, щом собственикът сложи в средата ти `GOOGLE_SA_JSON` (целият JSON на service account-а) или на един ред `GOOGLE_SA_EMAIL` + `GOOGLE_SA_KEY` (стойността на private_key с `\n`), добави имейла на service account-а като потребител на свойството в Search Console и разреши хостовете `oauth2.googleapis.com` и `searchconsole.googleapis.com`. Без тях командите казват точно какво липсва. Ключът и токенът никога не се печатат.
 - `python3 src/gsc.py sites`: свойствата, които виждаш, и правата ти. Оттук взимаш точното име `<site>` (напр. `sc-domain:smartmenukj.com` или `https://www.smartmenukj.com/`).
 - `python3 src/gsc.py sitemaps-submit <site> https://www.smartmenukj.com/sitemap.xml`: изпраща sitemap-а (и пак, след нови страници).
 - `python3 src/gsc.py sitemaps-list <site>`: кога Google е прочел sitemap-а, грешки, подадени и индексирани адреси.
