@@ -15,12 +15,13 @@ python3 src/telegram.py wait                     # listener: waits without AI co
 
 Add `--as manager` (e.g. `python3 src/telegram.py --as manager send "..."`) to act as the manager bot;
 the manager reads the group with `python3 src/manager.py inbox`.
-Add `--as coder` to act as the coder bot (`tasks`, `send`, `reply`, `listening`, `wait`, `setup` = check the bot).
+Add `--as coder` to act as the coder bot (`tasks`, `send`, `reply`, `listening`, `wait`, `setup` = check the bot),
+`--as seo` the same for the SEO agent's bot (its @username comes from manager/agents.json → seo.telegram).
 
 Each token is checked with getMe (cached) against the agent's bot in manager/agents.json: a token of another bot
 stops with a clear error before anything is sent or read.
 Tokens come from the environment (TELEGRAM_BOT_TOKEN for the worker, TELEGRAM_MANAGER_BOT_TOKEN for the manager,
-TELEGRAM_CODER_BOT_TOKEN for the coder, set in each agent's environment settings) and are never printed or written to the repo.
+TELEGRAM_CODER_BOT_TOKEN for the coder, TELEGRAM_SEO_BOT_TOKEN for the SEO agent, set in each agent's environment settings) and are never printed or written to the repo.
 A task from the manager names its agent in the header ("📋 Задача M-… → @bot"): only that agent takes it.
 In a basic group message ids are per bot: refer to tasks by their id (M-1111-01) in the text, never by another bot's message id.
 
@@ -40,7 +41,11 @@ PROFILES = {
     'manager': {'env': 'TELEGRAM_MANAGER_BOT_TOKEN', 'state': os.path.join(ROOT, 'manager', 'telegram.json'), 'last_cycle': (22, 53)},
     'coder': {'env': 'TELEGRAM_CODER_BOT_TOKEN', 'state': os.path.join(ROOT, 'coder', 'telegram.json'), 'last_cycle': (22, 38),
               'names': ('програмист',)},  # words in the manager's text that mean "this is for the coder"
+    # one daily cycle at 10:17, but the listener chains itself through the day like the coder's: it sleeps from 22:17
+    'seo': {'env': 'TELEGRAM_SEO_BOT_TOKEN', 'state': os.path.join(ROOT, 'seo', 'telegram.json'), 'last_cycle': (22, 17),
+            'names': ('seo', 'сео')},
 }
+DOCS = {'worker': 'CLAUDE.md', 'coder': 'coder/CODER.md', 'seo': 'seo/SEO.md'}
 AS = 'worker'
 if '--as' in sys.argv:
     i = sys.argv.index('--as')
@@ -75,7 +80,7 @@ class WrongBot(SystemExit):
 
 
 EXPECTED_BOT = {'worker': ('plochko', '@dailyvideosswitfo_bot'), 'manager': ('_manager', '@managerswitfo_bot'),
-                'coder': ('coder', '@itclaudeswitfo_bot')}
+                'coder': ('coder', '@itclaudeswitfo_bot'), 'seo': ('seo', None)}  # None: only from agents.json
 ME_CACHE = '/tmp/daily-videos-telegram-getme.json'  # sha256(token)[:16] -> @username; never the token itself
 _me = {}
 
@@ -86,7 +91,11 @@ def expected_bot(profile):
         a = json.load(open(os.path.join(ROOT, 'manager', 'agents.json'), encoding='utf-8')).get(key) or {}
     except (OSError, ValueError):
         a = {}
-    return (a.get('telegram') or default).lower()
+    want = a.get('telegram') or default
+    if not want:
+        raise WrongBot(f'manager/agents.json has no {key}.telegram (the bot\'s @username): the token cannot be checked, '
+                       'so nothing was sent or read. The manager writes the bot name there.')
+    return want.lower()
 
 
 def bot_username(tok):
@@ -277,7 +286,7 @@ def me_id(c, s):
     if not me:
         me_info = api('getMe', {})
         me, s['bot_id'], s['bot_username'] = me_info['id'], me_info['id'], '@' + me_info['username'].lower()
-        if AS == 'coder':  # remember it: the listener re-reads the state file and must still know our username
+        if AS not in ('worker', 'manager'):  # remember it: the listener re-reads the state file and must still know our username
             save(s, PROFILES[AS]['state'])
     return me
 
@@ -362,7 +371,7 @@ def tasks():
         if for_worker(m, c):
             print(json.dumps({k: m[k] for k in ('message_id', 'from', 'from_bot', 'text', 'date', 'reply_to', 'task_ids')}, ensure_ascii=False))
     if not is_night():  # `updates()` stopped the listener: remind the turn to start it again when it ends
-        doc = 'coder/CODER.md' if AS == 'coder' else 'CLAUDE.md'
+        doc = DOCS[AS]
         print(f'(в края на хода пусни слушателя: `python3 src/telegram.py{flag()} listening` → при no `python3 src/telegram.py{flag()} wait` '
               f'във фонов режим; {doc}, „Слушател в реално време“)')
 

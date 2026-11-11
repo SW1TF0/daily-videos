@@ -244,24 +244,24 @@ def status_daily_videos(key, ag):
     return out
 
 
-def status_coder(key, ag):
-    """Health of the coder (Програмистът): its tasks, whether it introduced itself, signs of life in the repo."""
+def status_bot_agent(key, ag, folder, label):
+    """Health of an agent that works by tasks (coder, SEO): its tasks, whether it introduced itself, its last commit in <folder>/."""
     today = now().date().isoformat()
     mine = [t for t in load(TASKS, {'tasks': []})['tasks'] if t['agent'] == key]
-    st = load(os.path.join(ROOT, 'coder', 'telegram.json'), {})
-    log = git_last('coder')
+    st = load(os.path.join(ROOT, folder, 'telegram.json'), {})
+    log = git_last(folder)
     out = {'agent': key, 'name': ag.get('name'), 'today': today, 'introduced': st.get('introduced'),
            'open_tasks': [{'id': t['id'], 'status': t['status'], 'text': t['text'][:120], 'age_h': hours_since(t['created'])}
                           for t in mine if t['status'] in OPEN],
            'done_today': [t['id'] for t in mine if t['status'] == 'done' and str(t.get('updated', '')).startswith(today)],
            'done_total': sum(1 for t in mine if t['status'] == 'done'),
-           'last_commit_coder': log}
+           f'last_commit_{folder}': log}
     alerts = []
     if not st.get('introduced'):
-        alerts.append('Програмистът още не се е представил в групата')
+        alerts.append(f'{label} още не се е представил в групата')
     h = now().hour
     if 9 <= h <= 23 and log and (log['hours_ago'] or 0) > 26:
-        alerts.append(f"Няма commit в coder/ от {log['hours_ago']} ч. (дневникът и отчетът му вървят ли?)")
+        alerts.append(f"Няма commit в {folder}/ от {log['hours_ago']} ч. (дневникът и отчетът му вървят ли?)")
     for t in mine:
         if t['status'] == 'open' and (hours_since(t['created']) or 0) >= 2:
             alerts.append(f"{t['id']} без „Прието“ от {hours_since(t['created'])} ч.")
@@ -269,7 +269,15 @@ def status_coder(key, ag):
     return out
 
 
-CHECKS = {'daily-videos': status_daily_videos, 'coder': status_coder}
+def status_coder(key, ag):
+    return status_bot_agent(key, ag, 'coder', 'Програмистът')
+
+
+def status_seo(key, ag):
+    return status_bot_agent(key, ag, 'seo', 'SEO агентът')
+
+
+CHECKS = {'daily-videos': status_daily_videos, 'coder': status_coder, 'seo': status_seo}
 
 
 def status():

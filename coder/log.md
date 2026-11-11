@@ -2,6 +2,10 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 11.11.2026 — M-1111-08 — Telegram профил за SEO агента
+✅ `src/telegram.py --as seo` (TELEGRAM_SEO_BOT_TOKEN, seo/telegram.json, думи „seo“/„сео“). Ботът се взима само от agents.json → seo.telegram: ако го няма, отказва (WrongBot), без да чете или праща. Предпазителят от M-1111-06 важи. last_cycle е 22:17, не 10:17: при 10:17 `listening` щеше да казва night веднага след цикъла и слушателят никога нямаше да тръгне. `src/manager.py`: общ status_bot_agent за coder и seo (задачи, introduced, последен commit в папката), `check: "seo"` в регистъра.
+Тест: фалшив curl в копие на repo-то, 17 сценария (верен токен: setup/tasks/send/wait се събужда на задача за seo; чужд токен на Плочко/програмиста → отказ само с getMe; липсващ токен; невалиден; без seo.telegram; задачата за seo не стига до coder; coder/worker със seo токен → отказ; нощ 22:20; manager.py status). На живо: `--as coder setup` е ОК.
+
 ## 11.11.2026 — M-1111-07 — SEO/индексиране на smartmenukj.com
 ✅ PR https://github.com/SW1TF0/SmartMenu/pull/16 (чака ОК за сливане): sitemap.xml — 21 URL (7 страници × EN/BG/TR), lastmod 2026-11-04; robots.txt без Disallow за login/account/admin (те имат noindex, а блокът пречи на Google да го види); README бележка.
 Проверено: canonical = loc, hreflang = <head>, без noindex (21/21); site_shot.js на живо — 0 счупени връзки, всички тагове налични. smartmenukj.com → 301 → www (CNAME), затова URL-ите остават с www.
