@@ -10,6 +10,8 @@
 - Глас: Николай (ElevenLabs, роден български, eleven_v4) — избран от собственика. Не го сменяй.
 - Цветове: #0a84ff (синьо), #1d1d1f (тъмно), #ffd60a (акцент за кукички). Шрифтове: Unbounded (кукички/заглавия), Montserrat Black (субтитри), Inter (текст).
 - CTA: „Безплатна оферта до 24 ч.“ + smartmenukj.com. Телефон: +359 88 534 8666.
+- **Линк към услугата в caption (от 12.11, задача M-1111-17):** всяко видео и карусел завършва caption с линка на страницата на услугата (вместо само smartmenukj.com):
+  QR менюта → smartmenukj.com/bg/qr-menu-kardzhali.html · Уеб сайтове → smartmenukj.com/bg/izrabotka-na-saitove-kardzhali.html · Камери → smartmenukj.com/bg/videonablyudenie-kardzhali.html · Умен дом → smartmenukj.com/bg/umen-dom-kardzhali.html · 3D печат → smartmenukj.com/bg/3d-pechat-kardzhali.html · Сервиз на PC и принтери → smartmenukj.com/bg/kompyutaren-servis-kardzhali.html. Пост без конкретна услуга → smartmenukj.com.
 
 ## Твърди правила
 - Само факти от сайта или потвърдени от собственика. Без измислени цени, проценти, отзиви или клиенти.
