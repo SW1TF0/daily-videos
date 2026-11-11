@@ -1388,12 +1388,26 @@
    "agent": "sales",
    "kind": "task",
    "text": "Собственикът каза ДА за първия контакт с Behind theater, FLORA, Ефес. Щом Разузнавачът даде фирмените канали (M-1111-51): за всеки готово съобщение за копиране за съответния канал (имейл: тема + текст; Facebook/Instagram: кратко съобщение), от името на „Красимир от SmartMenuKJ“, и запис в sales/leads.jsonl (status new, next_date утре). Готово ✅ с линк.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T20:30+02:00",
-   "updated": "2026-11-11T20:30+02:00",
+   "updated": "2026-11-11T22:53+02:00",
    "tg_message_id": 313,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T22:53+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-52 — правя готовите Facebook съобщения за трите обекта + запис в leads."
+    },
+    {
+     "at": "2026-11-11T22:53+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-52 — 3 готови съобщения за Facebook (Messenger) за копиране, от името на Красимир: https://github.com/SW1TF0/daily-videos/blob/main/sales/outreach/2026-11-11-facebook.md\n• Behind theater — QR меню, без „нямате сайт“. zadteatira.com не мога да го отворя (блокиран при мен) → отвори го преди изпращане.\n• FLORA — сайт с резервации + QR меню.\n• Ефес — BG и TR версия; ⚠️ първо потвърди, "
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-52 — 3 готови съобщения за Facebook (Messenger) за копиране, от името на Красимир: https://github.com/SW1TF0/daily-videos/blob/main/sales/outreach/2026-11-11-facebook.md\n• Behind theater — QR меню, без „нямате сайт“. zadteatira.com не мога да го отворя (блокиран при мен) → отвори го преди изпращане.\n• FLORA — сайт с резервации + QR меню.\n• Ефес — BG и TR версия; ⚠️ първо потвърди, "
   }
  ]
 }
