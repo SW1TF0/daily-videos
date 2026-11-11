@@ -139,15 +139,20 @@
    "scout/SCOUT.md"
   ],
   "environment": "Scout - smartmenukj",
-  "session_id": "",
-  "triggers": {},
+  "session_id": "session_015VXfwxvTjQERi5ioDh8WYF",
+  "triggers": {
+   "cycle": "trig_01TWkwxJFSF9Ct4KuMhDeq9L"
+  },
   "schedule": "цикъл всеки ден в 11:13; слушател",
   "check": "scout",
   "targets": {
    "goal": "≥20 нови проверени потенциални клиенти седмично"
   },
   "profile": "manager/agents/scout.md",
-  "status": "подготвя се: чака бот и токен",
-  "environment_id": "env_01Fcn4qKMoyabq4etxvKb6GS"
+  "status": "пуснат 11.11 17:00",
+  "environment_id": "env_01Fcn4qKMoyabq4etxvKb6GS",
+  "old": {
+   "sessions": "session_015VXfwzLc5PGNEkVKgDtaNL (архивирана, без токен)"
+  }
  }
 }

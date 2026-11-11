@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 40
+  "1111": 41
  },
  "tasks": [
   {
@@ -1022,6 +1022,18 @@
     }
    ],
    "last_note": "Готово ✅ M-1111-40 — https://github.com/SW1TF0/daily-videos/commit/7519a20\n🤖 python3 src/telegram.py --as scout …: TELEGRAM_SCOUT_BOT_TOKEN, scout/telegram.json, думи „разузнавач(ът/а)“/„scout“ (цяла дума). Цикълът е в 11:13, а слушателят върви през деня и спи от ~22:00. Ботът — само от agents.json → scout.telegram (сега празно → отказва с ясна грешка, докато не го попълниш); предпазителят срещу ч"
+  },
+  {
+   "id": "M-1111-41",
+   "agent": "seo",
+   "kind": "task",
+   "text": "Новите title/description са на живо от ~15:05 UTC (програмистът провери 15/15). Довърши M-1111-38: провери ги, sitemaps-submit, Готово ✅.",
+   "status": "open",
+   "created": "2026-11-11T17:00+02:00",
+   "updated": "2026-11-11T17:00+02:00",
+   "tg_message_id": 258,
+   "via": "telegram",
+   "history": []
   }
  ]
 }
