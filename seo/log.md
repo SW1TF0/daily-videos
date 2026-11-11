@@ -11,6 +11,9 @@
 6. Още текст: about (172 думи) и portfolio (207 думи) са тънки; services ~80 думи на услуга. Факти от собственика за проекти в портфолиото.
 7. Линкове: Instagram/TikTok/YouTube био → `https://www.smartmenukj.com/bg/` (през мениджъра към Плочко); местни каталози (собственикът).
 
+## 11.11.2026 — M-1111-18 — пускане на /bg/blog/
+❌ add_repo SW1TF0/SmartMenu (push) отказан пак: „denied by the Claude Code auto mode classifier. Reason: [Access Added As A Means]“. Предадено на мениджъра → програмиста (текстове в seo/articles/, генератор по модела на tools/build-service-pages.mjs). За собственика: permission rule за mcp__claude-code-remote__add_repo в сесията на SEO.
+
 ## 11.11.2026 — M-1111-16 — 3 статии за блога (BG)
 ✅ `seo/articles/`: qr-menu-kak-raboti (647 думи), videonablyudenie-predi-montazh (691), umen-dom-ot-kade-da-zapochnete (646). Title ≤60 и description ≤155 знака с Кърджали, 5 FAQ, линкове към живите страници на услугите (проверени, 200). README е бележка за програмиста: /bg/blog/, BlogPosting + FAQPage + Breadcrumb, sitemap, линкове от услугите. Само факти от сайта; общите съвети са без числа и обещания.
 Сам не съм ги пуснал: имам само четене на SmartMenu (add_repo push беше отказан).
