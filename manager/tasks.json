@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 14
+  "1111": 17
  },
  "tasks": [
   {
@@ -302,9 +302,9 @@
    "agent": "coder",
    "kind": "task",
    "text": "Качи 12-те EN и TR страници по текстовете на SEO в seo/pages/en и seo/pages/tr (таблицата bg↔en↔tr в README за hreflang): същият генератор като BG, hreflang между трите езика, превключвателят EN/TR да води към тях, sitemap +12. По правилата в coder/CODER.md (PR, ако е голяма промяна). Готово ✅ с линк и снимка. Днес до 22:00.",
-   "status": "accepted",
+   "status": "done",
    "created": "2026-11-11T13:33+02:00",
-   "updated": "2026-11-11T13:34+02:00",
+   "updated": "2026-11-11T13:49+02:00",
    "tg_message_id": 106,
    "via": "telegram",
    "history": [
@@ -313,18 +313,24 @@
      "from": "open",
      "to": "accepted",
      "note": "Прието ✅ M-1111-13 — генераторът става трилингвален (EN/BG/TR), hreflang между трите, sitemap +12; PR със снимки до 22:00."
+    },
+    {
+     "at": "2026-11-11T13:49+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-13 — PR https://github.com/SW1TF0/SmartMenu/pull/19 (слива го собственикът: Merge)\n🌍 12 нови страници: EN /qr-menu-, /web-design-, /cctv-, /smart-home-, /3d-printing-, /computer-repair-kardzhali.html и TR /tr/qr-menu-, web-sitesi-, guvenlik-kamerasi-, akilli-ev-, 3d-baski-, bilgisayar-servisi-kircaali.html — по текстовете на SEO.\n🔗 hreflang между трите езика по таблицата (x-default"
     }
    ],
-   "last_note": "Прието ✅ M-1111-13 — генераторът става трилингвален (EN/BG/TR), hreflang между трите, sitemap +12; PR със снимки до 22:00."
+   "last_note": "Готово ✅ M-1111-13 — PR https://github.com/SW1TF0/SmartMenu/pull/19 (слива го собственикът: Merge)\n🌍 12 нови страници: EN /qr-menu-, /web-design-, /cctv-, /smart-home-, /3d-printing-, /computer-repair-kardzhali.html и TR /tr/qr-menu-, web-sitesi-, guvenlik-kamerasi-, akilli-ev-, 3d-baski-, bilgisayar-servisi-kircaali.html — по текстовете на SEO.\n🔗 hreflang между трите езика по таблицата (x-default"
   },
   {
    "id": "M-1111-14",
    "agent": "seo",
    "kind": "task",
    "text": "Google Business Profile — готови текстове за копиране (seo/gbp.md, BG): описание до 750 зн. (само факти, с Кърджали), главна и до 9 допълнителни категории, 6-те услуги с по 1–2 изречения и линк към новите страници, 5 първи поста (по 1 на услуга), 10 въпроса и отговора, атрибути + стъпки как собственикът да го създаде/потвърди. Готово ✅ с линк. Днес до 20:00.",
-   "status": "accepted",
+   "status": "done",
    "created": "2026-11-11T13:33+02:00",
-   "updated": "2026-11-11T13:34+02:00",
+   "updated": "2026-11-11T13:49+02:00",
    "tg_message_id": 107,
    "via": "telegram",
    "history": [
@@ -333,9 +339,51 @@
      "from": "open",
      "to": "accepted",
      "note": "Прието ✅ M-1111-14 — подготвям seo/gbp.md с текстове за Google Business Profile, днес до 20:00."
+    },
+    {
+     "at": "2026-11-11T13:49+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-14 — текстове за Google Business Profile · https://github.com/SW1TF0/daily-videos/blob/main/seo/gbp.md · commit 7dde370\n📋 Вътре: стъпки за създаване и потвърждение · описание (656 знака) · главна категория „Уеб дизайнер“ + 8 допълнителни · 6 услуги с линкове · атрибути · 5 първи поста · 10 въпроса и отговора.\n✔️ Само факти от сайта, без цени и без отзиви.\n🙏 От собственика: да създа"
     }
    ],
-   "last_note": "Прието ✅ M-1111-14 — подготвям seo/gbp.md с текстове за Google Business Profile, днес до 20:00."
+   "last_note": "Готово ✅ M-1111-14 — текстове за Google Business Profile · https://github.com/SW1TF0/daily-videos/blob/main/seo/gbp.md · commit 7dde370\n📋 Вътре: стъпки за създаване и потвърждение · описание (656 знака) · главна категория „Уеб дизайнер“ + 8 допълнителни · 6 услуги с линкове · атрибути · 5 първи поста · 10 въпроса и отговора.\n✔️ Само факти от сайта, без цени и без отзиви.\n🙏 От собственика: да създа"
+  },
+  {
+   "id": "M-1111-15",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Скорост на smartmenukj.com (по новото правило — сам на живо): 1) снимки → WebP/AVIF с подходящ размер, width/height, loading=lazy под първия екран; 2) шрифтове woff2 + preload + font-display:swap; 3) CSS/JS — без блокиращи ресурси, minify, ?v= кеш; 4) отчет преди/след (размер на страницата, брой заявки) за началната + 2 страници на услуги. Без промяна на дизайна. Готово ✅ с числата. Утре до 12:00.",
+   "status": "open",
+   "created": "2026-11-11T13:49+02:00",
+   "updated": "2026-11-11T13:49+02:00",
+   "tg_message_id": 120,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1111-16",
+   "agent": "seo",
+   "kind": "task",
+   "text": "3 полезни статии (BG, по 600–900 думи, само факти от сайта): 1) „QR меню: как работи и какво печели заведението“; 2) „Видеонаблюдение за дом и бизнес: какво да знаете преди монтаж“; 3) „Умен дом: от какво да започнете“. Title/description с Кърджали, FAQ, линкове към страниците на услугите. В seo/articles/ + бележка за програмиста как да станат раздел „Блог“ (/bg/blog/). Ако можеш — пусни ги сам по новото правило. Готово ✅ с линкове. Утре до 14:00.",
+   "status": "open",
+   "created": "2026-11-11T13:49+02:00",
+   "updated": "2026-11-11T13:49+02:00",
+   "tg_message_id": 121,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1111-17",
+   "agent": "plochko",
+   "kind": "task",
+   "text": "Сайтът вече има страница за всяка услуга. От утре в описанието (caption) на всяко видео и карусел сложи линк към страницата на услугата: QR → smartmenukj.com/bg/qr-menu-kardzhali.html, сайтове → /bg/izrabotka-na-saitove-kardzhali.html, камери → /bg/videonablyudenie-kardzhali.html, умен дом → /bg/umen-dom-kardzhali.html, 3D → /bg/3d-pechat-kardzhali.html, сервиз → /bg/kompyutaren-servis-kardzhali.html. Готово ✅ след утрешния дневен цикъл с 1 пример.",
+   "status": "open",
+   "created": "2026-11-11T13:49+02:00",
+   "updated": "2026-11-11T13:49+02:00",
+   "tg_message_id": 122,
+   "via": "telegram",
+   "history": []
   }
  ]
 }
