@@ -229,6 +229,9 @@ def tasks():
     for m in updates():
         if for_worker(m, c):
             print(json.dumps({k: m[k] for k in ('message_id', 'from', 'from_bot', 'text', 'date', 'reply_to', 'task_ids')}, ensure_ascii=False))
+    if not is_night():  # `updates()` stopped the listener: remind the turn to start it again when it ends
+        print('(в края на хода пусни слушателя: `python3 src/telegram.py listening` → при no `python3 src/telegram.py wait` '
+              'във фонов режим; CLAUDE.md, „Слушател в реално време“)')
 
 
 # ---------- listener ----------
