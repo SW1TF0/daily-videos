@@ -11,6 +11,42 @@
 6. Още текст: about (172 думи) и portfolio (207 думи) са тънки; services ~80 думи на услуга. Факти от собственика за проекти в портфолиото.
 7. Линкове: Instagram/TikTok/YouTube био → `https://www.smartmenukj.com/bg/` (през мениджъра към Плочко); местни каталози (собственикът).
 
+## 11.11.2026 — M-1111-24 — вътрешни линкове към 18-те страници за услуги + блога (обходени всички 43 адреса от sitemap-а на живо)
+**Входящи линкове в HTML (без хедър/футър, те се рисуват с JS):**
+| Услуга | EN | BG | TR |
+|---|---|---|---|
+| QR меню | 4 | 6 | 4 |
+| Сайтове | 6 | 7 | 6 |
+| Камери | 6 | 9 | 6 |
+| Умен дом | 5 | 8 | 5 |
+| 3D печат | **3** | **3** | **3** |
+| Сервиз PC | 4 | 4 | 4 |
+
+Блог: `/bg/blog/` — 3 (само „Начало“ от самите статии) + футърът (JS, само BG); всяка статия — **2** (блога + 1 услуга).
+Слабо: 3D печат и сервиз; about/contact/portfolio → 0 линка към услугите (×3 езика); `/bg/` и `/bg/services.html` нямат линк към блога в HTML; футърът (`js/chrome.js` р. 231–236) на ВСИЧКИ страници води към `services.html#…` вместо към новите страници.
+
+**Готови промени (за програмиста, repo SW1TF0/SmartMenu):**
+1. **`js/chrome.js` — футърът към новите страници (най-голям ефект: +6 линка на всяка страница × 3 езика).** Над функцията на футъра добави:
+```js
+const SVC_PAGES = {
+  en: { web: "web-design-kardzhali.html", print3d: "3d-printing-kardzhali.html", smarthome: "smart-home-kardzhali.html", cameras: "cctv-kardzhali.html", menu: "qr-menu-kardzhali.html", pc: "computer-repair-kardzhali.html" },
+  bg: { web: "izrabotka-na-saitove-kardzhali.html", print3d: "3d-pechat-kardzhali.html", smarthome: "umen-dom-kardzhali.html", cameras: "videonablyudenie-kardzhali.html", menu: "qr-menu-kardzhali.html", pc: "kompyutaren-servis-kardzhali.html" },
+  tr: { web: "web-sitesi-kircaali.html", print3d: "3d-baski-kircaali.html", smarthome: "akilli-ev-kircaali.html", cameras: "guvenlik-kamerasi-kircaali.html", menu: "qr-menu-kircaali.html", pc: "bilgisayar-servisi-kircaali.html" },
+};
+const svcHref = (k) => (SVC_PAGES[document.documentElement.lang] || SVC_PAGES.en)[k];
+```
+и в р. 231–236 `href="services.html#web"` → `href="${svcHref("web")}"` (същото за print3d, smarthome, cameras, menu, pc). Пътищата остават относителни като досега (статиите имат `<base href="/bg/">`). Провери логиката на р. 113–150 (скриването на бизнес съдържание при `services.html#menu`), за да не скрие новите линкове.
+2. **`tools/build-service-pages.mjs` — статичен блок „Други услуги в Кърджали“** преди CTA на всяка от 18-те страници: линкове към другите 5 услуги на същия език (в HTML, не в JS). Текстове:
+   - BG: „QR меню за заведения“, „Изработка на сайтове“, „Видеонаблюдение и камери“, „Умен дом и автоматизация“, „3D печат“, „Компютърен сервис и принтери“ (+ на страниците с тема: „Прочетете още: <заглавие на статията>“).
+   - EN: „QR menus for restaurants“, „Website design“, „CCTV & security cameras“, „Smart home automation“, „3D printing“, „Computer & printer repair“.
+   - TR: „Restoranlar için QR menü“, „Web sitesi tasarımı“, „Güvenlik kamerası sistemleri“, „Akıllı ev otomasyonu“, „3D baskı“, „Bilgisayar ve yazıcı servisi“.
+   Покрива всички липсващи кръстосани линкове (днес: умен дом → липсват 4; всяка друга → по 2: QR→3D, сервиз; сайтове→умен дом, 3D; камери→3D, сервиз; 3D→QR, камери; сервиз→QR, умен дом — еднакво на 3-те езика).
+3. **`bg/index.html`** — преди контакта: `<a href="blog/">Блог: съвети за QR менюта, камери и умен дом</a>`.
+4. **`bg/services.html`** — под секциите: `#menu` → `blog/qr-menu-kak-raboti.html` „QR меню: как работи и какво печели заведението“; `#cameras` → `blog/videonablyudenie-predi-montazh.html` „Видеонаблюдение за дом и бизнес: какво да знаете преди монтажа“; `#smarthome` → `blog/umen-dom-ot-kade-da-zapochnete.html` „Умен дом: от какво да започнете“; накрая „Блог“ → `blog/`.
+5. about/contact/portfolio — покриват се от т.1; по желание в `about.html` (×3) едно изречение с линкове към 6-те страници.
+
+Проверка след пускане: обхождане на 43-те адреса пак → всяка услуга ≥ 10 входящи; `site_shot.js` без счупени линкове; `gsc.py sitemaps-submit`.
+
 ## 11.11.2026 — M-1111-22 — sitemap изпратен пак 12:28 UTC; Google вече го прочете: 43 адреса, 0 грешки. Готово ✅ в групата (15/43, причини: нови страници още не обходени; 10 непознати до днешния sitemap; слаби вътрешни линкове).
 
 ## 11.11.2026 — Search Console свързан (service account, свойство https://www.smartmenukj.com/, siteOwner)
