@@ -38,9 +38,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CFG_PATH = os.path.join(ROOT, 'data', 'telegram.json')  # shared: chat_id, allowed, owner + the worker's offset
 PROFILES = {
     'worker': {'env': 'TELEGRAM_BOT_TOKEN', 'state': CFG_PATH, 'last_cycle': (23, 23), 'names': ('плочко',)},
+    # names are whole words; a regex may add the Bulgarian forms (програмистът, програмиста)
     'manager': {'env': 'TELEGRAM_MANAGER_BOT_TOKEN', 'state': os.path.join(ROOT, 'manager', 'telegram.json'), 'last_cycle': (22, 53)},
     'coder': {'env': 'TELEGRAM_CODER_BOT_TOKEN', 'state': os.path.join(ROOT, 'coder', 'telegram.json'), 'last_cycle': (22, 38),
-              'names': ('програмист',)},  # words in the manager's text that mean "this is for the coder"
+              'names': ('програмист(?:ът|а)?',)},  # words in the manager's text that mean "this is for the coder"
     # one daily cycle at 10:17, but the listener chains itself through the day like the coder's: it sleeps from 22:17
     'seo': {'env': 'TELEGRAM_SEO_BOT_TOKEN', 'state': os.path.join(ROOT, 'seo', 'telegram.json'), 'last_cycle': (22, 17),
             'names': ('seo', 'сео')},
@@ -351,7 +352,21 @@ def for_worker(m, c, s=None):
     targets = [t.lower() for t in re.findall(r'→\s*(@\w+)', m['text'])]
     if targets:
         return bool(mine) and mine in targets
-    return bool(m['reply_to_me'] or (mine and mine in low) or any(n in low for n in PROFILES[AS].get('names', ())))
+    if mine and re.search(rf'(?<![\w@]){re.escape(mine)}(?!\w)', low):
+        return True
+    if m['reply_to_me']:
+        return True
+    # The manager answering the owner is a conversation with the owner, not a task: only our @ (above) wakes us.
+    owner = (c.get('owner') or '').lower()
+    if owner and (m.get('reply_to_from') or '').lower() == owner:
+        return False
+    return any(named(n, low) for n in PROFILES[AS].get('names', ()))
+
+
+def named(name, low):
+    """`name` as a whole word: not inside another word or a hyphenated name (smartmenu-seo, seo-agent),
+    and not the start of a name like "SEO - smartmenukj"."""
+    return bool(re.search(rf'(?<![\w-]){name}(?![\w-])(?!\s+-\s*\w)', low))
 
 
 def for_manager(m, c, s):
