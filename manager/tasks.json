@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 6
+  "1111": 7
  },
  "tasks": [
   {
@@ -134,6 +134,18 @@
     }
    ],
    "last_note": "e2e0308; inbox на мениджъра работи след промяната"
+  },
+  {
+   "id": "M-1111-07",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Сайтът smartmenukj.com (repo SW1TF0/SmartMenu, прикачи го с add_repo, access push): 1) поправи sitemap.xml — всички публични страници (и езиковите версии, ако има), правилни абсолютни URL-и на https://smartmenukj.com, lastmod; 2) robots.txt да сочи към sitemap-а и да не блокира страници; 3) провери всяка страница за индексиране: canonical, без noindex, title/description, hreflang при езици, без счупени линкове (src/site_shot.js). Следвай правилата на repo-то (иначе клон + PR). Готово ✅ с линк към commit/PR, списък на страниците в sitemap-а и какво още пречи на индексирането. Срок: днес до 20:00.",
+   "status": "open",
+   "created": "2026-11-11T13:01+02:00",
+   "updated": "2026-11-11T13:01+02:00",
+   "tg_message_id": 62,
+   "via": "telegram",
+   "history": []
   }
  ]
 }
