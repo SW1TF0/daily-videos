@@ -1,0 +1,28 @@
+{
+  "id": "skit-mimi-heating",
+  "service": "Умен дом", "hook_style": "скеч/диалог", "series": "Плочко и кака Мими",
+  "bg": "teal", "mascot": "dark", "music": "comedy",
+  "hook": "Кака Мими топли *празната къща*", "hook_emoji": "🔥",
+  "cast": {
+    "mimi": {"voice": "mimi", "name": "Кака Мими", "emoji": "👩‍🦱", "role": "магазинче в Кърджали", "color": "#ff375f"}
+  },
+  "segments": [
+    {"say": "Кака Мими, парното ти грее цял ден в празната къща!", "pose": "point", "emote": "surprised"},
+    {"speaker": "mimi", "say": "Ами да ми е топло, като се прибера от магазина!", "pose": "shrug", "emote": "smug",
+     "card": {"type": "scene", "icons": ["🏠", "🔥", "🛋️", "🫥"], "title": "Топло. *За никого.*"}},
+    {"say": "Това е като фитнес карта, която плащаш, а не ползваш.", "pose": "think", "emote": "smug",
+     "card": {"type": "vs", "left": {"icon": "💸", "label": "Грее цял ден", "tag": "СЕГА"}, "right": {"icon": "⏱️", "label": "Грее по график", "tag": "УМНО"}}, "sfx": "small studio audience laughing briefly", "sfx_vol": 0.4},
+    {"say": "С умни термоглави стаите се топлят, преди да се прибереш. А сметката е *по-ниска*.", "pose": "present", "emote": "happy",
+     "card": {"type": "phone", "app": "home", "items": [{"icon": "🌡️", "text": "Термоглави · 17:30"}, {"icon": "💡", "text": "Лампи по график"}, {"icon": "🔌", "text": "Умен контакт"}], "title": "Всичко *от телефона*"}, "sfx": "smartphone notification ping", "sfx_vol": 0.5},
+    {"speaker": "mimi", "say": "А роботът прахосмукачка? Него ще ми го пуснеш ли?", "pose": "shrug", "emote": "surprised",
+     "card": {"type": "scene", "icons": ["🤖", "🧹", "✨"], "title": "Чисти, *докато те няма*"}, "sfx": "robot vacuum cleaner humming", "sfx_vol": 0.4},
+    {"say": "Проектираме, монтираме и поддържаме. Всичко в едно приложение.", "pose": "thumb", "emote": "excited",
+     "card": {"type": "list", "items": [{"icon": "📐", "text": "Проект"}, {"icon": "🛠️", "text": "Монтаж от наш екип"}, {"icon": "🤝", "text": "Поддръжка след това"}]}},
+    {"say": "Пиши ни за безплатна оферта до двадесет и четири часа!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "stat", "big": "24 ч.", "title": "Безплатна *оферта*", "sub": "Писмено, без ангажимент"}}
+  ],
+  "cta": "Безплатна оферта до 24 ч.",
+  "caption": "Кака Мими топли празната къща 🔥 Умни термоглави, лампи и контакти по график — топло, когато се прибереш, и по-ниска сметка. Безплатна оферта до 24 ч. 👉 smartmenukj.com",
+  "hashtags": ["#кърджали", "#smartmenukj", "#умендом", "#парно", "#сметки", "#smarthome"],
+  "first_comment": "При вас парното грее ли празна къща? 😅 Да или не 👇"
+}

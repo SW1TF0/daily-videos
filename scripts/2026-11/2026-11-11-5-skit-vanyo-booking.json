@@ -1,0 +1,28 @@
+{
+  "id": "skit-vanyo-booking",
+  "service": "Уеб сайтове", "hook_style": "хумор/POV", "series": "Плочко и бай Ваньо",
+  "bg": "night", "mascot": "light", "music": "bounce",
+  "hook": "23:00. Телефонът на бай Ваньо *пак звъни*", "hook_emoji": "📞",
+  "cast": {
+    "vanyo": {"voice": "boris", "name": "Бай Ваньо", "emoji": "👨‍🍳", "role": "кафене в Кърджали", "color": "#ff9f0a"}
+  },
+  "segments": [
+    {"say": "Единадесет вечерта. Телефонът на бай Ваньо пак звъни.", "pose": "point", "emote": "surprised", "sfx": "old phone ringing", "sfx_vol": 0.5},
+    {"speaker": "vanyo", "say": "Ало? Маса за петък? Чакай да намеря тефтера…", "pose": "think", "emote": "worried",
+     "card": {"type": "scene", "icons": ["📞", "📒", "✏️", "😵"], "title": "Резервации *в тефтер*"}},
+    {"say": "Бай Ваньо, хората искат да запазят сами. *От телефона.*", "pose": "present", "emote": "smug",
+     "card": {"type": "phone", "app": "web", "app_title": "Кафенето на Ваньо", "button": "Запази маса", "url": "smartmenukj.com", "title": "Резервация *онлайн*"}},
+    {"speaker": "vanyo", "say": "И кой ще им потвърждава? Аз спя в десет!", "pose": "shrug", "emote": "surprised",
+     "card": {"type": "title", "icon": "😴", "title": "Бай Ваньо *спи*", "sub": "А резервациите?"}, "sfx": "comedic record scratch", "sfx_vol": 0.4},
+    {"say": "Сайтът! Потвърждението отива автоматично по имейл.", "pose": "thumb", "emote": "excited",
+     "card": {"type": "list", "items": [{"icon": "⚡", "text": "Бърз сайт"}, {"icon": "📱", "text": "Удобен на телефон"}, {"icon": "📧", "text": "Автоматично потвърждение"}]}, "sfx": "smartphone notification ping", "sfx_vol": 0.5},
+    {"speaker": "vanyo", "say": "Значи довечера спя, а масите се пълнят?", "pose": "think", "emote": "happy",
+     "card": {"type": "vs", "left": {"icon": "📒", "label": "Тефтер в 23:00", "tag": "ПРЕДИ"}, "right": {"icon": "🌐", "label": "Сайт с резервации", "tag": "СЛЕД"}}},
+    {"say": "Точно така! Последвай Плочко за още!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "title", "icon": "💪", "title": "Последвай *за още*", "sub": "Плочко и бай Ваньо"}}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "23:00. Телефонът на бай Ваньо пак звъни 📞 Сайт с онлайн резервации и автоматично потвърждение по имейл — бай Ваньо спи, масите се пълнят. Последвай Плочко за още скечове 💪",
+  "hashtags": ["#кърджали", "#smartmenukj", "#уебсайт", "#резервации", "#кафене", "#бизнес"],
+  "first_comment": "Как приемате резервации: тефтер, телефон или сайт? 📒📞🌐 Пиши 👇"
+}
