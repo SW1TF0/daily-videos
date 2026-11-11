@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 17
+  "1111": 18
  },
  "tasks": [
   {
@@ -354,34 +354,76 @@
    "agent": "coder",
    "kind": "task",
    "text": "Скорост на smartmenukj.com (по новото правило — сам на живо): 1) снимки → WebP/AVIF с подходящ размер, width/height, loading=lazy под първия екран; 2) шрифтове woff2 + preload + font-display:swap; 3) CSS/JS — без блокиращи ресурси, minify, ?v= кеш; 4) отчет преди/след (размер на страницата, брой заявки) за началната + 2 страници на услуги. Без промяна на дизайна. Готово ✅ с числата. Утре до 12:00.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-11T13:49+02:00",
-   "updated": "2026-11-11T13:49+02:00",
+   "updated": "2026-11-11T13:54+02:00",
    "tg_message_id": 120,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T13:54+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-15 — първо меря (размер, заявки, време) на /bg/ + 2 страници за услуги, после снимки/шрифтове/CSS/JS без промяна на дизайна; отчет с числата до утре 12:00."
+    }
+   ],
+   "last_note": "Прието ✅ M-1111-15 — първо меря (размер, заявки, време) на /bg/ + 2 страници за услуги, после снимки/шрифтове/CSS/JS без промяна на дизайна; отчет с числата до утре 12:00."
   },
   {
    "id": "M-1111-16",
    "agent": "seo",
    "kind": "task",
    "text": "3 полезни статии (BG, по 600–900 думи, само факти от сайта): 1) „QR меню: как работи и какво печели заведението“; 2) „Видеонаблюдение за дом и бизнес: какво да знаете преди монтаж“; 3) „Умен дом: от какво да започнете“. Title/description с Кърджали, FAQ, линкове към страниците на услугите. В seo/articles/ + бележка за програмиста как да станат раздел „Блог“ (/bg/blog/). Ако можеш — пусни ги сам по новото правило. Готово ✅ с линкове. Утре до 14:00.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T13:49+02:00",
-   "updated": "2026-11-11T13:49+02:00",
+   "updated": "2026-11-11T13:54+02:00",
    "tg_message_id": 121,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T13:54+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-16 — пиша 3-те статии в seo/articles/ и бележка за /bg/blog/, днес. Сам няма да ги пусна: сесията ми има само четене на SmartMenu, затова програмистът ще ги качи."
+    },
+    {
+     "at": "2026-11-11T13:54+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-16 — 3 статии за блога · commit d00b284\n📝 QR меню: как работи и какво печели заведението → /bg/blog/qr-menu-kak-raboti.html · https://github.com/SW1TF0/daily-videos/blob/main/seo/articles/qr-menu-kak-raboti.md\n📝 Видеонаблюдение за дом и бизнес: какво да знаете преди монтаж → /bg/blog/videonablyudenie-predi-montazh.html · https://github.com/SW1TF0/daily-videos/blob/main/seo/articles"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-16 — 3 статии за блога · commit d00b284\n📝 QR меню: как работи и какво печели заведението → /bg/blog/qr-menu-kak-raboti.html · https://github.com/SW1TF0/daily-videos/blob/main/seo/articles/qr-menu-kak-raboti.md\n📝 Видеонаблюдение за дом и бизнес: какво да знаете преди монтаж → /bg/blog/videonablyudenie-predi-montazh.html · https://github.com/SW1TF0/daily-videos/blob/main/seo/articles"
   },
   {
    "id": "M-1111-17",
    "agent": "plochko",
    "kind": "task",
    "text": "Сайтът вече има страница за всяка услуга. От утре в описанието (caption) на всяко видео и карусел сложи линк към страницата на услугата: QR → smartmenukj.com/bg/qr-menu-kardzhali.html, сайтове → /bg/izrabotka-na-saitove-kardzhali.html, камери → /bg/videonablyudenie-kardzhali.html, умен дом → /bg/umen-dom-kardzhali.html, 3D → /bg/3d-pechat-kardzhali.html, сервиз → /bg/kompyutaren-servis-kardzhali.html. Готово ✅ след утрешния дневен цикъл с 1 пример.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-11T13:49+02:00",
-   "updated": "2026-11-11T13:49+02:00",
+   "updated": "2026-11-11T13:54+02:00",
    "tg_message_id": 122,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-11T13:54+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-17 — 6-те страници отварят (200); записах ги в playbook, от утрешния цикъл всеки caption е с линка на услугата. Пример ще пратя след цикъла."
+    }
+   ],
+   "last_note": "Прието ✅ M-1111-17 — 6-те страници отварят (200); записах ги в playbook, от утрешния цикъл всеки caption е с линка на услугата. Пример ще пратя след цикъла."
+  },
+  {
+   "id": "M-1111-18",
+   "agent": "seo",
+   "kind": "task",
+   "text": "Пусни сам 3-те статии като раздел /bg/blog/ (index + 3 страници, sitemap, линк в менюто/футъра само ако не е ново меню — иначе само футър и от страниците на услугите). Собственикът разреши директно (seo/SEO.md т.4) — опитай пак add_repo SW1TF0/SmartMenu с access push. Ако пак откаже — „Не мога ❌“ с точния текст и ще го дам на програмиста. Готово ✅ с линкове на живо + site_shot. Днес до 18:00.",
+   "status": "open",
+   "created": "2026-11-11T13:54+02:00",
+   "updated": "2026-11-11T13:54+02:00",
+   "tg_message_id": 128,
    "via": "telegram",
    "history": []
   }
