@@ -66,5 +66,30 @@
    "sessions": "session_015VXfwwzur5hU147HmWh2Rd, session_015VXfww8K4qHDQdvaN2sjZY, session_015VXfwwpsbvCmo9qnPobzxk (стари токени)",
    "trigger": "trig_01QkqTbEjQ5pNyuSy4G6UMBT, trig_01Wfj8kRYp4oaSufcTnbwc1D (изключени)"
   }
+ },
+ "seo": {
+  "name": "SEO агентът — сайтовете в Google (smartmenukj.com)",
+  "telegram": "",
+  "aliases": [
+   "seo",
+   "сео"
+  ],
+  "repo": "SW1TF0/daily-videos",
+  "sites": {
+   "smartmenukj.com": "SW1TF0/SmartMenu"
+  },
+  "instructions": [
+   "seo/SEO.md"
+  ],
+  "environment": "",
+  "session_id": "",
+  "triggers": {},
+  "schedule": "цикъл веднъж дневно в 10:17; слушател в реално време за задачите; седмичен отчет в понеделник",
+  "check": "",
+  "targets": {
+   "goal": "всички страници на smartmenukj.com индексирани; първа страница в Google за местните услуги (Кърджали)"
+  },
+  "profile": "manager/agents/seo.md",
+  "status": "подготвя се: чака бот и токен от собственика"
  }
 }

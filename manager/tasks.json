@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 7
+  "1111": 8
  },
  "tasks": [
   {
@@ -140,10 +140,30 @@
    "agent": "coder",
    "kind": "task",
    "text": "Сайтът smartmenukj.com (repo SW1TF0/SmartMenu, прикачи го с add_repo, access push): 1) поправи sitemap.xml — всички публични страници (и езиковите версии, ако има), правилни абсолютни URL-и на https://smartmenukj.com, lastmod; 2) robots.txt да сочи към sitemap-а и да не блокира страници; 3) провери всяка страница за индексиране: canonical, без noindex, title/description, hreflang при езици, без счупени линкове (src/site_shot.js). Следвай правилата на repo-то (иначе клон + PR). Готово ✅ с линк към commit/PR, списък на страниците в sitemap-а и какво още пречи на индексирането. Срок: днес до 20:00.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-11T13:01+02:00",
-   "updated": "2026-11-11T13:01+02:00",
+   "updated": "2026-11-11T13:03+02:00",
    "tg_message_id": 62,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-11T13:03+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-07 — прикачам SmartMenu, проверявам всички страници със site_shot.js, поправям sitemap.xml/robots.txt и SEO таговете; до 20:00."
+    }
+   ],
+   "last_note": "Прието ✅ M-1111-07 — прикачам SmartMenu, проверявам всички страници със site_shot.js, поправям sitemap.xml/robots.txt и SEO таговете; до 20:00."
+  },
+  {
+   "id": "M-1111-08",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Нов агент SEO (seo/SEO.md, регистър manager/agents.json → seo): добави профил  в src/telegram.py (TELEGRAM_SEO_BOT_TOKEN, state seo/telegram.json, last_cycle 10:17, names ('seo','сео'), ботът се взима от agents.json → seo.telegram, когато собственикът го даде; предпазителят от M-1111-06 да важи) и status_seo в src/manager.py (задачи, introduced, последен commit в seo/), check 'seo' в регистъра. Не чупи plochko/coder/manager. Тест без мрежа. Готово ✅ с линк. Преди M-1111-07 не е спешно — до 18:00.",
+   "status": "open",
+   "created": "2026-11-11T13:04+02:00",
+   "updated": "2026-11-11T13:04+02:00",
+   "tg_message_id": 68,
    "via": "telegram",
    "history": []
   }
