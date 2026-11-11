@@ -3,7 +3,7 @@ url: /blog/3d-printing-what-can-be-made.html
 lang: en
 bg: /bg/blog/3d-pechat-kakvo-moje-da-se-napravi.html
 tr: /tr/blog/3d-baski-neler-yapilabilir.html
-title: 3D Printing: What Can Be Made and When It Pays Off | Kardzhali
+title: 3D Printing: What Can Be Made, When It Pays | Kardzhali
 description: 3D printing in Kardzhali: spare parts from a sample, prototypes, boxes and small batches in PLA, PETG, ABS and TPU. When it pays off and how to prepare.
 h1: 3D printing: what can be made and when it pays off
 date: 2026-11-12

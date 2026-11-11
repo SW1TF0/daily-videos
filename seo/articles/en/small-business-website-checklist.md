@@ -3,7 +3,7 @@ url: /blog/small-business-website-checklist.html
 lang: en
 bg: /bg/blog/sait-za-zavedenie-kakvo-tryabva-da-ima.html
 tr: /tr/blog/isletme-web-sitesi-neler-olmali.html
-title: What a Restaurant or Small Business Website Needs | Kardzhali
+title: What a Small Business Website Needs | Kardzhali
 description: What a website for a restaurant, shop or office in Kardzhali should have: phone, opening hours, map, menu, bookings, fast mobile design and SEO basics.
 h1: A website for a restaurant or small business: what it needs
 date: 2026-11-12

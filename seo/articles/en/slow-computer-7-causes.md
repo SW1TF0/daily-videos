@@ -3,8 +3,8 @@ url: /blog/slow-computer-7-causes.html
 lang: en
 bg: /bg/blog/baven-kompyutar-7-prichini.html
 tr: /tr/blog/yavas-bilgisayar-7-neden.html
-title: Slow Computer: 7 Causes and When to Get It Repaired | Kardzhali
-description: Why your computer or laptop is slow: old hard drive, low memory, viruses, startup programs, dust, a full disk. When to take it to a repair shop in Kardzhali.
+title: Slow Computer: 7 Causes and When to Repair It | Kardzhali
+description: Why your computer or laptop is slow: old hard drive, low memory, viruses, startup programs, dust, a full disk. When to get it repaired in Kardzhali.
 h1: Slow computer: 7 causes and when to take it in for repair
 date: 2026-11-12
 breadcrumb: Home › Blog › Slow computer: 7 causes

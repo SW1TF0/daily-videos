@@ -27,3 +27,24 @@
   - `videonablyudenie-predi-montazh` → „За офиса вижте и [Бавен компютър: 7 причини и кога да го дадете на сервиз](/bg/blog/baven-kompyutar-7-prichini.html).“
   - `umen-dom-ot-kade-da-zapochnete` → „Кутии и държачи по мярка: [какво може да се направи с 3D печат](/bg/blog/3d-pechat-kakvo-moje-da-se-napravi.html).“
 - Новите статии вече линкват към старите (сайт → QR и камери; 3D → умен дом; компютър → камери) → старите стават с 3 → 4–5 входящи.
+
+## M-1111-33 — EN и TR версии (seo/articles/en/, seo/articles/tr/)
+Естествен текст на езика (не дословен превод), само факти от EN/TR страниците на услугите. Градът е изписан като на сайта: **Kardzhali** (EN) и **Kırcaali** (TR). Всеки файл има във frontmatter `lang` и адресите на другите два езика (`bg`/`en`/`tr`) — оттам идват hreflang тагове.
+
+### hreflang: bg ↔ en ↔ tr
+| BG (x-default) | EN | TR |
+|---|---|---|
+| /bg/blog/ | /blog/ | /tr/blog/ |
+| /bg/blog/qr-menu-kak-raboti.html | /blog/qr-menu-how-it-works.html | /tr/blog/qr-menu-nasil-calisir.html |
+| /bg/blog/videonablyudenie-predi-montazh.html | /blog/cctv-before-installation.html | /tr/blog/guvenlik-kamerasi-kurulum-oncesi.html |
+| /bg/blog/umen-dom-ot-kade-da-zapochnete.html | /blog/smart-home-where-to-start.html | /tr/blog/akilli-ev-nereden-baslamali.html |
+| /bg/blog/sait-za-zavedenie-kakvo-tryabva-da-ima.html | /blog/small-business-website-checklist.html | /tr/blog/isletme-web-sitesi-neler-olmali.html |
+| /bg/blog/3d-pechat-kakvo-moje-da-se-napravi.html | /blog/3d-printing-what-can-be-made.html | /tr/blog/3d-baski-neler-yapilabilir.html |
+| /bg/blog/baven-kompyutar-7-prichini.html | /blog/slow-computer-7-causes.html | /tr/blog/yavas-bilgisayar-7-neden.html |
+
+За програмиста:
+- Страниците `/blog/` и `/tr/blog/` (списък), статиите в шаблона на BG статиите (BlogPosting + FAQPage + BreadcrumbList; `inLanguage` en/tr), canonical към собствения адрес.
+- **hreflang на всяка от 21-те страници (вкл. BG)**: `bg`, `en`, `tr` + `x-default` → BG, по таблицата; също в sitemap.xml (`xhtml:link`). На BG статиите днес е само `bg` + `x-default` — да се добавят `en` и `tr`.
+- Футърът (`js/chrome.js` `blogLink()`): линк „Blog“/„Blog“ и на EN и TR страниците (сега само BG). Breadcrumb: Home › Blog / Ana sayfa › Blog.
+- „Read more“ / „Devamını okuyun“ от всяка EN/TR страница на услуга към свързаната статия — същото съответствие като в BG (`service:` във frontmatter).
+- sitemap: +14 адреса (2 списъка + 12 статии), после SEO агентът праща sitemaps-submit.

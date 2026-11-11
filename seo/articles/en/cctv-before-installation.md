@@ -4,7 +4,7 @@ lang: en
 bg: /bg/blog/videonablyudenie-predi-montazh.html
 tr: /tr/blog/guvenlik-kamerasi-kurulum-oncesi.html
 title: CCTV for Home and Business: What to Know First | Kardzhali
-description: Security cameras for homes and businesses in Kardzhali: what to decide before installation — placement, IP cameras, phone viewing, alerts, recording, night vision.
+description: Security cameras for homes and businesses in Kardzhali: what to decide first — placement, IP cameras, phone viewing, alerts, recording, night vision.
 h1: CCTV for home and business: what to know before installation
 date: 2026-11-12
 breadcrumb: Home › Blog › CCTV before installation
