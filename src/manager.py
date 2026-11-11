@@ -197,7 +197,11 @@ def status_daily_videos(key, ag):
                          'behind_by': (expected - last['total']) if last else None, 'gain_24h': gain24,
                          'needed_per_day': round((goal - last.get('total', 0)) / max(1, (end - now().date()).days))},
            'last_commit': {'data': git_last('data'), 'playbook': git_last('playbook.md'), 'scripts': git_last('scripts')}}
+    # The manager has no Upload-Post access of its own (owner's rule: bots talk, they don't share keys).
+    # Upload results come from the worker's data in the repo and its reports; a live check only if a key happens to be there.
     try:
+        if not os.environ.get('MANAGER_UPLOAD_POST'):
+            raise LookupError('no Upload-Post access: ask the worker (ask plochko) for failed uploads')
         sys.path.insert(0, os.path.join(ROOT, 'src'))
         import social
         hist = social.history(50)
@@ -217,7 +221,7 @@ def status_daily_videos(key, ag):
         alerts.append(f"Неуспешно насрочени: {', '.join(failed_sched)}")
     if out['uploads_24h'].get('failed'):
         alerts.append(f"Провалени качвания за 24 ч.: {len(out['uploads_24h']['failed'])}")
-    if out['uploads_24h'].get('error'):
+    if out['uploads_24h'].get('error') and 'no Upload-Post access' not in out['uploads_24h']['error']:
         alerts.append('Upload-Post не отговаря: ' + out['uploads_24h']['error'][:80])
     snap = out['followers']['snapshot_hours_ago']
     if 9 <= h <= 23 and (snap is None or snap > 3):
