@@ -2,8 +2,13 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 11.11.2026 — M-1111-11 — 6 BG страници за услугите
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/18 (чака сливане): текстовете на SEO агента в SmartMenu content/bg/*.md → tools/build-service-pages.mjs (шаблон = сглобения bg/services.html; build-langs.mjs го пуска, защото трие bg/). Service + FAQPage + BreadcrumbList JSON-LD, „Научете повече“ от bg/services.html, картите на bg/index.html, sitemap +6 (27).
+Тест: site_shot 8 страници телефон+компютър — 0 проблема; JSON-LD се парсва; двойно пускане = същите файлове.
+Остава: EN/TR (SEO агентът ги пише) → hreflang и превключвателят на езика. M-1111-10 (PR №17) е на живо — снимка в групата.
+
 ## 11.11.2026 — M-1111-10 — бързи SEO поправки на началната страница
-✅ PR https://github.com/SW1TF0/SmartMenu/pull/17 (чака сливане от собственика): H1 (EN/BG/TR, бизнес и дом) с услуги + Кърджали; FAQPage JSON-LD от FAQ секцията; build-langs.mjs превежда FAQ-а от речника, Service URL-ите → /bg/ и /tr/, inLanguage. Билдът гърми, ако JSON-LD FAQ-ът се разминава с FAQ-а на страницата.
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/17 (слят, на живо 11.11): H1 (EN/BG/TR, бизнес и дом) с услуги + Кърджали; FAQPage JSON-LD от FAQ секцията; build-langs.mjs превежда FAQ-а от речника, Service URL-ите → /bg/ и /tr/, inLanguage. Билдът гърми, ако JSON-LD FAQ-ът се разминава с FAQ-а на страницата.
 Тест: JSON-LD се парсва (3 езика), 3 отрицателни теста, site_shot локално (телефон+компютър) — 0 проблема.
 
 ## 11.11.2026 — M-1111-08 — Telegram профил за SEO агента
