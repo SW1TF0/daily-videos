@@ -3,7 +3,7 @@
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
 ## 11.11.2026 — M-1111-13 — EN и TR страниците за услугите
-✅ PR https://github.com/SW1TF0/SmartMenu/pull/19 (чака сливане): build-service-pages.mjs за EN/BG/TR от content/<lang>/*.md; hreflang по ключа service (x-default = BG); превключвателят води към двойника; „Научете повече“ и картите на трите езика (data-svc-page, защото EN services/index са източник за bg/tr); sitemap 39.
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/19 (слях го сам по правилото на собственика в CODER.md; на живо, site_shot 20 страници — 0 проблема): build-service-pages.mjs за EN/BG/TR от content/<lang>/*.md; hreflang по ключа service (x-default = BG); превключвателят води към двойника; „Научете повече“ и картите на трите езика (data-svc-page, защото EN services/index са източник за bg/tr); sitemap 39.
 Тест: site_shot 23 страници — 0; sitemap↔страници 0 разминавания; превключвател EN/BG/TR (Playwright); двойно сглобяване = същото. PR №18 (BG) е слят.
 
 ## 11.11.2026 — M-1111-11 — 6 BG страници за услугите
