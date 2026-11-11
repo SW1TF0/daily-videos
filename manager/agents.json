@@ -1,14 +1,40 @@
 {
+ "_manager": {
+  "name": "Мениджърът (@managerswitfo_bot) — не се наблюдава",
+  "telegram": "@managerswitfo_bot",
+  "environment": "Мениджър на агентите",
+  "session_id": "session_015VXfwvB7U4AFTEGEWcyvtS",
+  "triggers": {
+   "cycle": "trig_011BPWouDbVrJcMqs4Kp3yUX"
+  },
+  "old": {
+   "session_id": "session_015VXfww13GBajwrHCBXgvGx",
+   "trigger": "trig_01PBecxAKrybHsNJZQx6rfXq (изключена)"
+  }
+ },
  "plochko": {
   "name": "Плочко — daily videos (социалните мрежи на SmartMenuKJ)",
   "telegram": "@dailyvideosswitfo_bot",
   "repo": "SW1TF0/daily-videos",
-  "instructions": ["CLAUDE.md", "playbook.md"],
+  "instructions": [
+   "CLAUDE.md",
+   "playbook.md"
+  ],
   "session_id": "session_015VXfwyTMMia5DpsXwsMYob",
-  "triggers": {"daily": "trig_01E1Ume3ASExa1ZTuCcBG2Le", "community": "trig_01FwFWbtF3shhbJeU4BPN71b"},
+  "triggers": {
+   "daily": "trig_01E1Ume3ASExa1ZTuCcBG2Le",
+   "community": "trig_01FwFWbtF3shhbJeU4BPN71b"
+  },
   "schedule": "дневен цикъл 06:47 (план, видеа, карусели, насрочване); „общност“ всеки час в :23, 08:23–23:23 (коментари, лични съобщения, задачи, проверка на качванията)",
   "check": "daily-videos",
-  "targets": {"videos_per_day": 5, "carousels_per_day": 3, "followers_goal": 5000, "goal_start": "2026-11-10", "goal_start_followers": 23, "deadline": "2026-12-10"},
+  "targets": {
+   "videos_per_day": 5,
+   "carousels_per_day": 3,
+   "followers_goal": 5000,
+   "goal_start": "2026-11-10",
+   "goal_start_followers": 23,
+   "deadline": "2026-12-10"
+  },
   "profile": "manager/agents/plochko.md"
  }
 }

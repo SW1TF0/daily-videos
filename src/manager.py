@@ -42,7 +42,7 @@ def dump(path, data):
 
 
 def agents():
-    return load(AGENTS, {})
+    return {k: v for k, v in load(AGENTS, {}).items() if not k.startswith('_')}  # '_manager' = the manager itself, not watched
 
 
 def agent_by_bot():
