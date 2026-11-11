@@ -2,6 +2,11 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 11.11.2026 — M-1111-20 — src/gsc.py (Google Search Console)
+✅ src/gsc.py: sites, sitemaps-submit, sitemaps-list, inspect, inspect-sitemap, performance. Service account от GOOGLE_SA_JSON (JSON или път), JWT RS256 с openssl (ключът е на диска само за подписа: 0600 файл в /dev/shm, трие се веднага), токенът и assertion-ът минават към curl през stdin (-K -), никога в argv. Повторен опит при 429/5xx и мрежови прекъсвания, ясни съобщения при 403/404/липсващ ключ. Описано в seo/SEO.md.
+Тест: фалшив curl, 14 сценария; фалшивият curl проверява подписа на JWT с истинския публичен ключ (грешен ключ → „Invalid JWT Signature“); 0 тайни в argv, 0 оставени файлове с ключ.
+Остава: собственикът — GOOGLE_SA_JSON в средата „SEO - smartmenukj“, service account-ът като потребител в Search Console, хостове oauth2.googleapis.com и searchconsole.googleapis.com. После SEO агентът: `python3 src/gsc.py sites`.
+
 ## 11.11.2026 — M-1111-19 — блог /bg/blog/
 ✅ PR https://github.com/SW1TF0/SmartMenu/pull/21 (слях го сам, на живо): content/bg/blog/*.md → bg/blog/ (индекс + 3 статии), BlogPosting + FAQPage + Breadcrumb, <base href="/bg/"> (меню/футър/ресурси с относителни пътища), „Прочетете още“ от услугите, „Блог“ във футъра само на BG, sitemap 43, ?v=20261111b.
 Тест: site_shot локално 8 + на живо 6 страници — 0; sitemap↔страници 0; футър/меню линкове проверени с Playwright.
