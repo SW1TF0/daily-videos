@@ -49,6 +49,16 @@ def agent_by_bot():
     return {a['telegram'].lower(): k for k, a in agents().items() if a.get('telegram')}
 
 
+def named_agent(m, bots):
+    """Which agent an owner message names (its bot, an alias such as "плочко"/"програмист", or a reply to its message)."""
+    low = m['text'].lower()
+    for key, a in agents().items():
+        names = [a.get('telegram', '').lower()] + [x.lower() for x in a.get('aliases', [])]
+        if any(n and n in low for n in names) or bots.get((m.get('reply_to_from') or '').lower()) == key:
+            return key
+    return None
+
+
 def read_jsonl(path):
     if not os.path.exists(path):
         return []
@@ -146,15 +156,17 @@ def inbox():
             m['agent'] = bots[frm]
         elif frm == owner or str(m['from_id']) in (c.get('allowed') or []):
             kind = 'owner'
-            to_agent = any(b in low for b in bots) or 'плочко' in low or (m.get('reply_to_from') or '').lower() in bots
-            m['for_me'] = bool(m['reply_to_me'] or me in low or 'мениджър' in low or not to_agent)
+            # The owner talks only to the manager: the agents never take the owner's messages, so every one is ours.
+            # `to_agent` = the agent the owner named (route the work there with `task`).
+            m['for_me'] = True
+            m['to_agent'] = named_agent(m, bots)
         else:
             kind = 'other'
         m['kind'] = kind
         rows.append(m)
     rows.sort(key=lambda r: (r['kind'] != 'owner', r['date']))
     for r in rows:
-        print(json.dumps({k: r.get(k) for k in ('kind', 'for_me', 'agent', 'message_id', 'from', 'text', 'reply_to_me', 'task_ids', 'date') if r.get(k) is not None},
+        print(json.dumps({k: r.get(k) for k in ('kind', 'for_me', 'to_agent', 'agent', 'message_id', 'from', 'text', 'reply_to_me', 'task_ids', 'date') if r.get(k) is not None},
                          ensure_ascii=False))
     if not rows:
         print(json.dumps({'new_messages': 0}))
@@ -232,7 +244,32 @@ def status_daily_videos(key, ag):
     return out
 
 
-CHECKS = {'daily-videos': status_daily_videos}
+def status_coder(key, ag):
+    """Health of the coder (Програмистът): its tasks, whether it introduced itself, signs of life in the repo."""
+    today = now().date().isoformat()
+    mine = [t for t in load(TASKS, {'tasks': []})['tasks'] if t['agent'] == key]
+    st = load(os.path.join(ROOT, 'coder', 'telegram.json'), {})
+    log = git_last('coder')
+    out = {'agent': key, 'name': ag.get('name'), 'today': today, 'introduced': st.get('introduced'),
+           'open_tasks': [{'id': t['id'], 'status': t['status'], 'text': t['text'][:120], 'age_h': hours_since(t['created'])}
+                          for t in mine if t['status'] in OPEN],
+           'done_today': [t['id'] for t in mine if t['status'] == 'done' and str(t.get('updated', '')).startswith(today)],
+           'done_total': sum(1 for t in mine if t['status'] == 'done'),
+           'last_commit_coder': log}
+    alerts = []
+    if not st.get('introduced'):
+        alerts.append('Програмистът още не се е представил в групата')
+    h = now().hour
+    if 9 <= h <= 23 and log and (log['hours_ago'] or 0) > 26:
+        alerts.append(f"Няма commit в coder/ от {log['hours_ago']} ч. (дневникът и отчетът му вървят ли?)")
+    for t in mine:
+        if t['status'] == 'open' and (hours_since(t['created']) or 0) >= 2:
+            alerts.append(f"{t['id']} без „Прието“ от {hours_since(t['created'])} ч.")
+    out['alerts'] = alerts
+    return out
+
+
+CHECKS = {'daily-videos': status_daily_videos, 'coder': status_coder}
 
 
 def status():
