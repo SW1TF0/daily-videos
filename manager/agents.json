@@ -51,15 +51,16 @@
    "coder/CODER.md"
   ],
   "environment": "Programist - daily-videos",
-  "session_id": null,
+  "session_id": "session_015VXfwwzur5hU147HmWh2Rd",
   "triggers": {
-   "cycle": null
+   "cycle": "trig_01QkqTbEjQ5pNyuSy4G6UMBT"
   },
   "schedule": "цикъл на всеки 2 ч. в :38 (08:38–22:38); слушател в реално време за задачите; дневен отчет в 22:38, седмичен в неделя",
   "check": "coder",
   "targets": {
    "report": "Прието/Готово по всяка задача, дневен отчет в 22:38, седмичен в неделя"
   },
-  "profile": "manager/agents/coder.md"
+  "profile": "manager/agents/coder.md",
+  "environment_id": "env_01Qro6BYc5sPtNPF31MZivii"
  }
 }
