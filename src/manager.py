@@ -12,7 +12,7 @@ python3 src/manager.py reply <message_id> "<text>" # answer a message (id as `in
 
 Agents are listed in manager/agents.json; the manager's own notes live in manager/agents/<agent>.md.
 """
-import datetime as dt, json, os, subprocess, sys
+import datetime as dt, json, os, re, subprocess, sys
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -53,8 +53,11 @@ def named_agent(m, bots):
     """Which agent an owner message names (its bot, an alias such as "плочко"/"програмист", or a reply to its message)."""
     low = m['text'].lower()
     for key, a in agents().items():
-        names = [a.get('telegram', '').lower()] + [x.lower() for x in a.get('aliases', [])]
-        if any(n and n in low for n in names) or bots.get((m.get('reply_to_from') or '').lower()) == key:
+        bot = a.get('telegram', '').lower()
+        # whole words, as in telegram.py (M-1111-21): "seo" is not in "smartmenu-seo"; Bulgarian forms count (програмистът)
+        aliases = [re.escape(x.lower()) + '(?:ът|ят|а|я|та|то)?' for x in a.get('aliases', []) if x]
+        if (bot and re.search(rf'(?<![\w@]){re.escape(bot)}(?!\w)', low)) or any(tg.named(n, low) for n in aliases) \
+                or bots.get((m.get('reply_to_from') or '').lower()) == key:
             return key
     return None
 
@@ -191,6 +194,7 @@ def status_daily_videos(key, ag):
     n_car = sum(1 for v in vids if v.get('kind') == 'carousel')
     n_vid = len(vids) - n_car
     failed_sched = [v['id'] for v in vids if v.get('ok') is False]
+    missing = failed_platforms(read_jsonl(os.path.join(ROOT, 'data', 'videos.jsonl')))
     fol = read_jsonl(os.path.join(ROOT, 'data', 'followers.jsonl'))
     last = fol[-1] if fol else {}
     start = dt.date.fromisoformat(t.get('goal_start', '2026-11-10'))
@@ -203,7 +207,7 @@ def status_daily_videos(key, ag):
     out = {'agent': key, 'name': ag.get('name'), 'today': today,
            'scheduled_today': {'videos': n_vid, 'carousels': n_car, 'plan': f"{t.get('videos_per_day', 5)}+{t.get('carousels_per_day', 3)}",
                                'items': [f"{v.get('scheduled_for', '')[-5:]} {v.get('kind', 'video')} {v['id']}: {v.get('hook', '')}" for v in vids],
-                               'failed_to_schedule': failed_sched},
+                               'failed_to_schedule': failed_sched, 'missing_platforms_48h': missing},
            'followers': {'total': last.get('total'), 'by_network': {k: v for k, v in last.items() if k not in ('at', 'total')},
                          'snapshot_hours_ago': hours_since(last.get('at')), 'expected_today_on_pace': expected,
                          'behind_by': (expected - last['total']) if last else None, 'gain_24h': gain24,
@@ -231,6 +235,9 @@ def status_daily_videos(key, ag):
         alerts.append(f"Днес са насрочени {n_car} карусела от {t.get('carousels_per_day', 3)}")
     if failed_sched:
         alerts.append(f"Неуспешно насрочени: {', '.join(failed_sched)}")
+    if missing:
+        alerts.append('Не са качени в: ' + '; '.join(f"{m['id']} → {', '.join(m['platforms'])}" for m in missing)
+                      + ' (Плочко: publish <meta.json> <час> <мрежа>)')
     if out['uploads_24h'].get('failed'):
         alerts.append(f"Провалени качвания за 24 ч.: {len(out['uploads_24h']['failed'])}")
     if out['uploads_24h'].get('error') and 'no Upload-Post access' not in out['uploads_24h']['error']:
@@ -242,6 +249,26 @@ def status_daily_videos(key, ag):
         alerts.append(f"Изоставане от целта: {out['followers']['behind_by']} последователи (днес трябва ~{expected})")
     out['alerts'] = alerts
     return out
+
+
+def failed_platforms(rows, hours=48):
+    """Posts that went out without some network (social.py `failed_platforms`, e.g. TikTok refused) in the last
+    `hours`, minus those a later successful upload of the same id has covered."""
+    since = (now() - dt.timedelta(hours=hours)).date().isoformat()
+    open_ = {}
+    for r in rows:  # in file order: a later retry clears an earlier failure
+        if str(r.get('date', '')) < since:
+            continue
+        for p in r.get('failed_platforms') or []:
+            open_.setdefault(r['id'], {'id': r['id'], 'platforms': [], 'scheduled_for': r.get('scheduled_for')})
+            if p not in open_[r['id']]['platforms']:
+                open_[r['id']]['platforms'].append(p)
+        if r.get('ok') is not False and r['id'] in open_:
+            done = set(r.get('platforms') or [])
+            open_[r['id']]['platforms'] = [p for p in open_[r['id']]['platforms'] if p not in done or p in (r.get('failed_platforms') or [])]
+            if not open_[r['id']]['platforms']:
+                del open_[r['id']]
+    return list(open_.values())
 
 
 def status_bot_agent(key, ag, folder, label):
