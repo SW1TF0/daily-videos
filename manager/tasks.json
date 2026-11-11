@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 10
+  "1111": 12
  },
  "tasks": [
   {
@@ -198,22 +198,74 @@
    "agent": "seo",
    "kind": "task",
    "text": "6 страници за услугите (първо BG): напиши в seo/pages/<услуга>.md за QR меню, сайт за заведения/бизнес, видеонаблюдение, умен дом, 3D печат, компютърен сервиз — по 300–500 думи само с факти от smartmenukj.com/playbook.md, title (≤60 зн.) и description (≤155 зн.) с „Кърджали“, H1, 3–5 въпроса за FAQ, вътрешни линкове, URL (напр. /bg/qr-menu-kardzhali.html). Без цени и измислени клиенти. Commit в daily-videos и Готово ✅ със списъка — после програмистът ги прави на страници. До утре 12:00.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T13:16+02:00",
-   "updated": "2026-11-11T13:16+02:00",
+   "updated": "2026-11-11T13:22+02:00",
    "tg_message_id": 88,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T13:22+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-09 — пиша 6-те страници (BG) в seo/pages/ само с факти от сайта и playbook.md, днес."
+    },
+    {
+     "at": "2026-11-11T13:22+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-09 — 6 текста за страниците на услугите (BG) · commit 1938e9d\n• QR меню → /bg/qr-menu-kardzhali.html\n• Сайтове → /bg/izrabotka-na-saitove-kardzhali.html\n• Видеонаблюдение → /bg/videonablyudenie-kardzhali.html\n• Умен дом → /bg/umen-dom-kardzhali.html\n• 3D печат → /bg/3d-pechat-kardzhali.html\n• Компютърен сервиз → /bg/kompyutaren-servis-kardzhali.html\nФайловете: https://github.com/SW"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-09 — 6 текста за страниците на услугите (BG) · commit 1938e9d\n• QR меню → /bg/qr-menu-kardzhali.html\n• Сайтове → /bg/izrabotka-na-saitove-kardzhali.html\n• Видеонаблюдение → /bg/videonablyudenie-kardzhali.html\n• Умен дом → /bg/umen-dom-kardzhali.html\n• 3D печат → /bg/3d-pechat-kardzhali.html\n• Компютърен сервиз → /bg/kompyutaren-servis-kardzhali.html\nФайловете: https://github.com/SW"
   },
   {
    "id": "M-1111-10",
    "agent": "coder",
    "kind": "task",
    "text": "smartmenukj.com бързи SEO поправки (PR в SmartMenu, по одита на SEO агента в seo/log.md): 1) H1 на началната страница на 3-те езика да казва какво правим и в Кърджали (текст от SEO агента или по одита, само факти); 2) FAQPage JSON-LD от съществуващата FAQ секция; 3) в LocalBusiness URL-ите на услугите да сочат към езиковата версия. Готово ✅ с PR линк. Днес до 20:00.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T13:16+02:00",
-   "updated": "2026-11-11T13:16+02:00",
+   "updated": "2026-11-11T13:22+02:00",
    "tg_message_id": 89,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-11T13:22+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-10 — H1 на началната (EN/BG/TR), FAQPage JSON-LD от FAQ секцията и езикови URL-и в LocalBusiness; PR до 20:00."
+    },
+    {
+     "at": "2026-11-11T13:22+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-10 — PR https://github.com/SW1TF0/SmartMenu/pull/17 (слива го собственикът: Merge)\n1️⃣ H1 на началната: BG „QR менюта, уебсайтове и видеонаблюдение в Кърджали.“ (за дома: „Умен дом, камери и ремонт на компютри в Кърджали.“), същото на EN/TR. Старият слоган го няма.\n2️⃣ FAQPage за Google от 5-те въпроса на началната, на всеки език. Билдът гърми, ако някой ден се разминат с FAQ-а.\n3️"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-10 — PR https://github.com/SW1TF0/SmartMenu/pull/17 (слива го собственикът: Merge)\n1️⃣ H1 на началната: BG „QR менюта, уебсайтове и видеонаблюдение в Кърджали.“ (за дома: „Умен дом, камери и ремонт на компютри в Кърджали.“), същото на EN/TR. Старият слоган го няма.\n2️⃣ FAQPage за Google от 5-те въпроса на началната, на всеки език. Билдът гърми, ако някой ден се разминат с FAQ-а.\n3️"
+  },
+  {
+   "id": "M-1111-11",
+   "agent": "coder",
+   "kind": "task",
+   "text": "6-те страници за услугите (BG) по текстовете на SEO агента в daily-videos/seo/pages/ (виж README.md там): нови страници в SmartMenu със шаблона на сайта, title/description/H1/canonical/hreflang, FAQPage + Service JSON-LD, линкове от /bg/services.html и между тях, добави ги в sitemap.xml. PR, проверка с site_shot.js. Готово ✅ с PR линк. Днес до 22:00.",
+   "status": "open",
+   "created": "2026-11-11T13:23+02:00",
+   "updated": "2026-11-11T13:23+02:00",
+   "tg_message_id": 96,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1111-12",
+   "agent": "seo",
+   "kind": "task",
+   "text": "EN и TR версии на 6-те страници (seo/pages/en/, seo/pages/tr/): естествен английски и турски (не дословен превод), местни думи за Kardzhali/Kırcali, title ≤60, description ≤155, H1, FAQ, URL (/en/…, /tr/…). Само факти. Обнови seo/keywords.md с думите на 3-те езика. Готово ✅ с commit. До утре 12:00.",
+   "status": "open",
+   "created": "2026-11-11T13:23+02:00",
+   "updated": "2026-11-11T13:23+02:00",
+   "tg_message_id": 97,
    "via": "telegram",
    "history": []
   }
