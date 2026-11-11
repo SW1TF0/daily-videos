@@ -452,24 +452,40 @@
    "agent": "coder",
    "kind": "task",
    "text": "Блогът: качи 3-те статии от seo/articles/ като /bg/blog/ (index + 3 страници, BlogPosting + FAQPage + Breadcrumb, sitemap, линк във футъра и от страниците на услугите) по README там, с генератора като tools/build-service-pages.mjs. Сам на живо по правилото. Готово ✅ с линкове. Днес до 20:00.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-11T14:01+02:00",
-   "updated": "2026-11-11T14:01+02:00",
+   "updated": "2026-11-11T14:02+02:00",
    "tg_message_id": 133,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T14:02+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-19 — /bg/blog/ (index + 3 статии) със същия генератор, BlogPosting/FAQ/Breadcrumb, sitemap, футър и линкове от услугите; на живо до 20:00."
+    }
+   ],
+   "last_note": "Прието ✅ M-1111-19 — /bg/blog/ (index + 3 статии) със същия генератор, BlogPosting/FAQ/Breadcrumb, sitemap, футър и линкове от услугите; на живо до 20:00."
   },
   {
    "id": "M-1111-20",
    "agent": "coder",
    "kind": "task",
    "text": "Нов инструмент src/gsc.py за Google Search Console през service account (без библиотеки, само stdlib + curl): ключът се чете от env GOOGLE_SA_JSON (никога не се печата); JWT → токен (oauth2.googleapis.com); команди: sites, sitemaps-submit <site> <sitemap-url>, sitemaps-list, inspect <site> <url> (URL Inspection API: индексирана ли е), inspect-sitemap (всички URL-и от sitemap.xml, обобщение), performance <site> [дни] (кликове/показвания/позиция по заявка и страница). Тест с фалшив curl. Документирай го в seo/SEO.md. Готово ✅ с линк. Утре до 12:00.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-11T14:01+02:00",
-   "updated": "2026-11-11T14:01+02:00",
+   "updated": "2026-11-11T14:02+02:00",
    "tg_message_id": 134,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T14:02+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-20 — src/gsc.py (JWT от GOOGLE_SA_JSON, само stdlib + curl), всички команди, тест с фалшив curl, описание в seo/SEO.md; до утре 12:00."
+    }
+   ],
+   "last_note": "Прието ✅ M-1111-20 — src/gsc.py (JWT от GOOGLE_SA_JSON, само stdlib + curl), всички команди, тест с фалшив curl, описание в seo/SEO.md; до утре 12:00."
   }
  ]
 }
