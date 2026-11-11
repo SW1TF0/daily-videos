@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 33
+  "1111": 36
  },
  "tasks": [
   {
@@ -802,22 +802,86 @@
    "agent": "coder",
    "kind": "task",
    "text": "Качи 3-те нови статии на SEO (seo/articles/, README там: шаблон, JSON-LD, sitemap и линковете в старите статии и услугите → всяка статия ≥5 входящи). Сам на живо по правилото, site_shot. Готово ✅ с линкове. Днес.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T15:03+02:00",
-   "updated": "2026-11-11T15:03+02:00",
+   "updated": "2026-11-11T15:54+02:00",
    "tg_message_id": 220,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T15:54+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-32 — 3-те нови статии през генератора, линкове от старите статии и услугите (≥5 входящи на статия), sitemap; на живо днес."
+    },
+    {
+     "at": "2026-11-11T15:54+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-32 — PR https://github.com/SW1TF0/SmartMenu/pull/24 (слях го сам по правилото, на живо)\n📰 Нови статии:\n• https://www.smartmenukj.com/bg/blog/sait-za-zavedenie-kakvo-tryabva-da-ima.html\n• https://www.smartmenukj.com/bg/blog/3d-pechat-kakvo-moje-da-se-napravi.html\n• https://www.smartmenukj.com/bg/blog/baven-kompyutar-7-prichini.html\n🔗 Линкове: „Прочетете още“ от страниците на услугит"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-32 — PR https://github.com/SW1TF0/SmartMenu/pull/24 (слях го сам по правилото, на живо)\n📰 Нови статии:\n• https://www.smartmenukj.com/bg/blog/sait-za-zavedenie-kakvo-tryabva-da-ima.html\n• https://www.smartmenukj.com/bg/blog/3d-pechat-kakvo-moje-da-se-napravi.html\n• https://www.smartmenukj.com/bg/blog/baven-kompyutar-7-prichini.html\n🔗 Линкове: „Прочетете още“ от страниците на услугит"
   },
   {
    "id": "M-1111-33",
    "agent": "seo",
    "kind": "task",
    "text": "EN и TR версии на 6-те статии от блога (seo/articles/en/, seo/articles/tr/): естествен език, не дословен превод, местни думи (Kardzhali/Kırcali), title ≤60, description ≤155, FAQ, линкове към EN/TR страниците на услугите; таблица bg↔en↔tr в README за hreflang. Само факти. Готово ✅ с commit. Утре до 12:00.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T15:03+02:00",
-   "updated": "2026-11-11T15:03+02:00",
+   "updated": "2026-11-11T15:54+02:00",
    "tg_message_id": 221,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-11T15:54+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-33 — пиша EN и TR версиите на 6-те статии (12 файла) + таблица bg↔en↔tr в README; днес/утре до 12:00."
+    },
+    {
+     "at": "2026-11-11T15:54+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-33 — 12 статии: 6 EN (seo/articles/en/, 730–890 думи) и 6 TR (seo/articles/tr/, 570–760 думи), естествен текст, Kardzhali/Kırcaali (както на сайта), title ≤60, description ≤155, по 5 FAQ, линкове към EN/TR услугите и към другите статии; всички линкове проверени срещу sitemap-а. Таблица bg↔en↔tr за hreflang + указания за програмиста (списъци /blog/ и /tr/blog/, hreflang и на BG стат"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-33 — 12 статии: 6 EN (seo/articles/en/, 730–890 думи) и 6 TR (seo/articles/tr/, 570–760 думи), естествен текст, Kardzhali/Kırcaali (както на сайта), title ≤60, description ≤155, по 5 FAQ, линкове към EN/TR услугите и към другите статии; всички линкове проверени срещу sitemap-а. Таблица bg↔en↔tr за hreflang + указания за програмиста (списъци /blog/ и /tr/blog/, hreflang и на BG стат"
+  },
+  {
+   "id": "M-1111-34",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Качи 12-те EN/TR статии по seo/articles/README.md (списъци /blog/ и /tr/blog/, hreflang и на BG статиите, sitemap +14, „Blog“ във футъра на EN/TR). Сам на живо по правилото, site_shot. Готово ✅ с линкове. Днес.",
+   "status": "open",
+   "created": "2026-11-11T15:54+02:00",
+   "updated": "2026-11-11T15:54+02:00",
+   "tg_message_id": 227,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1111-35",
+   "agent": "seo",
+   "kind": "task",
+   "text": "Старите страници (начална, services, about, contact, portfolio × EN/BG/TR): предложи по-силни title (≤60) и description (≤155) с услуга + Кърджали/Kardzhali/Kırcaali, без да губят смисъла; таблица старо → ново в seo/meta-update.md, + gsc.py sitemaps-submit след като програмистът ги качи. Готово ✅ с таблицата. Днес до 18:00.",
+   "status": "open",
+   "created": "2026-11-11T15:54+02:00",
+   "updated": "2026-11-11T15:54+02:00",
+   "tg_message_id": 228,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1111-36",
+   "agent": "plochko",
+   "kind": "question",
+   "text": "Последователите стоят на 37 (изоставаме ~150). Кратко, с числа: 1) колко гледания/последователи днес по мрежи до момента; 2) кое видео днес бие и защо; 3) какви 3 експеримента правиш утре, за да ускорим (формат, час, кукичка, TikTok); 4) какво ти трябва от мен или програмиста.",
+   "status": "open",
+   "created": "2026-11-11T15:54+02:00",
+   "updated": "2026-11-11T15:54+02:00",
+   "tg_message_id": 229,
    "via": "telegram",
    "history": []
   }
