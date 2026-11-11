@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 5
+  "1111": 6
  },
  "tasks": [
   {
@@ -114,6 +114,18 @@
     }
    ],
    "last_note": "Прието ✅ M-1111-05 — проверявам на живо при следващото насрочване (утре сутринта): ok от publish/post и success в history."
+  },
+  {
+   "id": "M-1111-06",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Предпазител в src/telegram.py: за всеки профил (plochko/manager/coder) setup/tasks/wait/send да проверяват с getMe (кеширано), че токенът е на очаквания бот от manager/agents.json; ако е чужд — да отказват с ясна грешка, без да четат getUpdates. Тест без мрежа с фалшив отговор. Готово ✅ с линк до 18:00.",
+   "status": "open",
+   "created": "2026-11-11T12:52+02:00",
+   "updated": "2026-11-11T12:52+02:00",
+   "tg_message_id": 54,
+   "via": "telegram",
+   "history": []
   }
  ]
 }
