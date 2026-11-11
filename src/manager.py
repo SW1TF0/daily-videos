@@ -304,7 +304,30 @@ def status_seo(key, ag):
     return status_bot_agent(key, ag, 'seo', 'SEO агентът')
 
 
-CHECKS = {'daily-videos': status_daily_videos, 'coder': status_coder, 'seo': status_seo}
+def status_sales(key, ag):
+    """Sales agent: the common checks plus its leads (sales/leads.jsonl): new = not answered yet,
+    waiting = answered or offer sent, overdue = a follow-up whose next_date has passed."""
+    out = status_bot_agent(key, ag, 'sales', 'Агентът за продажби')
+    today = now().date().isoformat()
+    leads = {}
+    for r in read_jsonl(os.path.join(ROOT, 'sales', 'leads.jsonl')):
+        if r.get('id'):
+            leads[r['id']] = r  # an updated lead is appended again: the last row wins
+    open_ = [r for r in leads.values() if r.get('status') not in ('won', 'lost')]
+    new = [r for r in open_ if r.get('status', 'new') == 'new']
+    waiting = [r for r in open_ if r.get('status') in ('replied', 'offer_sent')]
+    overdue = [r for r in open_ if r.get('next_date') and str(r['next_date']) < today]
+    out['leads'] = {'total': len(leads), 'new': len(new), 'waiting': len(waiting),
+                    'won': sum(1 for r in leads.values() if r.get('status') == 'won'),
+                    'overdue': [f"{r['id']} ({r.get('service') or '?'}): {r.get('next') or ''} от {r['next_date']}" for r in overdue]}
+    if new:
+        out['alerts'].append(f"Запитвания без отговор: {len(new)} ({', '.join(r['id'] for r in new[:5])})")
+    if overdue:
+        out['alerts'].append(f"Просрочени следващи ходове: {len(overdue)}")
+    return out
+
+
+CHECKS = {'daily-videos': status_daily_videos, 'coder': status_coder, 'seo': status_seo, 'sales': status_sales}
 
 
 def status():
