@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 8
+  "1111": 10
  },
  "tasks": [
   {
@@ -192,6 +192,30 @@
     }
    ],
    "last_note": "Готово ✅ M-1111-08 — https://github.com/SW1TF0/daily-videos/commit/03a3091\n🤖 src/telegram.py --as seo: TELEGRAM_SEO_BOT_TOKEN, seo/telegram.json, думите „seo“/„сео“. Ботът се взима само от agents.json → seo.telegram (@seoswitfo_bot). Ако го няма или токенът е на чужд бот, отказва, без да чете и праща (предпазителят от M-1111-06).\n⏰ Промяна: last_cycle е 22:17, не 10:17. При 10:17 слушателят щеше д"
+  },
+  {
+   "id": "M-1111-09",
+   "agent": "seo",
+   "kind": "task",
+   "text": "6 страници за услугите (първо BG): напиши в seo/pages/<услуга>.md за QR меню, сайт за заведения/бизнес, видеонаблюдение, умен дом, 3D печат, компютърен сервиз — по 300–500 думи само с факти от smartmenukj.com/playbook.md, title (≤60 зн.) и description (≤155 зн.) с „Кърджали“, H1, 3–5 въпроса за FAQ, вътрешни линкове, URL (напр. /bg/qr-menu-kardzhali.html). Без цени и измислени клиенти. Commit в daily-videos и Готово ✅ със списъка — после програмистът ги прави на страници. До утре 12:00.",
+   "status": "open",
+   "created": "2026-11-11T13:16+02:00",
+   "updated": "2026-11-11T13:16+02:00",
+   "tg_message_id": 88,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1111-10",
+   "agent": "coder",
+   "kind": "task",
+   "text": "smartmenukj.com бързи SEO поправки (PR в SmartMenu, по одита на SEO агента в seo/log.md): 1) H1 на началната страница на 3-те езика да казва какво правим и в Кърджали (текст от SEO агента или по одита, само факти); 2) FAQPage JSON-LD от съществуващата FAQ секция; 3) в LocalBusiness URL-ите на услугите да сочат към езиковата версия. Готово ✅ с PR линк. Днес до 20:00.",
+   "status": "open",
+   "created": "2026-11-11T13:16+02:00",
+   "updated": "2026-11-11T13:16+02:00",
+   "tg_message_id": 89,
+   "via": "telegram",
+   "history": []
   }
  ]
 }
