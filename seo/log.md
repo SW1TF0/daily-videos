@@ -11,6 +11,8 @@
 6. Още текст: about (172 думи) и portfolio (207 думи) са тънки; services ~80 думи на услуга. Факти от собственика за проекти в портфолиото.
 7. Линкове: Instagram/TikTok/YouTube био → `https://www.smartmenukj.com/bg/` (през мениджъра към Плочко); местни каталози (собственикът).
 
+## 11.11.2026 — M-1111-22 — sitemap изпратен пак 12:28 UTC; Google вече го прочете: 43 адреса, 0 грешки. Готово ✅ в групата (15/43, причини: нови страници още не обходени; 10 непознати до днешния sitemap; слаби вътрешни линкове).
+
 ## 11.11.2026 — Search Console свързан (service account, свойство https://www.smartmenukj.com/, siteOwner)
 - Хостове oauth2/searchconsole/www.googleapis.com добавени в средата (одобрено).
 - ✅ sitemap.xml изпратен 12:18 UTC; 0 грешки. GSC още помни старото четене (21 URL, pending) — живият sitemap има 43 URL.
