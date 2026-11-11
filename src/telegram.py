@@ -124,7 +124,7 @@ def send(text, reply_to=None, quiet=False):
         m = api('sendMessage', p)
         first = first or m.get('message_id')
     if not quiet:
-        print('sent' + (' (через бота на Плочко — липсва TELEGRAM_MANAGER_BOT_TOKEN)' if FALLBACK else ''))
+        print('sent' + (' (чрез бота на Плочко — липсва TELEGRAM_MANAGER_BOT_TOKEN)' if FALLBACK else ''))
     return first
 
 
@@ -163,16 +163,19 @@ def updates():
 
 
 def tasks():
-    """Worker: messages from allowed people (owner, manager) that are meant for us. Everything else is marked read:
-    unaddressed owner messages go to the manager, who hands out the work."""
+    """Worker: only the manager's messages meant for us. The owner talks to the manager, who hands out the work,
+    so owner messages are marked read here."""
     c = cfg()
     allowed = set(c.get('allowed') or [])
     mine = (c.get('bot_username') or '').lower()
+    manager = c.get('manager_username')
     for m in updates():
         if not ({m['from'], str(m['from_id'])} & allowed):
             continue
+        if manager and m['from'] != manager:
+            continue  # owner -> manager only
         low = m['text'].lower()
-        addressed = m['reply_to_me'] or (mine and mine in low) or (not m['from_bot'] and 'плочко' in low)
+        addressed = m['reply_to_me'] or (mine and mine in low) or ('плочко' in low)
         if addressed:
             print(json.dumps({k: m[k] for k in ('message_id', 'from', 'from_bot', 'text', 'date', 'reply_to', 'task_ids')}, ensure_ascii=False))
 
