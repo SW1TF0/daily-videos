@@ -2,6 +2,11 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 11.11.2026 — M-1111-45 — FAQ страница /bg/faq.html
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/27 (слях го сам, на живо): content/bg/faq.md (без указанията за програмиста) → bg/faq.html през генератора (parseFaqPage/renderFaqPage), FAQPage (33) + BreadcrumbList; линк под формата на bg/contact.html, на bg/services.html, „Въпроси“ във футъра само на BG; sitemap 61; ?v=20261111f.
+Тест: видимите въпроси/отговори == JSON-LD (скрипт); site_shot локално 4 + на живо 3 — 0; двойно сглобяване = същото.
+Наученото: content/<lang>/*.md се четат като страници на услуги → faq.md изрично изключен; в i18n.js EN и TR имат еднакъв ред "footer.blog": "Blog" — редакция по низ трябва да брои срещанията.
+
 ## 11.11.2026 — M-1111-40 — профил --as scout и status_scout
 ✅ src/telegram.py --as scout (TELEGRAM_SCOUT_BOT_TOKEN, scout/telegram.json, слушателят върви през деня и спи от ~21:57 (last_cycle 22:00, цикълът е в 11:13), думи „разузнавач(ът/а)“/„scout“ като цяла дума; ботът само от agents.json → scout.telegram, с предпазителя). manager.py status_scout: общите проверки + scout/prospects.jsonl (последният ред на id печели): общо, нови за 7 дни, по статус, чакащи за продажби (new и score ≥4); в неделя alert, ако за 7 дни са под 20. check „scout“ в регистъра.
 Тест без мрежа в копие: без scout.telegram → отказ; setup/tasks/send; чужди токени → отказ; нощ от 21:58; разпознаване по име; status_scout с 4 фалшиви реда.
