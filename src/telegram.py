@@ -57,8 +57,9 @@ def setup():
         if ch.get('type') in ('group', 'supergroup'):
             chats[ch['id']] = ch.get('title')
             frm = m.get('from') or {}
-            if frm and not frm.get('is_bot'):
-                people[frm['id']] = who(frm)
+            if frm:
+                people[frm['id']] = dict(who(frm), is_bot=bool(frm.get('is_bot')))
+    c['bot_id'] = api('getMe', {})['id']
     if len(chats) == 1 and not c.get('chat_id'):
         c['chat_id'], c['chat_title'] = next(iter(chats.items()))
     save(c)
@@ -99,11 +100,11 @@ def tasks():
         if not m or str((m.get('chat') or {}).get('id')) != str(c.get('chat_id')):
             continue
         frm = who(m.get('from') or {})
-        if not ({frm['username'], str(frm['id'])} & allowed) or (m.get('from') or {}).get('is_bot'):
-            continue
+        if str(frm['id']) == str(c.get('bot_id')) or not ({frm['username'], str(frm['id'])} & allowed):
+            continue  # never our own messages; only allowed people or allowed bots (e.g. the manager bot)
         text = m.get('text') or m.get('caption') or ''
         if text.strip():
-            print(json.dumps({'message_id': m['message_id'], 'from': frm['username'] or frm['name'], 'text': text,
+            print(json.dumps({'message_id': m['message_id'], 'from': frm['username'] or frm['name'], 'from_bot': bool((m.get('from') or {}).get('is_bot')), 'text': text,
                               'date': m.get('date'), 'reply_to': (m.get('reply_to_message') or {}).get('message_id')}, ensure_ascii=False))
     save(c)
 
