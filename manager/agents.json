@@ -101,7 +101,7 @@
  },
  "sales": {
   "name": "Агентът за продажби — запитвания, оферти, клиенти",
-  "telegram": "",
+  "telegram": "@salesswitfo_bot",
   "aliases": [
    "продажби",
    "sales"
