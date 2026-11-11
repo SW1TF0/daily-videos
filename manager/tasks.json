@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 36
+  "1111": 38
  },
  "tasks": [
   {
@@ -854,34 +854,94 @@
    "agent": "coder",
    "kind": "task",
    "text": "Качи 12-те EN/TR статии по seo/articles/README.md (списъци /blog/ и /tr/blog/, hreflang и на BG статиите, sitemap +14, „Blog“ във футъра на EN/TR). Сам на живо по правилото, site_shot. Готово ✅ с линкове. Днес.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T15:54+02:00",
-   "updated": "2026-11-11T15:54+02:00",
+   "updated": "2026-11-11T16:53+02:00",
    "tg_message_id": 227,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T16:53+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-34 — блогът става трилингвален в генератора (EN /blog/, TR /tr/blog/, hreflang между 3-те версии, футър, sitemap +14); на живо днес."
+    },
+    {
+     "at": "2026-11-11T16:53+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-34 — PR https://github.com/SW1TF0/SmartMenu/pull/25 (слях го сам по правилото, на живо)\n🌍 Блогът е на 3 езика: https://www.smartmenukj.com/blog/ (6 EN статии) и https://www.smartmenukj.com/tr/blog/ (6 TR статии), до /bg/blog/.\n🔗 hreflang bg↔en↔tr (+x-default BG) на всичките 21 страници, вкл. BG статиите; превключвателят EN/BG/TR води към същата статия на другия език (проверено). „B"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-34 — PR https://github.com/SW1TF0/SmartMenu/pull/25 (слях го сам по правилото, на живо)\n🌍 Блогът е на 3 езика: https://www.smartmenukj.com/blog/ (6 EN статии) и https://www.smartmenukj.com/tr/blog/ (6 TR статии), до /bg/blog/.\n🔗 hreflang bg↔en↔tr (+x-default BG) на всичките 21 страници, вкл. BG статиите; превключвателят EN/BG/TR води към същата статия на другия език (проверено). „B"
   },
   {
    "id": "M-1111-35",
    "agent": "seo",
    "kind": "task",
    "text": "Старите страници (начална, services, about, contact, portfolio × EN/BG/TR): предложи по-силни title (≤60) и description (≤155) с услуга + Кърджали/Kardzhali/Kırcaali, без да губят смисъла; таблица старо → ново в seo/meta-update.md, + gsc.py sitemaps-submit след като програмистът ги качи. Готово ✅ с таблицата. Днес до 18:00.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T15:54+02:00",
-   "updated": "2026-11-11T15:54+02:00",
+   "updated": "2026-11-11T16:53+02:00",
    "tg_message_id": 228,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T16:53+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-35 — взимам текущите title/description на 15-те страници от живия сайт и пиша таблица старо → ново в seo/meta-update.md; до 1 ч."
+    },
+    {
+     "at": "2026-11-11T16:53+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-35 — таблица старо → ново за 15-те страници (начална, services, about, contact, portfolio × EN/BG/TR): seo/meta-update.md. Старите: title 45–116 знака (11 от 15 над 60), description 158–222 (всички над 155) → Google ги реже. Новите: title 44–57, description 131–154; услуга + Кърджали/Kardzhali/Kırcaali отпред, марката накрая, смисълът същият, само факти. Напр. BG начална: „QR менют"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-35 — таблица старо → ново за 15-те страници (начална, services, about, contact, portfolio × EN/BG/TR): seo/meta-update.md. Старите: title 45–116 знака (11 от 15 над 60), description 158–222 (всички над 155) → Google ги реже. Новите: title 44–57, description 131–154; услуга + Кърджали/Kardzhali/Kırcaali отпред, марката накрая, смисълът същият, само факти. Напр. BG начална: „QR менют"
   },
   {
    "id": "M-1111-36",
    "agent": "plochko",
    "kind": "question",
    "text": "Последователите стоят на 37 (изоставаме ~150). Кратко, с числа: 1) колко гледания/последователи днес по мрежи до момента; 2) кое видео днес бие и защо; 3) какви 3 експеримента правиш утре, за да ускорим (формат, час, кукичка, TikTok); 4) какво ти трябва от мен или програмиста.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T15:54+02:00",
-   "updated": "2026-11-11T15:54+02:00",
+   "updated": "2026-11-11T16:53+02:00",
    "tg_message_id": 229,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-11T16:53+02:00",
+     "from": "open",
+     "to": "done",
+     "note": "Готово ✅ M-1111-36\n1) Днес до 15:30 (гледания): Instagram 312 на днешните 4 поста (468 общо с вчерашния скеч), YouTube 40 (72 общо), TikTok 0 на всички 6 поста. Последователи: 37 (IG 23, YT 14, TT 0) — без ръст днес.\n2) Бие „Градска легенда: частта, която вече не се прави“ (08:30) — 208 гледания/4 харесвания/1 споделяне в IG за 7 ч., ~2× повече от POV принтера (64 за 3 ч.). Защо: кукичка с напреже"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-36\n1) Днес до 15:30 (гледания): Instagram 312 на днешните 4 поста (468 общо с вчерашния скеч), YouTube 40 (72 общо), TikTok 0 на всички 6 поста. Последователи: 37 (IG 23, YT 14, TT 0) — без ръст днес.\n2) Бие „Градска легенда: частта, която вече не се прави“ (08:30) — 208 гледания/4 харесвания/1 споделяне в IG за 7 ч., ~2× повече от POV принтера (64 за 3 ч.). Защо: кукичка с напреже"
+  },
+  {
+   "id": "M-1111-37",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Смени title, meta description и og/twitter на 15-те страници по таблицата seo/meta-update.md (точно текстовете от колона „ново“). Сам на живо по правилото, site_shot. Готово ✅ с линк. Днес.",
+   "status": "open",
+   "created": "2026-11-11T16:53+02:00",
+   "updated": "2026-11-11T16:53+02:00",
+   "tg_message_id": 236,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1111-38",
+   "agent": "seo",
+   "kind": "task",
+   "text": "След като програмистът качи новите title/description (M-1111-37): провери ги на живо на 15-те страници, gsc.py sitemaps-submit (sitemap вече е 60 адреса), inspect на /bg/ и 2 нови услуги. Готово ✅ с числата. Днес.",
+   "status": "open",
+   "created": "2026-11-11T16:54+02:00",
+   "updated": "2026-11-11T16:54+02:00",
+   "tg_message_id": 237,
    "via": "telegram",
    "history": []
   }
