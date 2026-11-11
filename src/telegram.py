@@ -1,5 +1,6 @@
-"""Telegram group "Claude cluster" = the command centre of the agents. Two bots share it:
-the worker (Плочко, daily videos) and the manager (@managerswitfo_bot), who watches the agents and hands out tasks.
+"""Telegram group "Claude cluster" = the command centre of the agents. Three bots share it:
+the worker (Плочко, daily videos), the coder (Програмистът, @itclaudeswitfo_bot) and the manager (@managerswitfo_bot),
+who watches the agents and hands out tasks.
 
 python3 src/telegram.py setup                    # find the group + people from recent messages -> data/telegram.json
 python3 src/telegram.py allow <@username|id>     # who may give tasks (manager, owner)
@@ -12,9 +13,11 @@ python3 src/telegram.py wait                     # listener: waits without AI co
 
 Add `--as manager` (e.g. `python3 src/telegram.py --as manager send "..."`) to act as the manager bot;
 the manager reads the group with `python3 src/manager.py inbox`.
+Add `--as coder` to act as the coder bot (`tasks`, `send`, `reply`, `listening`, `wait`, `setup` = check the bot).
 
 Tokens come from the environment (TELEGRAM_BOT_TOKEN for the worker, TELEGRAM_MANAGER_BOT_TOKEN for the manager,
-set in the environment's settings) and are never printed or written to the repo.
+TELEGRAM_CODER_BOT_TOKEN for the coder, set in each agent's environment settings) and are never printed or written to the repo.
+A task from the manager names its agent in the header ("📋 Задача M-… → @bot"): only that agent takes it.
 In a basic group message ids are per bot: refer to tasks by their id (M-1111-01) in the text, never by another bot's message id.
 
 Listener: each bot has one reader at a time. `updates()` (used by `tasks` and by `manager.py inbox`) stops the
@@ -29,8 +32,10 @@ from zoneinfo import ZoneInfo
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CFG_PATH = os.path.join(ROOT, 'data', 'telegram.json')  # shared: chat_id, allowed, owner + the worker's offset
 PROFILES = {
-    'worker': {'env': 'TELEGRAM_BOT_TOKEN', 'state': CFG_PATH, 'last_cycle': (23, 23)},
+    'worker': {'env': 'TELEGRAM_BOT_TOKEN', 'state': CFG_PATH, 'last_cycle': (23, 23), 'names': ('плочко',)},
     'manager': {'env': 'TELEGRAM_MANAGER_BOT_TOKEN', 'state': os.path.join(ROOT, 'manager', 'telegram.json'), 'last_cycle': (22, 53)},
+    'coder': {'env': 'TELEGRAM_CODER_BOT_TOKEN', 'state': os.path.join(ROOT, 'coder', 'telegram.json'), 'last_cycle': (22, 38),
+              'names': ('програмист',)},  # words in the manager's text that mean "this is for the coder"
 }
 AS = 'worker'
 if '--as' in sys.argv:
@@ -98,6 +103,8 @@ def who(u):
 
 
 def setup():
+    if AS != 'worker':
+        return setup_bot()
     c = cfg()
     ups = api('getUpdates', {'timeout': 0, 'allowed_updates': ['message', 'my_chat_member']})
     chats, people = {}, {}
@@ -115,6 +122,22 @@ def setup():
     save(c)
     print(json.dumps({'groups_seen': [{'id': k, 'title': v} for k, v in chats.items()], 'chat_id': c.get('chat_id'),
                       'people_seen': list(people.values()), 'allowed': c.get('allowed')}, ensure_ascii=False, indent=1))
+
+
+def setup_bot():
+    """Manager / coder: check our own bot (who it is, whether it sits in the group and reads all of it) and save its id.
+    The shared group settings in data/telegram.json are the worker's; they are never changed from here."""
+    c, s = cfg(), state()
+    me = api('getMe', {})
+    s['bot_id'], s['bot_username'] = me['id'], '@' + me['username'].lower()
+    save(s, PROFILES[AS]['state'])
+    out = {'bot': s['bot_username'], 'bot_id': me['id'], 'reads_all_group_messages': me.get('can_read_all_group_messages'),
+           'chat_id': c.get('chat_id')}
+    try:
+        out['in_group'] = api('getChatMember', {'chat_id': str(c.get('chat_id')), 'user_id': str(me['id'])}).get('status')
+    except SystemExit as e:
+        out['in_group'] = f'no ({e}): the owner adds the bot to the group'
+    print(json.dumps(out, ensure_ascii=False, indent=1))
 
 
 def allow(x):
@@ -159,6 +182,8 @@ def me_id(c, s):
     if not me:
         me_info = api('getMe', {})
         me, s['bot_id'], s['bot_username'] = me_info['id'], me_info['id'], '@' + me_info['username'].lower()
+        if AS == 'coder':  # remember it: the listener re-reads the state file and must still know our username
+            save(s, PROFILES[AS]['state'])
     return me
 
 
@@ -204,15 +229,25 @@ def bare_ack(m):
     return m['from_bot'] and ' '.join(re.sub(r'[^\w\s]', ' ', m['text'].lower()).split()) in BOT_ACKS
 
 
-def for_worker(m, c):
-    """Only the manager's messages meant for Плочко (the owner talks to the manager), never a bot's bare acknowledgement."""
+def my_username(c, s=None):
+    s = s if s is not None else state()
+    return ((s.get('bot_username') or c.get('bot_username')) if AS == 'worker' else s.get('bot_username') or '').lower()
+
+
+def for_worker(m, c, s=None):
+    """Only the manager's messages meant for this agent (Плочко or the coder; the owner talks to the manager),
+    never a bot's bare acknowledgement. A task header "→ @bot" decides alone: a task for another agent is not ours,
+    even if it names us in the text."""
     if not ({m['from'], str(m['from_id'])} & set(c.get('allowed') or [])) or bare_ack(m):
         return False
     manager = c.get('manager_username')
     if manager and m['from'] != manager:
         return False  # owner -> manager only
-    low, mine = m['text'].lower(), (c.get('bot_username') or '').lower()
-    return bool(m['reply_to_me'] or (mine and mine in low) or 'плочко' in low)
+    low, mine = m['text'].lower(), my_username(c, s)
+    targets = [t.lower() for t in re.findall(r'→\s*(@\w+)', m['text'])]
+    if targets:
+        return bool(mine) and mine in targets
+    return bool(m['reply_to_me'] or (mine and mine in low) or any(n in low for n in PROFILES[AS].get('names', ())))
 
 
 def for_manager(m, c, s):
@@ -223,15 +258,18 @@ def for_manager(m, c, s):
 
 
 def tasks():
-    """Worker: only the manager's messages meant for us. The owner talks to the manager, who hands out the work,
+    """Worker / coder: only the manager's messages meant for us. The owner talks to the manager, who hands out the work,
     so owner messages are marked read here."""
+    if AS == 'manager':
+        raise SystemExit('The manager reads the group with `python3 src/manager.py inbox`.')
     c = cfg()
     for m in updates():
         if for_worker(m, c):
             print(json.dumps({k: m[k] for k in ('message_id', 'from', 'from_bot', 'text', 'date', 'reply_to', 'task_ids')}, ensure_ascii=False))
     if not is_night():  # `updates()` stopped the listener: remind the turn to start it again when it ends
-        print('(в края на хода пусни слушателя: `python3 src/telegram.py listening` → при no `python3 src/telegram.py wait` '
-              'във фонов режим; CLAUDE.md, „Слушател в реално време“)')
+        doc = 'coder/CODER.md' if AS == 'coder' else 'CLAUDE.md'
+        print(f'(в края на хода пусни слушателя: `python3 src/telegram.py{flag()} listening` → при no `python3 src/telegram.py{flag()} wait` '
+              f'във фонов режим; {doc}, „Слушател в реално време“)')
 
 
 # ---------- listener ----------
@@ -277,7 +315,7 @@ def stop_listener():
 
 
 def flag():
-    return ' --as manager' if AS == 'manager' else ''
+    return '' if AS == 'worker' else f' --as {AS}'
 
 
 def failfile():
@@ -324,7 +362,7 @@ def wait(seconds=MAX_LISTEN):
     def stopped(*_):
         raise Stopped()
     signal.signal(signal.SIGTERM, stopped)
-    consume = AS == 'worker'  # the worker drops what is not for it anyway; the manager's `inbox` must still see everything
+    consume = AS != 'manager'  # worker/coder drop what is not for them anyway; the manager's `inbox` must still see everything
     code, pending = 2, False
     try:
         while time.time() < end:
@@ -342,10 +380,10 @@ def wait(seconds=MAX_LISTEN):
             fresh = [u for u in ups if u['update_id'] > off]
             for u in fresh:
                 m = row(u, c, me)
-                if m and (for_worker(m, c) if AS == 'worker' else for_manager(m, c, s)):
-                    if AS == 'worker':
+                if m and (for_manager(m, c, s) if AS == 'manager' else for_worker(m, c, s)):
+                    if AS != 'manager':
                         print(f"НОВА ЗАДАЧА в Telegram от {m['from']}: {m['text'][:300]}\n"
-                              '→ изпълни `python3 src/telegram.py tasks` и действай по правилата (Прието → изпълни → Готово); '
+                              f'→ изпълни `python3 src/telegram.py{flag()} tasks` и действай по правилата (Прието → изпълни → Готово); '
                               'в края на хода пусни слушателя пак.')
                     else:
                         print(f"НОВО СЪОБЩЕНИЕ от собственика в Telegram: {m['text'][:300]}\n"
