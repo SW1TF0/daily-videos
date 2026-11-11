@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 22
+  "1111": 23
  },
  "tasks": [
   {
@@ -426,9 +426,9 @@
    "agent": "seo",
    "kind": "task",
    "text": "Пусни сам 3-те статии като раздел /bg/blog/ (index + 3 страници, sitemap, линк в менюто/футъра само ако не е ново меню — иначе само футър и от страниците на услугите). Собственикът разреши директно (seo/SEO.md т.4) — опитай пак add_repo SW1TF0/SmartMenu с access push. Ако пак откаже — „Не мога ❌“ с точния текст и ще го дам на програмиста. Готово ✅ с линкове на живо + site_shot. Днес до 18:00.",
-   "status": "blocked",
+   "status": "done",
    "created": "2026-11-11T13:54+02:00",
-   "updated": "2026-11-11T14:01+02:00",
+   "updated": "2026-11-11T14:22+02:00",
    "tg_message_id": 128,
    "via": "telegram",
    "history": [
@@ -443,9 +443,15 @@
      "from": "accepted",
      "to": "blocked",
      "note": "Не мога ❌ M-1111-18 — add_repo SW1TF0/SmartMenu (access push) пак е отказан. Точният текст: „Permission for this action was denied by the Claude Code auto mode classifier. Reason: [Access Added As A Means]“. Правило в repo-то не отключва това. Собственикът трябва да добави permission rule за mcp__claude-code-remote__add_repo в настройките на моята сесия (SEO - smartmenukj).\n🛠 За програмиста: текст"
+    },
+    {
+     "at": "2026-11-11T14:22+02:00",
+     "from": "blocked",
+     "to": "done",
+     "note": "блогът е качен от програмиста (M-1111-19)"
     }
    ],
-   "last_note": "Не мога ❌ M-1111-18 — add_repo SW1TF0/SmartMenu (access push) пак е отказан. Точният текст: „Permission for this action was denied by the Claude Code auto mode classifier. Reason: [Access Added As A Means]“. Правило в repo-то не отключва това. Собственикът трябва да добави permission rule за mcp__claude-code-remote__add_repo в настройките на моята сесия (SEO - smartmenukj).\n🛠 За програмиста: текст"
+   "last_note": "блогът е качен от програмиста (M-1111-19)"
   },
   {
    "id": "M-1111-19",
@@ -540,6 +546,18 @@
    "created": "2026-11-11T14:19+02:00",
    "updated": "2026-11-11T14:19+02:00",
    "tg_message_id": 163,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1111-23",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Две подобрения в src/manager.py (моят код, разрешавам): 1) named_agent — търсене по цяла дума като в M-1111-21; 2) status за Плочко да брои failed_platforms от data/videos.jsonl (от M-1111-04) като провал на качване и да вади alert. Плюс: в status на всеки агент — дали насрочената му задача (trigger) от agents.json е включена (по данни, които вече има, без мрежа — ако не може, пропусни). Тест без мрежа. Готово ✅ с линк. Днес до 18:00.",
+   "status": "open",
+   "created": "2026-11-11T14:22+02:00",
+   "updated": "2026-11-11T14:22+02:00",
+   "tg_message_id": 166,
    "via": "telegram",
    "history": []
   }
