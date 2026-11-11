@@ -51,7 +51,7 @@
    "coder/CODER.md"
   ],
   "environment": "Programist - daily-videos",
-  "session_id": "session_015VXfwwzur5hU147HmWh2Rd",
+  "session_id": "session_015VXfww8K4qHDQdvaN2sjZY",
   "triggers": {
    "cycle": "trig_01QkqTbEjQ5pNyuSy4G6UMBT"
   },
@@ -61,6 +61,9 @@
    "report": "Прието/Готово по всяка задача, дневен отчет в 22:38, седмичен в неделя"
   },
   "profile": "manager/agents/coder.md",
-  "environment_id": "env_01Qro6BYc5sPtNPF31MZivii"
+  "environment_id": "env_01Qro6BYc5sPtNPF31MZivii",
+  "old": {
+   "session_id": "session_015VXfwwzur5hU147HmWh2Rd"
+  }
  }
 }

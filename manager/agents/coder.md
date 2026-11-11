@@ -16,6 +16,7 @@
 - Променливата `TELEGRAM_CODER_BOT_TOKEN` в средата я добавя собственикът. Докато я няма, сесията не чете групата → задачите и със `send_message`.
 
 - 11.11.2026 12:47: собственикът добави TELEGRAM_CODER_BOT_TOKEN, но текущата сесия не го вижда (влиза при нов старт). Задачите — и със `send_message`.
+- 11.11.2026 12:50: нова сесия `session_015VXfww8K4qHDQdvaN2sjZY` (старата `session_015VXfwwzur5hU147HmWh2Rd`). И в нея `TELEGRAM_CODER_BOT_TOKEN` липсва; в средата „Programist - daily-videos“ има само `TELEGRAM_BOT_TOKEN`, а той е на Плочко (@dailyvideosswitfo_bot, проверено с getMe) — грешно име/ключ. Програмистът не пише от името на Плочко. Собственикът трябва да добави токена на @itclaudeswitfo_bot като `TELEGRAM_CODER_BOT_TOKEN` и да махне `TELEGRAM_BOT_TOKEN` от тази среда.
 
 ## Въпроси и отговори
 (мениджърът записва тук въпросите си и отговорите на агента)
