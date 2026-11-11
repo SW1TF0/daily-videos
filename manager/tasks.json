@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 12
+  "1111": 14
  },
  "tasks": [
   {
@@ -250,22 +250,74 @@
    "agent": "coder",
    "kind": "task",
    "text": "6-те страници за услугите (BG) по текстовете на SEO агента в daily-videos/seo/pages/ (виж README.md там): нови страници в SmartMenu със шаблона на сайта, title/description/H1/canonical/hreflang, FAQPage + Service JSON-LD, линкове от /bg/services.html и между тях, добави ги в sitemap.xml. PR, проверка с site_shot.js. Готово ✅ с PR линк. Днес до 22:00.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T13:23+02:00",
-   "updated": "2026-11-11T13:23+02:00",
+   "updated": "2026-11-11T13:32+02:00",
    "tg_message_id": 96,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T13:32+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-11 — 6 BG страници по текстовете на SEO агента, по шаблона на services.html, с JSON-LD, линкове и sitemap; PR до 22:00."
+    },
+    {
+     "at": "2026-11-11T13:32+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-11 — PR https://github.com/SW1TF0/SmartMenu/pull/18 (слива го собственикът: Merge)\n📄 6 страници: /bg/qr-menu-kardzhali.html, /bg/izrabotka-na-saitove-kardzhali.html, /bg/videonablyudenie-kardzhali.html, /bg/umen-dom-kardzhali.html, /bg/3d-pechat-kardzhali.html, /bg/kompyutaren-servis-kardzhali.html\n🔎 Всяка: title/description/H1 точно по текста на SEO, canonical, hreflang bg, видим "
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-11 — PR https://github.com/SW1TF0/SmartMenu/pull/18 (слива го собственикът: Merge)\n📄 6 страници: /bg/qr-menu-kardzhali.html, /bg/izrabotka-na-saitove-kardzhali.html, /bg/videonablyudenie-kardzhali.html, /bg/umen-dom-kardzhali.html, /bg/3d-pechat-kardzhali.html, /bg/kompyutaren-servis-kardzhali.html\n🔎 Всяка: title/description/H1 точно по текста на SEO, canonical, hreflang bg, видим "
   },
   {
    "id": "M-1111-12",
    "agent": "seo",
    "kind": "task",
    "text": "EN и TR версии на 6-те страници (seo/pages/en/, seo/pages/tr/): естествен английски и турски (не дословен превод), местни думи за Kardzhali/Kırcali, title ≤60, description ≤155, H1, FAQ, URL (/en/…, /tr/…). Само факти. Обнови seo/keywords.md с думите на 3-те езика. Готово ✅ с commit. До утре 12:00.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T13:23+02:00",
-   "updated": "2026-11-11T13:23+02:00",
+   "updated": "2026-11-11T13:32+02:00",
    "tg_message_id": 97,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-11T13:32+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-12 — пиша EN и TR версиите на 6-те страници и обновявам keywords.md, днес. Бележка: английската версия на сайта е в корена (/), а не в /en/, затова URL-ите ще са /qr-menu-kardzhali.html и т.н."
+    },
+    {
+     "at": "2026-11-11T13:32+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-12 — EN и TR версии на 6-те страници · commit dd46e5d\n🇬🇧 https://github.com/SW1TF0/daily-videos/tree/main/seo/pages/en: /qr-menu-kardzhali.html, /web-design-kardzhali.html, /cctv-kardzhali.html, /smart-home-kardzhali.html, /3d-printing-kardzhali.html, /computer-repair-kardzhali.html (EN е в корена, както е на сайта)\n🇹🇷 https://github.com/SW1TF0/daily-videos/tree/main/seo/pages/tr: "
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-12 — EN и TR версии на 6-те страници · commit dd46e5d\n🇬🇧 https://github.com/SW1TF0/daily-videos/tree/main/seo/pages/en: /qr-menu-kardzhali.html, /web-design-kardzhali.html, /cctv-kardzhali.html, /smart-home-kardzhali.html, /3d-printing-kardzhali.html, /computer-repair-kardzhali.html (EN е в корена, както е на сайта)\n🇹🇷 https://github.com/SW1TF0/daily-videos/tree/main/seo/pages/tr: "
+  },
+  {
+   "id": "M-1111-13",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Качи 12-те EN и TR страници по текстовете на SEO в seo/pages/en и seo/pages/tr (таблицата bg↔en↔tr в README за hreflang): същият генератор като BG, hreflang между трите езика, превключвателят EN/TR да води към тях, sitemap +12. По правилата в coder/CODER.md (PR, ако е голяма промяна). Готово ✅ с линк и снимка. Днес до 22:00.",
+   "status": "open",
+   "created": "2026-11-11T13:33+02:00",
+   "updated": "2026-11-11T13:33+02:00",
+   "tg_message_id": 106,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1111-14",
+   "agent": "seo",
+   "kind": "task",
+   "text": "Google Business Profile — готови текстове за копиране (seo/gbp.md, BG): описание до 750 зн. (само факти, с Кърджали), главна и до 9 допълнителни категории, 6-те услуги с по 1–2 изречения и линк към новите страници, 5 първи поста (по 1 на услуга), 10 въпроса и отговора, атрибути + стъпки как собственикът да го създаде/потвърди. Готово ✅ с линк. Днес до 20:00.",
+   "status": "open",
+   "created": "2026-11-11T13:33+02:00",
+   "updated": "2026-11-11T13:33+02:00",
+   "tg_message_id": 107,
    "via": "telegram",
    "history": []
   }
