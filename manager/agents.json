@@ -69,7 +69,7 @@
  },
  "seo": {
   "name": "SEO агентът — сайтовете в Google (smartmenukj.com)",
-  "telegram": "",
+  "telegram": "@seoswitfo_bot",
   "aliases": [
    "seo",
    "сео"
@@ -90,7 +90,7 @@
    "goal": "всички страници на smartmenukj.com индексирани; първа страница в Google за местните услуги (Кърджали)"
   },
   "profile": "manager/agents/seo.md",
-  "status": "подготвя се: чака бот и токен от собственика",
+  "status": "токенът е в средата; чака профила --as seo (M-1111-08)",
   "environment_id": "env_01ReuHqVvmgjk37aHk98vNjr"
  }
 }
