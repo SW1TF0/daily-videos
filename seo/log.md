@@ -11,6 +11,11 @@
 6. Още текст: about (172 думи) и portfolio (207 думи) са тънки; services ~80 думи на услуга. Факти от собственика за проекти в портфолиото.
 7. Линкове: Instagram/TikTok/YouTube био → `https://www.smartmenukj.com/bg/` (през мениджъра към Плочко); местни каталози (собственикът).
 
+## 11.11.2026 15:01 UTC — M-1111-38 / M-1111-41 — Готово
+- ✅ Новите title + description на живо: **15/15** съвпадат с seo/meta-update.md, og:title/og:description също 15/15 (UA Googlebot, без кеш). site_shot `/bg/`: 0 проблема.
+- ✅ sitemaps-submit: Google прочете sitemap-а в 14:54 UTC — **60 адреса**, 0 грешки (броячът „indexed“ на GSC се обновява след дни; меря с inspect).
+- Индексирани (inspect днес): `/bg/`, `/bg/3d-pechat-kardzhali.html`, `/bg/kompyutaren-servis-kardzhali.html`. Следва: inspect-sitemap след 2–3 дни.
+
 ## 11.11.2026 ~15:00 UTC — M-1111-38 (частично) — Search Console + проверка на title/description
 - ✅ sitemaps-submit (живият sitemap: 60 адреса; GSC още показва последното четене 12:47 — 43, pending).
 - ✅ inspect: `/bg/` — **индексирана** (обходена 13:26 UTC), `/bg/3d-pechat-kardzhali.html` — **индексирана** (12:48), `/bg/kompyutaren-servis-kardzhali.html` — **индексирана** (13:15). Сутринта и трите бяха „не е известен“ / „открита – не е индексирана“.
