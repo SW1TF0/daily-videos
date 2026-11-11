@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 23
+  "1111": 24
  },
  "tasks": [
   {
@@ -512,7 +512,7 @@
    "text": "Бъг в src/telegram.py (~ред 354): разпознаването по име търси подниз → „seo“ се хваща в „smartmenu-seo“, „seo-agent“, „SEO - smartmenukj“ и буди SEO агента за чужди съобщения (същото може да стане с „програмист“ в други думи). Търси цяла дума (тирето е част от думата), напр. re.search(r'(?<![\\w-])'+n+r'(?![\\w-])', low). И: съобщения от мениджъра към собственика (reply на негово съобщение) да не будят агентите, освен ако не са с техния @. Тест без мрежа. Готово ✅ с линк. Днес.",
    "status": "done",
    "created": "2026-11-11T14:07+02:00",
-   "updated": "2026-11-11T14:13+02:00",
+   "updated": "2026-11-11T14:29+02:00",
    "tg_message_id": 146,
    "via": "telegram",
    "history": [
@@ -533,31 +533,77 @@
      "from": "done",
      "to": "done",
      "note": "c7a3ea3"
+    },
+    {
+     "at": "2026-11-11T14:29+02:00",
+     "from": "done",
+     "to": "done",
+     "note": "Готово ✅ M-1111-23 — https://github.com/SW1TF0/daily-videos/commit/0daff0d\n1️⃣ named_agent: търсене по цяла дума като в M-1111-21 (и „програмистът/програмиста“; „SEO - smartmenukj“, smartmenu-seo не се броят).\n2️⃣ status → Плочко: missing_platforms_48h — постове, качени без някоя мрежа (failed_platforms), докато не бъдат качени пак успешно; alert „Не са качени в: id → tiktok (Плочко: publish <meta"
     }
    ],
-   "last_note": "c7a3ea3"
+   "last_note": "Готово ✅ M-1111-23 — https://github.com/SW1TF0/daily-videos/commit/0daff0d\n1️⃣ named_agent: търсене по цяла дума като в M-1111-21 (и „програмистът/програмиста“; „SEO - smartmenukj“, smartmenu-seo не се броят).\n2️⃣ status → Плочко: missing_platforms_48h — постове, качени без някоя мрежа (failed_platforms), докато не бъдат качени пак успешно; alert „Не са качени в: id → tiktok (Плочко: publish <meta"
   },
   {
    "id": "M-1111-22",
    "agent": "seo",
    "kind": "task",
    "text": "Google вече е отворен (хостовете са в средата ти). Сега: python3 src/gsc.py sites → sitemaps-submit за https://www.smartmenukj.com/sitemap.xml → sitemaps-list → inspect-sitemap. Готово ✅ с: изпратен ли е sitemap-ът, колко от 43 адреса са индексирани, топ 3 причини за неиндексираните. При грешка — точния текст (без ключове).",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T14:19+02:00",
-   "updated": "2026-11-11T14:19+02:00",
+   "updated": "2026-11-11T14:29+02:00",
    "tg_message_id": 163,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T14:29+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-22 — вече е пуснато преди 10 мин., пращам числата сега."
+    },
+    {
+     "at": "2026-11-11T14:29+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-22 — 📤 sitemap изпратен (пак 12:28 UTC), Google вече го прочете: 43 адреса, 0 грешки, 0 предупреждения. 📊 Индексирани 15 от 43 (inspect-sitemap). Топ 3 причини за неиндексираните 28: 1) „Открита – понастоящем не е индексирана“ (19): новите страници за услуги и статиите, Google ги знае, но още не ги е обходил (нови са от днес); 2) „Не е известен на Google“ (10): камери, сервиз ×3, у"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-22 — 📤 sitemap изпратен (пак 12:28 UTC), Google вече го прочете: 43 адреса, 0 грешки, 0 предупреждения. 📊 Индексирани 15 от 43 (inspect-sitemap). Топ 3 причини за неиндексираните 28: 1) „Открита – понастоящем не е индексирана“ (19): новите страници за услуги и статиите, Google ги знае, но още не ги е обходил (нови са от днес); 2) „Не е известен на Google“ (10): камери, сервиз ×3, у"
   },
   {
    "id": "M-1111-23",
    "agent": "coder",
    "kind": "task",
    "text": "Две подобрения в src/manager.py (моят код, разрешавам): 1) named_agent — търсене по цяла дума като в M-1111-21; 2) status за Плочко да брои failed_platforms от data/videos.jsonl (от M-1111-04) като провал на качване и да вади alert. Плюс: в status на всеки агент — дали насрочената му задача (trigger) от agents.json е включена (по данни, които вече има, без мрежа — ако не може, пропусни). Тест без мрежа. Готово ✅ с линк. Днес до 18:00.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T14:22+02:00",
-   "updated": "2026-11-11T14:22+02:00",
+   "updated": "2026-11-11T14:29+02:00",
    "tg_message_id": 166,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-11T14:29+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-23 — named_agent по цяла дума, failed_platforms → alert за Плочко; trigger — само ако има данни без мрежа. Тест без мрежа, днес."
+    },
+    {
+     "at": "2026-11-11T14:29+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-23 — https://github.com/SW1TF0/daily-videos/commit/0daff0d\n1️⃣ named_agent: търсене по цяла дума като в M-1111-21 (и „програмистът/програмиста“; „SEO - smartmenukj“, smartmenu-seo не се броят).\n2️⃣ status → Плочко: missing_platforms_48h — постове, качени без някоя мрежа (failed_platforms), докато не бъдат качени пак успешно; alert „Не са качени в: id → tiktok (Плочко: publish <meta"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-23 — https://github.com/SW1TF0/daily-videos/commit/0daff0d\n1️⃣ named_agent: търсене по цяла дума като в M-1111-21 (и „програмистът/програмиста“; „SEO - smartmenukj“, smartmenu-seo не се броят).\n2️⃣ status → Плочко: missing_platforms_48h — постове, качени без някоя мрежа (failed_platforms), докато не бъдат качени пак успешно; alert „Не са качени в: id → tiktok (Плочко: publish <meta"
+  },
+  {
+   "id": "M-1111-24",
+   "agent": "seo",
+   "kind": "task",
+   "text": "Вътрешни линкове: провери със site_shot/HTML колко линка водят към всяка от новите 18 страници и 3 статии (от началните /, /bg/, /tr/, services, блога, другите услуги). Списък с липсващите → дай го като готови промени (кой файл, кой текст на линк, къде) в seo/log.md и в Готово ✅ — програмистът ги прави веднага. Днес до 18:00.",
+   "status": "open",
+   "created": "2026-11-11T14:29+02:00",
+   "updated": "2026-11-11T14:29+02:00",
+   "tg_message_id": 174,
    "via": "telegram",
    "history": []
   }
