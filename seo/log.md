@@ -3,13 +3,20 @@
 Най-новото е най-отгоре.
 
 ## Следващи стъпки (по приоритет)
-1. **Собственикът:** Google Search Console — домейн `smartmenukj.com`, изпрати `https://www.smartmenukj.com/sitemap.xml`, „Проверка на URL“ → „Заявка за индексиране“ за `/bg/`, `/bg/services.html`, `/bg/contact.html`. Даде ли достъп/данни — меря индексирането с числа.
+1. ✅ Search Console свързан, sitemap изпратен (11.11). По желание собственикът: „Проверка на URL“ → „Заявка за индексиране“ за `/bg/`, `/tr/` и новите страници за услуги (няма API за това). Аз меря с `inspect-sitemap` на 2–3 дни.
 2. **Собственикът:** Google Business Profile „SmartMenuKJ“ (ул. Джебелска 2, Кърджали): категории, 6-те услуги, телефон, линк към `/bg/`, снимки. Най-силният сигнал за „… Кърджали“ в картите.
 3. Страниците за услугите: текстовете (BG) са в `seo/pages/` (M-1111-09) → програмистът ги прави на страници; после EN/TR версии и проверка на живо със `site_shot.js`.
 4. JSON-LD: FAQPage за FAQ на началната; `openingHours` и `geo` (само ако собственикът даде часове/координати); Service URL-ите в BG/TR версиите да сочат към `/bg/…`, `/tr/…`.
 5. H1 на началната (`Технологии, на които бизнесът ви може да разчита.`) без услуга и град → да съдържа „Кърджали“ (напр. подзаглавие/h1 „Сайтове, камери, умен дом и QR менюта в Кърджали“).
 6. Още текст: about (172 думи) и portfolio (207 думи) са тънки; services ~80 думи на услуга. Факти от собственика за проекти в портфолиото.
 7. Линкове: Instagram/TikTok/YouTube био → `https://www.smartmenukj.com/bg/` (през мениджъра към Плочко); местни каталози (собственикът).
+
+## 11.11.2026 — Search Console свързан (service account, свойство https://www.smartmenukj.com/, siteOwner)
+- Хостове oauth2/searchconsole/www.googleapis.com добавени в средата (одобрено).
+- ✅ sitemap.xml изпратен 12:18 UTC; 0 грешки. GSC още помни старото четене (21 URL, pending) — живият sitemap има 43 URL.
+- inspect-sitemap: **15 от 43 индексирани** (EN начална, services EN/BG, about ×3, privacy ×3, terms EN/BG, contact BG/TR, portfolio TR, blog/qr-menu-kak-raboti).
+- Не индексирани: 19 „открита – не е индексирана“ (повечето нови страници за услуги, tr/terms, 2 статии), 10 „не е известен на Google“ (cctv, umen-dom BG, компютърен сервис ×3, bg/blog/ …). Сред неиндексираните са и /bg/ и /tr/ началните.
+- Следва: повторен inspect-sitemap след 2–3 дни; вътрешни линкове от началната/services към новите страници; GBP от собственика.
 
 ## 11.11.2026 — M-1111-18 — пускане на /bg/blog/
 ❌ add_repo SW1TF0/SmartMenu (push) отказан пак: „denied by the Claude Code auto mode classifier. Reason: [Access Added As A Means]“. Предадено на мениджъра → програмиста (текстове в seo/articles/, генератор по модела на tools/build-service-pages.mjs). За собственика: permission rule за mcp__claude-code-remote__add_repo в сесията на SEO.
