@@ -7,7 +7,7 @@
 Тест: фалшив curl в копие на repo-то, 17 сценария (верен токен: setup/tasks/send/wait се събужда на задача за seo; чужд токен на Плочко/програмиста → отказ само с getMe; липсващ токен; невалиден; без seo.telegram; задачата за seo не стига до coder; coder/worker със seo токен → отказ; нощ 22:20; manager.py status). На живо: `--as coder setup` е ОК.
 
 ## 11.11.2026 — M-1111-07 — SEO/индексиране на smartmenukj.com
-✅ PR https://github.com/SW1TF0/SmartMenu/pull/16 (чака ОК за сливане): sitemap.xml — 21 URL (7 страници × EN/BG/TR), lastmod 2026-11-04; robots.txt без Disallow за login/account/admin (те имат noindex, а блокът пречи на Google да го види); README бележка.
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/16 (слят от мениджъра; на живо проверено 11.11): sitemap.xml — 21 URL (7 страници × EN/BG/TR), lastmod 2026-11-04; robots.txt без Disallow за login/account/admin (те имат noindex, а блокът пречи на Google да го види); README бележка.
 Проверено: canonical = loc, hreflang = <head>, без noindex (21/21); site_shot.js на живо — 0 счупени връзки, всички тагове налични. smartmenukj.com → 301 → www (CNAME), затова URL-ите остават с www.
 Поправен src/site_shot.js: проверката на връзки (ctx.request) не минаваше през HTTPS_PROXY → всяка връзка излизаше ERR.
 Средата: добавени хостове www.smartmenukj.com и smartmenukj.com. contact.js гърми само тук, защото www.gstatic.com (Firebase) е блокиран в средата.
