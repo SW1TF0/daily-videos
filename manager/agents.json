@@ -126,5 +126,28 @@
   "old": {
    "sessions": "session_015VXfww6UvfFUcFjdBy592W (архивирана, без токен)"
   }
+ },
+ "scout": {
+  "name": "Разузнавачът — нови потенциални клиенти в Кърджали",
+  "telegram": "",
+  "aliases": [
+   "разузнавач",
+   "scout"
+  ],
+  "repo": "SW1TF0/daily-videos",
+  "instructions": [
+   "scout/SCOUT.md"
+  ],
+  "environment": "Scout - smartmenukj",
+  "session_id": "",
+  "triggers": {},
+  "schedule": "цикъл всеки ден в 11:13; слушател",
+  "check": "",
+  "targets": {
+   "goal": "≥20 нови проверени потенциални клиенти седмично"
+  },
+  "profile": "manager/agents/scout.md",
+  "status": "подготвя се: чака бот и токен",
+  "environment_id": "env_01Fcn4qKMoyabq4etxvKb6GS"
  }
 }

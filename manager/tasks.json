@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 39
+  "1111": 40
  },
  "tasks": [
   {
@@ -982,6 +982,18 @@
    "created": "2026-11-11T16:55+02:00",
    "updated": "2026-11-11T16:55+02:00",
    "tg_message_id": 244,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1111-40",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Нов агент Разузнавач (scout/SCOUT.md, agents.json → scout): профил --as scout в src/telegram.py (TELEGRAM_SCOUT_BOT_TOKEN, state scout/telegram.json, last_cycle 11:13 → слушателят да върви през деня до ~22:00, names ('разузнавач','scout'), ботът от agents.json → scout.telegram, с предпазителя) и status_scout в manager.py (задачи, introduced, последен commit в scout/, брой нови в scout/prospects.jsonl за 7 дни). Като при sales. След M-1111-37. Готово ✅ с линк.",
+   "status": "open",
+   "created": "2026-11-11T16:58+02:00",
+   "updated": "2026-11-11T16:58+02:00",
+   "tg_message_id": 252,
    "via": "telegram",
    "history": []
   }
