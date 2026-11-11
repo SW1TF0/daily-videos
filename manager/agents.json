@@ -82,9 +82,9 @@
    "seo/SEO.md"
   ],
   "environment": "SEO - smartmenukj",
-  "session_id": "session_015VXfwyUiTt9ugEsuB7XF6F",
+  "session_id": "session_015VXfwvpCPhn9UJYmZXe9yb",
   "triggers": {
-   "cycle": "trig_01HGPr3bdMi6PNoKTjVPCf4b"
+   "cycle": "trig_01QKBVWcNrQmZpVRnBr3FHRv"
   },
   "schedule": "цикъл веднъж дневно в 10:17; слушател в реално време за задачите; седмичен отчет в понеделник",
   "check": "seo",
@@ -95,7 +95,8 @@
   "status": "работи (представи се 11.11 13:15)",
   "environment_id": "env_01ReuHqVvmgjk37aHk98vNjr",
   "old": {
-   "sessions": "session_015VXfwwdpbQHNhHENNAdrcT (архивирана, без токен)"
+   "sessions": "session_015VXfwwdpbQHNhHENNAdrcT, session_015VXfwyUiTt9ugEsuB7XF6F (архивирани)",
+   "trigger": "trig_01HGPr3bdMi6PNoKTjVPCf4b (изключена)"
   }
  }
 }
