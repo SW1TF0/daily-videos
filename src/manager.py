@@ -327,7 +327,27 @@ def status_sales(key, ag):
     return out
 
 
-CHECKS = {'daily-videos': status_daily_videos, 'coder': status_coder, 'seo': status_seo, 'sales': status_sales}
+def status_scout(key, ag):
+    """Scout: the common checks plus the prospects it found (scout/prospects.jsonl; the last row of an id wins)."""
+    out = status_bot_agent(key, ag, 'scout', 'Разузнавачът')
+    since = (now().date() - dt.timedelta(days=7)).isoformat()
+    rows = {}
+    for r in read_jsonl(os.path.join(ROOT, 'scout', 'prospects.jsonl')):
+        if r.get('id'):
+            rows[r['id']] = r
+    week = [r for r in rows.values() if str(r.get('date', '')) >= since]
+    by_status = {}
+    for r in rows.values():
+        by_status[r.get('status', 'new')] = by_status.get(r.get('status', 'new'), 0) + 1
+    out['prospects'] = {'total': len(rows), 'new_7d': len(week), 'by_status': by_status,
+                        'waiting_for_sales': sum(1 for r in rows.values() if r.get('status', 'new') == 'new' and (r.get('score') or 0) >= 4)}
+    goal = 20  # agents.json targets.goal: >= 20 new checked prospects a week
+    if now().weekday() == 6 and len(week) < goal:
+        out['alerts'].append(f'Нови потенциални клиенти за 7 дни: {len(week)} (целта е ≥{goal})')
+    return out
+
+
+CHECKS = {'daily-videos': status_daily_videos, 'coder': status_coder, 'seo': status_seo, 'sales': status_sales, 'scout': status_scout}
 
 
 def status():

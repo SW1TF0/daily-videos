@@ -2,6 +2,10 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 11.11.2026 — M-1111-40 — профил --as scout и status_scout
+✅ src/telegram.py --as scout (TELEGRAM_SCOUT_BOT_TOKEN, scout/telegram.json, слушателят върви през деня и спи от ~21:57 (last_cycle 22:00, цикълът е в 11:13), думи „разузнавач(ът/а)“/„scout“ като цяла дума; ботът само от agents.json → scout.telegram, с предпазителя). manager.py status_scout: общите проверки + scout/prospects.jsonl (последният ред на id печели): общо, нови за 7 дни, по статус, чакащи за продажби (new и score ≥4); в неделя alert, ако за 7 дни са под 20. check „scout“ в регистъра.
+Тест без мрежа в копие: без scout.telegram → отказ; setup/tasks/send; чужди токени → отказ; нощ от 21:58; разпознаване по име; status_scout с 4 фалшиви реда.
+
 ## 11.11.2026 — M-1111-37 — нови title/description на 15 страници
 ✅ PR https://github.com/SW1TF0/SmartMenu/pull/26 (слях го сам, на живо): текстовете от seo/meta-update.md (парснати програмно) — EN в HTML, BG/TR в BG_PAGES/TR_PAGES; og:title/og:description със същия текст.
 Тест: 15 страници × 4 тага сравнени с таблицата — 0 разлики; site_shot 15 локално + 4 на живо — 0; на живо заглавията проверени с curl.

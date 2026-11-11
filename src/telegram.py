@@ -16,12 +16,12 @@ python3 src/telegram.py wait                     # listener: waits without AI co
 Add `--as manager` (e.g. `python3 src/telegram.py --as manager send "..."`) to act as the manager bot;
 the manager reads the group with `python3 src/manager.py inbox`.
 Add `--as coder` to act as the coder bot (`tasks`, `send`, `reply`, `listening`, `wait`, `setup` = check the bot),
-`--as seo` / `--as sales` the same for the SEO and sales agents' bots (@username from manager/agents.json → seo/sales.telegram).
+`--as seo` / `--as sales` / `--as scout` the same for the SEO, sales and scout agents' bots (@username from manager/agents.json → <agent>.telegram).
 
 Each token is checked with getMe (cached) against the agent's bot in manager/agents.json: a token of another bot
 stops with a clear error before anything is sent or read.
 Tokens come from the environment (TELEGRAM_BOT_TOKEN for the worker, TELEGRAM_MANAGER_BOT_TOKEN for the manager,
-TELEGRAM_CODER_BOT_TOKEN for the coder, TELEGRAM_SEO_BOT_TOKEN for the SEO agent, TELEGRAM_SALES_BOT_TOKEN for the sales agent, set in each agent's environment settings) and are never printed or written to the repo.
+TELEGRAM_CODER_BOT_TOKEN for the coder, TELEGRAM_SEO_BOT_TOKEN for the SEO agent, TELEGRAM_SALES_BOT_TOKEN for the sales agent, TELEGRAM_SCOUT_BOT_TOKEN for the scout, set in each agent's environment settings) and are never printed or written to the repo.
 A task from the manager names its agent in the header ("📋 Задача M-… → @bot"): only that agent takes it.
 In a basic group message ids are per bot: refer to tasks by their id (M-1111-01) in the text, never by another bot's message id.
 
@@ -48,8 +48,11 @@ PROFILES = {
     # cycles at 08:41 and 16:41: after the last one the listener sleeps until the morning
     'sales': {'env': 'TELEGRAM_SALES_BOT_TOKEN', 'state': os.path.join(ROOT, 'sales', 'telegram.json'), 'last_cycle': (16, 41),
               'names': ('продажби', 'sales')},
+    # one daily cycle at 11:13; the listener chains itself through the day and sleeps from 22:00
+    'scout': {'env': 'TELEGRAM_SCOUT_BOT_TOKEN', 'state': os.path.join(ROOT, 'scout', 'telegram.json'), 'last_cycle': (22, 0),
+              'names': ('разузнавач(?:ът|а)?', 'scout')},
 }
-DOCS = {'worker': 'CLAUDE.md', 'coder': 'coder/CODER.md', 'seo': 'seo/SEO.md', 'sales': 'sales/SALES.md'}
+DOCS = {'worker': 'CLAUDE.md', 'coder': 'coder/CODER.md', 'seo': 'seo/SEO.md', 'sales': 'sales/SALES.md', 'scout': 'scout/SCOUT.md'}
 AS = 'worker'
 if '--as' in sys.argv:
     i = sys.argv.index('--as')
@@ -84,7 +87,7 @@ class WrongBot(SystemExit):
 
 
 EXPECTED_BOT = {'worker': ('plochko', '@dailyvideosswitfo_bot'), 'manager': ('_manager', '@managerswitfo_bot'),
-                'coder': ('coder', '@itclaudeswitfo_bot'), 'seo': ('seo', None), 'sales': ('sales', None)}  # None: only from agents.json
+                'coder': ('coder', '@itclaudeswitfo_bot'), 'seo': ('seo', None), 'sales': ('sales', None), 'scout': ('scout', None)}  # None: only from agents.json
 ME_CACHE = '/tmp/daily-videos-telegram-getme.json'  # sha256(token)[:16] -> @username; never the token itself
 _me = {}
 
