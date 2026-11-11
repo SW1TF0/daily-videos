@@ -11,6 +11,10 @@
 6. Още текст: about (172 думи) и portfolio (207 думи) са тънки; services ~80 думи на услуга. Факти от собственика за проекти в портфолиото.
 7. Линкове: Instagram/TikTok/YouTube био → `https://www.smartmenukj.com/bg/` (през мениджъра към Плочко); местни каталози (собственикът).
 
+## 11.11.2026 — M-1111-12 — EN и TR версии на 6-те страници
+✅ `seo/pages/en/` (qr-menu, web-design, cctv, smart-home, 3d-printing, computer-repair) и `seo/pages/tr/` (qr-menu, web-sitesi, guvenlik-kamerasi, akilli-ev, 3d-baski, bilgisayar-servisi). Текстът е естествен, не дословен; взимах думите от EN/TR версиите на services/index на сайта. Kardzhali / Kırcaali (както е на сайта). Title ≤60, description ≤155, H1, 4 FAQ, вътрешни линкове в езика. EN е в корена (/…), защото сайтът няма /en/. README: таблица bg↔en↔tr за hreflang. keywords.md: думи на 3 езика (12 EN, 14 TR).
+Остава: програмистът → страници; проверка на живо.
+
 ## 11.11.2026 — M-1111-09 — текстове за 6 страници на услугите (BG)
 ✅ `seo/pages/`: qr-menu, saitove, videonablyudenie, umen-dom, 3d-pechat, kompyutaren-servis (+ README с указания за програмиста: шаблон, canonical, FAQPage/Service/Breadcrumb JSON-LD, sitemap, линкове от services и началната). По 350–415 думи, title ≤60 и description ≤155 знака с „Кърджали“, H1, 4–5 FAQ, вътрешни линкове между страниците. Факти само от BG services/index/about/contact (вкл. текстовете „За дома“) и playbook.md; без цени и нови клиенти (примерите са само проектите, които вече са на сайта).
 Остава: програмистът → страници; EN/TR; проверка на живо.
