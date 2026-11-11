@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 41
+  "1111": 42
  },
  "tasks": [
   {
@@ -966,7 +966,7 @@
    "text": "След като програмистът качи новите title/description (M-1111-37): провери ги на живо на 15-те страници, gsc.py sitemaps-submit (sitemap вече е 60 адреса), inspect на /bg/ и 2 нови услуги. Готово ✅ с числата. Днес.",
    "status": "done",
    "created": "2026-11-11T16:54+02:00",
-   "updated": "2026-11-11T16:55+02:00",
+   "updated": "2026-11-11T17:01+02:00",
    "tg_message_id": 237,
    "via": "telegram",
    "history": [
@@ -981,9 +981,15 @@
      "from": "accepted",
      "to": "done",
      "note": "⏳ M-1111-38 (междинно) — ✅ sitemap изпратен (живият е 60 адреса). ✅ Индексирани вече: /bg/ (обходена днес 13:26 UTC), /bg/3d-pechat-kardzhali.html и /bg/kompyutaren-servis-kardzhali.html — сутринта и трите бяха извън индекса. ❌ Новите title/description (M-1111-37) още НЕ са на живо: 0 от 15 страници съвпадат с seo/meta-update.md. Щом програмистът ги качи — пишете ми и проверявам пак + Готово ✅."
+    },
+    {
+     "at": "2026-11-11T17:01+02:00",
+     "from": "done",
+     "to": "done",
+     "note": "Готово ✅ M-1111-41 / M-1111-38 — ✅ новите title + description на живо 15/15 (и og 15/15), site_shot /bg/ без проблеми. 📤 sitemap изпратен; Google го прочете в 14:54 UTC: 60 адреса, 0 грешки. 📊 Индексирани вече: /bg/, /bg/3d-pechat-kardzhali.html, /bg/kompyutaren-servis-kardzhali.html (сутринта бяха извън индекса). Следва: inspect-sitemap на всички 60 след 2–3 дни. 📝 https://github.com/SW1TF0/daily"
     }
    ],
-   "last_note": "⏳ M-1111-38 (междинно) — ✅ sitemap изпратен (живият е 60 адреса). ✅ Индексирани вече: /bg/ (обходена днес 13:26 UTC), /bg/3d-pechat-kardzhali.html и /bg/kompyutaren-servis-kardzhali.html — сутринта и трите бяха извън индекса. ❌ Новите title/description (M-1111-37) още НЕ са на живо: 0 от 15 страници съвпадат с seo/meta-update.md. Щом програмистът ги качи — пишете ми и проверявам пак + Готово ✅."
+   "last_note": "Готово ✅ M-1111-41 / M-1111-38 — ✅ новите title + description на живо 15/15 (и og 15/15), site_shot /bg/ без проблеми. 📤 sitemap изпратен; Google го прочете в 14:54 UTC: 60 адреса, 0 грешки. 📊 Индексирани вече: /bg/, /bg/3d-pechat-kardzhali.html, /bg/kompyutaren-servis-kardzhali.html (сутринта бяха извън индекса). Следва: inspect-sitemap на всички 60 след 2–3 дни. 📝 https://github.com/SW1TF0/daily"
   },
   {
    "id": "M-1111-39",
@@ -1028,10 +1034,36 @@
    "agent": "seo",
    "kind": "task",
    "text": "Новите title/description са на живо от ~15:05 UTC (програмистът провери 15/15). Довърши M-1111-38: провери ги, sitemaps-submit, Готово ✅.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-11T17:00+02:00",
-   "updated": "2026-11-11T17:00+02:00",
+   "updated": "2026-11-11T17:01+02:00",
    "tg_message_id": 258,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-11T17:01+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-41 — проверявам 15-те страници сега."
+    },
+    {
+     "at": "2026-11-11T17:01+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-41 / M-1111-38 — ✅ новите title + description на живо 15/15 (и og 15/15), site_shot /bg/ без проблеми. 📤 sitemap изпратен; Google го прочете в 14:54 UTC: 60 адреса, 0 грешки. 📊 Индексирани вече: /bg/, /bg/3d-pechat-kardzhali.html, /bg/kompyutaren-servis-kardzhali.html (сутринта бяха извън индекса). Следва: inspect-sitemap на всички 60 след 2–3 дни. 📝 https://github.com/SW1TF0/daily"
+    }
+   ],
+   "last_note": "Готово ✅ M-1111-41 / M-1111-38 — ✅ новите title + description на живо 15/15 (и og 15/15), site_shot /bg/ без проблеми. 📤 sitemap изпратен; Google го прочете в 14:54 UTC: 60 адреса, 0 грешки. 📊 Индексирани вече: /bg/, /bg/3d-pechat-kardzhali.html, /bg/kompyutaren-servis-kardzhali.html (сутринта бяха извън индекса). Следва: inspect-sitemap на всички 60 след 2–3 дни. 📝 https://github.com/SW1TF0/daily"
+  },
+  {
+   "id": "M-1111-42",
+   "agent": "seo",
+   "kind": "task",
+   "text": "Безплатни каталози: намери 10 безплатни български бизнес каталога/карти (напр. Google, Bing Places, Apple Business Connect, bg каталози, местни за Кърджали), които дават линк или видимост; за всеки — линк за регистрация, какво иска, и готов текст (име, описание 250 зн., категории, адрес ул. Джебелска 2, телефон +359 88 534 8666, сайт) в seo/citations.md. Собственикът ги регистрира. Готово ✅ с линк. Утре до 12:00.",
+   "status": "open",
+   "created": "2026-11-11T17:02+02:00",
+   "updated": "2026-11-11T17:02+02:00",
+   "tg_message_id": 265,
    "via": "telegram",
    "history": []
   }
