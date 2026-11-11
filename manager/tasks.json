@@ -652,9 +652,9 @@
    "agent": "coder",
    "kind": "task",
    "text": "Нов агент за продажби (sales/SALES.md, agents.json → sales): профил --as sales в src/telegram.py (TELEGRAM_SALES_BOT_TOKEN, state sales/telegram.json, last_cycle 16:41, names ('продажби','sales'), ботът от agents.json → sales.telegram, с предпазителя) и status_sales в src/manager.py (задачи, introduced, последен commit в sales/, брой нови/чакащи в sales/leads.jsonl), check 'sales'. Като при seo (M-1111-08). Тест без мрежа. Готово ✅ с линк. След M-1111-25, днес.",
-   "status": "accepted",
+   "status": "done",
    "created": "2026-11-11T14:43+02:00",
-   "updated": "2026-11-11T14:43+02:00",
+   "updated": "2026-11-11T14:46+02:00",
    "tg_message_id": 191,
    "via": "telegram",
    "history": [
@@ -663,21 +663,35 @@
      "from": "open",
      "to": "accepted",
      "note": "Прието ✅ M-1111-26 — профил --as sales + status_sales (с лийдовете) като при SEO; тест без мрежа, днес."
+    },
+    {
+     "at": "2026-11-11T14:46+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-26 — https://github.com/SW1TF0/daily-videos/commit/14a1527\n🤖 python3 src/telegram.py --as sales …: TELEGRAM_SALES_BOT_TOKEN, sales/telegram.json, думи „продажби“/„sales“ (като цяла дума), слушателят спи след цикъла в 16:41. Ботът се взима само от agents.json → sales.telegram — сега е празно, затова всичко отказва с ясна грешка, докато не го попълниш. Предпазителят срещу чужд токен "
     }
    ],
-   "last_note": "Прието ✅ M-1111-26 — профил --as sales + status_sales (с лийдовете) като при SEO; тест без мрежа, днес."
+   "last_note": "Готово ✅ M-1111-26 — https://github.com/SW1TF0/daily-videos/commit/14a1527\n🤖 python3 src/telegram.py --as sales …: TELEGRAM_SALES_BOT_TOKEN, sales/telegram.json, думи „продажби“/„sales“ (като цяла дума), слушателят спи след цикъла в 16:41. Ботът се взима само от agents.json → sales.telegram — сега е празно, затова всичко отказва с ясна грешка, докато не го попълниш. Предпазителят срещу чужд токен "
   },
   {
    "id": "M-1111-27",
    "agent": "seo",
    "kind": "task",
    "text": "Програмистът оправи вътрешните линкове (M-1111-25, PR №22 на живо). Обходи пак 43-те адреса (цел ≥10 входящи на услуга), gsc.py sitemaps-submit, и Готово ✅ с новите числа преди/след. Днес до 18:00.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-11T14:44+02:00",
-   "updated": "2026-11-11T14:44+02:00",
+   "updated": "2026-11-11T14:46+02:00",
    "tg_message_id": 194,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T14:46+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-27 — обхождам пак 43-те адреса (HTML + рендиран футър), после sitemaps-submit; до 30 мин."
+    }
+   ],
+   "last_note": "Прието ✅ M-1111-27 — обхождам пак 43-те адреса (HTML + рендиран футър), после sitemaps-submit; до 30 мин."
   }
  ]
 }

@@ -111,15 +111,20 @@
    "sales/SALES.md"
   ],
   "environment": "Sales - smartmenukj",
-  "session_id": "",
-  "triggers": {},
+  "session_id": "session_015VXfwxdm9hGsrdUdRtus2m",
+  "triggers": {
+   "cycle": "trig_012zbdG1JFHDtf5iqkutfkbD"
+  },
   "schedule": "цикъл 08:41 и 16:41; слушател за задачите",
   "check": "sales",
   "targets": {
    "goal": "0 запитвания без отговор; оферта до 24 ч."
   },
   "profile": "manager/agents/sales.md",
-  "status": "подготвя се: чака бот, токен и ценоразпис от собственика",
-  "environment_id": "env_01HpBTELGCTzx8g1WPaThWq2"
+  "status": "пуснат 11.11 14:47",
+  "environment_id": "env_01HpBTELGCTzx8g1WPaThWq2",
+  "old": {
+   "sessions": "session_015VXfww6UvfFUcFjdBy592W (архивирана, без токен)"
+  }
  }
 }
