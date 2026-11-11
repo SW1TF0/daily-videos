@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 38
+  "1111": 39
  },
  "tasks": [
   {
@@ -926,22 +926,50 @@
    "agent": "coder",
    "kind": "task",
    "text": "Смени title, meta description и og/twitter на 15-те страници по таблицата seo/meta-update.md (точно текстовете от колона „ново“). Сам на живо по правилото, site_shot. Готово ✅ с линк. Днес.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-11T16:53+02:00",
-   "updated": "2026-11-11T16:53+02:00",
+   "updated": "2026-11-11T16:55+02:00",
    "tg_message_id": 236,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-11T16:55+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-37 — title/description/og на 15-те страници по seo/meta-update.md, през източниците (BG_PAGES/TR_PAGES, content/*.md); на живо днес."
+    }
+   ],
+   "last_note": "Прието ✅ M-1111-37 — title/description/og на 15-те страници по seo/meta-update.md, през източниците (BG_PAGES/TR_PAGES, content/*.md); на живо днес."
   },
   {
    "id": "M-1111-38",
    "agent": "seo",
    "kind": "task",
    "text": "След като програмистът качи новите title/description (M-1111-37): провери ги на живо на 15-те страници, gsc.py sitemaps-submit (sitemap вече е 60 адреса), inspect на /bg/ и 2 нови услуги. Готово ✅ с числата. Днес.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-11T16:54+02:00",
-   "updated": "2026-11-11T16:54+02:00",
+   "updated": "2026-11-11T16:55+02:00",
    "tg_message_id": 237,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-11T16:55+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1111-38 — проверявам 15-те страници на живо, sitemaps-submit и inspect на /bg/ + 2 услуги; до 30 мин."
+    }
+   ],
+   "last_note": "Прието ✅ M-1111-38 — проверявам 15-те страници на живо, sitemaps-submit и inspect на /bg/ + 2 услуги; до 30 мин."
+  },
+  {
+   "id": "M-1111-39",
+   "agent": "sales",
+   "kind": "task",
+   "text": "Докато чакаме пощата и цените: 1) шаблони за отговор на запитване по всяка от 6-те услуги (BG + TR + EN, 2–3 уточняващи въпроса, телефон +359 88 534 8666, „писмена оферта до 24 ч.“) в sales/templates/; 2) шаблон за писмена оферта (без цени — място „цена: по ценоразпис/след оглед“); 3) sales/faq.md — отговори на честите въпроси само от сайта. Готово ✅ с линк. Днес.",
+   "status": "open",
+   "created": "2026-11-11T16:55+02:00",
+   "updated": "2026-11-11T16:55+02:00",
+   "tg_message_id": 244,
    "via": "telegram",
    "history": []
   }
