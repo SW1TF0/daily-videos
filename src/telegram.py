@@ -17,6 +17,8 @@ Add `--as manager` (e.g. `python3 src/telegram.py --as manager send "..."`) to a
 the manager reads the group with `python3 src/manager.py inbox`.
 Add `--as coder` to act as the coder bot (`tasks`, `send`, `reply`, `listening`, `wait`, `setup` = check the bot).
 
+Each token is checked with getMe (cached) against the agent's bot in manager/agents.json: a token of another bot
+stops with a clear error before anything is sent or read.
 Tokens come from the environment (TELEGRAM_BOT_TOKEN for the worker, TELEGRAM_MANAGER_BOT_TOKEN for the manager,
 TELEGRAM_CODER_BOT_TOKEN for the coder, set in each agent's environment settings) and are never printed or written to the repo.
 A task from the manager names its agent in the header ("📋 Задача M-… → @bot"): only that agent takes it.
@@ -59,10 +61,69 @@ def token(profile=None):
     t = os.environ.get(p['env'], '').strip()
     if not t and (profile or AS) == 'manager' and os.environ.get('TELEGRAM_BOT_TOKEN', '').strip():
         FALLBACK = True
-        return os.environ['TELEGRAM_BOT_TOKEN'].strip()
+        t = os.environ['TELEGRAM_BOT_TOKEN'].strip()
+        check_bot(t, 'worker', 'TELEGRAM_BOT_TOKEN')  # the fallback sends through the worker bot on purpose
+        return t
     if not t:
         raise SystemExit(f"{p['env']} is not set: the owner adds it in the environment settings (Environment variables).")
+    check_bot(t, profile or AS, p['env'])
     return t
+
+
+class WrongBot(SystemExit):
+    """The token belongs to another agent's bot. Never retried: reading with it would steal that agent's updates."""
+
+
+EXPECTED_BOT = {'worker': ('plochko', '@dailyvideosswitfo_bot'), 'manager': ('_manager', '@managerswitfo_bot'),
+                'coder': ('coder', '@itclaudeswitfo_bot')}
+ME_CACHE = '/tmp/daily-videos-telegram-getme.json'  # sha256(token)[:16] -> @username; never the token itself
+_me = {}
+
+
+def expected_bot(profile):
+    key, default = EXPECTED_BOT[profile]
+    try:
+        a = json.load(open(os.path.join(ROOT, 'manager', 'agents.json'), encoding='utf-8')).get(key) or {}
+    except (OSError, ValueError):
+        a = {}
+    return (a.get('telegram') or default).lower()
+
+
+def bot_username(tok):
+    """getMe for this token, cached in memory and in /tmp (a token's bot never changes). None if Telegram is unreachable."""
+    import hashlib
+    h = hashlib.sha256(tok.encode()).hexdigest()[:16]
+    if h not in _me:
+        try:
+            _me.update(json.load(open(ME_CACHE, encoding='utf-8')))
+        except (OSError, ValueError):
+            pass
+    if h in _me:
+        return _me[h]
+    r = subprocess.run(['curl', '-sS', '--max-time', '20', f'https://api.telegram.org/bot{tok}/getMe'], capture_output=True, text=True)
+    try:
+        d = json.loads(r.stdout)
+    except json.JSONDecodeError:
+        return None  # network hiccup: not verified now, the next call checks again
+    if not d.get('ok'):
+        raise SystemExit(f"Telegram getMe: {d.get('description', 'error')} (the token is not valid)")
+    _me[h] = '@' + d['result']['username'].lower()
+    try:
+        cache = json.load(open(ME_CACHE, encoding='utf-8')) if os.path.exists(ME_CACHE) else {}
+        cache[h] = _me[h]
+        with open(ME_CACHE + '.tmp', 'w', encoding='utf-8') as f:
+            json.dump(cache, f)
+        os.replace(ME_CACHE + '.tmp', ME_CACHE)
+    except (OSError, ValueError):
+        pass
+    return _me[h]
+
+
+def check_bot(tok, profile, env):
+    got, want = bot_username(tok), expected_bot(profile)
+    if got and got != want:
+        raise WrongBot(f'{env} is the token of {got}, not of {want}: nothing was sent or read. '
+                       f'The owner puts the token of {want} (@BotFather) in {env} in the environment settings.')
 
 
 def cfg():
@@ -405,6 +466,8 @@ def wait(seconds=MAX_LISTEN):
             try:
                 ups = api('getUpdates', {'offset': str(int(s.get('offset') or 0) + 1), 'allowed_updates': ['message'],
                                          'timeout': '0' if pending else str(max(1, min(50, int(end - time.time()))))})
+            except WrongBot:
+                raise
             except SystemExit as e:  # network hiccup, or another reader for a moment: try again shortly
                 sys.stderr.write(f'{e}\n')
                 time.sleep(5)
@@ -440,6 +503,10 @@ def wait(seconds=MAX_LISTEN):
         err = traceback.format_exc()
         sys.stderr.write(err)
         open(failfile(), 'w', encoding='utf-8').write(err)  # `listening` then says "off" for 15 min: no restart loop
+        code = 1
+    except WrongBot as e:  # a SystemExit, so the retry loop must not swallow it
+        sys.stderr.write(f'{e}\n')
+        open(failfile(), 'w', encoding='utf-8').write(str(e))
         code = 1
     except Stopped:
         print(f'Слушателят спря: ходът чете Telegram сам. В края на хода го пусни пак, ако `python3 src/telegram.py{flag()} listening` каже no.')
