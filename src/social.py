@@ -13,7 +13,7 @@ python3 src/social.py skip <platform> <post_id> <comment_id> "<reason>"   # mark
 python3 src/social.py dms [hours]                      # Instagram DM threads waiting for our answer (JSON lines)
 python3 src/social.py dm <recipient_id> "<text>"        # send an Instagram DM (only within 24h of their last message)
 """
-import datetime as dt, glob, json, os, subprocess, sys
+import datetime as dt, glob, hashlib, json, os, subprocess, sys
 from urllib.parse import urlencode
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,7 +33,8 @@ GOAL = {'followers': 5000, 'start': '2026-11-10', 'deadline': '2026-12-10'}
 
 def call(method, path, params=None, form=None, headers=(), body=None):
     url = f'{API}{path}' + (('?' + urlencode(params)) if params else '')
-    cmd = ['curl', '-sS', '-X', method, url, '-H', AUTH]
+    # timeouts: a hung Upload-Post must not block a whole cycle (uploads are async, so 5 min is plenty for the file)
+    cmd = ['curl', '-sS', '--connect-timeout', '20', '--max-time', '300', '-X', method, url, '-H', AUTH]
     if body is not None:
         cmd += ['-H', 'Content-Type: application/json', '-d', json.dumps(body, ensure_ascii=False)]
     for h in headers:
@@ -42,10 +43,27 @@ def call(method, path, params=None, form=None, headers=(), body=None):
         # files go with -F name=@path; every text field with --form-string so ';', '@' or '<' in captions stay literal
         cmd += ['-F', f'{k}={v}'] if (k in ('video', 'photos[]') and str(v).startswith('@')) else ['--form-string', f'{k}={v}']
     out = subprocess.run(cmd, capture_output=True, text=True)
+    if out.returncode:  # 28 = timeout, 6/7 = no connection
+        raise SystemExit(f'Upload-Post {path}: curl exit {out.returncode} {out.stderr.strip()[:200]}')
     try:
-        return json.loads(out.stdout)
+        d = json.loads(out.stdout)
     except json.JSONDecodeError:
-        raise SystemExit(f'Upload-Post {path}: {out.stdout[:400]} {out.stderr[:200]}')
+        raise SystemExit(f'Upload-Post {path}: not JSON: {out.stdout[:400]} {out.stderr[:200]}')
+    if not isinstance(d, dict):  # every caller reads a dict; anything else counts as a failed call
+        return {'success': False, 'error': f'unexpected response ({type(d).__name__})', 'data': d}
+    return d
+
+
+def upload_key(meta_id, files, when, nets):
+    """Idempotency-Key: the same file(s) + time + networks = the same job (safe retry); a rebuilt video or a new
+    slot = a new key, so Upload-Post never hands back an old job for new content."""
+    h = hashlib.sha1()
+    for f in files:
+        with open(f, 'rb') as fh:
+            for chunk in iter(lambda: fh.read(1 << 20), b''):
+                h.update(chunk)
+    h.update(f'|{when}|{",".join(sorted(nets))}'.encode())
+    return f'{meta_id}-{h.hexdigest()[:12]}'
 
 
 def accounts():
@@ -91,20 +109,27 @@ def publish(meta_path, when, only=None):
     def send(networks, key):
         return call('POST', '/upload', form=form + [('platform[]', n) for n in networks], headers=[f'Idempotency-Key: {key}'])
 
-    key = meta['id'] + ('' if not only else '-' + '-'.join(sorted(nets)))  # new key, or Upload-Post returns the old job
+    key = upload_key(meta['id'], [meta['file']], when, nets)
     res = send(nets, key)
     ok = res.get('success', True) and not res.get('error')
-    if not ok and 'tiktok' in nets and 'tiktok' in json.dumps(res).lower():
-        # e.g. TikTok is not available on the Upload-Post Free plan: publish everywhere else
+    failed = []
+    if not ok and 'tiktok' in nets and len(nets) > 1 and 'tiktok' in json.dumps(res).lower():
+        # e.g. TikTok refused the upload: publish everywhere else, but record TikTok as FAILED (not as a success)
+        failed = ['tiktok']
         nets = [n for n in nets if n != 'tiktok']
-        res = dict(send(nets, meta['id'] + '-no-tiktok'), tiktok_skipped=str(res)[:300])
+        res = dict(send(nets, key + '-no-tiktok'), tiktok_skipped=str(res)[:300])
         ok = res.get('success', True) and not res.get('error')
     row = {'id': meta['id'], 'date': dt.date.today().isoformat(), 'scheduled_for': when, 'tz': TZ,
            'platforms': nets, 'request_id': res.get('request_id'), 'job_id': res.get('job_id'),
            'service': meta.get('service'), 'hook_style': meta.get('hook_style'), 'hook': hook,
            'duration': meta.get('duration'), 'ok': ok, 'response': {k: v for k, v in res.items() if k in ('message', 'error', 'warnings', 'status', 'tiktok_skipped')}}
+    if failed:
+        row['failed_platforms'] = failed
     append_jsonl(VIDEOS, row)
     print(json.dumps(row, ensure_ascii=False, indent=1))
+    if failed:
+        print(f"⚠️ FAILED on {', '.join(failed)}: {res['tiktok_skipped'][:200]} — published only on {', '.join(nets) or 'nothing'}"
+              f" (retry later: publish {meta_path} <time> {','.join(failed)})", file=sys.stderr)
     if not ok:
         raise SystemExit(1)
 
@@ -128,7 +153,7 @@ def publish_post(meta_path, when, only=None):
         form += [('first_comment', meta['first_comment'][:300])]
     if when != 'now':
         form += [('scheduled_date', when), ('timezone', TZ)]
-    key = meta['id'] + ('' if not only else '-' + '-'.join(sorted(nets)))
+    key = upload_key(meta['id'], meta['photos'], when, nets)
     res = call('POST', '/upload_photos', form=form + [('platform[]', n) for n in nets], headers=[f'Idempotency-Key: {key}'])
     ok = res.get('success', True) and not res.get('error')
     row = {'id': meta['id'], 'kind': 'carousel', 'date': dt.date.today().isoformat(), 'scheduled_for': when, 'tz': TZ,
