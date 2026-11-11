@@ -19,6 +19,8 @@
 - 11.11.2026 12:50: нова сесия `session_015VXfww8K4qHDQdvaN2sjZY` (старата `session_015VXfwwzur5hU147HmWh2Rd`). И в нея `TELEGRAM_CODER_BOT_TOKEN` липсва; в средата „Programist - daily-videos“ има само `TELEGRAM_BOT_TOKEN`, а той е на Плочко (@dailyvideosswitfo_bot, проверено с getMe) — грешно име/ключ. Програмистът не пише от името на Плочко. Собственикът трябва да добави токена на @itclaudeswitfo_bot като `TELEGRAM_CODER_BOT_TOKEN` и да махне `TELEGRAM_BOT_TOKEN` от тази среда.
 - 11.11.2026 12:52: нова сесия `session_015VXfwwpsbvCmo9qnPobzxk` (старата `session_015VXfww8K4qHDQdvaN2sjZY`). `TELEGRAM_CODER_BOT_TOKEN` вече я има, но `--as coder setup` (getMe) показва @dailyvideosswitfo_bot — в променливата е токенът на Плочко, не на @itclaudeswitfo_bot. Програмистът не пише и не слуша с него (иначе краде getUpdates на Плочко). Собственикът трябва да сложи в `TELEGRAM_CODER_BOT_TOKEN` токена на @itclaudeswitfo_bot (от @BotFather).
 
+- 11.11.2026 12:51: собственикът сложи TELEGRAM_CODER_BOT_TOKEN (проверено с get_environment). Нова сесия `session_015VXfwwpsbvCmo9qnPobzxk`; цикълът е преместен на нова насрочена задача `trig_01Wfj8kRYp4oaSufcTnbwc1D` (същия график), старата `trig_01QkqTbEjQ5pNyuSy4G6UMBT` е изключена.
+
 ## Въпроси и отговори
 (мениджърът записва тук въпросите си и отговорите на агента)
 - 11.11.2026 12:45 — ❓ M-1111-03 (`ask`, в групата): 1) чете ли групата / слушател; 2) анализ защо TikTok постовете са с 0 гледания (src/social.py, без промени); 3) трите най-рискови места в src/; 4) какво му трябва (хостове/достъп/ключове — само имена). Отговор (12:44, през сесията — няма токен):
