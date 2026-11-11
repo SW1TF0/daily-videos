@@ -11,6 +11,10 @@
 6. Още текст: about (172 думи) и portfolio (207 думи) са тънки; services ~80 думи на услуга. Факти от собственика за проекти в портфолиото.
 7. Линкове: Instagram/TikTok/YouTube био → `https://www.smartmenukj.com/bg/` (през мениджъра към Плочко); местни каталози (собственикът).
 
+## 11.11.2026 — M-1111-42 — 10 безплатни каталога → `seo/citations.md`
+- Google Business Profile, Bing Places, Apple Business Connect (BG поддръжка непотвърдена), OpenStreetMap, Firma.bg, Firm.bg, bgbiznes.eu, iBusiness.bg, Favzz, BGfirma (+ Invest Bulgaria резерва). Готов текст: име, адрес, телефон, сайт, категории, описание BG/EN ~250 зн. Имейл и работно време — от собственика.
+- Условията са от търсене в мрежата; сайтовете на каталозите не са отворени (мрежата на средата). Регистрира собственикът.
+
 ## 11.11.2026 15:01 UTC — M-1111-38 / M-1111-41 — Готово
 - ✅ Новите title + description на живо: **15/15** съвпадат с seo/meta-update.md, og:title/og:description също 15/15 (UA Googlebot, без кеш). site_shot `/bg/`: 0 проблема.
 - ✅ sitemaps-submit: Google прочете sitemap-а в 14:54 UTC — **60 адреса**, 0 грешки (броячът „indexed“ на GSC се обновява след дни; меря с inspect).
