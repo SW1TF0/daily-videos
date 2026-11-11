@@ -82,8 +82,10 @@
    "seo/SEO.md"
   ],
   "environment": "SEO - smartmenukj",
-  "session_id": "session_015VXfwwdpbQHNhHENNAdrcT",
-  "triggers": {},
+  "session_id": "session_015VXfwyUiTt9ugEsuB7XF6F",
+  "triggers": {
+   "cycle": "trig_01HGPr3bdMi6PNoKTjVPCf4b"
+  },
   "schedule": "цикъл веднъж дневно в 10:17; слушател в реално време за задачите; седмичен отчет в понеделник",
   "check": "",
   "targets": {
@@ -91,6 +93,9 @@
   },
   "profile": "manager/agents/seo.md",
   "status": "токенът е в средата; чака профила --as seo (M-1111-08)",
-  "environment_id": "env_01ReuHqVvmgjk37aHk98vNjr"
+  "environment_id": "env_01ReuHqVvmgjk37aHk98vNjr",
+  "old": {
+   "sessions": "session_015VXfwwdpbQHNhHENNAdrcT (архивирана, без токен)"
+  }
  }
 }

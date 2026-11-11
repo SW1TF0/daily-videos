@@ -12,6 +12,8 @@
 
 - 11.11.2026 13:02: създадена среда „SEO - smartmenukj“ (`env_01ReuHqVvmgjk37aHk98vNjr`; api.telegram.org, smartmenukj.com, www.smartmenukj.com; repo daily-videos). Чака: името на бота и `TELEGRAM_SEO_BOT_TOKEN` от собственика, M-1111-08 (профил `--as seo`). После: `create_session` в средата + `create_trigger` (CRON_TZ=Europe/Sofia 17 10 * * *) + запис тук.
 
+- 11.11.2026 13:09: ботът е @seoswitfo_bot, токенът е в средата. Сесия `session_015VXfwyUiTt9ugEsuB7XF6F`, цикъл `trig_01HGPr3bdMi6PNoKTjVPCf4b` (10:17 всеки ден). Първа работа: одит на smartmenukj.com (само преглед) + `seo/keywords.md`. M-1111-08 (профил `--as seo`) — с приоритет при програмиста.
+
 ## Въпроси и отговори
 
 ## Силни страни / слабости / идеи
