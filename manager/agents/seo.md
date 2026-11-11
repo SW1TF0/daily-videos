@@ -10,6 +10,8 @@
 ## Как се справя (дневник)
 - 11.11.2026 13:00: създаден от мениджъра по молба на собственика. Чака: бот в Telegram (собственикът го прави), токен `TELEGRAM_SEO_BOT_TOKEN`, среда, сесия, насрочена задача; профил `--as seo` в telegram.py (задача към програмиста).
 
+- 11.11.2026 13:02: създадена среда „SEO - smartmenukj“ (`env_01ReuHqVvmgjk37aHk98vNjr`; api.telegram.org, smartmenukj.com, www.smartmenukj.com; repo daily-videos). Чака: името на бота и `TELEGRAM_SEO_BOT_TOKEN` от собственика, M-1111-08 (профил `--as seo`). После: `create_session` в средата + `create_trigger` (CRON_TZ=Europe/Sofia 17 10 * * *) + запис тук.
+
 ## Въпроси и отговори
 
 ## Силни страни / слабости / идеи

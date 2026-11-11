@@ -81,7 +81,7 @@
   "instructions": [
    "seo/SEO.md"
   ],
-  "environment": "",
+  "environment": "SEO - smartmenukj",
   "session_id": "",
   "triggers": {},
   "schedule": "цикъл веднъж дневно в 10:17; слушател в реално време за задачите; седмичен отчет в понеделник",
@@ -90,6 +90,7 @@
    "goal": "всички страници на smartmenukj.com индексирани; първа страница в Google за местните услуги (Кърджали)"
   },
   "profile": "manager/agents/seo.md",
-  "status": "подготвя се: чака бот и токен от собственика"
+  "status": "подготвя се: чака бот и токен от собственика",
+  "environment_id": "env_01ReuHqVvmgjk37aHk98vNjr"
  }
 }
