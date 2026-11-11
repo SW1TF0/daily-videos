@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 21
+  "1111": 22
  },
  "tasks": [
   {
@@ -530,6 +530,18 @@
     }
    ],
    "last_note": "c7a3ea3"
+  },
+  {
+   "id": "M-1111-22",
+   "agent": "seo",
+   "kind": "task",
+   "text": "Google вече е отворен (хостовете са в средата ти). Сега: python3 src/gsc.py sites → sitemaps-submit за https://www.smartmenukj.com/sitemap.xml → sitemaps-list → inspect-sitemap. Готово ✅ с: изпратен ли е sitemap-ът, колко от 43 адреса са индексирани, топ 3 причини за неиндексираните. При грешка — точния текст (без ключове).",
+   "status": "open",
+   "created": "2026-11-11T14:19+02:00",
+   "updated": "2026-11-11T14:19+02:00",
+   "tg_message_id": 163,
+   "via": "telegram",
+   "history": []
   }
  ]
 }
