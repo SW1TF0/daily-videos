@@ -2,8 +2,12 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 11.11.2026 — M-1111-13 — EN и TR страниците за услугите
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/19 (чака сливане): build-service-pages.mjs за EN/BG/TR от content/<lang>/*.md; hreflang по ключа service (x-default = BG); превключвателят води към двойника; „Научете повече“ и картите на трите езика (data-svc-page, защото EN services/index са източник за bg/tr); sitemap 39.
+Тест: site_shot 23 страници — 0; sitemap↔страници 0 разминавания; превключвател EN/BG/TR (Playwright); двойно сглобяване = същото. PR №18 (BG) е слят.
+
 ## 11.11.2026 — M-1111-11 — 6 BG страници за услугите
-✅ PR https://github.com/SW1TF0/SmartMenu/pull/18 (чака сливане): текстовете на SEO агента в SmartMenu content/bg/*.md → tools/build-service-pages.mjs (шаблон = сглобения bg/services.html; build-langs.mjs го пуска, защото трие bg/). Service + FAQPage + BreadcrumbList JSON-LD, „Научете повече“ от bg/services.html, картите на bg/index.html, sitemap +6 (27).
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/18 (слят): текстовете на SEO агента в SmartMenu content/bg/*.md → tools/build-service-pages.mjs (шаблон = сглобения bg/services.html; build-langs.mjs го пуска, защото трие bg/). Service + FAQPage + BreadcrumbList JSON-LD, „Научете повече“ от bg/services.html, картите на bg/index.html, sitemap +6 (27).
 Тест: site_shot 8 страници телефон+компютър — 0 проблема; JSON-LD се парсва; двойно пускане = същите файлове.
 Остава: EN/TR (SEO агентът ги пише) → hreflang и превключвателят на езика. M-1111-10 (PR №17) е на живо — снимка в групата.
 
