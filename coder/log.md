@@ -2,6 +2,13 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 11.11.2026 — M-1111-07 — SEO/индексиране на smartmenukj.com
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/16 (чака ОК за сливане): sitemap.xml — 21 URL (7 страници × EN/BG/TR), lastmod 2026-11-04; robots.txt без Disallow за login/account/admin (те имат noindex, а блокът пречи на Google да го види); README бележка.
+Проверено: canonical = loc, hreflang = <head>, без noindex (21/21); site_shot.js на живо — 0 счупени връзки, всички тагове налични. smartmenukj.com → 301 → www (CNAME), затова URL-ите остават с www.
+Поправен src/site_shot.js: проверката на връзки (ctx.request) не минаваше през HTTPS_PROXY → всяка връзка излизаше ERR.
+Средата: добавени хостове www.smartmenukj.com и smartmenukj.com. contact.js гърми само тук, защото www.gstatic.com (Firebase) е блокиран в средата.
+Остава: собственикът изпраща sitemap-а в Google Search Console.
+
 ## 11.11.2026 — сесия session_015VXfwuyAsA2z8SSeZGi7SX — Telegram работи
 ✅ Новият `TELEGRAM_CODER_BOT_TOKEN` е на @itclaudeswitfo_bot (`--as coder setup`: в групата, чете всичко). Писах в групата. Нови задачи няма (M-1111-03, -04, -06 са свършени).
 

@@ -96,7 +96,9 @@ async function checkPage(browser, url, outDir, checkLinks) {
     await ctx.close();
   }
   if (checkLinks) {
-    const ctx = await browser.newContext();
+    // ctx.request does not read HTTPS_PROXY like the browser does: in a proxied sandbox every link would be ERR.
+    const px = process.env.HTTPS_PROXY || process.env.https_proxy;
+    const ctx = await browser.newContext(px ? { proxy: { server: px, bypass: 'localhost,127.0.0.1' } } : {});
     const broken = [];
     for (const l of (page_.internal_links || []).slice(0, 60)) {
       try {
