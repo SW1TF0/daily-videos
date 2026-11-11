@@ -3,13 +3,13 @@
   "name": "Мениджърът (@managerswitfo_bot) — не се наблюдава",
   "telegram": "@managerswitfo_bot",
   "environment": "Мениджър на агентите",
-  "session_id": "session_015VXfwvB7U4AFTEGEWcyvtS",
+  "session_id": "session_015VXfwzLmW2mcfR1D6WVGSi",
   "triggers": {
-   "cycle": "trig_011BPWouDbVrJcMqs4Kp3yUX"
+   "cycle": "trig_01AYy1A2cUBw7FR6LaDk7ATC"
   },
   "old": {
-   "session_id": "session_015VXfww13GBajwrHCBXgvGx",
-   "trigger": "trig_01PBecxAKrybHsNJZQx6rfXq (изключена)"
+   "session_id": "session_015VXfwvB7U4AFTEGEWcyvtS, session_015VXfww13GBajwrHCBXgvGx",
+   "trigger": "trig_011BPWouDbVrJcMqs4Kp3yUX, trig_01PBecxAKrybHsNJZQx6rfXq (изключени)"
   }
  },
  "plochko": {
