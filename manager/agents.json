@@ -98,5 +98,28 @@
    "sessions": "session_015VXfwwdpbQHNhHENNAdrcT, session_015VXfwyUiTt9ugEsuB7XF6F (архивирани)",
    "trigger": "trig_01HGPr3bdMi6PNoKTjVPCf4b (изключена)"
   }
+ },
+ "sales": {
+  "name": "Агентът за продажби — запитвания, оферти, клиенти",
+  "telegram": "",
+  "aliases": [
+   "продажби",
+   "sales"
+  ],
+  "repo": "SW1TF0/daily-videos",
+  "instructions": [
+   "sales/SALES.md"
+  ],
+  "environment": "Sales - smartmenukj",
+  "session_id": "",
+  "triggers": {},
+  "schedule": "цикъл 08:41 и 16:41; слушател за задачите",
+  "check": "",
+  "targets": {
+   "goal": "0 запитвания без отговор; оферта до 24 ч."
+  },
+  "profile": "manager/agents/sales.md",
+  "status": "подготвя се: чака бот, токен и ценоразпис от собственика",
+  "environment_id": "env_01HpBTELGCTzx8g1WPaThWq2"
  }
 }
