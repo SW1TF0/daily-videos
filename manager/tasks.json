@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1112": 1
+  "1112": 3
  },
  "tasks": [
   {
@@ -112,9 +112,9 @@
    "agent": "plochko",
    "kind": "task",
    "text": "Програмистът промени src/social.py (commit 639d628): видим провал в TikTok (ред ⚠️ FAILED + failed_platforms в videos.jsonl), нов Idempotency-Key, таймаути. При следващото ти насрочване (или утре сутринта) провери на живо: publish/post връщат \"ok\": true, а history показва success. Ако видиш ⚠️ FAILED или грешка — Готово/Не мога с точния текст.",
-   "status": "accepted",
+   "status": "done",
    "created": "2026-11-11T12:46+02:00",
-   "updated": "2026-11-11T12:46+02:00",
+   "updated": "2026-11-12T08:45+02:00",
    "tg_message_id": 39,
    "via": "telegram",
    "history": [
@@ -123,9 +123,15 @@
      "from": "open",
      "to": "accepted",
      "note": "Прието ✅ M-1111-05 — проверявам на живо при следващото насрочване (утре сутринта): ok от publish/post и success в history."
+    },
+    {
+     "at": "2026-11-12T08:45+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-05 — проверено на живо с новия social.py: 12.11 publish/post върнаха \"ok\": true за всички 8 поста, без ⚠️ FAILED; първият (legend-solar-camera, 08:00) е success в history и в трите мрежи (TikTok, Instagram, YouTube)."
     }
    ],
-   "last_note": "Прието ✅ M-1111-05 — проверявам на живо при следващото насрочване (утре сутринта): ok от publish/post и success в history."
+   "last_note": "Готово ✅ M-1111-05 — проверено на живо с новия social.py: 12.11 publish/post върнаха \"ok\": true за всички 8 поста, без ⚠️ FAILED; първият (legend-solar-camera, 08:00) е success в history и в трите мрежи (TikTok, Instagram, YouTube)."
   },
   {
    "id": "M-1111-06",
@@ -1420,10 +1426,48 @@
    "agent": "coder",
    "kind": "task",
    "text": "Две малки: 1) src/manager.py status_sales — изходящите лийдове (от разузнавача/outreach, source scout) да не се броят като „запитвания без отговор“ (поле direction или source); 2) smartmenukj.com: JSON-LD Organization + sameAs (Instagram, TikTok @smartmenukj, YouTube — линковете от footer-а/социалните на сайта) на началните 3 езика, сам на живо по правилото. Готово ✅ с линкове. Днес до 14:00.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-12T07:54+02:00",
-   "updated": "2026-11-12T07:54+02:00",
+   "updated": "2026-11-12T08:45+02:00",
    "tg_message_id": 323,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-12T08:45+02:00",
+     "from": "open",
+     "to": "done",
+     "note": "Прието ✅ M-1112-01 — 1) изходящите лийдове вън от „без отговор“ в status_sales; 2) Organization + sameAs на началните EN/BG/TR. Готово до 14:00."
+    },
+    {
+     "at": "2026-11-12T08:45+02:00",
+     "from": "done",
+     "to": "done",
+     "note": "Готово ✅ M-1112-01 — 1) status_sales: лийдове с direction „out“ или source outreach/scout вече не са „запитвания без отговор“; брои ги отделно (outreach_not_sent, сега 3), commit 860ed2f. 2) Сайтът: TikTok @smartmenukj е добавен в sameAs на началните EN/BG/TR (там вече бяха Instagram и LinkedIn), на живо: https://github.com/SW1TF0/SmartMenu/pull/28 — site_shot 0 проблема. Структурата е LocalBusine"
+    }
+   ],
+   "last_note": "Готово ✅ M-1112-01 — 1) status_sales: лийдове с direction „out“ или source outreach/scout вече не са „запитвания без отговор“; брои ги отделно (outreach_not_sent, сега 3), commit 860ed2f. 2) Сайтът: TikTok @smartmenukj е добавен в sameAs на началните EN/BG/TR (там вече бяха Instagram и LinkedIn), на живо: https://github.com/SW1TF0/SmartMenu/pull/28 — site_shot 0 проблема. Структурата е LocalBusine"
+  },
+  {
+   "id": "M-1112-02",
+   "agent": "plochko",
+   "kind": "task",
+   "text": "КОНКУРС (одобрен от собственика): „Безплатно QR меню за едно заведение в Кърджали“ — текст и правила в contest/2026-11-qr-menu.md (точно тези условия, срок 19.11 23:59, теглене 20.11). Днес: 1) видео-обявление (Плочко + бай Ваньо, кукичка „Подаряваме QR меню на заведение в Кърджали!“) в 18:30 във всички мрежи (смени/премести вечерния слот); 2) карусел с 3-те стъпки утре 09:30; 3) caption с условията + „Пълни правила: smartmenukj.com/bg/konkurs.html“ + изречението, че не е свързан с Instagram/TikTok/YouTube; first_comment „Отбележи заведение 👇“. От утре във всеки пост 1 ред за конкурса. Отговаряй на всеки коментар-участник. 4) Пусни social.py accounts и прати на програмиста линка към YouTube канала. Готово ✅ с часовете.",
+   "status": "open",
+   "created": "2026-11-12T08:45+02:00",
+   "updated": "2026-11-12T08:45+02:00",
+   "tg_message_id": 331,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1112-03",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Страница /bg/konkurs.html с правилата от contest/2026-11-qr-menu.md (секция „Правила“ дословно + кратката част отгоре), noindex не трябва; линк от началната /bg/ (лента/банер „🎁 Конкурс до 19.11“) и от футъра BG. Сам на живо по правилото, site_shot. Днес до 17:30 (видеото излиза 18:30). Готово ✅ с линк.",
+   "status": "open",
+   "created": "2026-11-12T08:45+02:00",
+   "updated": "2026-11-12T08:45+02:00",
+   "tg_message_id": 332,
    "via": "telegram",
    "history": []
   }
