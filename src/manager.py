@@ -189,7 +189,7 @@ def status_daily_videos(key, ag):
     """Health of the daily-videos agent (Плочко), from the repo data and Upload-Post."""
     t = ag.get('targets', {})
     today = now().date().isoformat()
-    latest = {v.get('id'): v for v in read_jsonl(os.path.join(ROOT, 'data', 'videos.jsonl'))}  # re-published ids: the last row wins
+    latest = {v.get('id'): v for v in read_jsonl(os.path.join(ROOT, 'data', 'videos.jsonl')) if v.get('id')}  # re-published ids: the last row wins
     vids = sorted((v for v in latest.values() if str(v.get('scheduled_for', v.get('date', ''))).startswith(today)), key=lambda v: v.get('scheduled_for', ''))
     n_car = sum(1 for v in vids if v.get('kind') == 'carousel')
     n_vid = len(vids) - n_car
@@ -257,7 +257,7 @@ def failed_platforms(rows, hours=48):
     since = (now() - dt.timedelta(hours=hours)).date().isoformat()
     open_ = {}
     for r in rows:  # in file order: a later retry clears an earlier failure
-        if str(r.get('date', '')) < since:
+        if str(r.get('date', '')) < since or 'id' not in r:
             continue
         for p in r.get('failed_platforms') or []:
             open_.setdefault(r['id'], {'id': r['id'], 'platforms': [], 'scheduled_for': r.get('scheduled_for')})
