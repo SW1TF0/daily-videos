@@ -12,6 +12,11 @@
 6. Още текст: about (172 думи) и portfolio (207 думи) са тънки; services ~80 думи на услуга. Факти от собственика за проекти в портфолиото.
 7. Линкове: Instagram/TikTok/YouTube био → `https://www.smartmenukj.com/bg/` (през мениджъра към Плочко); местни каталози (собственикът).
 
+## 12.11.2026 — M-1112-18 — SEO одит на smarthomekj.eu (по кода) → `seo/smarthomekj-audit.md`
+- Клонирах публичния `SW1TF0/smarthomekj` за четене (commit 4d90b39, 25.10); домейнът не се отваря от средата → само по кода.
+- Топ 5: (1) плейсхолдъри `[…]` за фирма/адрес/телефон в статичния HTML + няма LocalBusiness; (2) Product JSON-LD без image/url/brand и без старата цена (Черен петък не е в repo-то); (3) категориите са `?category=`, без страници; (4) продуктите от админа са noindex извън sitemap; (5) нито дума „Кърджали“, няма BreadcrumbList. + дребни: lastModified = датата на build, двойно хостване GH Pages + Vercel.
+- Готови поправки: код за Product/Offer JSON-LD, 6 title/description за категориите (по реалните 20 продукта), текстове за contact/about. От собственика: истински данни, потвърждение за Кърджали, кой хост, Search Console свойство.
+
 ## 12.11.2026 — M-1112-17 — EN/TR на 3-те нови BG статии
 - Вече направено вчера (M-1111-38/41): `seo/articles/en/{small-business-website-checklist,3d-printing-what-can-be-made,slow-computer-7-causes}.md`, `seo/articles/tr/{isletme-web-sitesi-neler-olmali,3d-baski-neler-yapilabilir,yavas-bilgisayar-7-neden}.md`, hreflang таблица в `seo/articles/README.md`.
 - Проверено на живо 12.11: 6/6 → 200, всяка с 5 hreflang реда. TR „3d-baski“ и „isletme-web-sitesi“ вече индексирани; EN — „открити“, чакат обхождане.
