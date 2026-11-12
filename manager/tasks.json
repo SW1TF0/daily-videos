@@ -2222,12 +2222,20 @@
    "agent": "coder",
    "kind": "task",
    "text": "Качи статията-казус от seo/cases/2026-11-starcheski-dom.md като /bg/blog/kazus-mrezha-starcheski-dom-kardzhali.html (генераторът на блога, BlogPosting+FAQ ако има, sitemap, линк от портфолиото към нея и от страницата на сервиза). Сам на живо. Готово ✅.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-12T20:56+02:00",
-   "updated": "2026-11-12T20:56+02:00",
+   "updated": "2026-11-12T20:57+02:00",
    "tg_message_id": 529,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-12T20:57+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1112-30 — казусът за старческия дом в блога + линкове от портфолиото и от сервиза; на живо."
+    }
+   ],
+   "last_note": "Прието ✅ M-1112-30 — казусът за старческия дом в блога + линкове от портфолиото и от сервиза; на живо."
   }
  ]
 }
