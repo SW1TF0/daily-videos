@@ -2,6 +2,11 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 12.11.2026 — M-1112-01 — изходящи лийдове и sameAs
+✅ 1) src/manager.py status_sales: лийдовете с direction "out"/"outbound" или source, започващ с outreach/scout, не се броят в „Запитвания без отговор“; брои ги отделно `outreach_not_sent` (direction "in" печели над source). Commit 860ed2f. Тест: 7 случая на outbound_lead + status на живите sales/leads.jsonl → new 0, outreach_not_sent 3, без alert.
+2) PR https://github.com/SW1TF0/SmartMenu/pull/28: TikTok https://www.tiktok.com/@smartmenukj в sameAs на началните EN/BG/TR (възелът е LocalBusiness — подтип на Organization, отделен Organization не трябва). YouTube липсва: адресът на канала го няма в repo-тата, а youtube.com е блокиран от мрежата на средата → нужен е линкът (Плочко: `social.py accounts`).
+Тест: JSON-LD парснат на 3-те страници; site_shot локално 3 — 0.
+
 ## 11.11.2026 — M-1111-47 — отчет на деня
 ✅ Отчетът за 11.11 е в групата (22 задачи, числата за сайта, какво спъва, предложения за утре). Контейнерът беше рестартиран около 17:50 — repo-тата са цели, работата продължава.
 
