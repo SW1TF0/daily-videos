@@ -11,7 +11,7 @@ python3 src/telegram.py photo <file.png|jpg> ["<caption>"] [reply_to]  # a pictu
                                                  # too big or too tall for a photo -> sent as a file
 python3 src/telegram.py media [all]              # Плочко: the owner's photos/videos posted with #плочко, not downloaded yet
                                                  # (all: every one); JSON lines with n, file_id, text (what it is), date
-python3 src/telegram.py media get <n|file_id|all> # download to out/media/ (never committed; the repo is public); max 20 MB
+python3 src/telegram.py media get <n|file_id|all> [dir]  # download to out/media/ (or dir; never commit them: the repo is public); max 20 MB
 python3 src/telegram.py listening                # yes | no | night | off  -> start `wait` (in the background) only on "no"
 python3 src/telegram.py wait                     # listener: waits without AI cost, exits as soon as a message for us arrives
                                                  # exit 0 = new message for us, 2 = time is up, 3 = a turn reads Telegram itself
@@ -508,7 +508,7 @@ def media(show_all=False):
         print('Няма нови снимки/видеа с #плочко.' if not show_all else 'Още няма снимки/видеа с #плочко.')
 
 
-def media_get(which):
+def media_get(which, dest_dir=None):
     if AS != 'worker':
         raise SystemExit('media is for Плочко (the worker bot).')
     rows = media_rows()
@@ -520,7 +520,8 @@ def media_get(which):
         picked = [r for r in rows if r['file_id'] == which]
     if not picked:
         raise SystemExit(f'media get: no such item ({which}); see `python3 src/telegram.py media`.')
-    os.makedirs(MEDIA_DIR, exist_ok=True)
+    out_dir = os.path.join(ROOT, dest_dir) if dest_dir and not os.path.isabs(dest_dir) else (dest_dir or MEDIA_DIR)
+    os.makedirs(out_dir, exist_ok=True)
     for r in picked:
         if (r.get('file_size') or 0) > MAX_BOT_FILE:
             print(f"✗ {r['file_unique_id']}: {round(r['file_size'] / 1048576, 1)} MB — над 20 MB, ботът не може да го свали. "
@@ -532,7 +533,7 @@ def media_get(which):
             print(f"✗ {r['file_unique_id']}: {e}" + (' — помоли собственика да го прати по-късо (до 20 MB).' if 'too big' in str(e) else ''))
             continue
         ext = os.path.splitext(info.get('file_path') or '')[1] or ('.jpg' if r['kind'] == 'photo' else '.mp4')
-        dest = os.path.join(MEDIA_DIR, r['file_unique_id'] + ext)
+        dest = os.path.join(out_dir, r['file_unique_id'] + ext)
         tok = token()
         res = subprocess.run(['curl', '-sS', '--fail', '--max-time', '300', '-o', dest, f"https://api.telegram.org/file/bot{tok}/{info['file_path']}"],
                              capture_output=True, text=True)
@@ -713,7 +714,7 @@ if __name__ == '__main__':
         tasks()
     elif cmd == 'media':
         if len(sys.argv) > 2 and sys.argv[2] == 'get':
-            media_get(sys.argv[3] if len(sys.argv) > 3 else 'all')
+            media_get(sys.argv[3] if len(sys.argv) > 3 else 'all', sys.argv[4] if len(sys.argv) > 4 else None)
         else:
             media(show_all=len(sys.argv) > 2 and sys.argv[2] == 'all')
     elif cmd == 'listening':
