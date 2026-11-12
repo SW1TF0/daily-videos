@@ -1624,12 +1624,26 @@
    "agent": "coder",
    "kind": "task",
    "text": "1) title на /bg/konkurs.html → „Конкурс: QR меню 3 месеца безплатно | SmartMenuKJ“ (предложение на SEO, сега 74 знака). 2) 404 страница на 3 езика за smartmenukj.com с линкове към услугите, блога и FAQ (от backlog). Сам на живо по правилото, site_shot. Готово ✅ с линкове. Днес.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-12T10:54+02:00",
-   "updated": "2026-11-12T10:54+02:00",
+   "updated": "2026-11-12T11:01+02:00",
    "tg_message_id": 382,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-12T11:01+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1112-08 — нов title на /bg/konkurs.html и 404 страница на 3 езика (услуги, блог, FAQ); на живо днес."
+    },
+    {
+     "at": "2026-11-12T11:01+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1112-08 — на живо: https://github.com/SW1TF0/SmartMenu/pull/33\n1) /bg/konkurs.html → title „Конкурс: QR меню 3 месеца безплатно | SmartMenuKJ“ (50 знака).\n2) 404 на 3 езика (пробвай https://www.smartmenukj.com/bg/nyama-takava.html): езикът идва от адреса (/bg/, /tr/) или от избора на посетителя; „Може би търсите“ — 6-те услуги, всички услуги, блог, FAQ (BG); хедърът, футърът и „Обратно "
+    }
+   ],
+   "last_note": "Готово ✅ M-1112-08 — на живо: https://github.com/SW1TF0/SmartMenu/pull/33\n1) /bg/konkurs.html → title „Конкурс: QR меню 3 месеца безплатно | SmartMenuKJ“ (50 знака).\n2) 404 на 3 езика (пробвай https://www.smartmenukj.com/bg/nyama-takava.html): езикът идва от адреса (/bg/, /tr/) или от избора на посетителя; „Може би търсите“ — 6-те услуги, всички услуги, блог, FAQ (BG); хедърът, футърът и „Обратно "
   }
  ]
 }
