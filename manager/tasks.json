@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1112": 19
+  "1112": 21
  },
  "tasks": [
   {
@@ -1892,9 +1892,9 @@
    "agent": "seo",
    "kind": "task",
    "text": "Втори сайт: SEO одит на smarthomekj.eu по кода (repo SW1TF0/smarthomekj е публичен — клонирай за четене; самият домейн не се отваря от облака): sitemap/robots, title/description на категориите и продуктите, hreflang EN/BG/TR, JSON-LD Product/Offer (с Черния петък −10%), вътрешни линкове, alt. Топ 5 проблема + готови поправки (файл/текст) в seo/smarthomekj-audit.md → програмистът ги прави. Готово ✅. Днес.",
-   "status": "accepted",
+   "status": "done",
    "created": "2026-11-12T14:23+02:00",
-   "updated": "2026-11-12T14:26+02:00",
+   "updated": "2026-11-12T14:27+02:00",
    "tg_message_id": 442,
    "via": "telegram",
    "history": [
@@ -1903,19 +1903,57 @@
      "from": "open",
      "to": "accepted",
      "note": "Прието ✅ M-1112-18 — клонирам smarthomekj за четене, одит по кода, топ 5 + готови поправки в seo/smarthomekj-audit.md днес."
+    },
+    {
+     "at": "2026-11-12T14:27+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1112-18 — одит на smarthomekj.eu по кода (repo-то от 25.10; домейнът не се отваря от облака): https://github.com/SW1TF0/daily-videos/blob/main/seo/smarthomekj-audit.md\n🔝 Топ 5: 1) фирма/адрес/телефон са плейсхолдъри „[…]“ в HTML-а, който Google чете първо, + няма LocalBusiness · 2) Product JSON-LD без снимка/линк/марка и без старата цена → Черният петък не се вижда (не е в repo-то) · 3)"
     }
    ],
-   "last_note": "Прието ✅ M-1112-18 — клонирам smarthomekj за четене, одит по кода, топ 5 + готови поправки в seo/smarthomekj-audit.md днес."
+   "last_note": "Готово ✅ M-1112-18 — одит на smarthomekj.eu по кода (repo-то от 25.10; домейнът не се отваря от облака): https://github.com/SW1TF0/daily-videos/blob/main/seo/smarthomekj-audit.md\n🔝 Топ 5: 1) фирма/адрес/телефон са плейсхолдъри „[…]“ в HTML-а, който Google чете първо, + няма LocalBusiness · 2) Product JSON-LD без снимка/линк/марка и без старата цена → Черният петък не се вижда (не е в repo-то) · 3)"
   },
   {
    "id": "M-1112-19",
    "agent": "seo",
    "kind": "task",
    "text": "Собственикът вижда в Search Console само 6 индексирани страници, а ти отчете 46/62 (inspect-sitemap). Обясни разликата с данни: кое свойство гледа той (smartmenukj.com с/без www, domain property, или smarthomekj?), кога се обновява отчетът „Страници“ (закъснение), и пусни sitemaps-list + inspect-sitemap пак. Кратък отговор в групата за собственика (без технически думи) + кое да отвори, за да види верните числа. Готово ✅. Сега, преди одита.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-12T14:26+02:00",
-   "updated": "2026-11-12T14:26+02:00",
+   "updated": "2026-11-12T14:27+02:00",
    "tg_message_id": 448,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-12T14:27+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1112-19 — проверявам свойствата и sitemap-а сега, обяснение до 15 мин."
+    }
+   ],
+   "last_note": "Прието ✅ M-1112-19 — проверявам свойствата и sitemap-а сега, обяснение до 15 мин."
+  },
+  {
+   "id": "M-1112-20",
+   "agent": "seo",
+   "kind": "task",
+   "text": "Собственикът пише в Google „smart menu“ и не излиза. Цел: топ 6 за всичко, с което се занимава. 1) gsc.py performance — за какви заявки сме сега (позиции); 2) план за марката: „smart menu“, „smartmenu“, „smart menu kj“, „смарт меню“ + „Кърджали“ — alternateName в JSON-LD, title/H1 на началната с „SmartMenu“, страница „За нас“ с марката, Google профила; 3) за всяка от 6-те услуги — целева дума + текущата позиция + какво още трябва (текст, линкове, отзиви, каталози). Кратко и честно в групата за собственика: кое е реално за дни, кое за седмици („smart menu“ без град е световна дума — там е най-трудно). Готови промени → seo/brand-plan.md за програмиста. Готово ✅ днес.",
+   "status": "open",
+   "created": "2026-11-12T14:28+02:00",
+   "updated": "2026-11-12T14:28+02:00",
+   "tg_message_id": 453,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1112-21",
+   "agent": "coder",
+   "kind": "task",
+   "text": "smarthomekj.eu по одита seo/smarthomekj-audit.md — направи частите, за които НЕ трябват данни от собственика: Product/Offer JSON-LD (снимка, линк, марка, priceValidUntil, старата цена при Черния петък), отделни страници за 6-те категории (title/description от одита) + в sitemap, BreadcrumbList, продуктите от админа индексируеми и в sitemap. Фирмените данни (адрес, телефон) — остави маркирани, НЕ измисляй. Като PR + снимки; сливаш сам, ако е само SEO (без редизайн). Готово ✅ днес.",
+   "status": "open",
+   "created": "2026-11-12T14:28+02:00",
+   "updated": "2026-11-12T14:28+02:00",
+   "tg_message_id": 454,
    "via": "telegram",
    "history": []
   }
