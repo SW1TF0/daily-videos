@@ -14,7 +14,7 @@
 Наученото: 404.html стои в корена, а footer-ът е с относителни линкове за папката на езика → на /bg/ 404 линковете чупеха; оправено с <base>.
 
 ## 12.11.2026 — M-1112-07 — анимации и преходи (два сайта)
-⏳ чака ОК от собственика (редизайн → без сливане): PR https://github.com/SW1TF0/smarthomekj/pull/22 и https://github.com/SW1TF0/SmartMenu/pull/32.
+✅ собственикът ги сля (12.11), проверени на живо в M-1112-10: PR https://github.com/SW1TF0/smarthomekj/pull/22 и https://github.com/SW1TF0/SmartMenu/pull/32.
 smarthomekj: app/[locale]/template.tsx (страницата влиза при навигация, fill backwards), CountUp за статистиките, значка на количката, меню на телефон, hover само при (hover:hover), натискане на плочки, бутон/шеврон. Тъмна тема няма → смяна на тема не е приложима.
 SmartMenu: вече имаше тема с кръг, reveal, броячи, hover; добавено: ::view-transition-old/new(root) при смяна на страница, натискане на хапове/икони, шеврон; ?v=20261112b.
 Тест: tsc/lint/next build; site_shot 4 — 0; записи с Playwright recordVideo → mp4 в групата.
