@@ -2,6 +2,12 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 12.11.2026 — M-1112-07 — анимации и преходи (два сайта)
+⏳ чака ОК от собственика (редизайн → без сливане): PR https://github.com/SW1TF0/smarthomekj/pull/22 и https://github.com/SW1TF0/SmartMenu/pull/32.
+smarthomekj: app/[locale]/template.tsx (страницата влиза при навигация, fill backwards), CountUp за статистиките, значка на количката, меню на телефон, hover само при (hover:hover), натискане на плочки, бутон/шеврон. Тъмна тема няма → смяна на тема не е приложима.
+SmartMenu: вече имаше тема с кръг, reveal, броячи, hover; добавено: ::view-transition-old/new(root) при смяна на страница, натискане на хапове/икони, шеврон; ?v=20261112b.
+Тест: tsc/lint/next build; site_shot 4 — 0; записи с Playwright recordVideo → mp4 в групата.
+
 ## 12.11.2026 — M-1112-04 — YouTube в sameAs + „Черен петък“ за smarthomekj
 ✅ 1) PR https://github.com/SW1TF0/SmartMenu/pull/31 (на живо): https://www.youtube.com/@smartmenukj в sameAs на началните EN/BG/TR; site_shot 3 — 0.
 ✅ 2) PR https://github.com/SW1TF0/smarthomekj/pull/21 — СЛЯТ, на живо (собственикът: −10% на всичко, 13.11 00:00–30.11 23:59). Отстъпката е в loadProducts (браузъра) → магазин/продукт/калкулатор/поръчка еднакво, сама почва и спира; количката се преизчислява при зареждане; админът приема промо цената; цена × 0,9 надолу до 10 ст. Тест с часовник 12.11/13.11/01.12 + количка 128,90→116,00→128,90. Важно: в smarthomekj клонът по подразбиране е claude/smarthomekj-website-7qunc8, а сайтът се пуска от main (GitHub Pages + Vercel) — PR-ите към main.
