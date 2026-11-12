@@ -1,0 +1,25 @@
+{
+  "id": "pov-boiler",
+  "service": "Умен дом", "hook_style": "хумор/POV", "series": "POV",
+  "bg": "night", "mascot": "light", "music": "comedy",
+  "hook": "POV: на почивка си. *Изключи ли бойлера?*", "hook_emoji": "😰",
+  "segments": [
+    {"say": "Пътуваш на почивка и изведнъж: изключи ли бойлера?", "pose": "think", "emote": "worried", "sfx": "car driving on highway interior", "sfx_vol": 0.3},
+    {"say": "А ютията? А лампата в коридора? Вратата заключи ли я?", "pose": "shrug", "emote": "surprised",
+     "card": {"type": "scene", "icons": ["🚿", "👕", "💡", "🚪"], "title": "Изключих ли… *всичко*?"}},
+    {"say": "Обикновено решение: връщаш се сто километра.", "pose": "point", "emote": "smug",
+     "card": {"type": "vs", "left": {"icon": "🚗", "label": "Връщаш се", "tag": "ПРЕДИ"}, "right": {"icon": "📱", "label": "Проверяваш от телефона", "tag": "СЛЕД"}}, "sfx": "small studio audience laughing briefly", "sfx_vol": 0.4},
+    {"say": "Умно решение: отваряш приложението. Умният контакт и модулите изключват всичко.", "pose": "present", "emote": "happy",
+     "card": {"type": "phone", "app": "home", "items": [{"icon": "🔌", "text": "Умен контакт · бойлер"}, {"icon": "💡", "text": "Лампи по график"}, {"icon": "🚪", "text": "Датчик врата"}], "title": "Всичко *от телефона*"}, "sfx": "smartphone notification ping", "sfx_vol": 0.5},
+    {"say": "А ако някой отвори вратата? Датчикът ти праща известие веднага.", "pose": "thumb", "emote": "serious",
+     "card": {"type": "title", "icon": "🔔", "title": "Известие *щом се отвори*", "sub": "Датчик за врата и прозорец"}},
+    {"say": "Проектираме, монтираме и поддържаме. А ти си почиваш спокойно.", "pose": "present", "emote": "happy",
+     "card": {"type": "scene", "icons": ["🏖️", "📱", "😌"], "title": "Почивка *без въпроси*"}},
+    {"say": "Последвай Плочко за още!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "title", "icon": "💪", "title": "Последвай *за още*", "sub": "POV с Плочко"}}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "POV: на почивка си и се чудиш изключи ли бойлера 😰 Умен контакт, лампи по график и датчик за врата — проверяваш и изключваш всичко от телефона. Последвай Плочко за още 💪 👉 smartmenukj.com/bg/umen-dom-kardzhali.html",
+  "hashtags": ["#кърджали", "#smartmenukj", "#умендом", "#pov", "#почивка", "#smarthome"],
+  "first_comment": "Признай си: колко пъти си се връщал да провериш? 😅 Пиши число 👇"
+}

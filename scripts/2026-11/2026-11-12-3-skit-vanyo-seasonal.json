@@ -1,0 +1,28 @@
+{
+  "id": "skit-vanyo-seasonal",
+  "service": "QR менюта", "hook_style": "скеч/диалог", "series": "Плочко и бай Ваньо",
+  "bg": "blue", "mascot": "dark", "music": "bounce",
+  "hook": "Бай Ваньо измисли *зимно меню*", "hook_emoji": "☕",
+  "cast": {
+    "vanyo": {"voice": "boris", "name": "Бай Ваньо", "emoji": "👨‍🍳", "role": "кафене в Кърджали", "color": "#ff9f0a"}
+  },
+  "segments": [
+    {"say": "Бай Ваньо, какво пишеш на дъската?", "pose": "point", "emote": "surprised"},
+    {"speaker": "vanyo", "say": "Зимно меню! Греяно вино, чай с мед… само дето никой не гледа дъската.", "pose": "shrug", "emote": "worried",
+     "card": {"type": "scene", "icons": ["🪧", "🍷", "🍯", "🙈"], "title": "Дъската? *Никой.*"}, "sfx": "chalk writing on blackboard", "sfx_vol": 0.4},
+    {"say": "Сложи го в QR менюто. Сезонно предложение, най-отгоре.", "pose": "present", "emote": "smug",
+     "card": {"type": "phone", "app": "menu", "items": [{"icon": "🍷", "text": "Греяно вино", "badge": "НОВО"}, {"icon": "🍵", "text": "Чай с мед"}, {"icon": "☕", "text": "Кафе"}], "title": "Сезонно *най-отгоре*"}},
+    {"speaker": "vanyo", "say": "И кой ще го въвежда? Пак ли ще печатам?", "pose": "think", "emote": "surprised",
+     "card": {"type": "title", "icon": "🖨️", "title": "Пак *печатане*?", "sub": "Не!"}, "sfx": "comedic record scratch", "sfx_vol": 0.4},
+    {"say": "Не! Сменяш го от телефона, на живо. За секунди.", "pose": "thumb", "emote": "excited",
+     "card": {"type": "vs", "left": {"icon": "🪧", "label": "Дъска с тебешир", "tag": "ПРЕДИ"}, "right": {"icon": "📱", "label": "QR меню на живо", "tag": "СЛЕД"}}, "sfx": "smartphone notification ping", "sfx_vol": 0.5},
+    {"speaker": "vanyo", "say": "Ей, Плочко… ами лятото пак ли ще го сменяме?", "pose": "think", "emote": "happy",
+     "card": {"type": "scene", "icons": ["❄️", "📱", "☀️"], "title": "*Всеки* сезон"}},
+    {"say": "От телефона, бай Ваньо! Последвай за още!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "title", "icon": "💪", "title": "Последвай *за още*", "sub": "Плочко и бай Ваньо"}}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "Бай Ваньо измисли зимно меню ☕ Но дъската никой не я гледа… В QR менюто сезонното предложение е най-отгоре и го сменяш от телефона, на живо. Последвай за още скечове 💪 👉 smartmenukj.com/bg/qr-menu-kardzhali.html",
+  "hashtags": ["#кърджали", "#smartmenukj", "#qrменю", "#кафене", "#зимноменю", "#ресторант"],
+  "first_comment": "Какво ще има в зимното меню на бай Ваньо? ☕🍷 Предложи 👇"
+}

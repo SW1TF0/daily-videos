@@ -1,0 +1,25 @@
+{
+  "id": "myth-websites",
+  "service": "Уеб сайтове", "hook_style": "мит/грешка", "series": "Мит или истина?",
+  "bg": "purple", "mascot": "dark", "music": "hype",
+  "hook": "3 мита за сайтовете, *които те спират*", "hook_emoji": "🤔",
+  "segments": [
+    {"say": "Три мита за сайтовете, които спират малкия бизнес.", "pose": "point", "emote": "smug"},
+    {"say": "Мит номер едно: сайтът е просто визитка.", "pose": "shrug", "emote": "surprised",
+     "card": {"type": "title", "icon": "🪪", "title": "Мит *№1*", "sub": "„Сайтът е само визитка“"}},
+    {"say": "Истина: с форма за резервация клиентите запазват сами. И получават потвърждение по имейл.", "pose": "present", "emote": "happy",
+     "card": {"type": "phone", "app": "web", "app_title": "Твоят бизнес", "button": "Запази час", "url": "smartmenukj.com", "title": "Резервации *онлайн*"}, "sfx": "smartphone notification ping", "sfx_vol": 0.5},
+    {"say": "Мит номер две: на телефон сайтът е бавен и неудобен.", "pose": "think", "emote": "worried",
+     "card": {"type": "vs", "left": {"icon": "🐌", "label": "Бавен сайт", "tag": "МИТ"}, "right": {"icon": "⚡", "label": "Бърз, първо за телефон", "tag": "ИСТИНА"}}},
+    {"say": "Мит номер три: направят го и изчезват.", "pose": "shrug", "emote": "serious",
+     "card": {"type": "title", "icon": "👻", "title": "Мит *№3*", "sub": "„Правят го и изчезват“"}, "sfx": "comedic record scratch", "sfx_vol": 0.4},
+    {"say": "Ние го проектираме, правим и държим онлайн. И оставаме на линия след това.", "pose": "thumb", "emote": "excited",
+     "card": {"type": "list", "items": [{"icon": "📐", "text": "Проектираме"}, {"icon": "🛠️", "text": "Правим"}, {"icon": "🌐", "text": "Държим онлайн"}]}},
+    {"say": "Последвай Плочко за още митове!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "title", "icon": "💪", "title": "Последвай *за още*", "sub": "Мит или истина?"}}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "3 мита за сайтовете, които спират малкия бизнес 🤔 Бърз сайт, удобен на телефон, с онлайн резервации и автоматично потвърждение по имейл — и поддръжка след това. Последвай Плочко за още митове 💪 👉 smartmenukj.com/bg/izrabotka-na-saitove-kardzhali.html",
+  "hashtags": ["#кърджали", "#smartmenukj", "#уебсайт", "#митилиистина", "#малъкбизнес", "#резервации"],
+  "first_comment": "Кой мит си чувал най-често? Пиши 1, 2 или 3 👇"
+}

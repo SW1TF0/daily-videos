@@ -1,0 +1,25 @@
+{
+  "id": "remix-3d-bracket",
+  "service": "3D печат", "hook_style": "болка/провокация", "series": "Градски легенди за технологиите",
+  "bg": "teal", "mascot": "dark", "music": "comedy",
+  "hook": "Изхвърляш уреда заради *една скоба*?", "hook_emoji": "🤯",
+  "segments": [
+    {"say": "Изхвърляш цял уред заради една малка скоба?", "pose": "point", "emote": "surprised"},
+    {"say": "Счупи се. Търсиш я навсякъде. Отговорът: вече не се произвежда.", "pose": "shrug", "emote": "worried",
+     "card": {"type": "scene", "icons": ["🔍", "🧩", "🚫"], "title": "„Не се *произвежда*“"}, "sfx": "comedic sad trombone", "sfx_vol": 0.4},
+    {"say": "Спри! Не носи уреда на боклука.", "pose": "wave", "emote": "excited",
+     "card": {"type": "vs", "left": {"icon": "🗑️", "label": "Нов уред", "tag": "СКЪПО"}, "right": {"icon": "🧩", "label": "Нова скоба", "tag": "УМНО"}}},
+    {"say": "Взимаме счупената част и я пресъздаваме *по оригинала*.", "pose": "present", "emote": "smug",
+     "card": {"type": "title", "icon": "📐", "title": "Пресъздаваме *частта*", "sub": "По оригинала"}},
+    {"say": "После я отпечатваме на 3D принтер. Може и цяла серия.", "pose": "thumb", "emote": "happy",
+     "card": {"type": "list", "items": [{"icon": "🧩", "text": "Резервни части"}, {"icon": "💡", "text": "Прототипи"}, {"icon": "📦", "text": "Малки серии"}]}, "sfx": "3d printer motors humming", "sfx_vol": 0.4},
+    {"say": "Така вече върнахме към живот уред, за който части няма.", "pose": "present", "emote": "excited",
+     "card": {"type": "scene", "icons": ["🖨️", "🧩", "✅"], "title": "Уредът *живее пак*"}},
+    {"say": "Последвай Плочко за още такива спасявания!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "title", "icon": "💪", "title": "Последвай *за още*", "sub": "Нов трик всеки ден"}}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "Изхвърляш уреда заради една скоба? 🤯 Пресъздаваме счупената част и я отпечатваме на 3D принтер — дори когато „вече не се произвежда“. Последвай Плочко за още 💪 👉 smartmenukj.com/bg/3d-pechat-kardzhali.html",
+  "hashtags": ["#кърджали", "#smartmenukj", "#3dпечат", "#ремонт", "#резервничасти", "#3dprinting"],
+  "first_comment": "Кой уред у вас стои заради една счупена част? 😅 Пиши 👇"
+}

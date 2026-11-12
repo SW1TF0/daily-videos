@@ -1,0 +1,25 @@
+{
+  "id": "legend-solar-camera",
+  "service": "Камери и сигурност", "hook_style": "въпрос/напрежение", "series": "Градски легенди за технологиите",
+  "bg": "night", "mascot": "light", "music": "mystery",
+  "hook": "Градска легенда: камерата, *която живее без ток*", "hook_emoji": "😱",
+  "segments": [
+    {"say": "Градска легенда, част втора: камерата, която живее без ток.", "pose": "think", "emote": "serious"},
+    {"say": "Лозе в Родопите. Няма ток, няма кабел. А нощем някой обикаля.", "pose": "shrug", "emote": "worried",
+     "card": {"type": "scene", "icons": ["🍇", "🌙", "👣", "❓"], "title": "Без ток. *Без кабел.*"}, "sfx": "night crickets and distant footsteps on gravel", "sfx_vol": 0.4},
+    {"say": "Всички казват: там камера не може. Няма как да я захраниш.", "pose": "point", "emote": "surprised",
+     "card": {"type": "vs", "left": {"icon": "🔌", "label": "Трябва ток", "tag": "МИТ"}, "right": {"icon": "☀️", "label": "Слънце + 4G", "tag": "ИСТИНА"}}},
+    {"say": "Но легендата казва друго. Соларна 4G камера. Слънцето я зарежда.", "pose": "present", "emote": "smug",
+     "card": {"type": "title", "icon": "☀️", "title": "Соларна *4G камера*", "sub": "За обекти без ток"}},
+    {"say": "Щом засече движение, телефонът ти звънва. Гледаш на живо отвсякъде.", "pose": "thumb", "emote": "excited",
+     "card": {"type": "phone", "app": "camera", "app_title": "Камера · лозе", "alert": "Засечено движение", "clock": "03:12", "title": "Известие *веднага*"}, "sfx": "smartphone notification ping", "sfx_vol": 0.5},
+    {"say": "А монтажът? Нашият екип, в Кърджали и региона.", "pose": "present", "emote": "happy",
+     "card": {"type": "list", "items": [{"icon": "🛠️", "text": "Монтаж от наш екип"}, {"icon": "📍", "text": "Кърджали и региона"}, {"icon": "🤝", "text": "Поддръжка след това"}]}},
+    {"say": "Легендата е истина. Последвай за част трета!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "title", "icon": "💪", "title": "Последвай *за част 3*", "sub": "Градски легенди за технологиите"}}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "Градска легенда, част 2: камерата, която живее без ток 😱 Соларна 4G камера за обекти без ток — известие на телефона и гледане на живо отвсякъде. Последвай за част 3 💪 👉 smartmenukj.com/bg/videonablyudenie-kardzhali.html",
+  "hashtags": ["#кърджали", "#smartmenukj", "#градскалегенда", "#камери", "#видеонаблюдение", "#родопи"],
+  "first_comment": "Къде ви трябва камера, а няма ток? 🤔 Лозе, вила, гараж? Пиши 👇"
+}
