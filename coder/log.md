@@ -2,6 +2,10 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 12.11.2026 — M-1112-03 — страница за конкурса /bg/konkurs.html
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/29 (слях го сам, на живо): content/bg/pages/konkurs.md (кратката част + „Правила“ дословно от contest/2026-11-qr-menu.md) → bg/konkurs.html; банер „🎁 Конкурс до 19.11…“ над заглавието на /bg/ и „Конкурс“ във футъра на BG; от 20.11 js/chrome.js ги скрива сам (until), страницата остава. Генераторът вече прави и обикновени страници от content/<lang>/pages/*.md (front matter: until/banner/footer; footer изисква запис в PROMO_PAGES в chrome.js — сглобяването проверява). Sitemap 62; ?v=20261112.
+Тест: сглобяване преди/след — в HTML разлика само банерът и версията; двойно сглобяване = същото; site_shot локално 5 — 0, на живо — виж Готово.
+
 ## 12.11.2026 — M-1112-01 — изходящи лийдове и sameAs
 ✅ 1) src/manager.py status_sales: лийдовете с direction "out"/"outbound" или source, започващ с outreach/scout, не се броят в „Запитвания без отговор“; брои ги отделно `outreach_not_sent` (direction "in" печели над source). Commit 860ed2f. Тест: 7 случая на outbound_lead + status на живите sales/leads.jsonl → new 0, outreach_not_sent 3, без alert.
 2) PR https://github.com/SW1TF0/SmartMenu/pull/28: TikTok https://www.tiktok.com/@smartmenukj в sameAs на началните EN/BG/TR (възелът е LocalBusiness — подтип на Organization, отделен Organization не трябва). YouTube липсва: адресът на канала го няма в repo-тата, а youtube.com е блокиран от мрежата на средата → нужен е линкът (Плочко: `social.py accounts`).
