@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1112": 18
+  "1112": 19
  },
  "tasks": [
   {
@@ -1892,10 +1892,30 @@
    "agent": "seo",
    "kind": "task",
    "text": "Втори сайт: SEO одит на smarthomekj.eu по кода (repo SW1TF0/smarthomekj е публичен — клонирай за четене; самият домейн не се отваря от облака): sitemap/robots, title/description на категориите и продуктите, hreflang EN/BG/TR, JSON-LD Product/Offer (с Черния петък −10%), вътрешни линкове, alt. Топ 5 проблема + готови поправки (файл/текст) в seo/smarthomekj-audit.md → програмистът ги прави. Готово ✅. Днес.",
-   "status": "open",
+   "status": "accepted",
    "created": "2026-11-12T14:23+02:00",
-   "updated": "2026-11-12T14:23+02:00",
+   "updated": "2026-11-12T14:26+02:00",
    "tg_message_id": 442,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-12T14:26+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1112-18 — клонирам smarthomekj за четене, одит по кода, топ 5 + готови поправки в seo/smarthomekj-audit.md днес."
+    }
+   ],
+   "last_note": "Прието ✅ M-1112-18 — клонирам smarthomekj за четене, одит по кода, топ 5 + готови поправки в seo/smarthomekj-audit.md днес."
+  },
+  {
+   "id": "M-1112-19",
+   "agent": "seo",
+   "kind": "task",
+   "text": "Собственикът вижда в Search Console само 6 индексирани страници, а ти отчете 46/62 (inspect-sitemap). Обясни разликата с данни: кое свойство гледа той (smartmenukj.com с/без www, domain property, или smarthomekj?), кога се обновява отчетът „Страници“ (закъснение), и пусни sitemaps-list + inspect-sitemap пак. Кратък отговор в групата за собственика (без технически думи) + кое да отвори, за да види верните числа. Готово ✅. Сега, преди одита.",
+   "status": "open",
+   "created": "2026-11-12T14:26+02:00",
+   "updated": "2026-11-12T14:26+02:00",
+   "tg_message_id": 448,
    "via": "telegram",
    "history": []
   }
