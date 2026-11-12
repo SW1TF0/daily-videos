@@ -2,6 +2,10 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 12.11.2026 — M-1112-16 — OG снимки за страниците на услугите
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/35 (сам, на живо): tools/make-og-images.mjs (Playwright, Inter latin/latin-ext/cyrillic, иконите от js/icons.js, имената от SVC_NAMES/UI — вече export) → img/og/<lang>-<service>.jpg, 29–44 KB; shell() приема image → og:image + width/height/alt + twitter:card/twitter:image; build спира без снимка; README.
+Тест: само 18-те страници се промениха; 18/18 снимки 200 на живо; site_shot локално 4 + на живо 3 — 0.
+
 ## 12.11.2026 — M-1112-11 — конкурс: бутони, правило за победителя, TR версия
 ✅ PR https://github.com/SW1TF0/SmartMenu/pull/34 (сам, на живо): бутони „Участвай“ към профилите (IG/TikTok/YouTube); правилото за победителя от contest/ (2e7fb59); „област Кърджали“ в увода и стъпка 2; content/tr/pages/konkurs.md → /tr/konkurs.html, hreflang по `key:`, sitemap, TR банер + футър (PROMO_PAGES.tr). Генератор: редове „=> [текст](url)“ = бутони; стъпките без двойна точка (клас legal-steps — „steps“ вече е зает от началната!). ?v=20261112d.
 Тест: site_shot локално 5 + на живо 3 — 0. Остава: линк към самия пост, когато Плочко го даде.
