@@ -2176,12 +2176,26 @@
    "agent": "coder",
    "kind": "task",
    "text": "Бутоните „Участвай“ на /bg/konkurs.html и /tr/konkurs.html → към самите постове (от Плочко): Instagram https://www.instagram.com/reel/DfpfTsxHIg3/ · TikTok https://www.tiktok.com/@smartmenukj/video/7707323238724013345 · YouTube https://www.youtube.com/watch?v=iDunLnZi42o. Плюс картата „Преди/След“ със суича в портфолиото (има снимка преди и след). Сам на живо. Готово ✅.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-12T19:54+02:00",
-   "updated": "2026-11-12T19:54+02:00",
+   "updated": "2026-11-12T20:54+02:00",
    "tg_message_id": 522,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-12T20:54+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1112-29 — бутоните на /bg и /tr/konkurs.html към самите постове (IG/TikTok/YouTube) + „Преди/След“ със суича в портфолиото; на живо."
+    },
+    {
+     "at": "2026-11-12T20:54+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1112-29 — на живо: https://github.com/SW1TF0/SmartMenu/pull/38\n• /bg/konkurs.html и /tr/konkurs.html: бутоните „Участвай / katıl“ отварят самите постове — Instagram reel, TikTok видеото и YouTube видеото.\n• Портфолио https://www.smartmenukj.com/bg/portfolio.html: картата за старческия дом вече е „Преди / След“ — старият суич в хартия и новият на мястото му, с етикети и преведени alt на "
+    }
+   ],
+   "last_note": "Готово ✅ M-1112-29 — на живо: https://github.com/SW1TF0/SmartMenu/pull/38\n• /bg/konkurs.html и /tr/konkurs.html: бутоните „Участвай / katıl“ отварят самите постове — Instagram reel, TikTok видеото и YouTube видеото.\n• Портфолио https://www.smartmenukj.com/bg/portfolio.html: картата за старческия дом вече е „Преди / След“ — старият суич в хартия и новият на мястото му, с етикети и преведени alt на "
   }
  ]
 }
