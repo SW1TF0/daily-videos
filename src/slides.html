@@ -46,7 +46,7 @@ const BGS = {
   teal: 'radial-gradient(120% 80% at 50% 30%,#5fe3c0 0%,#14b8a6 40%,#0b7f8a 75%,#07505e 100%)',
   night: 'radial-gradient(110% 70% at 50% 35%,#1f3b66 0%,#101a2e 45%,#05070d 100%)',
 };
-const TAGS = { myth: ['МИТ', '#ff3b30'], truth: ['ИСТИНА', '#30d158'], tip: ['ТРИК', '#0a84ff'], sign: ['ЗНАК', '#ff9f0a'], step: ['СТЪПКА', '#5e5ce6'] };
+const TAGS = { myth: ['МИТ', '#ff3b30'], truth: ['ИСТИНА', '#30d158'], tip: ['ТРИК', '#0a84ff'], sign: ['ЗНАК', '#ff9f0a'], step: ['СТЪПКА', '#5e5ce6'], info: ['ВАЖНО', '#ff375f'] };
 const esc=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const hl=s=>esc(s).replace(/\*(.+?)\*([.,!?:;…]*)/g,(m,a,p)=>`<span style="white-space:nowrap"><span class="hl" style="white-space:normal">${a}</span>${p}</span>`);
 function fit(el, max, min, w, h){ for(let f=max; f>=min; f-=4){ el.style.fontSize=f+'px'; if(el.scrollWidth<=w && el.offsetHeight<=h) return; } }
