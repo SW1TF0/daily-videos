@@ -2,6 +2,9 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 12.11.2026 — M-1112-29 — бутоните към постовете + „Преди/След“
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/38 (сам, на живо): content/{bg,tr}/pages/konkurs.md → линкове към reel/видеата; portfolio: .proj-ba (2× 3:4 с figcaption), portfolio_images.py --half, care-home.webp махнат; ?v=20261112f. site_shot локално + на живо — 0.
+
 ## 12.11.2026 — M-1112-27 — портфолио с реални проекти
 ✅ PR https://github.com/SW1TF0/SmartMenu/pull/37 (сам, на живо):  шаблон (img/portfolio/<име>.webp + услуга + град + текст; data-i18n-alt в build-langs и i18n.js), tools/portfolio_images.py (1200 px WebP, без EXIF/GPS), карти: „Мрежа и техника за старчески дом“ (текстът на собственика) и „Два сглобени компютъра“. Снимките от Плочко (assets/portfolio/): network-switch-after → care-home.webp, pc-build-2 → pc-build.webp; 3:2, 43–46 KB, без EXIF. site_shot локално 4 + на живо 3 — 0.
 
