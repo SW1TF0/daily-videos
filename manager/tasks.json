@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1112": 8
+  "1112": 9
  },
  "tasks": [
   {
@@ -1644,6 +1644,18 @@
     }
    ],
    "last_note": "Готово ✅ M-1112-08 — на живо: https://github.com/SW1TF0/SmartMenu/pull/33\n1) /bg/konkurs.html → title „Конкурс: QR меню 3 месеца безплатно | SmartMenuKJ“ (50 знака).\n2) 404 на 3 езика (пробвай https://www.smartmenukj.com/bg/nyama-takava.html): езикът идва от адреса (/bg/, /tr/) или от избора на посетителя; „Може би търсите“ — 6-те услуги, всички услуги, блог, FAQ (BG); хедърът, футърът и „Обратно "
+  },
+  {
+   "id": "M-1112-09",
+   "agent": "coder",
+   "kind": "task",
+   "text": "PR https://github.com/SW1TF0/SmartMenu/pull/32 (анимации) има конфликт с main (след PR #33) — собственикът не може да го слее. Обнови клона: rebase/merge от main, оправи конфликтите, тест + site_shot, push в клона на PR-а. Готово ✅, когато GitHub показва „може да се слее“.",
+   "status": "open",
+   "created": "2026-11-12T12:10+02:00",
+   "updated": "2026-11-12T12:10+02:00",
+   "tg_message_id": 390,
+   "via": "telegram",
+   "history": []
   }
  ]
 }
