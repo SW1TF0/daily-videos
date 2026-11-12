@@ -3,7 +3,7 @@
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
 ## 12.11.2026 — M-1112-27 — портфолио с реални проекти
-⏳ клон coder/M-1112-27-portfolio в SmartMenu: шаблон (img/portfolio/<име>.webp + услуга + град + текст; data-i18n-alt в build-langs и i18n.js), tools/portfolio_images.py (1200 px WebP, без EXIF/GPS), карти: „Мрежа и техника за старчески дом“ (текстът на собственика) и „Два сглобени компютъра“. Чака снимките от Плочко в daily-videos/assets/portfolio/ (помолих в групата). Срок: 13.11 14:00.
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/37 (сам, на живо):  шаблон (img/portfolio/<име>.webp + услуга + град + текст; data-i18n-alt в build-langs и i18n.js), tools/portfolio_images.py (1200 px WebP, без EXIF/GPS), карти: „Мрежа и техника за старчески дом“ (текстът на собственика) и „Два сглобени компютъра“. Снимките от Плочко (assets/portfolio/): network-switch-after → care-home.webp, pc-build-2 → pc-build.webp; 3:2, 43–46 KB, без EXIF. site_shot локално 4 + на живо 3 — 0.
 
 ## 12.11.2026 — M-1112-24 — марката (seo/brand-plan.md)
 ✅ PR https://github.com/SW1TF0/SmartMenu/pull/36 (сам, на живо): alternateName масив в LocalBusiness + WebSite; hero.eyebrow „SmartMenuKJ · Smart Menu <град>“ (3 езика); about.title + нов абзац about.brand (data-i18n-html, линкове към услугите на езика); „(смарт меню)“ в content/bg/qr-menu.md. site_shot локално 7 + на живо 4 — 0.
