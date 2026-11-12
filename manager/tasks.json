@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1112": 17
+  "1112": 18
  },
  "tasks": [
   {
@@ -1020,7 +1020,7 @@
    "text": "След като програмистът качи новите title/description (M-1111-37): провери ги на живо на 15-те страници, gsc.py sitemaps-submit (sitemap вече е 60 адреса), inspect на /bg/ и 2 нови услуги. Готово ✅ с числата. Днес.",
    "status": "done",
    "created": "2026-11-11T16:54+02:00",
-   "updated": "2026-11-11T17:01+02:00",
+   "updated": "2026-11-12T14:22+02:00",
    "tg_message_id": 237,
    "via": "telegram",
    "history": [
@@ -1041,9 +1041,15 @@
      "from": "done",
      "to": "done",
      "note": "Готово ✅ M-1111-41 / M-1111-38 — ✅ новите title + description на живо 15/15 (и og 15/15), site_shot /bg/ без проблеми. 📤 sitemap изпратен; Google го прочете в 14:54 UTC: 60 адреса, 0 грешки. 📊 Индексирани вече: /bg/, /bg/3d-pechat-kardzhali.html, /bg/kompyutaren-servis-kardzhali.html (сутринта бяха извън индекса). Следва: inspect-sitemap на всички 60 след 2–3 дни. 📝 https://github.com/SW1TF0/daily"
+    },
+    {
+     "at": "2026-11-12T14:22+02:00",
+     "from": "done",
+     "to": "done",
+     "note": "Готово ✅ M-1112-17 — вече е направено вчера (M-1111-38/41) и е на живо: EN https://www.smartmenukj.com/blog/small-business-website-checklist.html · https://www.smartmenukj.com/blog/3d-printing-what-can-be-made.html · https://www.smartmenukj.com/blog/slow-computer-7-causes.html · TR https://www.smartmenukj.com/tr/blog/isletme-web-sitesi-neler-olmali.html · https://www.smartmenukj.com/tr/blog/3d-bas"
     }
    ],
-   "last_note": "Готово ✅ M-1111-41 / M-1111-38 — ✅ новите title + description на живо 15/15 (и og 15/15), site_shot /bg/ без проблеми. 📤 sitemap изпратен; Google го прочете в 14:54 UTC: 60 адреса, 0 грешки. 📊 Индексирани вече: /bg/, /bg/3d-pechat-kardzhali.html, /bg/kompyutaren-servis-kardzhali.html (сутринта бяха извън индекса). Следва: inspect-sitemap на всички 60 след 2–3 дни. 📝 https://github.com/SW1TF0/daily"
+   "last_note": "Готово ✅ M-1112-17 — вече е направено вчера (M-1111-38/41) и е на живо: EN https://www.smartmenukj.com/blog/small-business-website-checklist.html · https://www.smartmenukj.com/blog/3d-printing-what-can-be-made.html · https://www.smartmenukj.com/blog/slow-computer-7-causes.html · TR https://www.smartmenukj.com/tr/blog/isletme-web-sitesi-neler-olmali.html · https://www.smartmenukj.com/tr/blog/3d-bas"
   },
   {
    "id": "M-1111-39",
@@ -1840,22 +1846,56 @@
    "agent": "coder",
    "kind": "task",
    "text": "От опашката: Open Graph снимки 1200×630 за 6-те страници на услугите × 3 езика (лого + заглавие на услугата + Кърджали, в стила на сайта; генерирани с Playwright/скрипт, WebP/JPG < 200 KB), og:image/twitter:image на страниците. Сам на живо, site_shot. Готово ✅ с 1 снимка в групата. Днес.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-12T13:54+02:00",
-   "updated": "2026-11-12T13:54+02:00",
+   "updated": "2026-11-12T14:22+02:00",
    "tg_message_id": 434,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-12T14:22+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1112-16 — OG снимки 1200×630 за 6 услуги × 3 езика + og:image/twitter:image; на живо днес."
+    },
+    {
+     "at": "2026-11-12T14:22+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1112-16 — на живо: https://github.com/SW1TF0/SmartMenu/pull/35\n• 18 снимки 1200×630 (6 услуги × EN/BG/TR) в стила на сайта: лого, иконата на услугата, „Кърджали и региона“ и името на услугата; JPG 29–44 KB. Пример: https://www.smartmenukj.com/img/og/bg-menu.jpg\n• Всяка страница на услуга вече има своя og:image (с размер и alt) + twitter:card „голяма снимка“ + twitter:image — при споделя"
+    }
+   ],
+   "last_note": "Готово ✅ M-1112-16 — на живо: https://github.com/SW1TF0/SmartMenu/pull/35\n• 18 снимки 1200×630 (6 услуги × EN/BG/TR) в стила на сайта: лого, иконата на услугата, „Кърджали и региона“ и името на услугата; JPG 29–44 KB. Пример: https://www.smartmenukj.com/img/og/bg-menu.jpg\n• Всяка страница на услуга вече има своя og:image (с размер и alt) + twitter:card „голяма снимка“ + twitter:image — при споделя"
   },
   {
    "id": "M-1112-17",
    "agent": "seo",
    "kind": "task",
    "text": "EN и TR версии на 3-те най-нови BG статии (сайт за заведение, 3D печат, бавен компютър) в seo/articles/en|tr/ по същите правила + таблица за hreflang; после програмистът ги качва. Готово ✅. Днес.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-12T13:54+02:00",
-   "updated": "2026-11-12T13:54+02:00",
+   "updated": "2026-11-12T14:22+02:00",
    "tg_message_id": 435,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-12T14:22+02:00",
+     "from": "open",
+     "to": "done",
+     "note": "Готово ✅ M-1112-17 — вече е направено вчера (M-1111-38/41) и е на живо: EN https://www.smartmenukj.com/blog/small-business-website-checklist.html · https://www.smartmenukj.com/blog/3d-printing-what-can-be-made.html · https://www.smartmenukj.com/blog/slow-computer-7-causes.html · TR https://www.smartmenukj.com/tr/blog/isletme-web-sitesi-neler-olmali.html · https://www.smartmenukj.com/tr/blog/3d-bas"
+    }
+   ],
+   "last_note": "Готово ✅ M-1112-17 — вече е направено вчера (M-1111-38/41) и е на живо: EN https://www.smartmenukj.com/blog/small-business-website-checklist.html · https://www.smartmenukj.com/blog/3d-printing-what-can-be-made.html · https://www.smartmenukj.com/blog/slow-computer-7-causes.html · TR https://www.smartmenukj.com/tr/blog/isletme-web-sitesi-neler-olmali.html · https://www.smartmenukj.com/tr/blog/3d-bas"
+  },
+  {
+   "id": "M-1112-18",
+   "agent": "seo",
+   "kind": "task",
+   "text": "Втори сайт: SEO одит на smarthomekj.eu по кода (repo SW1TF0/smarthomekj е публичен — клонирай за четене; самият домейн не се отваря от облака): sitemap/robots, title/description на категориите и продуктите, hreflang EN/BG/TR, JSON-LD Product/Offer (с Черния петък −10%), вътрешни линкове, alt. Топ 5 проблема + готови поправки (файл/текст) в seo/smarthomekj-audit.md → програмистът ги прави. Готово ✅. Днес.",
+   "status": "open",
+   "created": "2026-11-12T14:23+02:00",
+   "updated": "2026-11-12T14:23+02:00",
+   "tg_message_id": 442,
    "via": "telegram",
    "history": []
   }
