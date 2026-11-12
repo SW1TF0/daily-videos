@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1111": 52
+  "1112": 1
  },
  "tasks": [
   {
@@ -418,9 +418,9 @@
    "agent": "plochko",
    "kind": "task",
    "text": "Сайтът вече има страница за всяка услуга. От утре в описанието (caption) на всяко видео и карусел сложи линк към страницата на услугата: QR → smartmenukj.com/bg/qr-menu-kardzhali.html, сайтове → /bg/izrabotka-na-saitove-kardzhali.html, камери → /bg/videonablyudenie-kardzhali.html, умен дом → /bg/umen-dom-kardzhali.html, 3D → /bg/3d-pechat-kardzhali.html, сервиз → /bg/kompyutaren-servis-kardzhali.html. Готово ✅ след утрешния дневен цикъл с 1 пример.",
-   "status": "accepted",
+   "status": "done",
    "created": "2026-11-11T13:49+02:00",
-   "updated": "2026-11-11T13:54+02:00",
+   "updated": "2026-11-12T07:53+02:00",
    "tg_message_id": 122,
    "via": "telegram",
    "history": [
@@ -429,9 +429,15 @@
      "from": "open",
      "to": "accepted",
      "note": "Прието ✅ M-1111-17 — 6-те страници отварят (200); записах ги в playbook, от утрешния цикъл всеки caption е с линка на услугата. Пример ще пратя след цикъла."
+    },
+    {
+     "at": "2026-11-12T07:53+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1111-17 — от днес всеки пост завършва с линка на услугата. Пример (08:00, „Градска легенда, част 2“): „…Последвай за част 3 💪 👉 smartmenukj.com/bg/videonablyudenie-kardzhali.html“. Всички 8 поста днес са с линк."
     }
    ],
-   "last_note": "Прието ✅ M-1111-17 — 6-те страници отварят (200); записах ги в playbook, от утрешния цикъл всеки caption е с линка на услугата. Пример ще пратя след цикъла."
+   "last_note": "Готово ✅ M-1111-17 — от днес всеки пост завършва с линка на услугата. Пример (08:00, „Градска легенда, част 2“): „…Последвай за част 3 💪 👉 smartmenukj.com/bg/videonablyudenie-kardzhali.html“. Всички 8 поста днес са с линк."
   },
   {
    "id": "M-1111-18",
@@ -1408,6 +1414,18 @@
     }
    ],
    "last_note": "Готово ✅ M-1111-52 — 3 готови съобщения за Facebook (Messenger) за копиране, от името на Красимир: https://github.com/SW1TF0/daily-videos/blob/main/sales/outreach/2026-11-11-facebook.md\n• Behind theater — QR меню, без „нямате сайт“. zadteatira.com не мога да го отворя (блокиран при мен) → отвори го преди изпращане.\n• FLORA — сайт с резервации + QR меню.\n• Ефес — BG и TR версия; ⚠️ първо потвърди, "
+  },
+  {
+   "id": "M-1112-01",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Две малки: 1) src/manager.py status_sales — изходящите лийдове (от разузнавача/outreach, source scout) да не се броят като „запитвания без отговор“ (поле direction или source); 2) smartmenukj.com: JSON-LD Organization + sameAs (Instagram, TikTok @smartmenukj, YouTube — линковете от footer-а/социалните на сайта) на началните 3 езика, сам на живо по правилото. Готово ✅ с линкове. Днес до 14:00.",
+   "status": "open",
+   "created": "2026-11-12T07:54+02:00",
+   "updated": "2026-11-12T07:54+02:00",
+   "tg_message_id": 323,
+   "via": "telegram",
+   "history": []
   }
  ]
 }
