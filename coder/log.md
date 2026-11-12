@@ -2,6 +2,9 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 12.11.2026 — M-1112-30 — казус за старческия дом в блога
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/39 (сам, на живо): content/bg/blog/kazus-…md (част 2 от seo/cases дословно); генераторът: статия без FAQ → без FAQPage/без раздел; линкове от портфолиото (folio.r2.more), сервиза, „бавен компютър“; sitemap; ?v=20261112g. site_shot локално 6 + на живо 3 — 0.
+
 ## 12.11.2026 — M-1112-29 — бутоните към постовете + „Преди/След“
 ✅ PR https://github.com/SW1TF0/SmartMenu/pull/38 (сам, на живо): content/{bg,tr}/pages/konkurs.md → линкове към reel/видеата; portfolio: .proj-ba (2× 3:4 с figcaption), portfolio_images.py --half, care-home.webp махнат; ?v=20261112f. site_shot локално + на живо — 0.
 
