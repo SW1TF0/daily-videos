@@ -304,6 +304,14 @@ def status_seo(key, ag):
     return status_bot_agent(key, ag, 'seo', 'SEO агентът')
 
 
+def outbound_lead(r):
+    """A lead we contacted first: direction "out", or a source from the scout / outreach."""
+    d = str(r.get('direction') or '').lower()
+    if d in ('in', 'inbound'):
+        return False
+    return d in ('out', 'outbound') or bool(re.match(r'\s*(outreach|scout)\b', str(r.get('source') or ''), re.I))
+
+
 def status_sales(key, ag):
     """Sales agent: the common checks plus its leads (sales/leads.jsonl): new = not answered yet,
     waiting = answered or offer sent, overdue = a follow-up whose next_date has passed."""
@@ -314,10 +322,12 @@ def status_sales(key, ag):
         if r.get('id'):
             leads[r['id']] = r  # an updated lead is appended again: the last row wins
     open_ = [r for r in leads.values() if r.get('status') not in ('won', 'lost')]
-    new = [r for r in open_ if r.get('status', 'new') == 'new']
+    # outgoing leads (we wrote first: the scout's prospects, outreach) are not inquiries waiting for our answer
+    out_new = [r for r in open_ if r.get('status', 'new') == 'new' and outbound_lead(r)]
+    new = [r for r in open_ if r.get('status', 'new') == 'new' and not outbound_lead(r)]
     waiting = [r for r in open_ if r.get('status') in ('replied', 'offer_sent')]
     overdue = [r for r in open_ if r.get('next_date') and str(r['next_date']) < today]
-    out['leads'] = {'total': len(leads), 'new': len(new), 'waiting': len(waiting),
+    out['leads'] = {'total': len(leads), 'new': len(new), 'outreach_not_sent': len(out_new), 'waiting': len(waiting),
                     'won': sum(1 for r in leads.values() if r.get('status') == 'won'),
                     'overdue': [f"{r['id']} ({r.get('service') or '?'}): {r.get('next') or ''} от {r['next_date']}" for r in overdue]}
     if new:
