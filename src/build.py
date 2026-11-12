@@ -133,11 +133,13 @@ def gen_clip(prompt, aspect, secs):
                              'negative_prompt': 'text, captions, watermark, logo, distorted hands'}, 'mp4')
 
 
-def clip_frames(mp4, work, n, width):
-    """Extract a generated clip to numbered JPG frames (30 fps) the renderer can step through."""
+def clip_frames(mp4, work, n, width, secs=None):
+    """Extract a clip (generated, or a real video) to numbered JPG frames (30 fps) the renderer can step through;
+    `secs` keeps only the start of a longer video."""
     d = os.path.join(work, f'clip{n}')
     os.makedirs(d, exist_ok=True)
-    run(['ffmpeg', '-y', '-loglevel', 'error', '-i', mp4, '-vf', f'fps={FPS},scale={width}:-2', '-q:v', '3', os.path.join(d, '%05d.jpg')])
+    run(['ffmpeg', '-y', '-loglevel', 'error', '-i', mp4, *(['-t', str(secs)] if secs else []),
+         '-vf', f'fps={FPS},scale={width}:-2', '-q:v', '3', os.path.join(d, '%05d.jpg')])
     count = len([f for f in os.listdir(d) if f.endswith('.jpg')])
     return {'dir': 'file://' + d, 'count': count}
 
@@ -164,10 +166,21 @@ def resolve_media(sc, work):
     if hc.get('gen'):
         p = attempt(gen_clip, hc['gen'], '9:16', hc.get('secs', 6))
         sc['_hook_clip'] = clip_frames(p, work, 'hook', 1080) if p else None
+    def local(src):
+        """A file of the repo (e.g. out/media/… from `telegram.py media get`) -> its file:// URL."""
+        return src if src.startswith(('file://', 'http://', 'https://')) else 'file://' + os.path.join(ROOT, src)
     for i, seg in enumerate(sc['segments']):
         c = seg.get('card')
         if not c:
             continue
+        if c.get('type') == 'photo' and c.get('src'):
+            c['src'] = local(c['src'])  # a real photo (the owner's, #плочко)
+            if c['src'].startswith('file://') and not os.path.exists(c['src'][7:]):
+                notes.append(f"photo card {i}: {c.pop('src')[7:]} is missing (download it with `telegram.py media get`)")
+        if c.get('type') == 'clip' and c.get('src') and not c.get('frames'):
+            p = c['src'][7:] if c['src'].startswith('file://') else os.path.join(ROOT, c['src'])
+            if os.path.exists(p):
+                c['frames'] = clip_frames(p, work, i, 900, c.get('secs', 6))  # a real video (the owner's, #плочко)
         if c.get('type') == 'photo' and c.get('gen') and not c.get('src'):
             p = attempt(gen_image, c['gen'], '3:2')
             if p:

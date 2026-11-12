@@ -9,6 +9,9 @@ python3 src/telegram.py tasks                    # new messages addressed to us 
 python3 src/telegram.py reply <message_id> "<text>"   # answer a specific task message
 python3 src/telegram.py photo <file.png|jpg> ["<caption>"] [reply_to]  # a picture to the group (e.g. a site before/after);
                                                  # too big or too tall for a photo -> sent as a file
+python3 src/telegram.py media [all]              # Плочко: the owner's photos/videos posted with #плочко, not downloaded yet
+                                                 # (all: every one); JSON lines with n, file_id, text (what it is), date
+python3 src/telegram.py media get <n|file_id|all> # download to out/media/ (never committed; the repo is public); max 20 MB
 python3 src/telegram.py listening                # yes | no | night | off  -> start `wait` (in the background) only on "no"
 python3 src/telegram.py wait                     # listener: waits without AI cost, exits as soon as a message for us arrives
                                                  # exit 0 = new message for us, 2 = time is up, 3 = a turn reads Telegram itself
@@ -24,6 +27,10 @@ Tokens come from the environment (TELEGRAM_BOT_TOKEN for the worker, TELEGRAM_MA
 TELEGRAM_CODER_BOT_TOKEN for the coder, TELEGRAM_SEO_BOT_TOKEN for the SEO agent, TELEGRAM_SALES_BOT_TOKEN for the sales agent, TELEGRAM_SCOUT_BOT_TOKEN for the scout, set in each agent's environment settings) and are never printed or written to the repo.
 A task from the manager names its agent in the header ("📋 Задача M-… → @bot"): only that agent takes it.
 In a basic group message ids are per bot: refer to tasks by their id (M-1111-01) in the text, never by another bot's message id.
+
+Media for Плочко: the owner posts photos/videos in the group with #плочко and a few words (what object, which service).
+Every read of the worker bot (`tasks`, `wait`) records them in data/media.jsonl (only file ids and the text, never the
+files); an album counts when one of its items carries the tag. Telegram lets bots download files up to 20 MB.
 
 Listener: each bot has one reader at a time. `updates()` (used by `tasks` and by `manager.py inbox`) stops the
 bot's listener first, so a turn that reads Telegram takes over; the agent starts `wait` again at the end of its turn.
@@ -324,6 +331,7 @@ def updates():
     c, s = cfg(), state()
     me = me_id(c, s)
     ups = api('getUpdates', {'offset': str(int(s.get('offset') or 0) + 1), 'timeout': 0, 'allowed_updates': ['message']})
+    capture_media(ups, c)
     out = []
     for u in ups:
         s['offset'] = max(int(s.get('offset') or 0), u['update_id'])
@@ -395,6 +403,145 @@ def tasks():
         doc = DOCS[AS]
         print(f'(в края на хода пусни слушателя: `python3 src/telegram.py{flag()} listening` → при no `python3 src/telegram.py{flag()} wait` '
               f'във фонов режим; {doc}, „Слушател в реално време“)')
+
+
+# ---------- media for Плочко (#плочко) ----------
+
+MEDIA_LOG = os.path.join(ROOT, 'data', 'media.jsonl')
+MEDIA_DIR = os.path.join(ROOT, 'out', 'media')
+MEDIA_TAG = re.compile(r'#плочко\b', re.I)
+MAX_BOT_FILE = 20 * 1024 * 1024  # getFile limit for bots
+
+
+def media_rows():
+    rows = []
+    try:
+        with open(MEDIA_LOG, encoding='utf-8') as f:
+            for line in f:
+                if line.strip():
+                    rows.append(json.loads(line))
+    except FileNotFoundError:
+        pass
+    return rows
+
+
+def media_of(m):
+    """The file of a message: the largest photo size, a video, or a photo/video sent as a file (document)."""
+    if m.get('photo'):
+        p = max(m['photo'], key=lambda x: (x.get('file_size') or 0, x.get('width', 0) * x.get('height', 0)))
+        return {'kind': 'photo', 'file_id': p['file_id'], 'file_unique_id': p['file_unique_id'], 'file_size': p.get('file_size'),
+                'width': p.get('width'), 'height': p.get('height')}
+    for key in ('video', 'animation', 'video_note'):
+        if m.get(key):
+            v = m[key]
+            return {'kind': 'video', 'file_id': v['file_id'], 'file_unique_id': v['file_unique_id'], 'file_size': v.get('file_size'),
+                    'width': v.get('width'), 'height': v.get('height'), 'duration': v.get('duration'), 'mime': v.get('mime_type')}
+    d = m.get('document') or {}
+    if d and (d.get('mime_type') or '').split('/')[0] in ('image', 'video'):
+        return {'kind': d['mime_type'].split('/')[0].replace('image', 'photo'), 'file_id': d['file_id'], 'file_unique_id': d['file_unique_id'],
+                'file_size': d.get('file_size'), 'mime': d.get('mime_type'), 'name': d.get('file_name')}
+    return None
+
+
+def capture_media(ups, c):
+    """Worker only: keep the owner's #плочко photos/videos from these updates in data/media.jsonl (ids + text, no files)."""
+    if AS != 'worker' or not ups:
+        return 0
+    owner = (c.get('owner') or '').lower()
+    rows = media_rows()
+    seen = {r['file_unique_id'] for r in rows}
+    groups = {r['media_group_id']: r['text'] for r in rows if r.get('media_group_id')}
+    msgs = [u.get('message') or {} for u in ups]
+    for m in msgs:  # an album: the tag is on one item (its caption), the others carry no text
+        if m.get('media_group_id') and MEDIA_TAG.search(m.get('caption') or ''):
+            groups[m['media_group_id']] = m['caption']
+    new = []
+    for m in msgs:
+        if not m or str((m.get('chat') or {}).get('id')) != str(c.get('chat_id')):
+            continue
+        if not owner or (who(m.get('from') or {})['username'] or '').lower() != owner:
+            continue
+        text = m.get('caption') or m.get('text') or ''
+        if not MEDIA_TAG.search(text) and m.get('media_group_id') not in groups:
+            continue
+        f = media_of(m)
+        if not f or f['file_unique_id'] in seen:
+            continue
+        seen.add(f['file_unique_id'])
+        new.append({'message_id': m['message_id'], 'date': datetime.fromtimestamp(m.get('date', 0), TZ).isoformat(timespec='minutes'),
+                    'text': (text if MEDIA_TAG.search(text) else groups.get(m.get('media_group_id'), '')).strip(),
+                    **({'media_group_id': m['media_group_id']} if m.get('media_group_id') else {}), **{k: v for k, v in f.items() if v is not None}})
+    if new:
+        os.makedirs(os.path.dirname(MEDIA_LOG), exist_ok=True)
+        with open(MEDIA_LOG, 'a', encoding='utf-8') as fh:
+            for r in new:
+                fh.write(json.dumps(r, ensure_ascii=False) + '\n')
+    return len(new)
+
+
+def media_file(r):
+    """The downloaded copy of a media row in out/media/, if there is one."""
+    try:
+        for name in os.listdir(MEDIA_DIR):
+            if name.split('.')[0] == r['file_unique_id']:
+                return os.path.join(MEDIA_DIR, name)
+    except FileNotFoundError:
+        pass
+    return None
+
+
+def media(show_all=False):
+    if AS != 'worker':
+        raise SystemExit('media is for Плочко (the worker bot).')
+    rows = media_rows()
+    shown = 0
+    for n, r in enumerate(rows, 1):
+        path = media_file(r)
+        if path and not show_all:
+            continue
+        shown += 1
+        big = (r.get('file_size') or 0) > MAX_BOT_FILE
+        print(json.dumps({'n': n, 'kind': r['kind'], 'file_id': r['file_id'], 'text': r['text'], 'date': r['date'],
+                          'size_mb': round((r.get('file_size') or 0) / 1048576, 1), 'downloaded': os.path.relpath(path, ROOT) if path else None,
+                          **({'too_big': 'над 20 MB: собственикът да я прати по-къса или като файл до 20 MB'} if big else {})}, ensure_ascii=False))
+    if not shown:
+        print('Няма нови снимки/видеа с #плочко.' if not show_all else 'Още няма снимки/видеа с #плочко.')
+
+
+def media_get(which):
+    if AS != 'worker':
+        raise SystemExit('media is for Плочко (the worker bot).')
+    rows = media_rows()
+    if which == 'all':
+        picked = [r for r in rows if not media_file(r)]
+    elif re.fullmatch(r'\d+', which) and 1 <= int(which) <= len(rows):
+        picked = [rows[int(which) - 1]]
+    else:
+        picked = [r for r in rows if r['file_id'] == which]
+    if not picked:
+        raise SystemExit(f'media get: no such item ({which}); see `python3 src/telegram.py media`.')
+    os.makedirs(MEDIA_DIR, exist_ok=True)
+    for r in picked:
+        if (r.get('file_size') or 0) > MAX_BOT_FILE:
+            print(f"✗ {r['file_unique_id']}: {round(r['file_size'] / 1048576, 1)} MB — над 20 MB, ботът не може да го свали. "
+                  'Помоли собственика да го прати по-късо или като файл до 20 MB.')
+            continue
+        try:
+            info = api('getFile', {'file_id': r['file_id']})
+        except SystemExit as e:
+            print(f"✗ {r['file_unique_id']}: {e}" + (' — помоли собственика да го прати по-късо (до 20 MB).' if 'too big' in str(e) else ''))
+            continue
+        ext = os.path.splitext(info.get('file_path') or '')[1] or ('.jpg' if r['kind'] == 'photo' else '.mp4')
+        dest = os.path.join(MEDIA_DIR, r['file_unique_id'] + ext)
+        tok = token()
+        res = subprocess.run(['curl', '-sS', '--fail', '--max-time', '300', '-o', dest, f"https://api.telegram.org/file/bot{tok}/{info['file_path']}"],
+                             capture_output=True, text=True)
+        if res.returncode:
+            if os.path.exists(dest):
+                os.remove(dest)
+            print(f"✗ {r['file_unique_id']}: download failed ({(res.stderr or '').replace(tok, '***').strip()[:200]})")
+            continue
+        print(f"✓ {os.path.relpath(dest, ROOT)} — {r['text'][:120]}")
 
 
 # ---------- listener ----------
@@ -505,6 +652,7 @@ def wait(seconds=MAX_LISTEN):
             s = state()  # re-read: a turn may have advanced the offset meanwhile
             off = int(s.get('offset') or 0)
             fresh = [u for u in ups if u['update_id'] > off]
+            capture_media(fresh, c)
             for u in fresh:
                 m = row(u, c, me)
                 if m and (for_manager(m, c, s) if AS == 'manager' else for_worker(m, c, s)):
@@ -563,6 +711,11 @@ if __name__ == '__main__':
         send_photo(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else '', sys.argv[4] if len(sys.argv) > 4 else None)
     elif cmd == 'tasks':
         tasks()
+    elif cmd == 'media':
+        if len(sys.argv) > 2 and sys.argv[2] == 'get':
+            media_get(sys.argv[3] if len(sys.argv) > 3 else 'all')
+        else:
+            media(show_all=len(sys.argv) > 2 and sys.argv[2] == 'all')
     elif cmd == 'listening':
         listening()
     elif cmd == 'wait':

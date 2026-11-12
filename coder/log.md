@@ -2,6 +2,10 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 12.11.2026 — M-1112-22 — медия от собственика за Плочко (#плочко)
+✅ src/telegram.py: capture_media() при всяко четене на бота на Плочко (`tasks` и `wait`) → data/media.jsonl (file_id, file_unique_id, вид, размер, текст, дата; само от собственика, само в групата, с #плочко; албумите — по тага на един от елементите; дубликатите — по file_unique_id). `media [all]`, `media get <n|file_id|all>` → out/media/ (getFile, до 20 MB; по-голям → съобщение да го прати по-късо/като файл; токенът не се показва). build.py: карти photo/clip и hook_photo с локален `src` (out/media/…), clip взима първите `secs`; липсващ файл → сцена + бележка. CLAUDE.md: в „Сценарий“ и „Telegram“.
+Тест без мрежа: 10 фалшиви update-а (тагове, чужд автор, друг чат, PDF, само текст, албум, файл-снимка, видео 30 MB) → 5 записа, повторно 0, coder 0; get с фалшив getFile/curl; resolve_media със снимка, видео (120 кадъра за 4 с) и липсващ файл.
+
 ## 12.11.2026 — M-1112-21 — SEO на smarthomekj (по одита)
 ✅ PR https://github.com/SW1TF0/smarthomekj/pull/23 (сам, SEO, на живо): src/lib/catalogue.ts (Firestore REST runQuery active==true при build, резерва starterProducts), продуктовите страници/sitemap от него, нощно пресглобяване (deploy.yml cron 22:05 UTC); /shop/c/[category] за категориите с продукти (6), текстове по реалните продукти; Product/Offer + BreadcrumbList JSON-LD в server page (lib/product-seo.ts); productHref винаги /shop/<slug>/, global-not-found пренасочва нови продукти към ?p=; ShopGrid с initial каталог (статичният HTML с реалните продукти).
 Тест: tsc, lint, build с живия каталог (18×3 продукта, 6×3 категории, sitemap 117), Playwright; Vercel + Pages success.
