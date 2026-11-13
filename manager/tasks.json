@@ -2480,12 +2480,26 @@
    "agent": "coder",
    "kind": "task",
    "text": "Към M-1113-07: снимките на smarthomekj да не зависят от repo-то на SmartMenu и от ръчно правене на WebP — генерирай WebP автоматично при сглобяването на smarthomekj (вкл. нощното/новите продукти от админа) и ги сервирай от самия smarthomekj. Fallback към оригинала остава. Готово ✅ с линк.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-13T13:55+02:00",
-   "updated": "2026-11-13T13:55+02:00",
+   "updated": "2026-11-13T15:51+02:00",
    "tg_message_id": 582,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-13T15:51+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1113-08 — WebP се правят автоматично при всяко сглобяване на smarthomekj (вкл. нощното и новите продукти) и се сервират от самия smarthomekj; fallback към оригинала остава."
+    },
+    {
+     "at": "2026-11-13T15:51+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1113-08 — на живо: https://github.com/SW1TF0/smarthomekj/pull/25\n• WebP снимките се правят автоматично при всяко сглобяване на smarthomekj (GitHub Pages, Vercel и нощното пресглобяване): скриптът взима снимките на активните продукти от каталога, прави WebP (до 800 px) и ги сервира от самия smarthomekj (/img/products/). Няма вече връзка с repo-то на SmartMenu и нищо не се прави на ръка.\n"
+    }
+   ],
+   "last_note": "Готово ✅ M-1113-08 — на живо: https://github.com/SW1TF0/smarthomekj/pull/25\n• WebP снимките се правят автоматично при всяко сглобяване на smarthomekj (GitHub Pages, Vercel и нощното пресглобяване): скриптът взима снимките на активните продукти от каталога, прави WebP (до 800 px) и ги сервира от самия smarthomekj (/img/products/). Няма вече връзка с repo-то на SmartMenu и нищо не се прави на ръка.\n"
   }
  ]
 }
