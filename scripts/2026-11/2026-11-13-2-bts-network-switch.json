@@ -1,24 +1,66 @@
 {
-  "id": "bts-network-switch",
-  "service": "Сервиз на PC и принтери", "hook_style": "зад кулисите", "series": "Зад кулисите в SmartMenuKJ",
-  "bg": "night", "mascot": "light", "music": "comedy",
-  "hook": "Намерихме суич, *увит в хартия*", "hook_emoji": "😱",
-  "hook_photo": {"src": "out/media/m12/AQADKBBrGyXxqFN-.jpg"},
-  "segments": [
-    {"say": "Зад кулисите: намерихме мрежов суич, увит в хартия.", "pose": "point", "emote": "surprised"},
-    {"say": "Обаждат ни се: интернетът прекъсва. Проверяваме кабелите и…", "pose": "think", "emote": "worried",
-     "card": {"type": "scene", "icons": ["📞", "🌐", "❌"], "title": "Интернетът *прекъсва*"}, "sfx": "old phone ringing", "sfx_vol": 0.4},
-    {"say": "…ето го виновника. Скрит сред кабелите, завит като за зимата.", "pose": "shrug", "emote": "smug",
-     "card": {"type": "photo", "src": "out/media/m12/AQADKBBrGyXxqFN-.jpg", "title": "Виновникът"}, "sfx": "comedic record scratch", "sfx_vol": 0.4},
-    {"say": "Сменихме суича и оправихме настройките на мрежата.", "pose": "present", "emote": "happy",
-     "card": {"type": "photo", "src": "out/media/m11/AQADcxBrGyXxqFN-.jpg", "title": "Нов *суич*"}},
-    {"say": "Компютрите пак са онлайн. Без прекъсвания.", "pose": "thumb", "emote": "excited",
-     "card": {"type": "vs", "left": {"icon": "📄", "label": "Суич в хартия", "tag": "ПРЕДИ"}, "right": {"icon": "✅", "label": "Стабилна мрежа", "tag": "СЛЕД"}}, "sfx": "smartphone notification ping", "sfx_vol": 0.4},
-    {"say": "Офис мрежи, компютри, принтери — поддържаме ги да работят. Последвай за още!", "pose": "flex", "emote": "excited", "happyEyes": true,
-     "card": {"type": "title", "icon": "💪", "title": "Последвай *за още*", "sub": "Зад кулисите в SmartMenuKJ"}}
-  ],
-  "cta": "Последвай за още 💪",
-  "caption": "Зад кулисите: намерихме мрежов суич, увит в хартия 😱 Сменихме го и оправихме настройките на мрежата — офисът пак е онлайн. Последвай за още 💪 👉 smartmenukj.com/bg/kompyutaren-servis-kardzhali.html\n🎁 Конкурс: QR меню 3 месеца безплатно за заведение в Кърджали — правила в профила, срок 19.11.",
-  "hashtags": ["#кърджали", "#smartmenukj", "#задкулисите", "#мрежа", "#itсервиз", "#kardzhali"],
-  "first_comment": "А при вас къде се крие рутерът? 😅 Пиши 👇"
+ "id": "bts-network-switch",
+ "service": "Сервиз на PC и принтери",
+ "hook_style": "зад кулисите",
+ "series": "Зад кулисите в SmartMenuKJ",
+ "bg": "night",
+ "mascot": "light",
+ "music": "comedy",
+ "hook": "Намерихме суич, *увит в хартия*",
+ "hook_emoji": "😱",
+ "hook_photo": {
+  "src": "out/media/m12/AQADKBBrGyXxqFN-.jpg"
+ },
+ "segments": [
+  {
+   "say": "Намерихме мрежов суич, увит в хартия. Последвай за още зад кулисите!",
+   "pose": "point",
+   "emote": "surprised"
+  },
+  {
+   "say": "Интернетът прекъсваше. А ето го виновника, скрит сред кабелите.",
+   "pose": "shrug",
+   "emote": "smug",
+   "card": {
+    "type": "photo",
+    "src": "out/media/m12/AQADKBBrGyXxqFN-.jpg",
+    "title": "Виновникът"
+   },
+   "sfx": "comedic record scratch",
+   "sfx_vol": 0.4
+  },
+  {
+   "say": "Сменихме суича и оправихме мрежата. Офисът пак е онлайн.",
+   "pose": "present",
+   "emote": "happy",
+   "card": {
+    "type": "photo",
+    "src": "out/media/m11/AQADcxBrGyXxqFN-.jpg",
+    "title": "Нов *суич*"
+   }
+  },
+  {
+   "say": "Утре: още от зад кулисите. Последвай!",
+   "pose": "flex",
+   "emote": "excited",
+   "happyEyes": true,
+   "card": {
+    "type": "title",
+    "icon": "💪",
+    "title": "Последвай *за още*",
+    "sub": "Зад кулисите в SmartMenuKJ"
+   }
+  }
+ ],
+ "cta": "Последвай за още 💪",
+ "caption": "Зад кулисите: намерихме мрежов суич, увит в хартия 😱 Сменихме го и оправихме настройките на мрежата — офисът пак е онлайн. Последвай за още 💪 👉 smartmenukj.com/bg/kompyutaren-servis-kardzhali.html\n🎁 Конкурс: QR меню 3 месеца безплатно за заведение в Кърджали — правила в профила, срок 19.11.",
+ "hashtags": [
+  "#кърджали",
+  "#smartmenukj",
+  "#задкулисите",
+  "#мрежа",
+  "#itсервиз",
+  "#kardzhali"
+ ],
+ "first_comment": "А при вас къде се крие рутерът? 😅 Пиши 👇"
 }
