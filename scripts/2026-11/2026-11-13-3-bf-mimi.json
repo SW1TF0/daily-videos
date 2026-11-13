@@ -1,0 +1,24 @@
+{
+  "id": "bf-mimi-start",
+  "service": "Умен дом", "hook_style": "оферта", "series": "Плочко и кака Мими",
+  "bg": "night", "mascot": "light", "music": "hype",
+  "hook": "Черен петък: *−10% на всичко*", "hook_emoji": "🖤",
+  "cast": {"mimi": {"voice": "mimi", "name": "Кака Мими", "emoji": "👩‍🦱", "role": "магазинче в Кърджали", "color": "#ff375f"}},
+  "segments": [
+    {"say": "Черен петък в SmartHomeKJ започна! Минус десет процента на всичко.", "pose": "wave", "emote": "excited", "sfx": "cash register cha-ching", "sfx_vol": 0.5},
+    {"speaker": "mimi", "say": "Чакай, Плочко. Кое точно е намалено?", "pose": "think", "emote": "surprised",
+     "card": {"type": "scene", "icons": ["🛒", "❓", "🏷️"], "title": "Кое е *намалено*?"}},
+    {"say": "Всичко! Умни крушки, контакти, термоглави, датчици, камери.", "pose": "present", "emote": "smug",
+     "card": {"type": "phone", "app": "home", "items": [{"icon": "💡", "text": "Умна крушка"}, {"icon": "🔌", "text": "Умен контакт"}, {"icon": "🌡️", "text": "Термоглави"}], "title": "*Всичко* −10%"}},
+    {"speaker": "mimi", "say": "А термоглавите? Онези за по-ниската сметка?", "pose": "shrug", "emote": "happy",
+     "card": {"type": "title", "icon": "🌡️", "title": "Топли стаи, *по-ниска сметка*", "sub": "Термоглави"}},
+    {"say": "И те! Пазаруваш онлайн в smarthomekj точка eu.", "pose": "thumb", "emote": "excited",
+     "card": {"type": "phone", "app": "web", "app_title": "SmartHomeKJ", "button": "Черен петък −10%", "url": "smarthomekj.eu", "title": "Онлайн *магазин*"}, "sfx": "smartphone notification ping", "sfx_vol": 0.4},
+    {"say": "До тридесети ноември. Последвай за още!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "stat", "big": "30.11", "title": "−10% *до*", "sub": "smarthomekj.eu"}}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "Черен петък в SmartHomeKJ: −10% на всичко до 30.11 🖤 Умни крушки, контакти, термоглави, датчици и камери — в онлайн магазина. Последвай за още 💪 👉 smarthomekj.eu\n🎁 Конкурс: QR меню 3 месеца безплатно за заведение в Кърджали — правила в профила, срок 19.11.",
+  "hashtags": ["#кърджали", "#smartmenukj", "#черенпетък", "#умендом", "#smarthomekj", "#blackfriday"],
+  "first_comment": "Кое ще вземеш първо с −10%? 💡🔌🌡️ Пиши 👇"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "bts-pc-build",
+  "service": "Сервиз на PC и принтери", "hook_style": "зад кулисите", "series": "Зад кулисите в SmartMenuKJ",
+  "bg": "purple", "mascot": "dark", "music": "hype",
+  "hook": "Зад кулисите: *сглобяваме машина*", "hook_emoji": "🛠️",
+  "hook_photo": {"src": "out/media/m03.jpg/AQADxBFrGyulsVN-.jpg"},
+  "segments": [
+    {"say": "Зад кулисите в SmartMenuKJ: днес сглобяваме машина.", "pose": "wave", "emote": "excited"},
+    {"say": "Кутия, части, кабели. И един Плочко, който брои винтчета.", "pose": "think", "emote": "smug",
+     "card": {"type": "scene", "icons": ["📦", "🔩", "🧰"], "title": "Броим *винтчета*"}, "sfx": "small screws rattling on a workbench", "sfx_vol": 0.4},
+    {"say": "Водно охлаждане, подсветка, всичко подредено.", "pose": "present", "emote": "happy",
+     "card": {"type": "clip", "src": "out/media/m01.mp4/AgADuiAAAiulsVM.MOV", "secs": 6, "title": "Подсветката *светва*"}, "sfx": "computer fans spinning up", "sfx_vol": 0.4},
+    {"say": "И ето я. Готова за работа и за игри.", "pose": "thumb", "emote": "excited",
+     "card": {"type": "photo", "src": "out/media/m05.jpg/AQADxhFrGyulsVN-.jpg", "title": "Готова *машина*"}},
+    {"say": "Компютри, офис мрежи, принтери и ремонти. Поддържаме ги да работят.", "pose": "present", "emote": "happy",
+     "card": {"type": "list", "items": [{"icon": "🖥️", "text": "Компютри"}, {"icon": "🌐", "text": "Офис мрежи"}, {"icon": "🖨️", "text": "Принтери и ремонти"}]}},
+    {"say": "Последвай за още зад кулисите!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "title", "icon": "💪", "title": "Последвай *за още*", "sub": "Зад кулисите в SmartMenuKJ"}}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "Зад кулисите: сглобяваме машина 🛠️ Компютри, офис мрежи, принтери и ремонти — от нашия екип в Кърджали. Последвай за още зад кулисите 💪 👉 smartmenukj.com/bg/kompyutaren-servis-kardzhali.html\n🎁 Конкурс: QR меню 3 месеца безплатно за заведение в Кърджали — правила в профила, срок 19.11.",
+  "hashtags": ["#кърджали", "#smartmenukj", "#задкулисите", "#pcbuild", "#компютри", "#kardzhali"],
+  "first_comment": "За игри или за работа — каква машина да сглобим следващата? 🎮💼 Пиши 👇"
+}
