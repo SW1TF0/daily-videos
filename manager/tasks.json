@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1113": 3
+  "1113": 5
  },
  "tasks": [
   {
@@ -2384,6 +2384,30 @@
     }
    ],
    "last_note": "Готово ✅ M-1113-03 — на живо: https://github.com/SW1TF0/SmartMenu/pull/42\nЛинк за био-то (Плочко → собственикът):\n• Instagram: https://www.smartmenukj.com/links?utm_source=instagram&utm_medium=bio\n• TikTok: https://www.smartmenukj.com/links?utm_source=tiktok&utm_medium=bio\n• YouTube: https://www.smartmenukj.com/links?utm_source=youtube&utm_medium=bio\nНа страницата: лого + 1 ред, 🎁 Конкурс (изчезва"
+  },
+  {
+   "id": "M-1113-04",
+   "agent": "plochko",
+   "kind": "task",
+   "text": "От инспекцията 13.11: 1) „Менюто, което се смени нощем“ обещава част 2 утре → сценарий за 14.11 (12–20 сек, разгадката) в утрешния план, задължително; 2) в caption-ите вместо „правила в профила“ → директният линк smartmenukj.com/bg/konkurs.html (и от днес в био-линка smartmenukj.com/links). Готово ✅.",
+   "status": "open",
+   "created": "2026-11-13T11:55+02:00",
+   "updated": "2026-11-13T11:55+02:00",
+   "tg_message_id": 572,
+   "via": "telegram",
+   "history": []
+  },
+  {
+   "id": "M-1113-05",
+   "agent": "sales",
+   "kind": "task",
+   "text": "Нов потенциален клиент от Разузнавача: хотелски комплекс „Santa Ria“ (до летището, открит юни 2025, с ресторант; без официален сайт в търсенето — само booking). Готово съобщение за копиране (Facebook/имейл, ако Разузнавачът намери фирмен канал) — сайт с директни резервации + QR меню, само факти от сайта, цена по договорка. В sales/outreach/ + leads.jsonl. Готово ✅.",
+   "status": "open",
+   "created": "2026-11-13T11:55+02:00",
+   "updated": "2026-11-13T11:55+02:00",
+   "tg_message_id": 573,
+   "via": "telegram",
+   "history": []
   }
  ]
 }
