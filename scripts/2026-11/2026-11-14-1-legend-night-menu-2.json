@@ -1,0 +1,17 @@
+{
+  "id": "legend-night-menu-2",
+  "service": "QR менюта", "hook_style": "въпрос/напрежение", "series": "Градски легенди за технологиите",
+  "bg": "blue", "mascot": "dark", "music": "mystery",
+  "hook": "Кой смени менюто? *Разгадката*", "hook_emoji": "🕵️",
+  "segments": [
+    {"say": "Кой смени менюто през нощта? Част втора. Последвай за още легенди!", "pose": "think", "emote": "smug"},
+    {"say": "Собственикът. От телефона си, от дивана. С QR меню цените се сменят на живо.", "pose": "present", "emote": "excited",
+     "card": {"type": "phone", "app": "menu", "items": [{"icon": "🍷", "text": "Греяно вино", "badge": "НОВО"}, {"icon": "☕", "text": "Кафе"}, {"icon": "🍰", "text": "Десерт на деня"}], "title": "Сменено *на живо*"}, "sfx": "smartphone notification ping", "sfx_vol": 0.4},
+    {"say": "Без печатане. Легендата е истина. Последвай!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "vs", "left": {"icon": "🖨️", "label": "Ново печатане", "tag": "ПРЕДИ"}, "right": {"icon": "📱", "label": "От телефона", "tag": "СЕГА"}}}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "Кой смени менюто през нощта? Разгадката 🕵️ Собственикът — от телефона, с QR меню, на живо. Без печатане. Последвай за още легенди 💪 👉 smartmenukj.com/bg/qr-menu-kardzhali.html\n🎁 Конкурс: QR меню 3 месеца безплатно за заведение в Кърджали — правила: smartmenukj.com/bg/konkurs.html · срок 19.11.",
+  "hashtags": ["#кърджали", "#smartmenukj", "#градскалегенда", "#qrменю", "#кафене", "#kardzhali"],
+  "first_comment": "Позна ли кой е сменил менюто? 😄 Отбележи заведение, което заслужава QR меню 👇"
+}
