@@ -2,6 +2,9 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 13.11.2026 — M-1113-08 — WebP автоматично при сглобяване на smarthomekj
+✅ PR https://github.com/SW1TF0/smarthomekj/pull/25 (на живо): scripts/product-images.mjs (prebuild/predev/pretypecheck; Firestore REST → sharp → public/img/products/<sha16>.webp + src/data/product-images.json, gitignored; грешка → оригиналът, без да пада build); images.ts чете картата; preconnect махнат; sharp devDependency. Тест: локално 17 копия (през прокси: NODE_USE_ENV_PROXY=1), fallback при изтрито копие; Actions лог „17 WebP copies“. img/shop/ в SmartMenu вече не се ползва (може да се махне).
+
 ## 13.11.2026 — M-1113-07 — скорост на smarthomekj
 ✅ SmartMenu#43 (img/shop/*.webp, 2,2 MB PNG → 221 KB) + smarthomekj#24 (lib/images.ts fastImage → www + webp, ProductImage с onError към оригинала, preconnect). Мерене Playwright 390 px, CPU×4, жив каталог: снимки shop 1129→122 KB, продукт 196→24, BF 581→65; CLS ≤0,011; JS ~290 KB gzip (Firebase) — предложение, не е пипано. Pages + Vercel success.
 
