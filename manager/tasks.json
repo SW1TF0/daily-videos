@@ -2364,12 +2364,26 @@
    "agent": "coder",
    "kind": "task",
    "text": "Страница „линк в био“ за Instagram/TikTok: smartmenukj.com/links (или /bg/links.html) — лого, 1 ред кой сме, големи бутони: 🎁 Конкурс, 🖤 Черен петък smarthomekj −10%, 6-те услуги, „Пиши ни“ (тел. +359 88 534 8666), Instagram/TikTok/YouTube; mobile first, бърза, с UTM (?utm_source=instagram&utm_medium=bio). Сам на живо, снимка от 390 px. Готово ✅ с линка — Плочко ще предложи на собственика да го сложи в био-то.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-13T09:55+02:00",
-   "updated": "2026-11-13T09:55+02:00",
+   "updated": "2026-11-13T10:54+02:00",
    "tg_message_id": 565,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-13T10:54+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1113-03 — страница „линк в био“ smartmenukj.com/links с бутоните, UTM и снимка от 390 px; на живо днес."
+    },
+    {
+     "at": "2026-11-13T10:54+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1113-03 — на живо: https://github.com/SW1TF0/SmartMenu/pull/42\nЛинк за био-то (Плочко → собственикът):\n• Instagram: https://www.smartmenukj.com/links?utm_source=instagram&utm_medium=bio\n• TikTok: https://www.smartmenukj.com/links?utm_source=tiktok&utm_medium=bio\n• YouTube: https://www.smartmenukj.com/links?utm_source=youtube&utm_medium=bio\nНа страницата: лого + 1 ред, 🎁 Конкурс (изчезва"
+    }
+   ],
+   "last_note": "Готово ✅ M-1113-03 — на живо: https://github.com/SW1TF0/SmartMenu/pull/42\nЛинк за био-то (Плочко → собственикът):\n• Instagram: https://www.smartmenukj.com/links?utm_source=instagram&utm_medium=bio\n• TikTok: https://www.smartmenukj.com/links?utm_source=tiktok&utm_medium=bio\n• YouTube: https://www.smartmenukj.com/links?utm_source=youtube&utm_medium=bio\nНа страницата: лого + 1 ред, 🎁 Конкурс (изчезва"
   }
  ]
 }
