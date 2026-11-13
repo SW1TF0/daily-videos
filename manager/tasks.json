@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1113": 7
+  "1113": 8
  },
  "tasks": [
   {
@@ -2454,10 +2454,36 @@
    "agent": "coder",
    "kind": "task",
    "text": "smarthomekj.eu — скорост и мобилна проверка (както на smartmenukj, M-1111-15/31): снимки WebP/размери/lazy, шрифтове, Lighthouse-подобен отчет преди/след за началната, магазина, 1 продукт и /bg/black-friday/; поправи дребното без промяна на дизайна. Сам на живо (SEO/скорост — по правилото). Готово ✅ с числата. Днес.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-13T12:55+02:00",
-   "updated": "2026-11-13T12:55+02:00",
+   "updated": "2026-11-13T13:54+02:00",
    "tg_message_id": 579,
+   "via": "telegram",
+   "history": [
+    {
+     "at": "2026-11-13T13:54+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1113-07 — скорост и телефон на smarthomekj (начална, магазин, продукт, /bg/black-friday/): отчет преди/след с числа, дребни поправки без промяна на дизайна; на живо днес."
+    },
+    {
+     "at": "2026-11-13T13:54+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1113-07 — smarthomekj, на живо (Pages + Vercel ✅): https://github.com/SW1TF0/smarthomekj/pull/24 + https://github.com/SW1TF0/SmartMenu/pull/43\nГлавното: снимките на продуктите бяха PNG 2,2 MB (17 бр. по 70–194 KB) и минаваха през пренасочване smartmenukj.com → www. Вече са WebP (общо 221 KB) директно от www; ако за нова снимка няма WebP — показва оригинала.\nТелефон 390 px (Playwright, C"
+    }
+   ],
+   "last_note": "Готово ✅ M-1113-07 — smarthomekj, на живо (Pages + Vercel ✅): https://github.com/SW1TF0/smarthomekj/pull/24 + https://github.com/SW1TF0/SmartMenu/pull/43\nГлавното: снимките на продуктите бяха PNG 2,2 MB (17 бр. по 70–194 KB) и минаваха през пренасочване smartmenukj.com → www. Вече са WebP (общо 221 KB) директно от www; ако за нова снимка няма WebP — показва оригинала.\nТелефон 390 px (Playwright, C"
+  },
+  {
+   "id": "M-1113-08",
+   "agent": "coder",
+   "kind": "task",
+   "text": "Към M-1113-07: снимките на smarthomekj да не зависят от repo-то на SmartMenu и от ръчно правене на WebP — генерирай WebP автоматично при сглобяването на smarthomekj (вкл. нощното/новите продукти от админа) и ги сервирай от самия smarthomekj. Fallback към оригинала остава. Готово ✅ с линк.",
+   "status": "open",
+   "created": "2026-11-13T13:55+02:00",
+   "updated": "2026-11-13T13:55+02:00",
+   "tg_message_id": 582,
    "via": "telegram",
    "history": []
   }
