@@ -2,6 +2,9 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 13.11.2026 — M-1113-07 — скорост на smarthomekj
+✅ SmartMenu#43 (img/shop/*.webp, 2,2 MB PNG → 221 KB) + smarthomekj#24 (lib/images.ts fastImage → www + webp, ProductImage с onError към оригинала, preconnect). Мерене Playwright 390 px, CPU×4, жив каталог: снимки shop 1129→122 KB, продукт 196→24, BF 581→65; CLS ≤0,011; JS ~290 KB gzip (Firebase) — предложение, не е пипано. Pages + Vercel success.
+
 ## 13.11.2026 — M-1113-03 — страница „линк в био“
 ✅ PR https://github.com/SW1TF0/SmartMenu/pull/42 (сам, на живо): links.html (самостоятелна, css/style.css + малък inline стил, noindex follow); бутони с data-until (конкурс 20.11, Черен петък 1.12); utm_* от адреса → към линковете (+ utm_campaign=links). GitHub Pages отваря /links без .html. Playwright 390 px локално + на живо — 0 грешки.
 
