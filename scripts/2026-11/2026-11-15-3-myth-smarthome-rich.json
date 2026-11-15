@@ -1,0 +1,17 @@
+{
+  "id": "myth-smarthome-rich",
+  "service": "Умен дом", "hook_style": "мит/грешка", "series": "Мит или истина?",
+  "bg": "purple", "mascot": "dark", "music": "hype",
+  "hook": "Умен дом? *За богати?*", "hook_emoji": "🤔",
+  "segments": [
+    {"say": "Мит: умният дом е само за богати. Последвай за още митове!", "pose": "point", "emote": "smug"},
+    {"say": "Истина: започваш с една умна крушка или контакт. От телефона, по график.", "pose": "present", "emote": "happy",
+     "card": {"type": "vs", "left": {"icon": "🏰", "label": "Само за богати", "tag": "МИТ"}, "right": {"icon": "💡", "label": "Започваш с една крушка", "tag": "ИСТИНА"}}},
+    {"say": "А в smarthomekj точка eu до тридесети ноември всичко е с десет процента отстъпка.", "pose": "thumb", "emote": "excited", "happyEyes": true,
+     "card": {"type": "stat", "big": "−10%", "title": "Черен петък *до 30.11*", "sub": "smarthomekj.eu"}, "sfx": "cash register cha-ching", "sfx_vol": 0.4}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "Умният дом е само за богати? Мит 🤔 Започваш с една умна крушка или контакт — от телефона, по график. А в smarthomekj.eu всичко е −10% до 30.11. Последвай за още митове 💪 👉 smarthomekj.eu\n🎁 Конкурс: QR меню 3 месеца безплатно за заведение в Кърджали — правила: smartmenukj.com/bg/konkurs.html · срок 19.11.",
+  "hashtags": ["#кърджали", "#smartmenukj", "#умендом", "#митилиистина", "#черенпетък"],
+  "first_comment": "Кое умно устройство би сложил първо? 💡🔌🌡️ Пиши 👇"
+}

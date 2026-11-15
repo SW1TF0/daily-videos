@@ -1,0 +1,18 @@
+{
+  "id": "skit-mimi-boiler",
+  "service": "Умен дом", "hook_style": "скеч/диалог", "series": "Плочко и кака Мими",
+  "bg": "teal", "mascot": "dark", "music": "comedy",
+  "hook": "Кака Мими *се върна* заради бойлера", "hook_emoji": "😅",
+  "cast": {"mimi": {"voice": "mimi", "name": "Кака Мими", "emoji": "👩‍🦱", "role": "магазинче в Кърджали", "color": "#ff375f"}},
+  "segments": [
+    {"speaker": "mimi", "say": "Плочко, върнах се от магазина. Не помня дали спрях бойлера!", "pose": "shrug", "emote": "worried"},
+    {"say": "Кака Мими, с умен контакт го спираш от телефона. Ето — спрян!", "pose": "present", "emote": "smug",
+     "card": {"type": "phone", "app": "home", "items": [{"icon": "🔌", "text": "Бойлер · изключен"}, {"icon": "💡", "text": "Лампи по график"}], "title": "Спрян *от телефона*"}, "sfx": "smartphone notification ping", "sfx_vol": 0.4},
+    {"speaker": "mimi", "say": "А аз бях на половината път! Последвай Плочко, хора!", "pose": "flex", "emote": "happy", "happyEyes": true,
+     "card": {"type": "title", "icon": "💪", "title": "Последвай *за още*", "sub": "Плочко и кака Мими"}, "sfx": "small studio audience laughing briefly", "sfx_vol": 0.4}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "Кака Мими се върна заради бойлера 😅 С умен контакт го спираш от телефона — отвсякъде. Последвай за още скечове 💪 👉 smartmenukj.com/bg/umen-dom-kardzhali.html\n🎁 Конкурс: QR меню 3 месеца безплатно за заведение в Кърджали — правила: smartmenukj.com/bg/konkurs.html · срок 19.11.",
+  "hashtags": ["#кърджали", "#smartmenukj", "#умендом", "#какамими", "#kardzhali"],
+  "first_comment": "Колко пъти си се връщал заради бойлера? 😅 Пиши число 👇"
+}

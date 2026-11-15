@@ -1,0 +1,17 @@
+{
+  "id": "legend-3am-camera-1",
+  "service": "Камери и сигурност", "hook_style": "въпрос/напрежение", "series": "Градски легенди за технологиите",
+  "bg": "night", "mascot": "light", "music": "mystery",
+  "hook": "3:12 през нощта. *Телефонът звънна.*", "hook_emoji": "😱",
+  "segments": [
+    {"say": "Градска легенда: три и дванадесет през нощта, телефонът звънна. Част първа — последвай!", "pose": "think", "emote": "worried", "sfx": "smartphone notification ping", "sfx_vol": 0.5},
+    {"say": "Известие: засечено движение. Магазинът е затворен. Кой е вътре?", "pose": "shrug", "emote": "surprised",
+     "card": {"type": "phone", "app": "camera", "app_title": "Камера · магазин", "alert": "Засечено движение", "clock": "03:12", "title": "Кой е *вътре*?"}},
+    {"say": "Отговорът — утре. Последвай, за да не го изпуснеш!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "title", "icon": "🕵️", "title": "Отговорът — *утре*", "sub": "Последвай за част 2"}}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "Градска легенда: 3:12 през нощта, телефонът звънна 😱 Засечено движение в затворения магазин… Кой е вътре? Отговорът — утре в част 2. Последвай 💪 👉 smartmenukj.com/bg/videonablyudenie-kardzhali.html\n🎁 Конкурс: QR меню 3 месеца безплатно за заведение в Кърджали — правила: smartmenukj.com/bg/konkurs.html · срок 19.11.",
+  "hashtags": ["#кърджали", "#smartmenukj", "#градскалегенда", "#камери", "#kardzhali"],
+  "first_comment": "Твоята версия: кой е в магазина в 3:12? 🕵️ Пиши 👇"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "bts-phone-sold",
+  "service": "Сервиз на PC и принтери", "hook_style": "зад кулисите", "series": "Зад кулисите в SmartMenuKJ",
+  "bg": "teal", "mascot": "dark", "music": "bounce",
+  "hook": "Още един телефон *отлетя*", "hook_emoji": "📱",
+  "hook_photo": {"src": "out/media/edit/phone-blur.jpg"},
+  "segments": [
+    {"say": "Зад кулисите: още едно телефонче фръкна! Последвай за още от нас.", "pose": "wave", "emote": "excited", "sfx": "cash register cha-ching", "sfx_vol": 0.4},
+    {"say": "Да, при нас продаваме и телефони. Нов, в кутията, право в ръцете ти.", "pose": "present", "emote": "happy",
+     "card": {"type": "photo", "src": "out/media/edit/phone-blur.jpg", "title": "Нов *телефон*"}},
+    {"say": "А компютри, мрежи и принтери — пак ние. Последвай!", "pose": "flex", "emote": "excited", "happyEyes": true,
+     "card": {"type": "list", "items": [{"icon": "📱", "text": "Телефони"}, {"icon": "🖥️", "text": "Компютри"}, {"icon": "🌐", "text": "Офис мрежи"}]}}
+  ],
+  "cta": "Последвай за още 💪",
+  "caption": "Зад кулисите: още едно телефонче фръкна 📱 При нас продаваме и телефони — а компютри, мрежи и принтери поддържаме да работят. Последвай за още 💪 👉 smartmenukj.com/bg/kompyutaren-servis-kardzhali.html\n🎁 Конкурс: QR меню 3 месеца безплатно за заведение в Кърджали — правила: smartmenukj.com/bg/konkurs.html · срок 19.11.",
+  "hashtags": ["#кърджали", "#smartmenukj", "#задкулисите", "#телефони", "#kardzhali"],
+  "first_comment": "С какъв телефон си в момента? 📱 Пиши 👇"
+}
