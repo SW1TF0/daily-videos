@@ -12,6 +12,12 @@
 6. Още текст: about (172 думи) и portfolio (207 думи) са тънки; services ~80 думи на услуга. Факти от собственика за проекти в портфолиото.
 7. Линкове: Instagram/TikTok/YouTube био → `https://www.smartmenukj.com/bg/` (през мениджъра към Плочко); местни каталози (собственикът).
 
+## 15.11.2026 — M-1115-05 — TR версии на 3-те нови статии (SmartMenu `1655402`)
+- `/tr/blog/otel-pansiyon-guvenlik-kamerasi.html` (741 думи) ↔ BG видеонаблюдение за хотел; `/tr/blog/iki-dilli-qr-menu-turistler.html` (634) ↔ BG QR меню на два езика; `/tr/blog/ofis-bilgisayari-once-ne-degismeli.html` (648) ↔ BG компютър за офис.
+- Естествен турски, само фактите от BG версиите; title ≤50, description ≤136 знака; контакт `?service=cameras|menu|pc`; 5 FAQ всяка.
+- hreflang BG↔TR (+ x-default BG) в страниците (build по `bg:` във frontmatter) и в sitemap.xml (вече 70 URL). site_shot: 0 проблема.
+- Урок на деня: TR статия се свързва с BG чрез `bg:` във frontmatter — BG файлът не се пипа; в sitemap обаче трябва ръчно да добавиш `tr` alternate и в BG записа.
+
 ## 15.11.2026 08:20 UTC — цикъл
 - **Индексирани: 54/67** по проверка на живо (13.11: 48/64). Новите статии от днес: хотел и QR на два езика вече индексирани; офис компютър, открита. Казусът за старческия дом е индексиран.
 - Не още: `/bg/videonablyudenie-kardzhali.html` (открита от 11.11, единствената BG услуга извън индекса), EN `/blog/` + 5 EN статии, EN contact/portfolio/qr/3d (открити), TR „yavas-bilgisayar“ (обходена, не индексирана).
