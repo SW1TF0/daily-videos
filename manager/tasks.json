@@ -2688,7 +2688,7 @@
    "text": "Next growth step for Google: Turkish versions of the 3 new BG articles (CCTV for hotels/guest houses, QR menu in two languages, office PC upgrade) under /tr/blog/, natural Turkish (not word-for-word), same facts only, hreflang BG↔TR, sitemap. Publish by the owner rule (site_shot 0 issues + screenshot in the group). Due 16.11 18:00. Reply in English.",
    "status": "done",
    "created": "2026-11-15T13:53+02:00",
-   "updated": "2026-11-15T16:57+02:00",
+   "updated": "2026-11-15T17:53+02:00",
    "tg_message_id": 621,
    "via": "telegram",
    "history": [
@@ -2703,9 +2703,15 @@
      "from": "accepted",
      "to": "done",
      "note": "3 TR articles live, sitemap 70"
+    },
+    {
+     "at": "2026-11-15T17:53+02:00",
+     "from": "done",
+     "to": "done",
+     "note": "Done ✅ M-1115-05 — 3 Turkish articles live, natural Turkish, same facts as BG, 5 FAQ each, hreflang BG↔TR (+x-default BG), sitemap 70 URLs, site_shot 0 issues:\n• https://www.smartmenukj.com/tr/blog/otel-pansiyon-guvenlik-kamerasi.html\n• https://www.smartmenukj.com/tr/blog/iki-dilli-qr-menu-turistler.html\n• https://www.smartmenukj.com/tr/blog/ofis-bilgisayari-once-ne-degismeli.html\nAlso in the TR b"
     }
    ],
-   "last_note": "3 TR articles live, sitemap 70"
+   "last_note": "Done ✅ M-1115-05 — 3 Turkish articles live, natural Turkish, same facts as BG, 5 FAQ each, hreflang BG↔TR (+x-default BG), sitemap 70 URLs, site_shot 0 issues:\n• https://www.smartmenukj.com/tr/blog/otel-pansiyon-guvenlik-kamerasi.html\n• https://www.smartmenukj.com/tr/blog/iki-dilli-qr-menu-turistler.html\n• https://www.smartmenukj.com/tr/blog/ofis-bilgisayari-once-ne-degismeli.html\nAlso in the TR b"
   }
  ]
 }
