@@ -254,22 +254,28 @@ def status_daily_videos(key, ag):
 
 def failed_platforms(rows, hours=48):
     """Posts that went out without some network (social.py `failed_platforms`, e.g. TikTok refused) in the last
-    `hours`, minus those a later successful upload of the same id has covered."""
+    `hours`, minus those a successful retry of the same id has covered. A retry is a row for that platform scheduled
+    later than the id's first slot; it counts wherever it sits in the file (a failure note may be written after it)."""
     since = (now() - dt.timedelta(hours=hours)).date().isoformat()
-    open_ = {}
-    for r in rows:  # in file order: a later retry clears an earlier failure
-        if str(r.get('date', '')) < since or 'id' not in r:
-            continue
+    rows = [r for r in rows if 'id' in r and str(r.get('date', '')) >= since]
+    first = {}
+    for r in rows:
+        if r.get('scheduled_for'):
+            first[r['id']] = min(first.get(r['id'], r['scheduled_for']), r['scheduled_for'])
+    failed = {}
+    for r in rows:
         for p in r.get('failed_platforms') or []:
-            open_.setdefault(r['id'], {'id': r['id'], 'platforms': [], 'scheduled_for': r.get('scheduled_for')})
-            if p not in open_[r['id']]['platforms']:
-                open_[r['id']]['platforms'].append(p)
-        if r.get('ok') is not False and r['id'] in open_:
-            done = set(r.get('platforms') or [])
-            open_[r['id']]['platforms'] = [p for p in open_[r['id']]['platforms'] if p not in done or p in (r.get('failed_platforms') or [])]
-            if not open_[r['id']]['platforms']:
-                del open_[r['id']]
-    return list(open_.values())
+            failed.setdefault(r['id'], {'id': r['id'], 'platforms': [], 'scheduled_for': first.get(r['id'])})
+            if p not in failed[r['id']]['platforms']:
+                failed[r['id']]['platforms'].append(p)
+    for r in rows:
+        if r['id'] not in failed or r.get('ok') is False or not r.get('scheduled_for'):
+            continue
+        if r['scheduled_for'] <= (first.get(r['id']) or ''):
+            continue  # the original upload, not a retry
+        ok = set(r.get('platforms') or []) - set(r.get('failed_platforms') or [])
+        failed[r['id']]['platforms'] = [p for p in failed[r['id']]['platforms'] if p not in ok]
+    return [v for v in failed.values() if v['platforms']]
 
 
 def status_bot_agent(key, ag, folder, label):

@@ -1,158 +1,158 @@
 {
- "_manager": {
-  "name": "Мениджърът (@managerswitfo_bot) — не се наблюдава",
-  "telegram": "@managerswitfo_bot",
-  "environment": "Мениджър на агентите",
-  "session_id": "session_015VXfwzLmW2mcfR1D6WVGSi",
-  "triggers": {
-   "cycle": "trig_01AYy1A2cUBw7FR6LaDk7ATC"
+  "_manager": {
+    "name": "Мениджърът (@managerswitfo_bot) — не се наблюдава",
+    "telegram": "@managerswitfo_bot",
+    "environment": "Мениджър на агентите",
+    "session_id": "session_015VXfwzLmW2mcfR1D6WVGSi",
+    "triggers": {
+      "cycle": "trig_01AYy1A2cUBw7FR6LaDk7ATC"
+    },
+    "old": {
+      "session_id": "session_015VXfwvB7U4AFTEGEWcyvtS, session_015VXfww13GBajwrHCBXgvGx",
+      "trigger": "trig_011BPWouDbVrJcMqs4Kp3yUX, trig_01PBecxAKrybHsNJZQx6rfXq (изключени)"
+    }
   },
-  "old": {
-   "session_id": "session_015VXfwvB7U4AFTEGEWcyvtS, session_015VXfww13GBajwrHCBXgvGx",
-   "trigger": "trig_011BPWouDbVrJcMqs4Kp3yUX, trig_01PBecxAKrybHsNJZQx6rfXq (изключени)"
+  "plochko": {
+    "name": "Плочко — daily videos (социалните мрежи на SmartMenuKJ)",
+    "telegram": "@dailyvideosswitfo_bot",
+    "repo": "SW1TF0/daily-videos",
+    "instructions": [
+      "CLAUDE.md",
+      "playbook.md"
+    ],
+    "session_id": "session_015VXfwyTMMia5DpsXwsMYob",
+    "triggers": {
+      "daily": "trig_01E1Ume3ASExa1ZTuCcBG2Le",
+      "community": "trig_01FwFWbtF3shhbJeU4BPN71b"
+    },
+    "schedule": "дневен цикъл 06:47 (план, видеа, карусели, насрочване); „общност“ всеки час в :23, 08:23–23:23 (коментари, лични съобщения, задачи, проверка на качванията)",
+    "check": "daily-videos",
+    "targets": {
+      "videos_per_day": 5,
+      "carousels_per_day": 1,
+      "followers_goal": 5000,
+      "goal_start": "2026-11-10",
+      "goal_start_followers": 23,
+      "deadline": "2026-12-10"
+    },
+    "profile": "manager/agents/plochko.md",
+    "aliases": [
+      "плочко"
+    ]
+  },
+  "coder": {
+    "name": "Програмистът (@itclaudeswitfo_bot) — задачи по кода",
+    "telegram": "@itclaudeswitfo_bot",
+    "aliases": [
+      "програмист"
+    ],
+    "repo": "SW1TF0/daily-videos",
+    "instructions": [
+      "coder/CODER.md"
+    ],
+    "environment": "Programist - daily-videos",
+    "session_id": "session_015VXfwuyAsA2z8SSeZGi7SX",
+    "triggers": {
+      "cycle": "trig_01EwuGKcwNWdFzYq4VzBYt9Z"
+    },
+    "schedule": "цикъл на всеки 2 ч. в :38 (08:38–22:38); слушател в реално време за задачите; дневен отчет в 22:38, седмичен в неделя",
+    "check": "coder",
+    "targets": {
+      "report": "Прието/Готово по всяка задача, дневен отчет в 22:38, седмичен в неделя"
+    },
+    "profile": "manager/agents/coder.md",
+    "environment_id": "env_01Qro6BYc5sPtNPF31MZivii",
+    "old": {
+      "sessions": "session_015VXfwwzur5hU147HmWh2Rd, session_015VXfww8K4qHDQdvaN2sjZY, session_015VXfwwpsbvCmo9qnPobzxk (стари токени)",
+      "trigger": "trig_01QkqTbEjQ5pNyuSy4G6UMBT, trig_01Wfj8kRYp4oaSufcTnbwc1D (изключени)"
+    }
+  },
+  "seo": {
+    "name": "SEO агентът — сайтовете в Google (smartmenukj.com)",
+    "telegram": "@seoswitfo_bot",
+    "aliases": [
+      "seo",
+      "сео"
+    ],
+    "repo": "SW1TF0/daily-videos",
+    "sites": {
+      "smartmenukj.com": "SW1TF0/SmartMenu"
+    },
+    "instructions": [
+      "seo/SEO.md"
+    ],
+    "environment": "SEO - smartmenukj",
+    "session_id": "session_015VXfwvpCPhn9UJYmZXe9yb",
+    "triggers": {
+      "cycle": "trig_01QKBVWcNrQmZpVRnBr3FHRv"
+    },
+    "schedule": "цикъл веднъж дневно в 10:17; слушател в реално време за задачите; седмичен отчет в понеделник",
+    "check": "seo",
+    "targets": {
+      "goal": "всички страници на smartmenukj.com индексирани; първа страница в Google за местните услуги (Кърджали)"
+    },
+    "profile": "manager/agents/seo.md",
+    "status": "работи (представи се 11.11 13:15)",
+    "environment_id": "env_01ReuHqVvmgjk37aHk98vNjr",
+    "old": {
+      "sessions": "session_015VXfwwdpbQHNhHENNAdrcT, session_015VXfwyUiTt9ugEsuB7XF6F (архивирани)",
+      "trigger": "trig_01HGPr3bdMi6PNoKTjVPCf4b (изключена)"
+    }
+  },
+  "sales": {
+    "name": "Агентът за продажби — запитвания, оферти, клиенти",
+    "telegram": "@salesswitfo_bot",
+    "aliases": [
+      "продажби",
+      "sales"
+    ],
+    "repo": "SW1TF0/daily-videos",
+    "instructions": [
+      "sales/SALES.md"
+    ],
+    "environment": "Sales - smartmenukj",
+    "session_id": "session_015VXfwxdm9hGsrdUdRtus2m",
+    "triggers": {
+      "cycle": "trig_012zbdG1JFHDtf5iqkutfkbD"
+    },
+    "schedule": "цикъл 08:41 и 16:41; слушател за задачите",
+    "check": "sales",
+    "targets": {
+      "goal": "0 запитвания без отговор; оферта до 24 ч."
+    },
+    "profile": "manager/agents/sales.md",
+    "status": "пуснат 11.11 14:47",
+    "environment_id": "env_01HpBTELGCTzx8g1WPaThWq2",
+    "old": {
+      "sessions": "session_015VXfww6UvfFUcFjdBy592W (архивирана, без токен)"
+    }
+  },
+  "scout": {
+    "name": "Разузнавачът — нови потенциални клиенти в Кърджали",
+    "telegram": "@inspectorswitfo_bot",
+    "aliases": [
+      "разузнавач",
+      "scout"
+    ],
+    "repo": "SW1TF0/daily-videos",
+    "instructions": [
+      "scout/SCOUT.md"
+    ],
+    "environment": "Scout - smartmenukj",
+    "session_id": "session_015VXfwxvTjQERi5ioDh8WYF",
+    "triggers": {
+      "cycle": "trig_01TWkwxJFSF9Ct4KuMhDeq9L"
+    },
+    "schedule": "цикъл всеки ден в 11:13; слушател",
+    "check": "scout",
+    "targets": {
+      "goal": "≥20 нови проверени потенциални клиенти седмично"
+    },
+    "profile": "manager/agents/scout.md",
+    "status": "пуснат 11.11 17:00",
+    "environment_id": "env_01Fcn4qKMoyabq4etxvKb6GS",
+    "old": {
+      "sessions": "session_015VXfwzLc5PGNEkVKgDtaNL (архивирана, без токен)"
+    }
   }
- },
- "plochko": {
-  "name": "Плочко — daily videos (социалните мрежи на SmartMenuKJ)",
-  "telegram": "@dailyvideosswitfo_bot",
-  "repo": "SW1TF0/daily-videos",
-  "instructions": [
-   "CLAUDE.md",
-   "playbook.md"
-  ],
-  "session_id": "session_015VXfwyTMMia5DpsXwsMYob",
-  "triggers": {
-   "daily": "trig_01E1Ume3ASExa1ZTuCcBG2Le",
-   "community": "trig_01FwFWbtF3shhbJeU4BPN71b"
-  },
-  "schedule": "дневен цикъл 06:47 (план, видеа, карусели, насрочване); „общност“ всеки час в :23, 08:23–23:23 (коментари, лични съобщения, задачи, проверка на качванията)",
-  "check": "daily-videos",
-  "targets": {
-   "videos_per_day": 5,
-   "carousels_per_day": 3,
-   "followers_goal": 5000,
-   "goal_start": "2026-11-10",
-   "goal_start_followers": 23,
-   "deadline": "2026-12-10"
-  },
-  "profile": "manager/agents/plochko.md",
-  "aliases": [
-   "плочко"
-  ]
- },
- "coder": {
-  "name": "Програмистът (@itclaudeswitfo_bot) — задачи по кода",
-  "telegram": "@itclaudeswitfo_bot",
-  "aliases": [
-   "програмист"
-  ],
-  "repo": "SW1TF0/daily-videos",
-  "instructions": [
-   "coder/CODER.md"
-  ],
-  "environment": "Programist - daily-videos",
-  "session_id": "session_015VXfwuyAsA2z8SSeZGi7SX",
-  "triggers": {
-   "cycle": "trig_01EwuGKcwNWdFzYq4VzBYt9Z"
-  },
-  "schedule": "цикъл на всеки 2 ч. в :38 (08:38–22:38); слушател в реално време за задачите; дневен отчет в 22:38, седмичен в неделя",
-  "check": "coder",
-  "targets": {
-   "report": "Прието/Готово по всяка задача, дневен отчет в 22:38, седмичен в неделя"
-  },
-  "profile": "manager/agents/coder.md",
-  "environment_id": "env_01Qro6BYc5sPtNPF31MZivii",
-  "old": {
-   "sessions": "session_015VXfwwzur5hU147HmWh2Rd, session_015VXfww8K4qHDQdvaN2sjZY, session_015VXfwwpsbvCmo9qnPobzxk (стари токени)",
-   "trigger": "trig_01QkqTbEjQ5pNyuSy4G6UMBT, trig_01Wfj8kRYp4oaSufcTnbwc1D (изключени)"
-  }
- },
- "seo": {
-  "name": "SEO агентът — сайтовете в Google (smartmenukj.com)",
-  "telegram": "@seoswitfo_bot",
-  "aliases": [
-   "seo",
-   "сео"
-  ],
-  "repo": "SW1TF0/daily-videos",
-  "sites": {
-   "smartmenukj.com": "SW1TF0/SmartMenu"
-  },
-  "instructions": [
-   "seo/SEO.md"
-  ],
-  "environment": "SEO - smartmenukj",
-  "session_id": "session_015VXfwvpCPhn9UJYmZXe9yb",
-  "triggers": {
-   "cycle": "trig_01QKBVWcNrQmZpVRnBr3FHRv"
-  },
-  "schedule": "цикъл веднъж дневно в 10:17; слушател в реално време за задачите; седмичен отчет в понеделник",
-  "check": "seo",
-  "targets": {
-   "goal": "всички страници на smartmenukj.com индексирани; първа страница в Google за местните услуги (Кърджали)"
-  },
-  "profile": "manager/agents/seo.md",
-  "status": "работи (представи се 11.11 13:15)",
-  "environment_id": "env_01ReuHqVvmgjk37aHk98vNjr",
-  "old": {
-   "sessions": "session_015VXfwwdpbQHNhHENNAdrcT, session_015VXfwyUiTt9ugEsuB7XF6F (архивирани)",
-   "trigger": "trig_01HGPr3bdMi6PNoKTjVPCf4b (изключена)"
-  }
- },
- "sales": {
-  "name": "Агентът за продажби — запитвания, оферти, клиенти",
-  "telegram": "@salesswitfo_bot",
-  "aliases": [
-   "продажби",
-   "sales"
-  ],
-  "repo": "SW1TF0/daily-videos",
-  "instructions": [
-   "sales/SALES.md"
-  ],
-  "environment": "Sales - smartmenukj",
-  "session_id": "session_015VXfwxdm9hGsrdUdRtus2m",
-  "triggers": {
-   "cycle": "trig_012zbdG1JFHDtf5iqkutfkbD"
-  },
-  "schedule": "цикъл 08:41 и 16:41; слушател за задачите",
-  "check": "sales",
-  "targets": {
-   "goal": "0 запитвания без отговор; оферта до 24 ч."
-  },
-  "profile": "manager/agents/sales.md",
-  "status": "пуснат 11.11 14:47",
-  "environment_id": "env_01HpBTELGCTzx8g1WPaThWq2",
-  "old": {
-   "sessions": "session_015VXfww6UvfFUcFjdBy592W (архивирана, без токен)"
-  }
- },
- "scout": {
-  "name": "Разузнавачът — нови потенциални клиенти в Кърджали",
-  "telegram": "@inspectorswitfo_bot",
-  "aliases": [
-   "разузнавач",
-   "scout"
-  ],
-  "repo": "SW1TF0/daily-videos",
-  "instructions": [
-   "scout/SCOUT.md"
-  ],
-  "environment": "Scout - smartmenukj",
-  "session_id": "session_015VXfwxvTjQERi5ioDh8WYF",
-  "triggers": {
-   "cycle": "trig_01TWkwxJFSF9Ct4KuMhDeq9L"
-  },
-  "schedule": "цикъл всеки ден в 11:13; слушател",
-  "check": "scout",
-  "targets": {
-   "goal": "≥20 нови проверени потенциални клиенти седмично"
-  },
-  "profile": "manager/agents/scout.md",
-  "status": "пуснат 11.11 17:00",
-  "environment_id": "env_01Fcn4qKMoyabq4etxvKb6GS",
-  "old": {
-   "sessions": "session_015VXfwzLc5PGNEkVKgDtaNL (архивирана, без токен)"
-  }
- }
 }
