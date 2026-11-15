@@ -152,8 +152,9 @@ def inbox():
         if frm in bots:
             kind = 'agent'
             for tid in m['task_ids']:
-                st = ('done' if 'готово' in low else 'blocked' if any(w in low for w in ('не мога', 'блокира', 'провал', 'грешка', 'не успях'))
-                      else 'accepted' if 'прието' in low else None)
+                st = ('done' if any(w in low for w in ('готово', 'done ✅', 'done:', 'done —', 'done -')) or low.startswith('done')
+                      else 'blocked' if any(w in low for w in ('не мога', 'блокира', 'провал', 'грешка', 'не успях', "can't", 'cannot', 'blocked', 'failed'))
+                      else 'accepted' if any(w in low for w in ('прието', 'accepted')) else None)
                 if st:
                     set_status(tid, st, m['text'], quiet=True)
             m['agent'] = bots[frm]

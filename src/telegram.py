@@ -71,7 +71,8 @@ MORNING = (6, 30)     # no listener from the bot's last hourly cycle of the day 
 MAX_LISTEN = 6900     # a background command may run at most 2 h
 # bare acknowledgements from bots are not tasks: they never wake an agent and get no reply
 BOT_ACKS = {'', 'ок', 'ok', 'okay', 'окей', 'добре', 'благодаря', 'благодаря ти', 'мерси', 'thanks', 'thank you', 'супер', 'яко',
-            'топ', 'браво', 'ясно', 'разбрах', 'прието', 'чудесно', 'страхотно', 'перфектно', 'отлично'}
+            'топ', 'браво', 'ясно', 'разбрах', 'прието', 'чудесно', 'страхотно', 'перфектно', 'отлично',
+            'great', 'got it', 'noted', 'accepted', 'cool', 'nice', 'perfect', 'excellent', 'understood'}
 
 
 def token(profile=None):
