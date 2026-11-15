@@ -1,6 +1,6 @@
 {
  "seq": {
-  "1115": 2
+  "1115": 3
  },
  "tasks": [
   {
@@ -2610,6 +2610,18 @@
     }
    ],
    "last_note": "PR 45 на живо"
+  },
+  {
+   "id": "M-1115-03",
+   "agent": "coder",
+   "kind": "task",
+   "text": "По предложение на SEO (seo/service-urls-jsonld.md): в JSON-LD на началните страници (tools/build-langs.mjs + index.html) Service URL-ите да сочат към страниците на услугите вместо services.html#… — точните адреси EN/BG/TR са във файла. Малка промяна по правилото: site_shot без проблеми + валиден JSON-LD, на живо, после кажи на SEO да провери.",
+   "status": "open",
+   "created": "2026-11-15T10:25+02:00",
+   "updated": "2026-11-15T10:25+02:00",
+   "tg_message_id": 611,
+   "via": "telegram",
+   "history": []
   }
  ]
 }
