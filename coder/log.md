@@ -2,6 +2,9 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 15.11.2026 — M-1115-03 — Service URL-и в JSON-LD към страниците на услугите
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/46 (сам, на живо): index.html — 6 EN URL-а; build-langs.mjs localizeJsonLd превежда EN страницата към BG/TR чрез SVC_PAGES (чете се от js/chrome.js). Тест: 18 файла съществуват; JSON-LD парсва на живо на /, /bg/, /tr/; site_shot локално и на живо — 0. Помолих SEO да провери с Rich Results.
+
 ## 15.11.2026 — M-1115-02 — „Последвай Плочко“ + банер за конкурса в сайта
 ✅ PR https://github.com/SW1TF0/SmartMenu/pull/45 (сам, на живо): footer в js/chrome.js (Instagram/TikTok/YouTube, utm_source=site&utm_medium=footer), follow-box в края на всяка статия (build-service-pages.mjs, utm_medium=article); банер за конкурса (konkurs.md banner_link → рийла, banner_rules „Правила“) на началната и в блога BG/TR; today() вече по Europe/Sofia, за да се скрие след 19.11 23:59 по БГ време. Тест: Playwright clock 19.11 23:30 видим / 20.11 00:01 скрит; site_shot локално и на живо — 0 проблема. Снимки в групата.
 
