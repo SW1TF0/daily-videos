@@ -48,3 +48,11 @@
 - Футърът (`js/chrome.js` `blogLink()`): линк „Blog“/„Blog“ и на EN и TR страниците (сега само BG). Breadcrumb: Home › Blog / Ana sayfa › Blog.
 - „Read more“ / „Devamını okuyun“ от всяка EN/TR страница на услуга към свързаната статия — същото съответствие като в BG (`service:` във frontmatter).
 - sitemap: +14 адреса (2 списъка + 12 статии), после SEO агентът праща sitemaps-submit.
+
+## M-1113-06 — 3 нови BG статии (на живо 15.11, SEO агентът)
+| Статия | Файл | URL | Услуга |
+|---|---|---|---|
+| Видеонаблюдение за хотел или къща за гости: какво да има | videonablyudenie-hotel-kashta-za-gosti.md | /bg/blog/videonablyudenie-hotel-kashta-za-gosti.html | /bg/videonablyudenie-kardzhali.html |
+| QR меню на два езика: защо помага на заведения с туристи | qr-menu-na-dva-ezika-turisti.md | /bg/blog/qr-menu-na-dva-ezika-turisti.html | /bg/qr-menu-kardzhali.html |
+| Компютър за офис: какво да сменим първо | kompyutar-za-ofis-kakvo-da-smenim-parvo.md | /bg/blog/kompyutar-za-ofis-kakvo-da-smenim-parvo.html | /bg/kompyutaren-servis-kardzhali.html |
+EN/TR — по задача.
