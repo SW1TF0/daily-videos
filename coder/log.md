@@ -2,6 +2,9 @@
 
 Най-новото е най-отгоре. Формат: `## ДД.ММ.ГГГГ — M-… — заглавие`, после статус (⏳ в работа / ✅ готово / ❌ не мога), какво е направено, commit-и, как е тествано, какво остава.
 
+## 15.11.2026 — M-1115-02 — „Последвай Плочко“ + банер за конкурса в сайта
+✅ PR https://github.com/SW1TF0/SmartMenu/pull/45 (сам, на живо): footer в js/chrome.js (Instagram/TikTok/YouTube, utm_source=site&utm_medium=footer), follow-box в края на всяка статия (build-service-pages.mjs, utm_medium=article); банер за конкурса (konkurs.md banner_link → рийла, banner_rules „Правила“) на началната и в блога BG/TR; today() вече по Europe/Sofia, за да се скрие след 19.11 23:59 по БГ време. Тест: Playwright clock 19.11 23:30 видим / 20.11 00:01 скрит; site_shot локално и на живо — 0 проблема. Снимки в групата.
+
 ## 13.11.2026 — M-1113-08 — WebP автоматично при сглобяване на smarthomekj
 ✅ PR https://github.com/SW1TF0/smarthomekj/pull/25 (на живо): scripts/product-images.mjs (prebuild/predev/pretypecheck; Firestore REST → sharp → public/img/products/<sha16>.webp + src/data/product-images.json, gitignored; грешка → оригиналът, без да пада build); images.ts чете картата; preconnect махнат; sharp devDependency. Тест: локално 17 копия (през прокси: NODE_USE_ENV_PROXY=1), fallback при изтрито копие; Actions лог „17 WebP copies“. img/shop/ в SmartMenu вече не се ползва (може да се махне).
 
