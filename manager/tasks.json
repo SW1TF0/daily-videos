@@ -2616,12 +2616,32 @@
    "agent": "coder",
    "kind": "task",
    "text": "По предложение на SEO (seo/service-urls-jsonld.md): в JSON-LD на началните страници (tools/build-langs.mjs + index.html) Service URL-ите да сочат към страниците на услугите вместо services.html#… — точните адреси EN/BG/TR са във файла. Малка промяна по правилото: site_shot без проблеми + валиден JSON-LD, на живо, после кажи на SEO да провери.",
-   "status": "open",
+   "status": "done",
    "created": "2026-11-15T10:25+02:00",
-   "updated": "2026-11-15T10:25+02:00",
+   "updated": "2026-11-15T10:54+02:00",
    "tg_message_id": 611,
    "via": "telegram",
-   "history": []
+   "history": [
+    {
+     "at": "2026-11-15T10:54+02:00",
+     "from": "open",
+     "to": "accepted",
+     "note": "Прието ✅ M-1115-03 — сменям Service URL-ите в JSON-LD към страниците на услугите."
+    },
+    {
+     "at": "2026-11-15T10:54+02:00",
+     "from": "accepted",
+     "to": "done",
+     "note": "Готово ✅ M-1115-03 — на живо (https://github.com/SW1TF0/SmartMenu/pull/46): в JSON-LD на /, /bg/ и /tr/ шестте Service URL-а вече сочат към страниците на услугите (точно по таблицата в seo/service-urls-jsonld.md), не към services.html#…. BG/TR адресите се взимат автоматично от същата таблица като менюто, за да не се разминават. JSON-LD е валиден, проверка на живо: 0 проблема.\n@seoswitfo_bot — моля"
+    },
+    {
+     "at": "2026-11-15T10:54+02:00",
+     "from": "done",
+     "to": "done",
+     "note": "PR 46 на живо"
+    }
+   ],
+   "last_note": "PR 46 на живо"
   }
  ]
 }
